@@ -21,6 +21,20 @@
 		F9BBEFB4190AF05C00452C5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF96190AF05C00452C5C /* UIKit.framework */; };
 		F9BBEFBC190AF05C00452C5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9BBEFBA190AF05C00452C5C /* InfoPlist.strings */; };
 		F9BBEFBE190AF05C00452C5C /* JunebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFBD190AF05C00452C5C /* JunebugTests.m */; };
+		F9BBEFCA190BF22700452C5C /* BeckonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFC9190BF22700452C5C /* BeckonVC.m */; };
+		F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFCC190BF23800452C5C /* FriendsVC.m */; };
+		F9BBEFD0190BF24700452C5C /* GroupsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFCF190BF24700452C5C /* GroupsVC.m */; };
+		F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFD2190BF26800452C5C /* SignInVC.m */; };
+		F9BBEFD6190BF27700452C5C /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFD5190BF27700452C5C /* SignUpVC.m */; };
+		F9BBEFDF190BF40A00452C5C /* FriendDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFDE190BF40A00452C5C /* FriendDetailVC.m */; };
+		F9BBEFE2190BF41C00452C5C /* GroupDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFE1190BF41C00452C5C /* GroupDetailVC.m */; };
+		F9BBEFE5190BF45D00452C5C /* BeckonCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFE4190BF45D00452C5C /* BeckonCreateVC.m */; };
+		F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */; };
+		F9BBEFEC190BF67B00452C5C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFEB190BF67B00452C5C /* User.m */; };
+		F9BBEFEF190BF68A00452C5C /* Friends.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFEE190BF68A00452C5C /* Friends.m */; };
+		F9BBEFF2190BF69500452C5C /* Groups.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFF1190BF69500452C5C /* Groups.m */; };
+		F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFF4190BF6A000452C5C /* Beckons.m */; };
+		F9BBEFF9190BF6B800452C5C /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFF8190BF6B800452C5C /* Server.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +67,34 @@
 		F9BBEFB9190AF05C00452C5C /* JunebugTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JunebugTests-Info.plist"; sourceTree = "<group>"; };
 		F9BBEFBB190AF05C00452C5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F9BBEFBD190AF05C00452C5C /* JunebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JunebugTests.m; sourceTree = "<group>"; };
+		F9BBEFC8190BF22700452C5C /* BeckonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonVC.h; sourceTree = "<group>"; };
+		F9BBEFC9190BF22700452C5C /* BeckonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonVC.m; sourceTree = "<group>"; };
+		F9BBEFCB190BF23800452C5C /* FriendsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsVC.h; sourceTree = "<group>"; };
+		F9BBEFCC190BF23800452C5C /* FriendsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsVC.m; sourceTree = "<group>"; };
+		F9BBEFCE190BF24700452C5C /* GroupsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsVC.h; sourceTree = "<group>"; };
+		F9BBEFCF190BF24700452C5C /* GroupsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsVC.m; sourceTree = "<group>"; };
+		F9BBEFD1190BF26800452C5C /* SignInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInVC.h; sourceTree = "<group>"; };
+		F9BBEFD2190BF26800452C5C /* SignInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInVC.m; sourceTree = "<group>"; };
+		F9BBEFD4190BF27700452C5C /* SignUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpVC.h; sourceTree = "<group>"; };
+		F9BBEFD5190BF27700452C5C /* SignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpVC.m; sourceTree = "<group>"; };
+		F9BBEFDD190BF40A00452C5C /* FriendDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDetailVC.h; sourceTree = "<group>"; };
+		F9BBEFDE190BF40A00452C5C /* FriendDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDetailVC.m; sourceTree = "<group>"; };
+		F9BBEFE0190BF41C00452C5C /* GroupDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDetailVC.h; sourceTree = "<group>"; };
+		F9BBEFE1190BF41C00452C5C /* GroupDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDetailVC.m; sourceTree = "<group>"; };
+		F9BBEFE3190BF45D00452C5C /* BeckonCreateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonCreateVC.h; sourceTree = "<group>"; };
+		F9BBEFE4190BF45D00452C5C /* BeckonCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonCreateVC.m; sourceTree = "<group>"; };
+		F9BBEFE6190BF47100452C5C /* BeckonDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonDetailVC.h; sourceTree = "<group>"; };
+		F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonDetailVC.m; sourceTree = "<group>"; };
+		F9BBEFEA190BF67B00452C5C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F9BBEFEB190BF67B00452C5C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F9BBEFED190BF68A00452C5C /* Friends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friends.h; sourceTree = "<group>"; };
+		F9BBEFEE190BF68A00452C5C /* Friends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friends.m; sourceTree = "<group>"; };
+		F9BBEFF0190BF69500452C5C /* Groups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Groups.h; sourceTree = "<group>"; };
+		F9BBEFF1190BF69500452C5C /* Groups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Groups.m; sourceTree = "<group>"; };
+		F9BBEFF3190BF6A000452C5C /* Beckons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beckons.h; sourceTree = "<group>"; };
+		F9BBEFF4190BF6A000452C5C /* Beckons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beckons.m; sourceTree = "<group>"; };
+		F9BBEFF7190BF6B800452C5C /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		F9BBEFF8190BF6B800452C5C /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +154,12 @@
 		F9BBEF98190AF05C00452C5C /* Junebug */ = {
 			isa = PBXGroup;
 			children = (
+				F9BBEFF6190BF6A600452C5C /* Utils */,
+				F9BBEFE9190BF64600452C5C /* Models */,
+				F9BBEFC7190BF1FE00452C5C /* Controllers */,
 				F9BBEFA1190AF05C00452C5C /* AppDelegate.h */,
 				F9BBEFA2190AF05C00452C5C /* AppDelegate.m */,
 				F9BBEFA4190AF05C00452C5C /* Main.storyboard */,
-				F9BBEFA7190AF05C00452C5C /* ViewController.h */,
-				F9BBEFA8190AF05C00452C5C /* ViewController.m */,
 				F9BBEFAA190AF05C00452C5C /* Images.xcassets */,
 				F9BBEF99190AF05C00452C5C /* Supporting Files */,
 			);
@@ -150,6 +193,57 @@
 				F9BBEFBA190AF05C00452C5C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F9BBEFC7190BF1FE00452C5C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F9BBEFA7190AF05C00452C5C /* ViewController.h */,
+				F9BBEFA8190AF05C00452C5C /* ViewController.m */,
+				F9BBEFC8190BF22700452C5C /* BeckonVC.h */,
+				F9BBEFC9190BF22700452C5C /* BeckonVC.m */,
+				F9BBEFCB190BF23800452C5C /* FriendsVC.h */,
+				F9BBEFCC190BF23800452C5C /* FriendsVC.m */,
+				F9BBEFCE190BF24700452C5C /* GroupsVC.h */,
+				F9BBEFCF190BF24700452C5C /* GroupsVC.m */,
+				F9BBEFD1190BF26800452C5C /* SignInVC.h */,
+				F9BBEFD2190BF26800452C5C /* SignInVC.m */,
+				F9BBEFD4190BF27700452C5C /* SignUpVC.h */,
+				F9BBEFD5190BF27700452C5C /* SignUpVC.m */,
+				F9BBEFDD190BF40A00452C5C /* FriendDetailVC.h */,
+				F9BBEFDE190BF40A00452C5C /* FriendDetailVC.m */,
+				F9BBEFE0190BF41C00452C5C /* GroupDetailVC.h */,
+				F9BBEFE1190BF41C00452C5C /* GroupDetailVC.m */,
+				F9BBEFE3190BF45D00452C5C /* BeckonCreateVC.h */,
+				F9BBEFE4190BF45D00452C5C /* BeckonCreateVC.m */,
+				F9BBEFE6190BF47100452C5C /* BeckonDetailVC.h */,
+				F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F9BBEFE9190BF64600452C5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9BBEFEA190BF67B00452C5C /* User.h */,
+				F9BBEFEB190BF67B00452C5C /* User.m */,
+				F9BBEFED190BF68A00452C5C /* Friends.h */,
+				F9BBEFEE190BF68A00452C5C /* Friends.m */,
+				F9BBEFF0190BF69500452C5C /* Groups.h */,
+				F9BBEFF1190BF69500452C5C /* Groups.m */,
+				F9BBEFF3190BF6A000452C5C /* Beckons.h */,
+				F9BBEFF4190BF6A000452C5C /* Beckons.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		F9BBEFF6190BF6A600452C5C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F9BBEFF7190BF6B800452C5C /* Server.h */,
+				F9BBEFF8190BF6B800452C5C /* Server.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,9 +343,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9BBEFEC190BF67B00452C5C /* User.m in Sources */,
+				F9BBEFD0190BF24700452C5C /* GroupsVC.m in Sources */,
+				F9BBEFCA190BF22700452C5C /* BeckonVC.m in Sources */,
 				F9BBEFA9190AF05C00452C5C /* ViewController.m in Sources */,
 				F9BBEFA3190AF05C00452C5C /* AppDelegate.m in Sources */,
+				F9BBEFDF190BF40A00452C5C /* FriendDetailVC.m in Sources */,
+				F9BBEFF9190BF6B800452C5C /* Server.m in Sources */,
+				F9BBEFD6190BF27700452C5C /* SignUpVC.m in Sources */,
+				F9BBEFEF190BF68A00452C5C /* Friends.m in Sources */,
+				F9BBEFF2190BF69500452C5C /* Groups.m in Sources */,
+				F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */,
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
+				F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */,
+				F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */,
+				F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */,
+				F9BBEFE5190BF45D00452C5C /* BeckonCreateVC.m in Sources */,
+				F9BBEFE2190BF41C00452C5C /* GroupDetailVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +564,7 @@
 				F9BBEFC3190AF05C00452C5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9BBEFC4190AF05C00452C5C /* Build configuration list for PBXNativeTarget "JunebugTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +573,7 @@
 				F9BBEFC6190AF05C00452C5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
