@@ -45,5 +45,14 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)signUpPressed:(id)sender {
+    [self performSegueWithIdentifier:@"SignInToSignUp" sender:self];
+}
+- (IBAction)backgroundTapped:(id)sender {
+    [self.view endEditing:YES];
+}
+- (IBAction)signInTabbed:(id)sender {
+    [self performSegueWithIdentifier:@"SignInToTabbed" sender:self]; 
+}
 
 @end

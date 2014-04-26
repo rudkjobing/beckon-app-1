@@ -45,5 +45,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)backgroundTapped:(id)sender {
+    [self.view endEditing:YES];
+}
+- (IBAction)signUpButtonTabbed:(id)sender {
+    [self performSegueWithIdentifier:@"SignUpToTabbed" sender:self];
+}
 
 @end
