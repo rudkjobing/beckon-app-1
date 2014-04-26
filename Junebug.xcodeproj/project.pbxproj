@@ -124,6 +124,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F9ADF35D190BFABB002C6809 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		F9BBEF86190AF05B00452C5C = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +164,7 @@
 		F9BBEF98190AF05C00452C5C /* Junebug */ = {
 			isa = PBXGroup;
 			children = (
+				F9ADF35D190BFABB002C6809 /* Images */,
 				F9BBEFF6190BF6A600452C5C /* Utils */,
 				F9BBEFE9190BF64600452C5C /* Models */,
 				F9BBEFC7190BF1FE00452C5C /* Controllers */,

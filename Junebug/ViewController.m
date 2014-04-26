@@ -22,7 +22,7 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self performSegueWithIdentifier:@"EntryToTabbed" sender:self];
+    [self performSegueWithIdentifier:@"EntryToSignIn" sender:self];
 
 }
 

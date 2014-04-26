@@ -10,4 +10,6 @@
 
 @interface Friends : NSObject
 
+@property (strong, nonatomic) NSMutableArray *friends;
+
 @end
