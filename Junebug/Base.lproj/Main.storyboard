@@ -371,6 +371,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="M39-pg-MFS"/>
                     <connections>
+                        <outlet property="signUpConfirmedPassword" destination="Mci-84-Uen" id="1Vh-zR-pw3"/>
+                        <outlet property="signUpEmail" destination="yKT-hM-ZdW" id="APy-FB-oAj"/>
+                        <outlet property="signUpFirstname" destination="WlK-sd-ixb" id="UTq-F6-uNm"/>
+                        <outlet property="signUpPassword" destination="XXz-nH-s85" id="05r-CC-0fc"/>
+                        <outlet property="signUpSecondname" destination="5XB-05-tD7" id="GHC-WW-Pao"/>
                         <segue destination="iGb-2C-2tD" kind="modal" identifier="SignUpToTabbed" id="bKj-xi-DtV"/>
                     </connections>
                 </viewController>
@@ -480,6 +485,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="bKj-xi-DtV"/>
+        <segue reference="n3Q-oB-hYW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,7 @@
 
 @interface SignInVC ()
 
+
 @end
 
 @implementation SignInVC
@@ -46,6 +47,7 @@
 }
 */
 - (IBAction)signUpPressed:(id)sender {
+
     [self performSegueWithIdentifier:@"SignInToSignUp" sender:self];
 }
 - (IBAction)backgroundTapped:(id)sender {

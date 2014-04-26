@@ -10,6 +10,12 @@
 
 @interface SignUpVC ()
 
+@property (weak, nonatomic) IBOutlet UITextField *signUpFirstname;
+@property (weak, nonatomic) IBOutlet UITextField *signUpSecondname;
+@property (weak, nonatomic) IBOutlet UITextField *signUpEmail;
+@property (weak, nonatomic) IBOutlet UITextField *signUpPassword;
+@property (weak, nonatomic) IBOutlet UITextField *signUpConfirmedPassword;
+
 @end
 
 @implementation SignUpVC
@@ -49,7 +55,12 @@
     [self.view endEditing:YES];
 }
 - (IBAction)signUpButtonTabbed:(id)sender {
-    [self performSegueWithIdentifier:@"SignUpToTabbed" sender:self];
+    if ([self.signUpPassword.text isEqualToString:self.signUpConfirmedPassword.text]) {
+        [self performSegueWithIdentifier:@"SignUpToTabbed" sender:self];
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password incorrect" message:@"password could not be confirmed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 @end
