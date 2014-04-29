@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="750" y="-1663"/>
         </scene>
-        <!--BeckonVC - Item 1-->
+        <!--BeckonVC - Beckon-->
         <scene sceneID="l63-Em-TAr">
             <objects>
                 <viewController id="GYV-ga-gUC" customClass="BeckonVC" sceneMemberID="viewController">
@@ -58,7 +58,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="MEp-AY-wzc"/>
+                    <tabBarItem key="tabBarItem" title="Beckon" id="MEp-AY-wzc"/>
                     <connections>
                         <segue destination="tIU-a7-Rgf" kind="modal" identifier="BeckonToBeckonCreate" id="Hjb-67-6aN"/>
                         <segue destination="tqJ-eb-PZW" kind="modal" identifier="BeckonToBeckonDetail" id="tI1-e4-jfa"/>
@@ -108,7 +108,7 @@
             </objects>
             <point key="canvasLocation" x="224" y="-204"/>
         </scene>
-        <!--FriendsVC - Item 2-->
+        <!--FriendsVC - Friends-->
         <scene sceneID="0Ud-wy-SmK">
             <objects>
                 <viewController id="Zjp-ER-XIC" customClass="FriendsVC" sceneMemberID="viewController">
@@ -121,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="kw5-kf-dDA"/>
+                    <tabBarItem key="tabBarItem" title="Friends" id="kw5-kf-dDA"/>
                     <connections>
                         <segue destination="c2w-Tb-1v6" kind="modal" identifier="FriendsToFriendsDetail" id="5Qk-WQ-ui6"/>
                     </connections>
@@ -168,7 +168,7 @@
             </objects>
             <point key="canvasLocation" x="4316" y="-929"/>
         </scene>
-        <!--SettingsVC - Item-->
+        <!--SettingsVC - Settings-->
         <scene sceneID="Zrf-Jo-bdX">
             <objects>
                 <viewController id="Oec-XW-uA1" customClass="SettingsVC" sceneMemberID="viewController">
@@ -181,13 +181,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="3Vz-4r-RtZ"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="3Vz-4r-RtZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ibf-4l-9qY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4844" y="-929"/>
         </scene>
-        <!--GroupsVC - Item-->
+        <!--GroupsVC - Groups-->
         <scene sceneID="dKM-df-IKu">
             <objects>
                 <viewController id="7i1-zh-USo" customClass="GroupsVC" sceneMemberID="viewController">
@@ -200,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="mLm-Fe-ZhB"/>
+                    <tabBarItem key="tabBarItem" title="Groups" id="mLm-Fe-ZhB"/>
                     <connections>
                         <segue destination="Vzn-Dw-zPS" kind="modal" identifier="GroupsToGroupDetail" id="CS1-s5-0Op"/>
                     </connections>

@@ -10,4 +10,7 @@
 
 @interface Server : NSObject
 
++(Server *)sharedInstance;
+-(NSDictionary *) fetchDataFromDestination:(NSString *)destination WithData:(NSDictionary *)data;
+
 @end

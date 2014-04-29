@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
-@interface SignUpVC : UIViewController
+@interface SignUpVC : UIViewController<SignUpDelegate>
+
+@property (strong, nonatomic) User* user;
 
 @end

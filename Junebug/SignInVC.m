@@ -7,6 +7,7 @@
 //
 
 #import "SignInVC.h"
+#import "SignUpVC.h"
 
 @interface SignInVC ()
 @property (weak, nonatomic) IBOutlet UITextField *singInEmail;
@@ -17,37 +18,21 @@
 
 @implementation SignInVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) userValidated{
+    [self performSegueWithIdentifier:@"SignInToTabbed" sender:self];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) userFailedValidationWithMessage:(NSString *)message{
+    UIAlertView *noMailorPassword = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:message delegate:self cancelButtonTitle:@"Try again" otherButtonTitles: nil];
+    [noMailorPassword show];
 }
-*/
+
 - (IBAction)signUpPressed:(id)sender {
 
     [self performSegueWithIdentifier:@"SignInToSignUp" sender:self];
@@ -60,9 +45,23 @@
         UIAlertView *noMailorPassword = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:@"Failed to log in due to missing Password or Email" delegate:self cancelButtonTitle:@"Try again" otherButtonTitles: nil];
         [noMailorPassword show]; 
         
-    }else{
-    [self performSegueWithIdentifier:@"SignInToTabbed" sender:self]; 
     }
+    else{
+        [self.user setSignInDelegate:self];
+        [self.user loginWithEmail:self.singInEmail.text andPassword:self.signInPassword.text];
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    /*if ([segue.identifier isEqualToString:@"EntryToSignIn"]) {
+     TabViewController *destViewController = segue.destinationViewController;
+     FriendViewController *friendViewcontroller=[destViewController.viewControllers objectAtIndex:0];
+     friendViewcontroller.user = self.user;
+     }*/
+    if ([segue.identifier isEqualToString:@"SignInToSignUp"]) {
+        SignUpVC *destController = segue.destinationViewController;
+        destController.user = self.user;
+    }
+}
 
 @end
