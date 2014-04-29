@@ -58,7 +58,7 @@
     if ([self.signUpPassword.text isEqualToString:self.signUpConfirmedPassword.text]) {
         [self performSegueWithIdentifier:@"SignUpToTabbed" sender:self];
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password incorrect" message:@"password could not be confirmed" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password incorrect" message:@"passwords did not match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
 }

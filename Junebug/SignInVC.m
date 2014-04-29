@@ -9,6 +9,8 @@
 #import "SignInVC.h"
 
 @interface SignInVC ()
+@property (weak, nonatomic) IBOutlet UITextField *singInEmail;
+@property (weak, nonatomic) IBOutlet UITextField *signInPassword;
 
 
 @end
@@ -54,7 +56,13 @@
     [self.view endEditing:YES];
 }
 - (IBAction)signInTabbed:(id)sender {
+    if ([self.singInEmail.text isEqualToString:@""] || [self.signInPassword.text isEqualToString:@""]) {
+        UIAlertView *noMailorPassword = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:@"Failed to log in due to missing Password or Email" delegate:self cancelButtonTitle:@"Try again" otherButtonTitles: nil];
+        [noMailorPassword show]; 
+        
+    }else{
     [self performSegueWithIdentifier:@"SignInToTabbed" sender:self]; 
-}
+    }
+    }
 
 @end
