@@ -11,6 +11,6 @@
 @interface Server : NSObject
 
 +(Server *)sharedInstance;
--(NSDictionary *) fetchDataFromDestination:(NSString *)destination WithData:(NSDictionary *)data;
+-(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)data;
 
 @end

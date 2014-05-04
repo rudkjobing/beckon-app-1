@@ -26,7 +26,7 @@
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
             NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:email, @"email", password, @"password", @"IPhone 5S", @"device_type", @"IOS 7", @"device_os", nil];
-            NSDictionary *result = [[Server sharedInstance] fetchDataFromDestination:@"registerdevice.php" WithData:data];
+            NSDictionary *result = [[Server sharedInstance] queryServerDomain:@"user" WithCommand:@"registerDevice" andData:data];
         
             dispatch_async(dispatch_get_main_queue(), ^{
                 if([[result objectForKey:@"success"] isEqualToString:@"1"]){
@@ -52,7 +52,7 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
         NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:email, @"email", authkey, @"auth_key",devicekey, @"device_key" , nil];
-        NSDictionary *result = [[Server sharedInstance] fetchDataFromDestination:@"authenticate.php" WithData:data];
+        NSDictionary *result = [[Server sharedInstance] queryServerDomain:@"user" WithCommand:@"authenticate" andData:data];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
@@ -84,7 +84,7 @@
                               @"0001", @"countrycode",
                               nil];
         /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [[Server sharedInstance] fetchDataFromDestination:@"signup.php" WithData:data];
+        NSDictionary *result = [[Server sharedInstance] queryServerDomain:@"user" WithCommand:@"add" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 [_signup_delegate performSelector:@selector(signUpComplete)];
