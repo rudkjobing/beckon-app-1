@@ -37,6 +37,9 @@
 
     [self performSegueWithIdentifier:@"SignInToSignUp" sender:self];
 }
+- (IBAction)textFieldReturn:(id)sender{
+    [self resignFirstResponder];
+}
 - (IBAction)backgroundTapped:(id)sender {
     [self.view endEditing:YES];
 }

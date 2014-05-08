@@ -12,5 +12,5 @@
 @interface SignUpVC : UIViewController<SignUpDelegate>
 
 @property (strong, nonatomic) User* user;
-
+- (IBAction)textFieldReturn:(id)sender;
 @end

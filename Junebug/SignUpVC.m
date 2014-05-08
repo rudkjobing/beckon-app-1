@@ -54,6 +54,11 @@
 - (IBAction)backgroundTapped:(id)sender {
     [self.view endEditing:YES];
 }
+- (IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+    
+}
 - (IBAction)signUpButtonTabbed:(id)sender {
     if ([self.signUpPassword.text isEqualToString:self.signUpConfirmedPassword.text]) {
         [self.user setSignUpDelegate:self];
