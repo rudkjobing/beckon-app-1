@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F977988F1910582100448BAF /* UserTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F977988E1910582100448BAF /* UserTestCase.m */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
 		F9BBEF93190AF05C00452C5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF92190AF05C00452C5C /* Foundation.framework */; };
 		F9BBEF95190AF05C00452C5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF94190AF05C00452C5C /* CoreGraphics.framework */; };
@@ -21,7 +22,6 @@
 		F9BBEFB3190AF05C00452C5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF92190AF05C00452C5C /* Foundation.framework */; };
 		F9BBEFB4190AF05C00452C5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF96190AF05C00452C5C /* UIKit.framework */; };
 		F9BBEFBC190AF05C00452C5C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9BBEFBA190AF05C00452C5C /* InfoPlist.strings */; };
-		F9BBEFBE190AF05C00452C5C /* JunebugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFBD190AF05C00452C5C /* JunebugTests.m */; };
 		F9BBEFCA190BF22700452C5C /* BeckonVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFC9190BF22700452C5C /* BeckonVC.m */; };
 		F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFCC190BF23800452C5C /* FriendsVC.m */; };
 		F9BBEFD0190BF24700452C5C /* GroupsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFCF190BF24700452C5C /* GroupsVC.m */; };
@@ -49,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F977988E1910582100448BAF /* UserTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTestCase.m; sourceTree = "<group>"; };
 		F9ADF35A190BF9DA002C6809 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		F9ADF35B190BF9DA002C6809 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
 		F9BBEF8F190AF05B00452C5C /* Junebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Junebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +70,6 @@
 		F9BBEFB1190AF05C00452C5C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F9BBEFB9190AF05C00452C5C /* JunebugTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JunebugTests-Info.plist"; sourceTree = "<group>"; };
 		F9BBEFBB190AF05C00452C5C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F9BBEFBD190AF05C00452C5C /* JunebugTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JunebugTests.m; sourceTree = "<group>"; };
 		F9BBEFC8190BF22700452C5C /* BeckonVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonVC.h; sourceTree = "<group>"; };
 		F9BBEFC9190BF22700452C5C /* BeckonVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonVC.m; sourceTree = "<group>"; };
 		F9BBEFCB190BF23800452C5C /* FriendsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsVC.h; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 		F9BBEFB7190AF05C00452C5C /* JunebugTests */ = {
 			isa = PBXGroup;
 			children = (
-				F9BBEFBD190AF05C00452C5C /* JunebugTests.m */,
+				F977988E1910582100448BAF /* UserTestCase.m */,
 				F9BBEFB8190AF05C00452C5C /* Supporting Files */,
 			);
 			path = JunebugTests;
@@ -381,7 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9BBEFBE190AF05C00452C5C /* JunebugTests.m in Sources */,
+				F977988F1910582100448BAF /* UserTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,25 +22,26 @@ NSInteger counter;
     return sharedInstance;
 }
 
--(NSDictionary *) fetchDataFromDestination:(NSString*)destination WithData:(NSDictionary *)data{
+-(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)data{
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSLog(@"%@", post);
+    
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[@"http://95.85.59.211/" stringByAppendingString:destination]]];
+    [request setURL:[NSURL URLWithString:@"https://gateway.beckon.dk/router.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:command forHTTPHeaderField:domain];
+    [request setValue:@"opfusk" forHTTPHeaderField:@"appkey"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
-    
-    //[NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
     
     error = [[NSError alloc] init];
     NSHTTPURLResponse *response = nil;

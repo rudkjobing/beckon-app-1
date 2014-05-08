@@ -44,3 +44,10 @@
 }
 
 @end
+//REMOVE THIS ON PRODUCTION
+@implementation NSURLRequest(DataController)
++ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host
+{
+    return YES;
+}
+@end
