@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C039EE36191E733700E50D34 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C039EE35191E733700E50D34 /* CustomCell.m */; };
 		F977988F1910582100448BAF /* UserTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F977988E1910582100448BAF /* UserTestCase.m */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
 		F9BBEF93190AF05C00452C5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF92190AF05C00452C5C /* Foundation.framework */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C039EE34191E733700E50D34 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		C039EE35191E733700E50D34 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		F977988E1910582100448BAF /* UserTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTestCase.m; sourceTree = "<group>"; };
 		F9ADF35A190BF9DA002C6809 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		F9ADF35B190BF9DA002C6809 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */,
 				F9ADF35A190BF9DA002C6809 /* SettingsVC.h */,
 				F9ADF35B190BF9DA002C6809 /* SettingsVC.m */,
+				C039EE34191E733700E50D34 /* CustomCell.h */,
+				C039EE35191E733700E50D34 /* CustomCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
 				F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */,
 				F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */,
+				C039EE36191E733700E50D34 /* CustomCell.m in Sources */,
 				F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */,
 				F9BBEFE5190BF45D00452C5C /* BeckonCreateVC.m in Sources */,
 				F9BBEFE2190BF41C00452C5C /* GroupDetailVC.m in Sources */,

@@ -7,12 +7,17 @@
 //
 
 #import "FriendsVC.h"
+#import "CustomCell.h"
 
 @interface FriendsVC ()
+{
+    NSArray *listOfFriends;
+}
 
 @end
 
 @implementation FriendsVC
+@synthesize friendsTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,12 +32,34 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.friendsTableView.dataSource = self;
+    self.friendsTableView.dataSource = self;
+    self.friendsTableView.delegate=self;
+    listOfFriends = [[NSArray alloc] initWithObjects: @"Steve",@"William", @"SomeWeirdDude",@"Someone Else",@"hunnyBubu",@"Steffen",@"New Guy",@"someone else",@"Someone to make list longer", nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return listOfFriends.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier =@"Cell";
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.labelInCell.text = [listOfFriends objectAtIndex:indexPath.row];
+    return cell;
 }
 
 /*
