@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Server.h"
-#import "User.h"
 
-@interface ViewController : UIViewController<AuthenticationDelegate>
-
-@property (strong, nonatomic) User *user;
+@interface ViewController : UIViewController
 
 @end

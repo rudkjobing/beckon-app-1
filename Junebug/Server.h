@@ -10,7 +10,7 @@
 
 @interface Server : NSObject
 
-+(Server *)sharedInstance;
+/*+(Server *)sharedInstance;*/
 -(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)data;
 
 @end

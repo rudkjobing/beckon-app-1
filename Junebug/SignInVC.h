@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
+/*#import "User.h"*/
 
-@interface SignInVC : UIViewController<SignInDelegate>
-
-@property (strong, nonatomic) User* user;
+@interface SignInVC : UIViewController
+/*@property (strong, nonatomic) User* user;*/
 - (IBAction)textFieldReturn:(id)sender;
 
 @end

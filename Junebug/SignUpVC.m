@@ -61,8 +61,7 @@
 }
 - (IBAction)signUpButtonTabbed:(id)sender {
     if ([self.signUpPassword.text isEqualToString:self.signUpConfirmedPassword.text]) {
-        [self.user setSignUpDelegate:self];
-        [self.user signupUserWithEmail:self.signUpEmail.text AndFirstname:self.signUpFirstname.text AndLastname:self.signUpSecondname.text AndPassword:self.signUpPassword.text];
+
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password incorrect" message:@"passwords did not match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];

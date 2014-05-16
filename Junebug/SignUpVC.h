@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "User.h"
 
-@interface SignUpVC : UIViewController<SignUpDelegate>
+@interface SignUpVC : UIViewController
 
 @property (strong, nonatomic) User* user;
 - (IBAction)textFieldReturn:(id)sender;

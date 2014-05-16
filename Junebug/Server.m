@@ -11,7 +11,7 @@
 @implementation Server
 
 NSInteger counter;
-
+/*
 +(Server *)sharedInstance
 {
     static dispatch_once_t once;
@@ -20,7 +20,7 @@ NSInteger counter;
         sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
-}
+}*/
 
 -(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)data{
     NSError *error;

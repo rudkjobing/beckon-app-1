@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Server.h"
 
 @interface Friends : NSObject
 
+@property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) NSMutableArray *friends;
 
 @end

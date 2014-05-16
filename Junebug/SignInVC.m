@@ -8,6 +8,7 @@
 
 #import "SignInVC.h"
 #import "SignUpVC.h"
+#import "AppDelegate.h"
 
 @interface SignInVC ()
 @property (weak, nonatomic) IBOutlet UITextField *singInEmail;
@@ -20,21 +21,30 @@
 
 - (void)viewDidLoad
 {
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(goToMenu:)
+     name:@"AppState_Ready"
+     object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(loginFailed:)
+     name:@"AppState_NotReady"
+     object:nil];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void) userValidated{
+- (void) goToMenu:(NSNotification*) notification{
     [self performSegueWithIdentifier:@"SignInToTabbed" sender:self];
 }
 
-- (void) userFailedValidationWithMessage:(NSString *)message{
-    UIAlertView *noMailorPassword = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:message delegate:self cancelButtonTitle:@"Try again" otherButtonTitles: nil];
+- (void) loginFailed:(NSNotification*) notification{
+    UIAlertView *noMailorPassword = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:[notification.userInfo objectForKey:@"message"] delegate:self cancelButtonTitle:@"Try again" otherButtonTitles: nil];
     [noMailorPassword show];
 }
 
 - (IBAction)signUpPressed:(id)sender {
-
     [self performSegueWithIdentifier:@"SignInToSignUp" sender:self];
 }
 - (IBAction)textFieldReturn:(id)sender{
@@ -50,21 +60,11 @@
         
     }
     else{
-        [self.user setSignInDelegate:self];
-        [self.user loginWithEmail:self.singInEmail.text andPassword:self.signInPassword.text];
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.appState registerDeviceUsingEmail:self.singInEmail.text AndPassword:self.signInPassword.text];
     }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    /*if ([segue.identifier isEqualToString:@"EntryToSignIn"]) {
-     TabViewController *destViewController = segue.destinationViewController;
-     FriendViewController *friendViewcontroller=[destViewController.viewControllers objectAtIndex:0];
-     friendViewcontroller.user = self.user;
-     }*/
-    if ([segue.identifier isEqualToString:@"SignInToSignUp"]) {
-        SignUpVC *destController = segue.destinationViewController;
-        destController.user = self.user;
-    }
-}
+
 
 @end
