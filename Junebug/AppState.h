@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Server.h"
 #import "Friends.h"
+#import "Groups.h"
 
 @interface AppState : NSObject
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) Friends *friends;
+@property (strong, nonatomic) Groups *groups;
 
 - (void) registerDeviceUsingEmail: (NSString *) email AndPassword: (NSString *) password;
 - (void) applicationReady;

@@ -11,9 +11,6 @@
 @interface AppState ()
 
 @property (nonatomic,strong,readwrite) NSMutableArray* delegates;
-@property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *auth_key;
-@property (strong, nonatomic) NSString *device_key;
 
 @end
 
@@ -21,17 +18,17 @@
 
 - (void) applicationReady{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if(self.email && self.auth_key && self.device_key){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppDidAutoLogin" object:self];
+    if(self.server.email && self.server.auth_key && self.server.device_key){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateReady" object:self];
     }
     else if([defaults stringForKey:@"email"] && [defaults stringForKey:@"device_key"] && [defaults stringForKey:@"auth_key"]){
-        self.email = [defaults stringForKey:@"email"];
-        self.auth_key = [defaults stringForKey:@"auth_key"];
-        self.device_key = [defaults stringForKey:@"device_key"];
+        self.server.email = [defaults stringForKey:@"email"];
+        self.server.auth_key = [defaults stringForKey:@"auth_key"];
+        self.server.device_key = [defaults stringForKey:@"device_key"];
         [self applicationReady];
     }
     else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserMustLogIn" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self];
     }
 }
 
@@ -43,13 +40,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 NSDictionary *payload = [result objectForKey:@"payload"];
-                self.email = [payload objectForKey:@"email"];
-                self.auth_key = [payload objectForKey:@"auth_key"];
-                self.device_key = [payload objectForKey:@"device_key"];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppState_Ready" object:self];
+                self.server.email = [payload objectForKey:@"email"];
+                self.server.auth_key = [payload objectForKey:@"auth_key"];
+                self.server.device_key = [payload objectForKey:@"device_key"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateReady" object:self];
             }
             else{
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppState_NotReady" object:self userInfo:result];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self userInfo:result];
             }
         });
     });
@@ -65,9 +62,9 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                     NSDictionary *payload = [result objectForKey:@"payload"];
-                    self.email = [payload objectForKey:@"email"];
-                    self.auth_key = [payload objectForKey:@"auth_key"];
-                    self.device_key = [payload objectForKey:@"device_key"];
+                    self.server.email = [payload objectForKey:@"email"];
+                    self.server.auth_key = [payload objectForKey:@"auth_key"];
+                    self.server.device_key = [payload objectForKey:@"device_key"];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"ApplicationReady" object:self];
                 }
                 else{
@@ -94,6 +91,14 @@
         _friends.server = self.server;
     }
     return _friends;
+}
+
+- (Groups *) groups{
+    if(!_groups){
+        _groups = [[Groups alloc] init];
+        _groups.server = self.server;
+    }
+    return _groups;
 }
 
 @end

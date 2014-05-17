@@ -22,8 +22,13 @@ NSInteger counter;
     return sharedInstance;
 }*/
 
--(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)data{
+-(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)inData{
+    NSMutableDictionary *data = [inData mutableCopy];
     NSError *error;
+    if(self.email && self.auth_key && self.device_key){
+        NSMutableDictionary *credentials = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.email, @"email", self.device_key, @"device_key", self.auth_key, @"auth_key", nil];
+        [data addEntriesFromDictionary:credentials];
+    }
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];

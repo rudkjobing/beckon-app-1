@@ -19,12 +19,12 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(goToMenu:)
-     name:@"AppDidAutoLogin"
+     name:@"AppStateReady"
      object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self
-     selector:@selector(goToSignup:)
-     name:@"UserMustLogIn"
+     selector:@selector(goToSignIn:)
+     name:@"AppStateNotReady"
      object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState applicationReady];
@@ -34,7 +34,7 @@
     [self performSegueWithIdentifier:@"EntryToTabbed" sender:self];
 }
 
-- (void) goToSignup:(NSNotification*) notification{
+- (void) goToSignIn:(NSNotification*) notification{
     [self performSegueWithIdentifier:@"EntryToSignIn" sender:self];
 }
 
@@ -48,6 +48,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter]
+     removeObserver:self];
 }
 
 @end

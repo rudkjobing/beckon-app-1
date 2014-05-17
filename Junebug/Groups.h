@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Server.h"
 
-@interface Groups : NSObject
+@interface Groups : NSObject <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) Server *server;
+@property (strong, nonatomic) NSMutableArray *groups;
+
+- (void) getAllGroups;
+- (void) addGroup: (NSString *)name;
 
 @end

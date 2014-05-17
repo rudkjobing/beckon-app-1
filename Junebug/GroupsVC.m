@@ -7,43 +7,61 @@
 //
 
 #import "GroupsVC.h"
+#import "AppDelegate.h"
 
 @interface GroupsVC ()
+
+@property (weak, nonatomic) IBOutlet UITableView *groupTableView;
 
 @end
 
 @implementation GroupsVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+
+- (IBAction)addGroup:(id)sender {
+
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Add a group" message:@"Please enter a name for the group" delegate:self cancelButtonTitle:@"Add" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    alertTextField.placeholder = @"Name";
+    [alert show];
+
+}
+
+- (void)fetchGroups: (NSNotification*) notification{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState.groups getAllGroups];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(updateTableView:)
+     name:@"GroupsFetched"
+     object:nil];
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(fetchGroups:)
+     name:@"GroupAdded"
+     object:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.groupTableView.dataSource = appDelegate.appState.groups;
+    self.groupTableView.delegate = appDelegate.appState.groups;
+    [appDelegate.appState.groups getAllGroups];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState.groups addGroup:[alertView textFieldAtIndex:0].text];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) updateTableView: (NSNotification*) notification{
+    
+    [self.groupTableView reloadData];
 }
-*/
 
 @end

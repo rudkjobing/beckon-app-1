@@ -10,7 +10,10 @@
 
 @interface Server : NSObject
 
-/*+(Server *)sharedInstance;*/
+@property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *auth_key;
+@property (strong, nonatomic) NSString *device_key;
+
 -(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)data;
 
 @end

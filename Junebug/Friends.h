@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Server.h"
+#import "CustomCell.h"
 
-@interface Friends : NSObject
+@interface Friends : NSObject <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) NSMutableArray *friends;
+
+- (void) getAllFriends;
+- (void) addFriend: (NSString *)friendEmail;
 
 @end

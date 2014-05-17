@@ -24,12 +24,12 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(goToMenu:)
-     name:@"AppState_Ready"
+     name:@"AppStateReady"
      object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(loginFailed:)
-     name:@"AppState_NotReady"
+     name:@"AppStateNotReady"
      object:nil];
     [super viewDidLoad];
     // Do any additional setup after loading the view.

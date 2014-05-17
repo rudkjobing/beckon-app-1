@@ -11,6 +11,7 @@
 		F9572A20192135F500D7D51E /* AppState.m in Sources */ = {isa = PBXBuildFile; fileRef = F9572A1F192135F500D7D51E /* AppState.m */; };
 		F977988F1910582100448BAF /* UserTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F977988E1910582100448BAF /* UserTestCase.m */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
+		F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FA1927AA9E0088B6AB /* GroupCell.m */; };
 		F9BBEF93190AF05C00452C5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF92190AF05C00452C5C /* Foundation.framework */; };
 		F9BBEF95190AF05C00452C5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF94190AF05C00452C5C /* CoreGraphics.framework */; };
 		F9BBEF97190AF05C00452C5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF96190AF05C00452C5C /* UIKit.framework */; };
@@ -33,7 +34,6 @@
 		F9BBEFE2190BF41C00452C5C /* GroupDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFE1190BF41C00452C5C /* GroupDetailVC.m */; };
 		F9BBEFE5190BF45D00452C5C /* BeckonCreateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFE4190BF45D00452C5C /* BeckonCreateVC.m */; };
 		F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */; };
-		F9BBEFEC190BF67B00452C5C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFEB190BF67B00452C5C /* User.m */; };
 		F9BBEFEF190BF68A00452C5C /* Friends.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFEE190BF68A00452C5C /* Friends.m */; };
 		F9BBEFF2190BF69500452C5C /* Groups.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFF1190BF69500452C5C /* Groups.m */; };
 		F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFF4190BF6A000452C5C /* Beckons.m */; };
@@ -58,6 +58,8 @@
 		F977988E1910582100448BAF /* UserTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTestCase.m; sourceTree = "<group>"; };
 		F9ADF35A190BF9DA002C6809 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		F9ADF35B190BF9DA002C6809 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
+		F9B016F91927AA9E0088B6AB /* GroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCell.h; sourceTree = "<group>"; };
+		F9B016FA1927AA9E0088B6AB /* GroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCell.m; sourceTree = "<group>"; };
 		F9BBEF8F190AF05B00452C5C /* Junebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Junebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9BBEF92190AF05C00452C5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9BBEF94190AF05C00452C5C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -94,8 +96,6 @@
 		F9BBEFE4190BF45D00452C5C /* BeckonCreateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonCreateVC.m; sourceTree = "<group>"; };
 		F9BBEFE6190BF47100452C5C /* BeckonDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonDetailVC.h; sourceTree = "<group>"; };
 		F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonDetailVC.m; sourceTree = "<group>"; };
-		F9BBEFEA190BF67B00452C5C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		F9BBEFEB190BF67B00452C5C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F9BBEFED190BF68A00452C5C /* Friends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friends.h; sourceTree = "<group>"; };
 		F9BBEFEE190BF68A00452C5C /* Friends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friends.m; sourceTree = "<group>"; };
 		F9BBEFF0190BF69500452C5C /* Groups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Groups.h; sourceTree = "<group>"; };
@@ -237,8 +237,6 @@
 				F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */,
 				F9ADF35A190BF9DA002C6809 /* SettingsVC.h */,
 				F9ADF35B190BF9DA002C6809 /* SettingsVC.m */,
-				C039EE34191E733700E50D34 /* CustomCell.h */,
-				C039EE35191E733700E50D34 /* CustomCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -246,8 +244,6 @@
 		F9BBEFE9190BF64600452C5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F9BBEFEA190BF67B00452C5C /* User.h */,
-				F9BBEFEB190BF67B00452C5C /* User.m */,
 				F9BBEFED190BF68A00452C5C /* Friends.h */,
 				F9BBEFEE190BF68A00452C5C /* Friends.m */,
 				F9BBEFF0190BF69500452C5C /* Groups.h */,
@@ -256,6 +252,10 @@
 				F9BBEFF4190BF6A000452C5C /* Beckons.m */,
 				F9572A1E192135F500D7D51E /* AppState.h */,
 				F9572A1F192135F500D7D51E /* AppState.m */,
+				C039EE34191E733700E50D34 /* CustomCell.h */,
+				C039EE35191E733700E50D34 /* CustomCell.m */,
+				F9B016F91927AA9E0088B6AB /* GroupCell.h */,
+				F9B016FA1927AA9E0088B6AB /* GroupCell.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -366,7 +366,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9BBEFEC190BF67B00452C5C /* User.m in Sources */,
 				F9572A20192135F500D7D51E /* AppState.m in Sources */,
 				F9BBEFD0190BF24700452C5C /* GroupsVC.m in Sources */,
 				F9BBEFCA190BF22700452C5C /* BeckonVC.m in Sources */,
@@ -382,6 +381,7 @@
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
 				F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */,
 				F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */,
+				F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */,
 				C039EE36191E733700E50D34 /* CustomCell.m in Sources */,
 				F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */,
 				F9BBEFE5190BF45D00452C5C /* BeckonCreateVC.m in Sources */,
