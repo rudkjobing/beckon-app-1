@@ -26,7 +26,6 @@
      object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState.friends getPendingFriendRequests];
-
 }
 
 - (void) setFriendsBadge: (NSNotification*) notification{

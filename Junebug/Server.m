@@ -33,6 +33,8 @@ NSInteger counter;
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", domain);
+    NSLog(@"%@", command);
     NSLog(@"%@", post);
     
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];

@@ -43,15 +43,14 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 NSDictionary *payload = [result objectForKey:@"payload"];
-                NSDictionary *badge;
                 if(payload){
-                    badge = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSString alloc] initWithFormat:@"%u", payload.count], @"badge",nil];
+                    NSDictionary *badge = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSString alloc] initWithFormat:@"%lu", (unsigned long)payload.count], @"badge",nil];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"PendingFriendRequests" object:self userInfo:result];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateFriendRequestsBadge" object:self userInfo:badge];
                 }
             }
             else{
-                NSString *message = [result objectForKey:@"payload"];
+                NSString *message = [result objectForKey:@"message"];
                 if([message isEqualToString:@"You have no pending friend requests"]){
                     NSDictionary *badge = badge = [[NSDictionary alloc] initWithObjectsAndKeys:@"0", @"badge",nil];
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateFriendRequestsBadge" object:self userInfo:badge];
@@ -122,7 +121,7 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"Cell";
+    static NSString *cellIdentifier = @"FriendCell";
     FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];

@@ -48,6 +48,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState.friends getAllFriends];
     [appDelegate.appState.friends getPendingFriendRequests];
 }
 
