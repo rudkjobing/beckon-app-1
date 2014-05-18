@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSMutableArray *friends;
 
 - (void) getAllFriends;
+- (void) removeFriend:(NSString *)friendEmail;
 - (void) addFriend: (NSString *)friendEmail;
+- (void) getPendingFriendRequests;
 
 @end

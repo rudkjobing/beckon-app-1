@@ -21,8 +21,12 @@
      selector:@selector(updateTableView:)
      name:@"FriendsFetched"
      object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(presentPendingFriendRequestsAlert:)
+     name:@"PendingFriendRequests"
+     object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.friends getAllFriends];
     self.friendsTableView.dataSource = appDelegate.appState.friends;
     self.friendsTableView.delegate = appDelegate.appState.friends;
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -30,8 +34,24 @@
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    //[appDelegate.appState.friends getAllFriends];
+    [appDelegate.appState.friends getPendingFriendRequests];
+}
+
 - (void) updateTableView: (NSNotification*) notification{
     [self.friendsTableView reloadData];
+}
+
+- (void) presentPendingFriendRequestsAlert: (NSNotification*) notification{
+    NSDictionary *pendingRequests = [notification.userInfo objectForKey:@"payload"];
+    NSEnumerator *requests = [pendingRequests objectEnumerator];
+    NSDictionary *request = [requests nextObject];
+    NSString *name = [[[request objectForKey:@"firstname"] stringByAppendingString:@" "] stringByAppendingString:[request objectForKey:@"lastname"]];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Friend request pending" message:[name stringByAppendingString:@" has invited you to be friends"] delegate:self cancelButtonTitle:@"Accept" otherButtonTitles:@"Refuse", nil];
+    alert.alertViewStyle = UIAlertViewStyleDefault;
+    [alert show];
 }
 
 - (IBAction)addFriend{
@@ -50,7 +70,12 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.friends addFriend:[alertView textFieldAtIndex:0].text];
+    if([[alertView title] isEqualToString:@"Add a friend"]){
+        [appDelegate.appState.friends addFriend:[alertView textFieldAtIndex:0].text];
+    }
+    else if ([[alertView title] isEqualToString:@"Friend request pending"]){
+        [appDelegate.appState.friends getAllFriends];
+    }
 }
 
 @end

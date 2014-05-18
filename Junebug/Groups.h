@@ -16,5 +16,6 @@
 
 - (void) getAllGroups;
 - (void) addGroup: (NSString *)name;
+- (void) removeGroup:(NSString *)name;
 
 @end

@@ -13,6 +13,7 @@
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
 		F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FA1927AA9E0088B6AB /* GroupCell.m */; };
 		F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FD1928E6510088B6AB /* FriendCell.m */; };
+		F9B0170119290EFF0088B6AB /* MainTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B0170019290EFF0088B6AB /* MainTabVC.m */; };
 		F9BBEF93190AF05C00452C5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF92190AF05C00452C5C /* Foundation.framework */; };
 		F9BBEF95190AF05C00452C5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF94190AF05C00452C5C /* CoreGraphics.framework */; };
 		F9BBEF97190AF05C00452C5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF96190AF05C00452C5C /* UIKit.framework */; };
@@ -63,6 +64,8 @@
 		F9B016FA1927AA9E0088B6AB /* GroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCell.m; sourceTree = "<group>"; };
 		F9B016FC1928E6510088B6AB /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
 		F9B016FD1928E6510088B6AB /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		F9B016FF19290EFF0088B6AB /* MainTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabVC.h; sourceTree = "<group>"; };
+		F9B0170019290EFF0088B6AB /* MainTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabVC.m; sourceTree = "<group>"; };
 		F9BBEF8F190AF05B00452C5C /* Junebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Junebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9BBEF92190AF05C00452C5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9BBEF94190AF05C00452C5C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -240,6 +243,8 @@
 				F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */,
 				F9ADF35A190BF9DA002C6809 /* SettingsVC.h */,
 				F9ADF35B190BF9DA002C6809 /* SettingsVC.m */,
+				F9B016FF19290EFF0088B6AB /* MainTabVC.h */,
+				F9B0170019290EFF0088B6AB /* MainTabVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				F9572A20192135F500D7D51E /* AppState.m in Sources */,
 				F9BBEFD0190BF24700452C5C /* GroupsVC.m in Sources */,
 				F9BBEFCA190BF22700452C5C /* BeckonVC.m in Sources */,
+				F9B0170119290EFF0088B6AB /* MainTabVC.m in Sources */,
 				F9BBEFA9190AF05C00452C5C /* ViewController.m in Sources */,
 				F9BBEFA3190AF05C00452C5C /* AppDelegate.m in Sources */,
 				F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */,

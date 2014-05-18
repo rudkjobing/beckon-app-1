@@ -34,6 +34,23 @@
     });
 }
 
+- (void) getPendingFriendRequests{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc] init];
+        /*This is where we have a json string that can be sent over the interwebs*/
+        NSDictionary *result = [self.server queryServerDomain:@"friend" WithCommand:@"getPending" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"success"] isEqualToString:@"1"]){                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"PendingFriendRequests" object:self userInfo:result];
+            }
+            else{
+                
+            }
+        });
+    });
+}
+
 - (void) addFriend:(NSString *)friendEmail{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{

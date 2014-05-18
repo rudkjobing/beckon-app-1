@@ -68,6 +68,8 @@
     [appDelegate.appState.groups addGroup:[alertView textFieldAtIndex:0].text];
 }
 
+//Methods for detail view
+
 
 
 @end
