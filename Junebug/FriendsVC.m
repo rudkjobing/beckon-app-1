@@ -25,23 +25,27 @@
     [appDelegate.appState.friends getAllFriends];
     self.friendsTableView.dataSource = appDelegate.appState.friends;
     self.friendsTableView.delegate = appDelegate.appState.friends;
-   
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
+    self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void) updateTableView: (NSNotification*) notification{
-
     [self.friendsTableView reloadData];
 }
 
-- (IBAction)addFriend:(UIButton *)sender {
-    
+- (IBAction)addFriend{
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Add a friend" message:@"Please enter your friend's email" delegate:self cancelButtonTitle:@"Add" otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField * alertTextField = [alert textFieldAtIndex:0];
     alertTextField.keyboardType = UIKeyboardTypeEmailAddress;
     alertTextField.placeholder = @"Email address";
     [alert show];
-    
+}
+
+- (void) setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:animated];
+    [self.friendsTableView setEditing:editing animated:animated];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

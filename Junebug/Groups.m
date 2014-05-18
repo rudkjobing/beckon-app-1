@@ -50,6 +50,23 @@
     });
 }
 
+- (void) removeGroup:(NSString *)name{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:name, @"group_name", nil];
+        /*This is where we have a json string that can be sent over the interwebs*/
+        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"remove" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupRemoved" object:self];
+            }
+            else{
+                
+            }
+        });
+    });
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -69,6 +86,18 @@
     return cell;
 }
 
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        NSString *email = [self.groups objectAtIndex:indexPath.row];
+        [self.groups removeObjectAtIndex:indexPath.row];
+        [self removeGroup:email];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    }
+}
 
 - (NSMutableArray *)groups{
     if(!_groups){

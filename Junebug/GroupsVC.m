@@ -17,23 +17,6 @@
 
 @implementation GroupsVC
 
-
-- (IBAction)addGroup:(id)sender {
-
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Add a group" message:@"Please enter a name for the group" delegate:self cancelButtonTitle:@"Add" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    UITextField * alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeEmailAddress;
-    alertTextField.placeholder = @"Name";
-    [alert show];
-
-}
-
-- (void)fetchGroups: (NSNotification*) notification{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.groups getAllGroups];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,8 +32,34 @@
      name:@"GroupAdded"
      object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState.groups getAllGroups];
     self.groupTableView.dataSource = appDelegate.appState.groups;
     self.groupTableView.delegate = appDelegate.appState.groups;
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGroup)];
+    self.navigationItem.rightBarButtonItem = addButton;
+}
+
+- (void) updateTableView: (NSNotification*) notification{
+    [self.groupTableView reloadData];
+}
+
+- (IBAction)addGroup {
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Add a group" message:@"Please enter a name for the group" delegate:self cancelButtonTitle:@"Add" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeEmailAddress;
+    alertTextField.placeholder = @"Name";
+    [alert show];
+}
+
+- (void) setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:animated];
+    [self.groupTableView setEditing:editing animated:animated];
+}
+
+- (void)fetchGroups: (NSNotification*) notification{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState.groups getAllGroups];
 }
 
@@ -59,9 +68,6 @@
     [appDelegate.appState.groups addGroup:[alertView textFieldAtIndex:0].text];
 }
 
-- (void) updateTableView: (NSNotification*) notification{
-    
-    [self.groupTableView reloadData];
-}
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "Friends.h"
+#import "FriendCell.h"
 
 @implementation Friends
 
@@ -21,10 +22,8 @@
                 NSArray *payload = [result objectForKey:@"payload"];
                 [self.friends removeAllObjects];
                 for(NSDictionary *child in payload){
-                    NSString *firstName = [child objectForKey:@"firstname"];
-                    NSString *lastName = [child objectForKey:@"lastname"];
-                    NSString *name = [[firstName stringByAppendingString:@" "] stringByAppendingString:lastName];
-                    [self.friends addObject:name];
+                    NSString *email = [child objectForKey:@"email"];
+                    [self.friends addObject:email];
                 }
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsFetched" object:self];
             }
@@ -52,6 +51,23 @@
     });
 }
 
+- (void) removeFriend:(NSString *)friendEmail{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:friendEmail, @"friend_email", nil];
+        /*This is where we have a json string that can be sent over the interwebs*/
+        NSDictionary *result = [self.server queryServerDomain:@"friend" WithCommand:@"remove" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendRemoved" object:self];
+            }
+            else{
+                
+            }
+        });
+    });
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -62,13 +78,26 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier =@"Cell";
-    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *cellIdentifier = @"Cell";
+    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[CustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.labelInCell.text = [self.friends objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.friends objectAtIndex:indexPath.row];
     return cell;
+}
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        NSString *email = [self.friends objectAtIndex:indexPath.row];
+        [self.friends removeObjectAtIndex:indexPath.row];
+        [self removeFriend:email];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    }
 }
 
 - (NSMutableArray *)friends{

@@ -12,6 +12,7 @@
 		F977988F1910582100448BAF /* UserTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F977988E1910582100448BAF /* UserTestCase.m */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
 		F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FA1927AA9E0088B6AB /* GroupCell.m */; };
+		F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FD1928E6510088B6AB /* FriendCell.m */; };
 		F9BBEF93190AF05C00452C5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF92190AF05C00452C5C /* Foundation.framework */; };
 		F9BBEF95190AF05C00452C5C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF94190AF05C00452C5C /* CoreGraphics.framework */; };
 		F9BBEF97190AF05C00452C5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BBEF96190AF05C00452C5C /* UIKit.framework */; };
@@ -60,6 +61,8 @@
 		F9ADF35B190BF9DA002C6809 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
 		F9B016F91927AA9E0088B6AB /* GroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCell.h; sourceTree = "<group>"; };
 		F9B016FA1927AA9E0088B6AB /* GroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCell.m; sourceTree = "<group>"; };
+		F9B016FC1928E6510088B6AB /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		F9B016FD1928E6510088B6AB /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
 		F9BBEF8F190AF05B00452C5C /* Junebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Junebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9BBEF92190AF05C00452C5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9BBEF94190AF05C00452C5C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -256,6 +259,8 @@
 				C039EE35191E733700E50D34 /* CustomCell.m */,
 				F9B016F91927AA9E0088B6AB /* GroupCell.h */,
 				F9B016FA1927AA9E0088B6AB /* GroupCell.m */,
+				F9B016FC1928E6510088B6AB /* FriendCell.h */,
+				F9B016FD1928E6510088B6AB /* FriendCell.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				F9BBEFEF190BF68A00452C5C /* Friends.m in Sources */,
 				F9BBEFF2190BF69500452C5C /* Groups.m in Sources */,
 				F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */,
+				F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */,
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
 				F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */,
 				F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */,
