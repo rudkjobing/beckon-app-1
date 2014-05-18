@@ -41,11 +41,21 @@
         /*This is where we have a json string that can be sent over the interwebs*/
         NSDictionary *result = [self.server queryServerDomain:@"friend" WithCommand:@"getPending" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){                
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"PendingFriendRequests" object:self userInfo:result];
+            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
+                NSDictionary *payload = [result objectForKey:@"payload"];
+                NSDictionary *badge;
+                if(payload){
+                    badge = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSString alloc] initWithFormat:@"%u", payload.count], @"badge",nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"PendingFriendRequests" object:self userInfo:result];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateFriendRequestsBadge" object:self userInfo:badge];
+                }
             }
             else{
-                
+                NSString *message = [result objectForKey:@"payload"];
+                if([message isEqualToString:@"You have no pending friend requests"]){
+                    NSDictionary *badge = badge = [[NSDictionary alloc] initWithObjectsAndKeys:@"0", @"badge",nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateFriendRequestsBadge" object:self userInfo:badge];
+                }
             }
         });
     });
@@ -60,6 +70,23 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendAdded" object:self];
+            }
+            else{
+                
+            }
+        });
+    });
+}
+
+- (void) acceptFriendRequest:(NSString *)friendEmail{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:friendEmail, @"friend_email", nil];
+        /*This is where we have a json string that can be sent over the interwebs*/
+        NSDictionary *result = [self.server queryServerDomain:@"friend" WithCommand:@"accept" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendRequestAccepted" object:self];
             }
             else{
                 

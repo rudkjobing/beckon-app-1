@@ -19,5 +19,5 @@
 - (void) removeFriend:(NSString *)friendEmail;
 - (void) addFriend: (NSString *)friendEmail;
 - (void) getPendingFriendRequests;
-
+- (void) acceptFriendRequest:(NSString *)friendEmail;
 @end

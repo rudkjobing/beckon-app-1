@@ -11,6 +11,12 @@
 #import "Friends.h"
 #import "AppDelegate.h"
 
+@interface FriendsVC()
+
+@property NSString *requestEmail;
+
+@end
+
 @implementation FriendsVC
 
 - (void)viewDidLoad
@@ -26,7 +32,13 @@
      selector:@selector(presentPendingFriendRequestsAlert:)
      name:@"PendingFriendRequests"
      object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(FriendRequestAccepted:)
+     name:@"FriendRequestAccepted"
+     object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState.friends getAllFriends];
     self.friendsTableView.dataSource = appDelegate.appState.friends;
     self.friendsTableView.delegate = appDelegate.appState.friends;
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -36,7 +48,12 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    //[appDelegate.appState.friends getAllFriends];
+    [appDelegate.appState.friends getPendingFriendRequests];
+}
+
+- (void) FriendRequestAccepted: (NSNotification*) notification{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState.friends getAllFriends];
     [appDelegate.appState.friends getPendingFriendRequests];
 }
 
@@ -49,6 +66,7 @@
     NSEnumerator *requests = [pendingRequests objectEnumerator];
     NSDictionary *request = [requests nextObject];
     NSString *name = [[[request objectForKey:@"firstname"] stringByAppendingString:@" "] stringByAppendingString:[request objectForKey:@"lastname"]];
+    self.requestEmail =[request objectForKey:@"email"];
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Friend request pending" message:[name stringByAppendingString:@" has invited you to be friends"] delegate:self cancelButtonTitle:@"Accept" otherButtonTitles:@"Refuse", nil];
     alert.alertViewStyle = UIAlertViewStyleDefault;
     [alert show];
@@ -74,7 +92,7 @@
         [appDelegate.appState.friends addFriend:[alertView textFieldAtIndex:0].text];
     }
     else if ([[alertView title] isEqualToString:@"Friend request pending"]){
-        [appDelegate.appState.friends getAllFriends];
+        [appDelegate.appState.friends acceptFriendRequest:self.requestEmail];
     }
 }
 
