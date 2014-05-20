@@ -7,6 +7,7 @@
 //
 
 #import "Friends.h"
+#import "Friend.h"
 #import "FriendCell.h"
 
 @implementation Friends
@@ -22,8 +23,12 @@
                 NSArray *payload = [result objectForKey:@"payload"];
                 [self.friends removeAllObjects];
                 for(NSDictionary *child in payload){
-                    NSString *email = [child objectForKey:@"email"];
-                    [self.friends addObject:email];
+                    Friend *friend = [[Friend alloc] init];
+                    friend.firstName = [child objectForKey:@"first_name"];
+                    friend.lastName = [child objectForKey:@"last_name"];
+                    friend.nickname = [child objectForKey:@"nickname"];
+                    friend.email = [child objectForKey:@"email"];
+                    [self.friends addObject:friend];
                 }
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsFetched" object:self];
             }
@@ -126,7 +131,8 @@
     if (!cell) {
         cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = [self.friends objectAtIndex:indexPath.row];
+    Friend *friend = [self.friends objectAtIndex:indexPath.row];
+    cell.textLabel.text = friend.nickname;
     return cell;
 }
 
@@ -136,9 +142,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(editingStyle == UITableViewCellEditingStyleDelete){
-        NSString *email = [self.friends objectAtIndex:indexPath.row];
+        Friend *friend = [self.friends objectAtIndex:indexPath.row];
         [self.friends removeObjectAtIndex:indexPath.row];
-        [self removeFriend:email];
+        [self removeFriend:friend.email];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }

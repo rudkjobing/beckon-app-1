@@ -7,6 +7,7 @@
 //
 
 #import "Groups.h"
+#import "Group.h"
 #import "GroupCell.h"
 
 @implementation Groups
@@ -22,7 +23,10 @@
                 NSArray *payload = [result objectForKey:@"payload"];
                 [self.groups removeAllObjects];
                 for(NSDictionary *child in payload){
-                    [self.groups addObject:[child objectForKey:@"name"]];
+                    Group *group = [[Group alloc] init];
+                    group.name = [child objectForKey:@"name"];
+                    group.server = self.server;
+                    [self.groups addObject: group];
                 }
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupsFetched" object:self];
             }
@@ -82,7 +86,8 @@
     if (!cell) {
         cell = [[GroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = [self.groups objectAtIndex:indexPath.row];
+    Group *group = [self.groups objectAtIndex:indexPath.row];
+    cell.textLabel.text = group.name;
     return cell;
 }
 
@@ -92,9 +97,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(editingStyle == UITableViewCellEditingStyleDelete){
-        NSString *email = [self.groups objectAtIndex:indexPath.row];
+        Group *group = [self.groups objectAtIndex:indexPath.row];
         [self.groups removeObjectAtIndex:indexPath.row];
-        [self removeGroup:email];
+        [self removeGroup:group.name];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }

@@ -7,6 +7,7 @@
 //
 
 #import "GroupsVC.h"
+#import "GroupDetailVC.h"
 #import "AppDelegate.h"
 
 @interface GroupsVC ()
@@ -66,6 +67,15 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState.groups addGroup:[alertView textFieldAtIndex:0].text];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"GroupsToMembers"]){
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSIndexPath *index = [self.groupTableView indexPathForSelectedRow];
+        GroupDetailVC *detailVC = [segue destinationViewController];
+        detailVC.group = [appDelegate.appState.groups.groups objectAtIndex:index.row];
+    }
 }
 
 //Methods for detail view

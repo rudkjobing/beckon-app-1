@@ -10,40 +10,34 @@
 
 @interface GroupDetailVC ()
 
+@property (weak, nonatomic) IBOutlet UITableView *memberTableView;
+
 @end
 
 @implementation GroupDetailVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSLog(@"LOADED MEMBERS");
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(updateTableView:)
+     name:@"GroupFetched"
+     object:nil];
+    if(self.group){
+        self.memberTableView.dataSource = self.group;
+        self.memberTableView.delegate = self.group;
+        [self.group getGroupMembers];
+    }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated{
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) updateTableView: (NSNotification*) notification{
+    [self.memberTableView reloadData];
 }
-*/
 
 @end
