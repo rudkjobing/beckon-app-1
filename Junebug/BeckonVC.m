@@ -7,33 +7,45 @@
 //
 
 #import "BeckonVC.h"
+#import "AppDelegate.h"
 
 @interface BeckonVC ()
+@property (weak, nonatomic) IBOutlet UITableView *beckonTableView;
 
 @end
 
 @implementation BeckonVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createBeckon)];
+    self.navigationItem.rightBarButtonItem = addButton;
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(updateTableView:)
+     name:@"BeckonsFetched"
+     object:nil];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.beckonTableView.dataSource = appDelegate.appState.beckons;
+    self.beckonTableView.delegate = appDelegate.appState.beckons;
+    [appDelegate.appState.beckons getAllBeckons];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) viewWillAppear:(BOOL)animated{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState.beckons getAllBeckons];
 }
+
+- (void) updateTableView: (NSNotification*) notification{
+    [self.beckonTableView reloadData];
+}
+
+- (void)createBeckon{
+    [self performSegueWithIdentifier:@"BeckonToCreate" sender:self];
+}
+
+
 
 /*
 #pragma mark - Navigation

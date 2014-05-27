@@ -101,4 +101,12 @@
     return _groups;
 }
 
+- (Beckons *) beckons{
+    if(!_beckons){
+        _beckons = [[Beckons alloc] init];
+        _beckons.server = self.server;
+    }
+    return _beckons;
+}
+
 @end

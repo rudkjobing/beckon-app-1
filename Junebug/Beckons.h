@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Server.h"
 
-@interface Beckons : NSObject
+@interface Beckons : NSObject <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) Server *server;
+@property (strong, nonatomic) NSMutableArray *beckons;
+
+- (void) getAllBeckons;
 
 @end

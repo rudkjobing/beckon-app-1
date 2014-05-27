@@ -26,16 +26,15 @@
      selector:@selector(updateTableView:)
      name:@"GroupsFetched"
      object:nil];
-    [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(fetchGroups:)
      name:@"GroupAdded"
      object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.groups getAllGroups];
     self.groupTableView.dataSource = appDelegate.appState.groups;
     self.groupTableView.delegate = appDelegate.appState.groups;
+    [appDelegate.appState.groups getAllGroups];
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGroup)];
     self.navigationItem.rightBarButtonItem = addButton;

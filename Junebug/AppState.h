@@ -10,12 +10,14 @@
 #import "Server.h"
 #import "Friends.h"
 #import "Groups.h"
+#import "Beckons.h"
 
 @interface AppState : NSObject
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) Friends *friends;
 @property (strong, nonatomic) Groups *groups;
+@property (strong, nonatomic) Beckons *beckons;
 
 - (void) registerDeviceUsingEmail: (NSString *) email AndPassword: (NSString *) password;
 - (void) applicationReady;

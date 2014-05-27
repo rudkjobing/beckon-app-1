@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F91D14E41933A5380094299C /* BeckonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E31933A5380094299C /* BeckonCell.m */; };
+		F91D14E71933AF670094299C /* BeckonPickFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */; };
+		F91D14EA1933AF9A0094299C /* BeckonPickGroupsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */; };
+		F91D14ED1934FD7D0094299C /* Beckon.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14EC1934FD7D0094299C /* Beckon.m */; };
 		F9572A20192135F500D7D51E /* AppState.m in Sources */ = {isa = PBXBuildFile; fileRef = F9572A1F192135F500D7D51E /* AppState.m */; };
 		F977988F1910582100448BAF /* UserTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F977988E1910582100448BAF /* UserTestCase.m */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
@@ -56,6 +60,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F91D14E21933A5380094299C /* BeckonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonCell.h; sourceTree = "<group>"; };
+		F91D14E31933A5380094299C /* BeckonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonCell.m; sourceTree = "<group>"; };
+		F91D14E51933AF670094299C /* BeckonPickFriendsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickFriendsVC.h; sourceTree = "<group>"; };
+		F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonPickFriendsVC.m; sourceTree = "<group>"; };
+		F91D14E81933AF9A0094299C /* BeckonPickGroupsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickGroupsVC.h; sourceTree = "<group>"; };
+		F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonPickGroupsVC.m; sourceTree = "<group>"; };
+		F91D14EB1934FD7D0094299C /* Beckon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beckon.h; sourceTree = "<group>"; };
+		F91D14EC1934FD7D0094299C /* Beckon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beckon.m; sourceTree = "<group>"; };
 		F9572A1E192135F500D7D51E /* AppState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppState.h; sourceTree = "<group>"; };
 		F9572A1F192135F500D7D51E /* AppState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppState.m; sourceTree = "<group>"; };
 		F977988E1910582100448BAF /* UserTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTestCase.m; sourceTree = "<group>"; };
@@ -161,6 +173,8 @@
 				F9B016FD1928E6510088B6AB /* FriendCell.m */,
 				F9B0170E192BBAB40088B6AB /* MemberCell.h */,
 				F9B0170F192BBAB40088B6AB /* MemberCell.m */,
+				F91D14E21933A5380094299C /* BeckonCell.h */,
+				F91D14E31933A5380094299C /* BeckonCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -270,6 +284,10 @@
 				F9B0170019290EFF0088B6AB /* MainTabVC.m */,
 				F9B01705192A67150088B6AB /* GroupEditMembersVC.h */,
 				F9B01706192A67150088B6AB /* GroupEditMembersVC.m */,
+				F91D14E51933AF670094299C /* BeckonPickFriendsVC.h */,
+				F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */,
+				F91D14E81933AF9A0094299C /* BeckonPickGroupsVC.h */,
+				F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +307,8 @@
 				F9B01709192A68940088B6AB /* Group.m */,
 				F9B0170B192A6CCD0088B6AB /* Friend.h */,
 				F9B0170C192A6CCD0088B6AB /* Friend.m */,
+				F91D14EB1934FD7D0094299C /* Beckon.h */,
+				F91D14EC1934FD7D0094299C /* Beckon.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -404,8 +424,11 @@
 				F9BBEFCA190BF22700452C5C /* BeckonVC.m in Sources */,
 				F9B0170119290EFF0088B6AB /* MainTabVC.m in Sources */,
 				F9B01710192BBAB40088B6AB /* MemberCell.m in Sources */,
+				F91D14E41933A5380094299C /* BeckonCell.m in Sources */,
 				F9BBEFA9190AF05C00452C5C /* ViewController.m in Sources */,
+				F91D14E71933AF670094299C /* BeckonPickFriendsVC.m in Sources */,
 				F9BBEFA3190AF05C00452C5C /* AppDelegate.m in Sources */,
+				F91D14EA1933AF9A0094299C /* BeckonPickGroupsVC.m in Sources */,
 				F9B0170D192A6CCD0088B6AB /* Friend.m in Sources */,
 				F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */,
 				F9BBEFDF190BF40A00452C5C /* FriendDetailVC.m in Sources */,
@@ -416,6 +439,7 @@
 				F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */,
 				F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */,
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
+				F91D14ED1934FD7D0094299C /* Beckon.m in Sources */,
 				F9B0170A192A68940088B6AB /* Group.m in Sources */,
 				F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */,
 				F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */,

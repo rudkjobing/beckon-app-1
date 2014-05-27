@@ -25,6 +25,8 @@
      selector:@selector(updateTableView:)
      name:@"GroupFetched"
      object:nil];
+    UIBarButtonItem *manageButton = [[UIBarButtonItem alloc] initWithTitle:@"Manage" style:UIBarButtonItemStyleBordered target:self action:@selector(manageGroup)];
+    self.navigationItem.rightBarButtonItem = manageButton;
     if(self.group){
         self.memberTableView.dataSource = self.group;
         self.memberTableView.delegate = self.group;
@@ -38,6 +40,10 @@
 
 - (void) updateTableView: (NSNotification*) notification{
     [self.memberTableView reloadData];
+}
+
+- (void) manageGroup{
+    
 }
 
 @end
