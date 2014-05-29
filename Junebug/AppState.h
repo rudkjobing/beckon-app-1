@@ -19,6 +19,7 @@
 @property (strong, nonatomic) Groups *groups;
 @property (strong, nonatomic) Beckons *beckons;
 
+- (void) signUpWithEmail: (NSString *)email Password: (NSString *)password Firstname: (NSString *)firstname Lastname: (NSString *)lastname Phonenumber: (NSString *)phonenumber;
 - (void) registerDeviceUsingEmail: (NSString *) email AndPassword: (NSString *) password;
 - (void) applicationReady;
 

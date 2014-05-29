@@ -39,10 +39,15 @@
         NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"registerDevice" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
                 NSDictionary *payload = [result objectForKey:@"payload"];
                 self.server.email = [payload objectForKey:@"email"];
+                [defaults setObject:self.server.email forKey:@"email"];
                 self.server.auth_key = [payload objectForKey:@"auth_key"];
+                [defaults setObject:self.server.auth_key forKey:@"auth_key"];
                 self.server.device_key = [payload objectForKey:@"device_key"];
+                [defaults setObject:self.server.device_key forKey:@"device_key"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateReady" object:self];
             }
             else{
@@ -76,6 +81,22 @@
     else{
         
     }
+}
+
+- (void) signUpWithEmail: (NSString *)email Password: (NSString *)password Firstname: (NSString *)firstname Lastname: (NSString *)lastname Phonenumber: (NSString *)phonenumber{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:email, @"email", password, @"password", firstname, @"firstname", lastname, @"lastname", phonenumber, @"phonenumber", @"45", @"countrycode", [UIDevice currentDevice].model, @"device_type", [[UIDevice currentDevice] systemVersion], @"device_os", nil];
+        NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"put" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UserSignedUp" object:self];
+            }
+            else{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UserSignupFailed" object:self userInfo:result];
+            }
+        });
+    });
 }
 
 - (Server *) server{

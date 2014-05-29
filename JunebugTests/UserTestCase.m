@@ -7,11 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "User.h"
+#import "AppState.h"
 #import "Server.h"
 
-@interface ValidUserLoginTestCase : XCTestCase<SignInDelegate>
-
+@interface ValidUserLoginTestCase : XCTestCase
 
 
 @end
@@ -29,8 +28,7 @@
 }
 
 - (void)testUserSignIn{
-    User *user = [[User alloc] init];
-    [user loginWithEmail:@"test@gmail.com" andPassword:@"test1234"];
+    
 }
 
 - (void) userValidated{

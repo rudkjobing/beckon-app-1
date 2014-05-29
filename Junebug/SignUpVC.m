@@ -7,6 +7,7 @@
 //
 
 #import "SignUpVC.h"
+#import "AppDelegate.h"
 
 @interface SignUpVC ()
 
@@ -32,7 +33,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(signUpComplete)
+     name:@"UserSignedUp"
+     object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(switchScene)
+     name:@"AppStateReady"
+     object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,7 +71,8 @@
 }
 - (IBAction)signUpButtonTabbed:(id)sender {
     if ([self.signUpPassword.text isEqualToString:self.signUpConfirmedPassword.text]) {
-
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.appState signUpWithEmail:self.signUpEmail.text Password:self.signUpPassword.text Firstname:self.signUpFirstname.text Lastname:self.signUpSecondname.text Phonenumber:@"12345678"];
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password incorrect" message:@"passwords did not match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -70,6 +81,11 @@
 }
 
 - (void) signUpComplete{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState registerDeviceUsingEmail:self.signUpEmail.text AndPassword:self.signUpPassword.text];
+}
+
+- (void) switchScene{
     [self performSegueWithIdentifier:@"SignUpToTabbed" sender:self];
 }
 

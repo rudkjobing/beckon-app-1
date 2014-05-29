@@ -9,10 +9,22 @@
 #import "BeckonCreateVC.h"
 
 @interface BeckonCreateVC ()
+@property (weak, nonatomic) IBOutlet UIDatePicker *beckonDate;
 
 @end
 
 @implementation BeckonCreateVC
+
+- (IBAction)someAction:(id)sender {
+    
+    NSDate *myDate = self.beckonDate.date;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"cccc, MMM d, hh:mm aa"];
+    NSString *prettyVersion = [dateFormat stringFromDate:myDate];
+    NSLog(@"%@",prettyVersion);
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

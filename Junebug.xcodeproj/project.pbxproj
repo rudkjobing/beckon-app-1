@@ -47,6 +47,12 @@
 		F9BBEFF2190BF69500452C5C /* Groups.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFF1190BF69500452C5C /* Groups.m */; };
 		F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFF4190BF6A000452C5C /* Beckons.m */; };
 		F9BBEFF9190BF6B800452C5C /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BBEFF8190BF6B800452C5C /* Server.m */; };
+		F9BDCFA719379EE10095E598 /* Logo 58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA219379EE10095E598 /* Logo 58x58.png */; };
+		F9BDCFA819379EE10095E598 /* logo 80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA319379EE10095E598 /* logo 80x80.png */; };
+		F9BDCFA919379EE10095E598 /* logo 120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA419379EE10095E598 /* logo 120x120.png */; };
+		F9BDCFAA19379EE10095E598 /* logo 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA519379EE10095E598 /* logo 640x960.png */; };
+		F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA619379EE10095E598 /* logo 640x1136.png */; };
+		F9BDCFAD19379FBF0095E598 /* Bertil3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +137,12 @@
 		F9BBEFF4190BF6A000452C5C /* Beckons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beckons.m; sourceTree = "<group>"; };
 		F9BBEFF7190BF6B800452C5C /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
 		F9BBEFF8190BF6B800452C5C /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
+		F9BDCFA219379EE10095E598 /* Logo 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo 58x58.png"; sourceTree = "<group>"; };
+		F9BDCFA319379EE10095E598 /* logo 80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 80x80.png"; sourceTree = "<group>"; };
+		F9BDCFA419379EE10095E598 /* logo 120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 120x120.png"; sourceTree = "<group>"; };
+		F9BDCFA519379EE10095E598 /* logo 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 640x960.png"; sourceTree = "<group>"; };
+		F9BDCFA619379EE10095E598 /* logo 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 640x1136.png"; sourceTree = "<group>"; };
+		F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bertil3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +172,12 @@
 		F9ADF35D190BFABB002C6809 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */,
+				F9BDCFA219379EE10095E598 /* Logo 58x58.png */,
+				F9BDCFA319379EE10095E598 /* logo 80x80.png */,
+				F9BDCFA419379EE10095E598 /* logo 120x120.png */,
+				F9BDCFA519379EE10095E598 /* logo 640x960.png */,
+				F9BDCFA619379EE10095E598 /* logo 640x1136.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -398,9 +416,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9BDCFA719379EE10095E598 /* Logo 58x58.png in Resources */,
 				F9BBEFAB190AF05C00452C5C /* Images.xcassets in Resources */,
+				F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */,
+				F9BDCFAA19379EE10095E598 /* logo 640x960.png in Resources */,
+				F9BDCFA919379EE10095E598 /* logo 120x120.png in Resources */,
 				F9BBEF9D190AF05C00452C5C /* InfoPlist.strings in Resources */,
+				F9BDCFA819379EE10095E598 /* logo 80x80.png in Resources */,
 				F9BBEFA6190AF05C00452C5C /* Main.storyboard in Resources */,
+				F9BDCFAD19379FBF0095E598 /* Bertil3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +600,7 @@
 				GCC_PREFIX_HEADER = "Junebug/Junebug-Prefix.pch";
 				INFOPLIST_FILE = "Junebug/Junebug-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -589,6 +614,7 @@
 				GCC_PREFIX_HEADER = "Junebug/Junebug-Prefix.pch";
 				INFOPLIST_FILE = "Junebug/Junebug-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

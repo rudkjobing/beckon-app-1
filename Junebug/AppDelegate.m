@@ -13,10 +13,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     _appState = [[AppState alloc] init];
+    UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
+    [application registerForRemoteNotificationTypes:noteficationTypes];
     // Override point for customization after application launch.
     return YES;
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

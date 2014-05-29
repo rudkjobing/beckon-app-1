@@ -17,8 +17,10 @@
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
         NSDictionary *data = [[NSDictionary alloc] init];
-        /*This is where we have a json string that can be sent over the interwebs*/
         NSDictionary *result = [self.server queryServerDomain:@"beckon" WithCommand:@"getAll" andData:data];
+        /*for(int i = 0 ; i < 1000 ; i++){
+            [self.server queryServerDomain:@"beckon" WithCommand:@"getAll" andData:data];
+        }*/
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 NSArray *payload = [result objectForKey:@"payload"];
