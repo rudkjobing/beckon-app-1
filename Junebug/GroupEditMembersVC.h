@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Group.h"
+#import "Friends.h"
 
-@interface GroupEditMembersVC : UIViewController
+@interface GroupEditMembersVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (strong, nonatomic) Group *group;
+@property (strong, nonatomic) Friends *friends;
+
+
 
 @end

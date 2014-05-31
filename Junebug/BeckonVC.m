@@ -35,6 +35,7 @@
 - (void) viewWillAppear:(BOOL)animated{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState.beckons getAllBeckons];
+    [[self tabBarItem] setBadgeValue: nil];
 }
 
 - (void) updateTableView: (NSNotification*) notification{

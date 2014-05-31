@@ -7,8 +7,6 @@
 //
 
 #import "Friends.h"
-#import "Friend.h"
-#import "FriendCell.h"
 
 @implementation Friends
 
@@ -24,6 +22,7 @@
                 [self.friends removeAllObjects];
                 for(NSDictionary *child in payload){
                     Friend *friend = [[Friend alloc] init];
+                    friend.id = [child objectForKey:@"id"];
                     friend.firstName = [child objectForKey:@"first_name"];
                     friend.lastName = [child objectForKey:@"last_name"];
                     friend.nickname = [child objectForKey:@"nickname"];
@@ -33,7 +32,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsFetched" object:self];
             }
             else{
-                
+
             }
         });
     });
@@ -114,6 +113,16 @@
             }
         });
     });
+}
+
+- (Friend *) getFriendWithID: (NSString *)id{
+    Friend *result = [[Friend alloc]init];
+    for(Friend *f in self.friends){
+        if([f.id isEqualToString:id]){
+            result = f;
+        }
+    }
+    return result;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

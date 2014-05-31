@@ -13,9 +13,12 @@
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) NSMutableArray *members;
+@property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSData *thumbnail;
 
 - (void) getGroupMembers;
+- (void) addMember: (NSString *)memberID;
+- (void) removeMember: (NSString* )memberID;
 
 @end

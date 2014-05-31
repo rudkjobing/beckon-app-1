@@ -9,6 +9,7 @@
 #import "MainTabVC.h"
 #import "AppDelegate.h"
 #import "Friends.h"
+#import "FriendsVC.h"
 
 @interface MainTabVC ()
 
@@ -19,22 +20,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(setFriendsBadge:)
-     name:@"UpdateFriendRequestsBadge"
-     object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performUpdate:) name:@"Update" object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState.friends getPendingFriendRequests];
 }
 
-- (void) setFriendsBadge: (NSNotification*) notification{
-    NSString *pendingReqeusts = [notification.userInfo objectForKey:@"badge"];
-    if([pendingReqeusts isEqualToString:@"0"]){
-        [[[[self viewControllers] objectAtIndex: 2] tabBarItem] setBadgeValue:nil];
-    }
-    else{
-        [[[[self viewControllers] objectAtIndex: 2] tabBarItem] setBadgeValue:pendingReqeusts];
+- (void) performUpdate: (NSNotification*) notification{
+    NSDictionary *parameters = [notification.userInfo objectForKey:@"prm"];
+    NSLog(@"%@", parameters);
+   if([parameters objectForKey:@"freq"]){//Friend request
+        NSString *parameterValue = [parameters objectForKey:@"freq"];
+       NSLog(@"%@", parameterValue);
+        UIViewController *target = [[self viewControllers] objectAtIndex: 2];
+        if(target.isViewLoaded && target.view.window){
+            AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate.appState.friends getPendingFriendRequests];
+        }
+        else{
+            if([[target tabBarItem] badgeValue]){
+                long currentBadgeValue = [[[target tabBarItem] badgeValue] integerValue];
+                long newBadgeValue = currentBadgeValue + 1;
+                NSString *badgeValue = [[NSString alloc] initWithFormat:@"%ld", newBadgeValue];
+                [[target tabBarItem] setBadgeValue:badgeValue];
+            }
+            else{
+                [[target tabBarItem] setBadgeValue:@"1"];
+            }
+        }
     }
 }
 

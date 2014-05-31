@@ -18,14 +18,11 @@
 
 - (void) applicationReady{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if(self.server.email && self.server.auth_key && self.server.device_key){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateReady" object:self];
-    }
-    else if([defaults stringForKey:@"email"] && [defaults stringForKey:@"device_key"] && [defaults stringForKey:@"auth_key"]){
+    if([defaults stringForKey:@"email"] && [defaults stringForKey:@"device_key"] && [defaults stringForKey:@"auth_key"]){
         self.server.email = [defaults stringForKey:@"email"];
         self.server.auth_key = [defaults stringForKey:@"auth_key"];
         self.server.device_key = [defaults stringForKey:@"device_key"];
-        [self applicationReady];
+        [self testCredentials];
     }
     else{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self];
@@ -35,12 +32,11 @@
 - (void) registerDeviceUsingEmail: (NSString *) email AndPassword: (NSString *) password{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:email, @"email", password, @"password", [UIDevice currentDevice].model, @"device_type", [[UIDevice currentDevice] systemVersion], @"device_os", nil];
+        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:email, @"email", password, @"password", @"APPLE", @"notification_group", [UIDevice currentDevice].model, @"device_type", [[UIDevice currentDevice] systemVersion], @"device_os", nil];
         NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"registerDevice" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
                 NSDictionary *payload = [result objectForKey:@"payload"];
                 self.server.email = [payload objectForKey:@"email"];
                 [defaults setObject:self.server.email forKey:@"email"];
@@ -57,29 +53,41 @@
     });
 }
 
-- (void) startSessionUsingEmail: (NSString *) email AndPassword: (NSString *) password{
+- (void) testCredentials{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if(![defaults stringForKey:@"device_key"]){
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc] init];
+        NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"testCredentials" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateReady" object:self];
+            }
+            else{
+                [defaults removeObjectForKey:@"email"];
+                [defaults removeObjectForKey:@"auth_key"];
+                [defaults removeObjectForKey:@"device_key"];
+                [self applicationReady];
+            }
+        });
+    });
+}
+
+- (void) updateNotificationToken{
+    if(self.server.email && self.server.auth_key && self.server.device_key){
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         dispatch_async(queue, ^{
-            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:email, @"email", password, @"password", nil];
-            NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"registerDevice" andData:data];
+            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:self.token , @"notification_key", nil];
+            NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"updateNotificationKey" andData:data];
             dispatch_async(dispatch_get_main_queue(), ^{
                 if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                    NSDictionary *payload = [result objectForKey:@"payload"];
-                    self.server.email = [payload objectForKey:@"email"];
-                    self.server.auth_key = [payload objectForKey:@"auth_key"];
-                    self.server.device_key = [payload objectForKey:@"device_key"];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"ApplicationReady" object:self];
+                    
                 }
                 else{
-                    NSLog(@"%@", [result objectForKey:@"message"]);
+                    
                 }
             });
         });
-    }
-    else{
-        
     }
 }
 

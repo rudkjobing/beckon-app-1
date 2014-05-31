@@ -12,15 +12,40 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    application.applicationIconBadgeNumber = 0;
     _appState = [[AppState alloc] init];
-    UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
-    [application registerForRemoteNotificationTypes:noteficationTypes];
     // Override point for customization after application launch.
     return YES;
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    self.appState.token = token;
+    [self.appState updateNotificationToken];
+}
+
+- (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    self.appState.token = @"";
+    [self.appState updateNotificationToken];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application{
+    application.applicationIconBadgeNumber = 0;
+    [self.appState.friends getAllFriends];
+    [self.appState.groups getAllGroups];
+    [self.appState.beckons getAllBeckons];
+    UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
+    [application registerForRemoteNotificationTypes:noteficationTypes];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+       [[NSNotificationCenter defaultCenter] postNotificationName:@"Update" object:self userInfo:userInfo];
+    } else {
+        NSLog(@"Offline Message recieved");
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -38,11 +63,6 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

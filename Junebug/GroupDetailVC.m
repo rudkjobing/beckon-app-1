@@ -7,6 +7,7 @@
 //
 
 #import "GroupDetailVC.h"
+#import "GroupEditMembersVC.h"
 
 @interface GroupDetailVC ()
 
@@ -30,12 +31,11 @@
     if(self.group){
         self.memberTableView.dataSource = self.group;
         self.memberTableView.delegate = self.group;
-        [self.group getGroupMembers];
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    
+    [self.group getGroupMembers];
 }
 
 - (void) updateTableView: (NSNotification*) notification{
@@ -43,7 +43,14 @@
 }
 
 - (void) manageGroup{
-    
+    [self performSegueWithIdentifier:@"GroupMembersToEdit" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"GroupMembersToEdit"]){
+        GroupEditMembersVC *memberVC = [segue destinationViewController];
+        memberVC.group = self.group;
+    }
 }
 
 @end

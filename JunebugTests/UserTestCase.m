@@ -7,8 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "AppState.h"
-#import "Server.h"
+
 
 @interface ValidUserLoginTestCase : XCTestCase
 

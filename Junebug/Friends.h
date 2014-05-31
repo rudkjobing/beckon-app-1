@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Server.h"
 #import "CustomCell.h"
+#import "Friend.h"
+#import "FriendCell.h"
 
 @interface Friends : NSObject <UITableViewDelegate, UITableViewDataSource>
 
@@ -20,4 +22,5 @@
 - (void) addFriend: (NSString *)friendEmail;
 - (void) getPendingFriendRequests;
 - (void) acceptFriendRequest:(NSString *)friendEmail;
+- (Friend *) getFriendWithID: (NSString *)id;
 @end

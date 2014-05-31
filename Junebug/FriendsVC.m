@@ -10,6 +10,7 @@
 #import "FriendsVC.h"
 #import "Friends.h"
 #import "AppDelegate.h"
+#import "FriendDetailVC.h"
 
 @interface FriendsVC()
 
@@ -46,16 +47,16 @@
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState.friends getAllFriends];
     [appDelegate.appState.friends getPendingFriendRequests];
+    [[self tabBarItem] setBadgeValue: nil];
 }
 
 - (void) FriendRequestAccepted: (NSNotification*) notification{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState.friends getAllFriends];
-    [appDelegate.appState.friends getPendingFriendRequests];
 }
 
 - (void) updateTableView: (NSNotification*) notification{
@@ -63,14 +64,16 @@
 }
 
 - (void) presentPendingFriendRequestsAlert: (NSNotification*) notification{
-    NSDictionary *pendingRequests = [notification.userInfo objectForKey:@"payload"];
-    NSEnumerator *requests = [pendingRequests objectEnumerator];
-    NSDictionary *request = [requests nextObject];
-    NSString *name = [[[request objectForKey:@"firstname"] stringByAppendingString:@" "] stringByAppendingString:[request objectForKey:@"lastname"]];
-    self.requestEmail =[request objectForKey:@"email"];
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Friend request pending" message:[name stringByAppendingString:@" has invited you to be friends"] delegate:self cancelButtonTitle:@"Accept" otherButtonTitles:@"Refuse", nil];
-    alert.alertViewStyle = UIAlertViewStyleDefault;
-    [alert show];
+    if (self.isViewLoaded && self.view.window) {
+        NSDictionary *pendingRequests = [notification.userInfo objectForKey:@"payload"];
+        NSEnumerator *requests = [pendingRequests objectEnumerator];
+        NSDictionary *request = [requests nextObject];
+        NSString *name = [[[request objectForKey:@"firstname"] stringByAppendingString:@" "] stringByAppendingString:[request objectForKey:@"lastname"]];
+        self.requestEmail =[request objectForKey:@"email"];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Friend request pending" message:[name stringByAppendingString:@" has invited you to be friends"] delegate:self   cancelButtonTitle:@"Accept" otherButtonTitles:@"Refuse", nil];
+        alert.alertViewStyle = UIAlertViewStyleDefault;
+        [alert show];
+    }
 }
 
 - (IBAction)addFriend{
@@ -94,6 +97,13 @@
     }
     else if ([[alertView title] isEqualToString:@"Friend request pending"]){
         [appDelegate.appState.friends acceptFriendRequest:self.requestEmail];
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"FriendsToFriend"]){
+        FriendDetailVC *detailVC = [segue destinationViewController];
+        detailVC.hidesBottomBarWhenPushed = YES;
     }
 }
 

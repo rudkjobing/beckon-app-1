@@ -11,6 +11,7 @@
 
 @interface Beckon : NSObject
 
+@property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) Server *server;
 

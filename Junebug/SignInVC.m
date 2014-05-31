@@ -36,6 +36,9 @@
 }
 
 - (void) goToMenu:(NSNotification*) notification{
+    UIApplication *application = [UIApplication sharedApplication];
+    UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
+    [application registerForRemoteNotificationTypes:noteficationTypes];
     [self performSegueWithIdentifier:@"SignInToTabbed" sender:self];
 }
 

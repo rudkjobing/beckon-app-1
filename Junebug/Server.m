@@ -33,9 +33,8 @@ NSInteger counter;
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", domain);
-    NSLog(@"%@", command);
-    NSLog(@"%@", post);
+    NSLog(@"%@ %@", domain, command);
+    //NSLog(@"%@", post);
     
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
@@ -46,7 +45,7 @@ NSInteger counter;
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:command forHTTPHeaderField:domain];
-    [request setValue:@"opfusk" forHTTPHeaderField:@"appkey"];
+    [request setValue:@"6752dad744e6ab1bd0e65dbf4f2ffc77" forHTTPHeaderField:@"appkey"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
@@ -60,7 +59,7 @@ NSInteger counter;
     NSDictionary *result = [NSJSONSerialization JSONObjectWithData: [jsondata dataUsingEncoding:NSUTF8StringEncoding]
                                                            options: NSJSONReadingMutableContainers
                                                              error: &error];
-    NSLog(@"%@", result);
+    //NSLog(@"%@", result);
     return result;
 }
 
@@ -69,7 +68,7 @@ NSInteger counter;
         counter = 0;
     }
     ++counter;
-    if (counter == 1) {
+    if (counter >= 1) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
     }
     
@@ -77,7 +76,7 @@ NSInteger counter;
 
 -(void) stopIndicator{
     --counter;
-    if (counter == 0) {
+    if (counter <= 0) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
     }
 }

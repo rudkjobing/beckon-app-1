@@ -25,6 +25,7 @@
                 for(NSDictionary *child in payload){
                     Group *group = [[Group alloc] init];
                     group.name = [child objectForKey:@"name"];
+                    group.id = [child objectForKey:@"id"];
                     group.server = self.server;
                     [self.groups addObject: group];
                 }

@@ -12,7 +12,9 @@
 		F91D14EA1933AF9A0094299C /* BeckonPickGroupsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */; };
 		F91D14ED1934FD7D0094299C /* Beckon.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14EC1934FD7D0094299C /* Beckon.m */; };
 		F9572A20192135F500D7D51E /* AppState.m in Sources */ = {isa = PBXBuildFile; fileRef = F9572A1F192135F500D7D51E /* AppState.m */; };
-		F977988F1910582100448BAF /* UserTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = F977988E1910582100448BAF /* UserTestCase.m */; };
+		F95B92B6193A689900416BDA /* FriendChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F95B92B5193A689900416BDA /* FriendChatVC.m */; };
+		F95B92B9193A695300416BDA /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95B92B8193A695300416BDA /* ChatCell.m */; };
+		F95B92BF193A6A5800416BDA /* FriendTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F95B92BE193A6A5800416BDA /* FriendTabVC.m */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
 		F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FA1927AA9E0088B6AB /* GroupCell.m */; };
 		F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FD1928E6510088B6AB /* FriendCell.m */; };
@@ -76,7 +78,12 @@
 		F91D14EC1934FD7D0094299C /* Beckon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beckon.m; sourceTree = "<group>"; };
 		F9572A1E192135F500D7D51E /* AppState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppState.h; sourceTree = "<group>"; };
 		F9572A1F192135F500D7D51E /* AppState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppState.m; sourceTree = "<group>"; };
-		F977988E1910582100448BAF /* UserTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTestCase.m; sourceTree = "<group>"; };
+		F95B92B4193A689900416BDA /* FriendChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendChatVC.h; sourceTree = "<group>"; };
+		F95B92B5193A689900416BDA /* FriendChatVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendChatVC.m; sourceTree = "<group>"; };
+		F95B92B7193A695300416BDA /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		F95B92B8193A695300416BDA /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		F95B92BD193A6A5800416BDA /* FriendTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTabVC.h; sourceTree = "<group>"; };
+		F95B92BE193A6A5800416BDA /* FriendTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTabVC.m; sourceTree = "<group>"; };
 		F9ADF35A190BF9DA002C6809 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		F9ADF35B190BF9DA002C6809 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
 		F9B016F91927AA9E0088B6AB /* GroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCell.h; sourceTree = "<group>"; };
@@ -191,6 +198,8 @@
 				F9B016FD1928E6510088B6AB /* FriendCell.m */,
 				F9B0170E192BBAB40088B6AB /* MemberCell.h */,
 				F9B0170F192BBAB40088B6AB /* MemberCell.m */,
+				F95B92B7193A695300416BDA /* ChatCell.h */,
+				F95B92B8193A695300416BDA /* ChatCell.m */,
 				F91D14E21933A5380094299C /* BeckonCell.h */,
 				F91D14E31933A5380094299C /* BeckonCell.m */,
 			);
@@ -258,7 +267,6 @@
 		F9BBEFB7190AF05C00452C5C /* JunebugTests */ = {
 			isa = PBXGroup;
 			children = (
-				F977988E1910582100448BAF /* UserTestCase.m */,
 				F9BBEFB8190AF05C00452C5C /* Supporting Files */,
 			);
 			path = JunebugTests;
@@ -306,6 +314,10 @@
 				F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */,
 				F91D14E81933AF9A0094299C /* BeckonPickGroupsVC.h */,
 				F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */,
+				F95B92B4193A689900416BDA /* FriendChatVC.h */,
+				F95B92B5193A689900416BDA /* FriendChatVC.m */,
+				F95B92BD193A6A5800416BDA /* FriendTabVC.h */,
+				F95B92BE193A6A5800416BDA /* FriendTabVC.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -387,6 +399,17 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "General Bits";
 				TargetAttributes = {
+					F9BBEF8E190AF05B00452C5C = {
+						DevelopmentTeam = 24ZKBP96S6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
+					};
 					F9BBEFAF190AF05C00452C5C = {
 						TestTargetID = F9BBEF8E190AF05B00452C5C;
 					};
@@ -447,6 +470,7 @@
 				F9BBEFD0190BF24700452C5C /* GroupsVC.m in Sources */,
 				F9BBEFCA190BF22700452C5C /* BeckonVC.m in Sources */,
 				F9B0170119290EFF0088B6AB /* MainTabVC.m in Sources */,
+				F95B92B9193A695300416BDA /* ChatCell.m in Sources */,
 				F9B01710192BBAB40088B6AB /* MemberCell.m in Sources */,
 				F91D14E41933A5380094299C /* BeckonCell.m in Sources */,
 				F9BBEFA9190AF05C00452C5C /* ViewController.m in Sources */,
@@ -458,11 +482,13 @@
 				F9BBEFDF190BF40A00452C5C /* FriendDetailVC.m in Sources */,
 				F9BBEFF9190BF6B800452C5C /* Server.m in Sources */,
 				F9BBEFD6190BF27700452C5C /* SignUpVC.m in Sources */,
+				F95B92BF193A6A5800416BDA /* FriendTabVC.m in Sources */,
 				F9BBEFEF190BF68A00452C5C /* Friends.m in Sources */,
 				F9BBEFF2190BF69500452C5C /* Groups.m in Sources */,
 				F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */,
 				F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */,
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
+				F95B92B6193A689900416BDA /* FriendChatVC.m in Sources */,
 				F91D14ED1934FD7D0094299C /* Beckon.m in Sources */,
 				F9B0170A192A68940088B6AB /* Group.m in Sources */,
 				F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */,
@@ -479,7 +505,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F977988F1910582100448BAF /* UserTestCase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,10 +621,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Junebug/Junebug-Prefix.pch";
 				INFOPLIST_FILE = "Junebug/Junebug-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0FD02326-C935-4CF4-BE45-EF1C935092F2";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -610,10 +638,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Junebug/Junebug-Prefix.pch";
 				INFOPLIST_FILE = "Junebug/Junebug-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0FD02326-C935-4CF4-BE45-EF1C935092F2";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

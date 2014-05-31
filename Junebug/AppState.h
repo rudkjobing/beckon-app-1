@@ -18,9 +18,11 @@
 @property (strong, nonatomic) Friends *friends;
 @property (strong, nonatomic) Groups *groups;
 @property (strong, nonatomic) Beckons *beckons;
+@property (strong, nonatomic) NSString *token;
 
 - (void) signUpWithEmail: (NSString *)email Password: (NSString *)password Firstname: (NSString *)firstname Lastname: (NSString *)lastname Phonenumber: (NSString *)phonenumber;
 - (void) registerDeviceUsingEmail: (NSString *) email AndPassword: (NSString *) password;
+- (void) updateNotificationToken;
 - (void) applicationReady;
 
 @end
