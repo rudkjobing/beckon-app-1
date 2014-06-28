@@ -8,10 +8,13 @@
 
 #import "BeckonVC.h"
 #import "AppDelegate.h"
+#import "Beckon.h"
+#import "Beckons.h"
+#import "BeckonCell.h"
 
 @interface BeckonVC ()
 @property (weak, nonatomic) IBOutlet UITableView *beckonTableView;
-
+@property (strong, nonatomic) Beckons *beckons;
 @end
 
 @implementation BeckonVC
@@ -24,17 +27,15 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(updateTableView:)
-     name:@"BeckonsFetched"
+     name:@"ReloadBeckonTableView"
      object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.beckonTableView.dataSource = appDelegate.appState.beckons;
-    self.beckonTableView.delegate = appDelegate.appState.beckons;
-    [appDelegate.appState.beckons getAllBeckons];
+    self.beckons = appDelegate.appState.beckons;
+    self.beckonTableView.dataSource = self;
+    self.beckonTableView.delegate = self;
 }
 
 - (void) viewWillAppear:(BOOL)animated{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.beckons getAllBeckons];
     [[self tabBarItem] setBadgeValue: nil];
 }
 
@@ -46,17 +47,24 @@
     [self performSegueWithIdentifier:@"BeckonToCreate" sender:self];
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    return 1;
 }
-*/
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.beckons.beckons.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier =@"BeckonCell";
+    BeckonCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
+    cell.textLabel.text = beckon.title;
+    return cell;
+}
 
 @end

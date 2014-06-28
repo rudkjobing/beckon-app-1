@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "Server.h"
+#import "Beckon.h"
+#import "BeckonCell.h"
 
-@interface Beckons : NSObject <UITableViewDelegate, UITableViewDataSource>
+@interface Beckons : NSObject
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) NSMutableArray *beckons;
 
 - (void) getAllBeckons;
+- (void) addBeckon:(Beckon*)beckon;
 
 @end

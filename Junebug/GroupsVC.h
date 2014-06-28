@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Groups.h"
 
-@interface GroupsVC : UIViewController<UIAlertViewDelegate>
+@interface GroupsVC : UIViewController<UIAlertViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @end

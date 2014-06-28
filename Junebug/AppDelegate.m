@@ -32,9 +32,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     application.applicationIconBadgeNumber = 0;
-    [self.appState.friends getAllFriends];
-    [self.appState.groups getAllGroups];
-    [self.appState.beckons getAllBeckons];
     UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
     [application registerForRemoteNotificationTypes:noteficationTypes];
 }

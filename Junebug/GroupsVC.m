@@ -9,10 +9,13 @@
 #import "GroupsVC.h"
 #import "GroupDetailVC.h"
 #import "AppDelegate.h"
+#import "GroupCell.h"
+#import "Friend.h"
 
 @interface GroupsVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *groupTableView;
+@property (strong, nonatomic) Groups *groups;
 
 @end
 
@@ -32,8 +35,9 @@
      name:@"GroupAdded"
      object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.groupTableView.dataSource = appDelegate.appState.groups;
-    self.groupTableView.delegate = appDelegate.appState.groups;
+    self.groups = appDelegate.appState.groups;
+    self.groupTableView.dataSource = self;
+    self.groupTableView.delegate = self;
     [appDelegate.appState.groups getAllGroups];
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGroup)];
@@ -66,6 +70,39 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState.groups addGroup:[alertView textFieldAtIndex:0].text];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.groups.groups.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier =@"GroupCell";
+    GroupCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[GroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    Group *group = [self.groups.groups objectAtIndex:indexPath.row];
+    cell.textLabel.text = group.name;
+    return cell;
+}
+
+- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(editingStyle == UITableViewCellEditingStyleDelete){
+        Group *group = [self.groups.groups objectAtIndex:indexPath.row];
+        [self.groups.groups removeObjectAtIndex:indexPath.row];
+        [self.groups removeGroup:group.name];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

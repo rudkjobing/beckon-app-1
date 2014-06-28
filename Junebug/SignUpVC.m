@@ -72,7 +72,7 @@
 - (IBAction)signUpButtonTabbed:(id)sender {
     if ([self.signUpPassword.text isEqualToString:self.signUpConfirmedPassword.text]) {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appDelegate.appState signUpWithEmail:self.signUpEmail.text Password:self.signUpPassword.text Firstname:self.signUpFirstname.text Lastname:self.signUpSecondname.text Phonenumber:@"12345678"];
+        [appDelegate.appState signUpWithEmail:self.signUpEmail.text Password:self.signUpPassword.text Firstname:self.signUpFirstname.text Lastname:self.signUpSecondname.text];
     }
     else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Password incorrect" message:@"passwords did not match" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -82,11 +82,11 @@
 
 - (void) signUpComplete{
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState registerDeviceUsingEmail:self.signUpEmail.text AndPassword:self.signUpPassword.text];
+    [appDelegate.appState signInUsingEmail:self.signUpEmail.text AndPassword:self.signUpPassword.text];
 }
 
 - (void) switchScene{
-    [self performSegueWithIdentifier:@"SignUpToTabbed" sender:self];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) signUpFailedWithMessage: (NSString *)message{

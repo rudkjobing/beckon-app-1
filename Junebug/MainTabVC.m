@@ -20,9 +20,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(goToMenu:)
+     name:@"AppStateReady"
+     object:nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(goToSignIn:)
+     name:@"AppStateNotReady"
+     object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performUpdate:) name:@"Update" object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.friends getPendingFriendRequests];
+    [appDelegate.appState getState];
+}
+
+- (void) goToMenu:(NSNotification*) notification{
+    //Remove loading screen and spinner etc
+}
+
+- (void) goToSignIn:(NSNotification*) notification{
+    [self performSegueWithIdentifier:@"MainToLogin" sender:self];
 }
 
 - (void) performUpdate: (NSNotification*) notification{

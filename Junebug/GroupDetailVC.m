@@ -8,6 +8,7 @@
 
 #import "GroupDetailVC.h"
 #import "GroupEditMembersVC.h"
+#import "MemberCell.h"
 
 @interface GroupDetailVC ()
 
@@ -28,10 +29,8 @@
      object:nil];
     UIBarButtonItem *manageButton = [[UIBarButtonItem alloc] initWithTitle:@"Manage" style:UIBarButtonItemStyleBordered target:self action:@selector(manageGroup)];
     self.navigationItem.rightBarButtonItem = manageButton;
-    if(self.group){
-        self.memberTableView.dataSource = self.group;
-        self.memberTableView.delegate = self.group;
-    }
+    self.memberTableView.dataSource = self;
+    self.memberTableView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -44,6 +43,27 @@
 
 - (void) manageGroup{
     [self performSegueWithIdentifier:@"GroupMembersToEdit" sender:self];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.group.members.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier =@"GroupCell";
+    MemberCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[MemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    Friend *friend = [self.group.members objectAtIndex:indexPath.row];
+    cell.textLabel.text = friend.nickname;
+    return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Group.h"
 
-@interface GroupDetailVC : UIViewController
+@interface GroupDetailVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) Group *group;
 

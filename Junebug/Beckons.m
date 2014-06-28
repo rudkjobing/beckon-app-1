@@ -7,8 +7,6 @@
 //
 
 #import "Beckons.h"
-#import "BeckonCell.h"
-#import "Beckon.h"
 
 @implementation Beckons
 
@@ -18,21 +16,10 @@
     dispatch_async(queue, ^{
         NSDictionary *data = [[NSDictionary alloc] init];
         NSDictionary *result = [self.server queryServerDomain:@"beckon" WithCommand:@"getAll" andData:data];
-        /*for(int i = 0 ; i < 1000 ; i++){
-            [self.server queryServerDomain:@"beckon" WithCommand:@"getAll" andData:data];
-        }*/
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 NSArray *payload = [result objectForKey:@"payload"];
-                [self.beckons removeAllObjects];
-                for(NSDictionary *child in payload){
-                    Beckon *beckon = [[Beckon alloc] init];
-                    beckon.id = [child objectForKey:@"id"];
-                    beckon.title = [child objectForKey:@"title"];
-                    beckon.server = self.server;
-                    [self.beckons addObject: beckon];
-                }
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"BeckonsFetched" object:self];
+                [self loadData:payload];
             }
             else{
                 
@@ -41,24 +28,21 @@
     });
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.beckons.count;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier =@"BeckonCell";
-    BeckonCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+- (void) loadData:(NSArray*)data{
+    [self.beckons removeAllObjects];
+    for(NSDictionary *child in data){
+        Beckon *beckon = [[Beckon alloc] init];
+        beckon.id = [child objectForKey:@"id"];
+        beckon.title = [child objectForKey:@"title"];
+        beckon.server = self.server;
+        [self.beckons addObject: beckon];
     }
-    Beckon *beckon = [self.beckons objectAtIndex:indexPath.row];
-    cell.textLabel.text = beckon.title;
-    return cell;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadBeckonTableView" object:self];
+}
+
+- (void) addBeckon:(Beckon*)beckon{
+    [self.beckons addObject: beckon];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadBeckonTableView" object:self];
 }
 
 - (NSMutableArray *)beckons{

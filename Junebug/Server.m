@@ -11,36 +11,26 @@
 @implementation Server
 
 NSInteger counter;
-/*
-+(Server *)sharedInstance
-{
-    static dispatch_once_t once;
-    static id sharedInstance;
-    dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
-    });
-    return sharedInstance;
-}*/
 
 -(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)inData{
     NSMutableDictionary *data = [inData mutableCopy];
     NSError *error;
-    if(self.email && self.auth_key && self.device_key){
-        NSMutableDictionary *credentials = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.email, @"email", self.device_key, @"device_key", self.auth_key, @"auth_key", nil];
-        [data addEntriesFromDictionary:credentials];
+    if(self.cookieId && self.cookie){
+        NSMutableDictionary *cookie = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.cookieId, @"id", self.cookie, @"cookie", nil];
+        [data setObject:cookie forKey:@"cookie"];
     }
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSLog(@"%@ %@", domain, command);
-    //NSLog(@"%@", post);
+    NSLog(@"%@", post);
     
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"https://gateway.beckon.dk/router.php"]];
+    [request setURL:[NSURL URLWithString:@"https://gateway.beckon.dk/Beckon/router.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -59,7 +49,7 @@ NSInteger counter;
     NSDictionary *result = [NSJSONSerialization JSONObjectWithData: [jsondata dataUsingEncoding:NSUTF8StringEncoding]
                                                            options: NSJSONReadingMutableContainers
                                                              error: &error];
-    //NSLog(@"%@", result);
+    NSLog(@"%@", result);
     return result;
 }
 

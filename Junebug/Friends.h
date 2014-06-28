@@ -12,7 +12,7 @@
 #import "Friend.h"
 #import "FriendCell.h"
 
-@interface Friends : NSObject <UITableViewDelegate, UITableViewDataSource>
+@interface Friends : NSObject
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) NSMutableArray *friends;

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BeckonVC : UIViewController
+@interface BeckonVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

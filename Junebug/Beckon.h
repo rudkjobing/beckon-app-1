@@ -13,6 +13,10 @@
 
 @property (strong, nonatomic) NSString *id;
 @property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSMutableArray *friends;
+@property (strong, nonatomic) NSString *date;
 @property (strong, nonatomic) Server *server;
+
+- (void) flush;
 
 @end

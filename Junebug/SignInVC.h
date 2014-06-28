@@ -10,7 +10,7 @@
 /*#import "User.h"*/
 
 @interface SignInVC : UIViewController
-/*@property (strong, nonatomic) User* user;*/
+
 - (IBAction)textFieldReturn:(id)sender;
 
 @end

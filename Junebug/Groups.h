@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Server.h"
 
-@interface Groups : NSObject <UITableViewDelegate, UITableViewDataSource>
+@interface Groups : NSObject
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) NSMutableArray *groups;

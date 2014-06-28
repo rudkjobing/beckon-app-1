@@ -1,18 +1,18 @@
 //
-//  FriendChatVC.m
+//  BeckonCreateFriendsVC.m
 //  Junebug
 //
-//  Created by Steffen Rudkjøbing on 31/05/14.
+//  Created by Steffen Rudkjøbing on 28/06/14.
 //  Copyright (c) 2014 General Bits. All rights reserved.
 //
 
-#import "FriendChatVC.h"
+#import "BeckonCreateFriendsVC.h"
 
-@interface FriendChatVC ()
+@interface BeckonCreateFriendsVC ()
 
 @end
 
-@implementation FriendChatVC
+@implementation BeckonCreateFriendsVC
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

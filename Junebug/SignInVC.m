@@ -39,7 +39,11 @@
     UIApplication *application = [UIApplication sharedApplication];
     UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
     [application registerForRemoteNotificationTypes:noteficationTypes];
-    [self performSegueWithIdentifier:@"SignInToTabbed" sender:self];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState getState];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self performSegueWithIdentifier:@"SignInToTabbed" sender:self];
 }
 
 - (void) loginFailed:(NSNotification*) notification{
@@ -64,7 +68,7 @@
     }
     else{
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        [appDelegate.appState registerDeviceUsingEmail:self.singInEmail.text AndPassword:self.signInPassword.text];
+        [appDelegate.appState signInUsingEmail:self.singInEmail.text AndPassword:self.signInPassword.text];
     }
 }
 

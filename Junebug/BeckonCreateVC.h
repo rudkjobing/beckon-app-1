@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "Beckon.h"
+#import "BeckonPickFriendsVC.h"
 
 @interface BeckonCreateVC : UIViewController
+
+@property (strong, nonatomic) Beckon *beckon;
 
 @end

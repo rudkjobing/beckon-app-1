@@ -16,7 +16,7 @@
 - (void) getGroupMembers{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.name, @"group_name", nil];
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.id, @"group_id", nil];
         /*This is where we have a json string that can be sent over the interwebs*/
         NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"getMembers" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -31,6 +31,7 @@
             }
             else{
                 [self.members removeAllObjects];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupFetched" object:self];
             }
         });
     });
@@ -68,26 +69,6 @@
             }
         });
     });
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.members.count;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier =@"GroupCell";
-    MemberCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[MemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    Friend *friend = [self.members objectAtIndex:indexPath.row];
-    cell.textLabel.text = friend.nickname;
-    return cell;
 }
 
 - (NSMutableArray *)members{

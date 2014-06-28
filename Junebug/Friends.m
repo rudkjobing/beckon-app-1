@@ -15,18 +15,18 @@
     dispatch_async(queue, ^{
         NSDictionary *data = [[NSDictionary alloc] init];
         /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [self.server queryServerDomain:@"friend" WithCommand:@"getAll" andData:data];
+        NSDictionary *result = [self.server queryServerDomain:@"friend" WithCommand:@"getFriends" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                NSArray *payload = [result objectForKey:@"payload"];
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                NSArray *payload = [[result objectForKey:@"payload"] objectForKey:@"friends"];
                 [self.friends removeAllObjects];
                 for(NSDictionary *child in payload){
                     Friend *friend = [[Friend alloc] init];
                     friend.id = [child objectForKey:@"id"];
-                    friend.firstName = [child objectForKey:@"first_name"];
-                    friend.lastName = [child objectForKey:@"last_name"];
+                    friend.firstName = [[child objectForKey:@"user"] objectForKey:@"firstName"];
+                    friend.lastName = [[child objectForKey:@"user"] objectForKey:@"lastName"];
+                    friend.email = [[child objectForKey:@"user"] objectForKey:@"emailAddress"];
                     friend.nickname = [child objectForKey:@"nickname"];
-                    friend.email = [child objectForKey:@"email"];
                     [self.friends addObject:friend];
                 }
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsFetched" object:self];
@@ -64,14 +64,14 @@
     });
 }
 
-- (void) addFriend:(NSString *)friendEmail{
+- (void) addFriend:(NSString *)friendEmailAddress{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:friendEmail, @"friend_email", nil];
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:friendEmailAddress, @"friendEmailAddress", nil];
         /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [self.server queryServerDomain:@"friend" WithCommand:@"add" andData:data];
+        NSDictionary *result = [self.server queryServerDomain:@"friend" WithCommand:@"addFriend" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendAdded" object:self];
             }
             else{
@@ -119,43 +119,10 @@
     Friend *result = [[Friend alloc]init];
     for(Friend *f in self.friends){
         if([f.id isEqualToString:id]){
-            result = f;
+            return f;
         }
     }
     return result;
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.friends.count;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *cellIdentifier = @"FriendCell";
-    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    Friend *friend = [self.friends objectAtIndex:indexPath.row];
-    cell.textLabel.text = friend.nickname;
-    return cell;
-}
-
-- (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(editingStyle == UITableViewCellEditingStyleDelete){
-        Friend *friend = [self.friends objectAtIndex:indexPath.row];
-        [self.friends removeObjectAtIndex:indexPath.row];
-        [self removeFriend:friend.email];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-    }
 }
 
 - (NSMutableArray *)friends{
