@@ -21,7 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"LOADED MEMBERS");
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(updateTableView:)

@@ -17,16 +17,16 @@
 - (void) getGroupMembers{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.id, @"group_id", nil];
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.id, @"groupId", nil];
         /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"getMembers" andData:data];
+        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"getGroupMembers" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                NSArray *payload = [result objectForKey:@"payload"];
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                NSArray *payload = [[result objectForKey:@"payload"] objectForKey:@"groupMembers"];
                 [self.members removeAllObjects];
                 for(NSDictionary *child in payload){
                     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [self.members addObject:[appDelegate.appState.friends getFriendWithID:[child objectForKey:@"id"]]];
+                    [self.members addObject:[appDelegate.appState.friends getFriendWithID:[child objectForKey:@"friend"]]];
                 }
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupFetched" object:self];
             }
@@ -41,9 +41,9 @@
 - (void) addMember: (NSString *)memberID{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:memberID, @"friend_id", self.id, @"group_id", nil];
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:memberID, @"friendId", self.id, @"groupId", nil];
         /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"addMember" andData:data];
+        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"addGroupMember" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupRemoved" object:self];
@@ -96,12 +96,12 @@
 - (void) removeMember: (NSString* )memberID{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:memberID, @"friend_id", self.id, @"group_id", nil];
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:memberID, @"friendId", self.id, @"groupId", nil];
         /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"removeMember" andData:data];
+        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"removeGroupMember" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupRemoved" object:self];
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                
             }
             else{
                 

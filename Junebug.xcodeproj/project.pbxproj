@@ -328,6 +328,8 @@
 		F9B01711192BBABC0088B6AB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F9163D19193E1A55002EE1E2 /* ChatRoomCell.m */,
+				F9163D18193E1A55002EE1E2 /* ChatRoomCell.h */,
 				F9B016F91927AA9E0088B6AB /* GroupCell.h */,
 				F9B016FA1927AA9E0088B6AB /* GroupCell.m */,
 				F9B016FC1928E6510088B6AB /* FriendCell.h */,
@@ -428,8 +430,6 @@
 				F9B0170C192A6CCD0088B6AB /* Friend.m */,
 				F91D14EB1934FD7D0094299C /* Beckon.h */,
 				F91D14EC1934FD7D0094299C /* Beckon.m */,
-				F9163D18193E1A55002EE1E2 /* ChatRoomCell.h */,
-				F9163D19193E1A55002EE1E2 /* ChatRoomCell.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
