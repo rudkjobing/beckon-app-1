@@ -7,6 +7,7 @@
 //
 
 #import "Group.h"
+#import "Groups.h"
 #import "Friend.h"
 #import "MemberCell.h"
 #import "AppDelegate.h"
@@ -46,6 +47,44 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"success"] isEqualToString:@"1"]){
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupRemoved" object:self];
+            }
+            else{
+                
+            }
+        });
+    });
+}
+
+- (void) flush{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.name, @"name", nil];
+        NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:data, @"group", nil];
+        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"addGroup" andData:object];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                NSDictionary *payload = [result objectForKey:@"payload"];
+                self.id = [payload objectForKey:@"id"];
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appDelegate.appState.groups addGroup:self];
+            }
+            else{
+                
+            }
+        });
+    });
+}
+
+- (void) delete{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.id, @"id", nil];
+        NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:data, @"group", nil];
+        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"delete" andData:object];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appDelegate.appState.groups removeGroup:self];
             }
             else{
                 

@@ -22,6 +22,7 @@
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     self.appState.token = token;
+    NSLog(@"%@", token);
     [self.appState updateNotificationToken];
 }
 
@@ -32,14 +33,14 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     application.applicationIconBadgeNumber = 0;
-    UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
+    UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
     [application registerForRemoteNotificationTypes:noteficationTypes];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateActive) {
-       [[NSNotificationCenter defaultCenter] postNotificationName:@"Update" object:self userInfo:userInfo];
+       
     } else {
         NSLog(@"Offline Message recieved");
     }

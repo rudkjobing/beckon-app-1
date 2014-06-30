@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSMutableArray *beckons;
 
 - (void) getAllBeckons;
-- (void) addBeckon:(Beckon*)beckon;
+- (void) addBeckon: (Beckon*)beckon;
+- (void) loadData: (NSArray*)data;
 
 @end

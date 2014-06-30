@@ -24,7 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView:) name:@"FriendsFetched" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView:) name:@"ReloadFriendTableView" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentPendingFriendRequestsAlert:) name:@"PendingFriendRequests" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(FriendRequestAccepted:) name:@"FriendRequestAccepted" object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -37,8 +37,6 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.friends getAllFriends];
     [[self tabBarItem] setBadgeValue: nil];
 }
 

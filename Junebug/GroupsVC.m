@@ -7,6 +7,7 @@
 //
 
 #import "GroupsVC.h"
+#import "Group.h"
 #import "GroupDetailVC.h"
 #import "AppDelegate.h"
 #import "GroupCell.h"
@@ -27,18 +28,12 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(updateTableView:)
-     name:@"GroupsFetched"
-     object:nil];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(fetchGroups:)
-     name:@"GroupAdded"
+     name:@"ReloadGroupTableView"
      object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.groups = appDelegate.appState.groups;
     self.groupTableView.dataSource = self;
     self.groupTableView.delegate = self;
-    [appDelegate.appState.groups getAllGroups];
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGroup)];
     self.navigationItem.rightBarButtonItem = addButton;
@@ -49,7 +44,7 @@
 }
 
 - (IBAction)addGroup {
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Add a group" message:@"Please enter a name for the group" delegate:self cancelButtonTitle:@"Add" otherButtonTitles:nil];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Add a group" message:@"Please enter a name for the group" delegate:self cancelButtonTitle:@"Add" otherButtonTitles:@"Cancel", nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField * alertTextField = [alert textFieldAtIndex:0];
     alertTextField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -62,14 +57,14 @@
     [self.groupTableView setEditing:editing animated:animated];
 }
 
-- (void)fetchGroups: (NSNotification*) notification{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.groups getAllGroups];
-}
-
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.groups addGroup:[alertView textFieldAtIndex:0].text];
+    if(buttonIndex == 0){
+        Group *group = [[Group alloc] init];
+        group.name = [alertView textFieldAtIndex:0].text;
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        group.server = appDelegate.appState.server;
+        [group flush];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -99,9 +94,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(editingStyle == UITableViewCellEditingStyleDelete){
         Group *group = [self.groups.groups objectAtIndex:indexPath.row];
-        [self.groups.groups removeObjectAtIndex:indexPath.row];
-        [self.groups removeGroup:group.name];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [group delete];
     }
 }
 

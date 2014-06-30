@@ -20,5 +20,7 @@
 - (void) getGroupMembers;
 - (void) addMember: (NSString *)memberID;
 - (void) removeMember: (NSString* )memberID;
+- (void) flush;
+- (void) delete;
 
 @end

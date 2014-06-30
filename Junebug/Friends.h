@@ -23,4 +23,5 @@
 - (void) getPendingFriendRequests;
 - (void) acceptFriendRequest:(NSString *)friendEmail;
 - (Friend *) getFriendWithID: (NSString *)id;
+- (void) loadData: (NSArray*)data;
 @end

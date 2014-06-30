@@ -21,17 +21,17 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(goToMenu:)
-     name:@"AppStateReady"
+     name:@"SignInSuccess"
      object:nil];
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(loginFailed:)
-     name:@"AppStateNotReady"
+     name:@"SignInFailure"
      object:nil];
-    [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
@@ -41,9 +41,7 @@
     [application registerForRemoteNotificationTypes:noteficationTypes];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState getState];
-
     [self dismissViewControllerAnimated:YES completion:nil];
-    //[self performSegueWithIdentifier:@"SignInToTabbed" sender:self];
 }
 
 - (void) loginFailed:(NSNotification*) notification{

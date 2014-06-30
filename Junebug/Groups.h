@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Server.h"
+#import "Group.h"
 
 @interface Groups : NSObject
 
@@ -15,7 +16,8 @@
 @property (strong, nonatomic) NSMutableArray *groups;
 
 - (void) getAllGroups;
-- (void) addGroup: (NSString *)name;
-- (void) removeGroup:(NSString *)name;
+- (void) addGroup: (Group *)name;
+- (void) loadData: (NSArray *)data;
+- (void) removeGroup: (Group*)group;
 
 @end

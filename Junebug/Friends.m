@@ -19,23 +19,27 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
                 NSArray *payload = [[result objectForKey:@"payload"] objectForKey:@"friends"];
-                [self.friends removeAllObjects];
-                for(NSDictionary *child in payload){
-                    Friend *friend = [[Friend alloc] init];
-                    friend.id = [child objectForKey:@"id"];
-                    friend.firstName = [[child objectForKey:@"user"] objectForKey:@"firstName"];
-                    friend.lastName = [[child objectForKey:@"user"] objectForKey:@"lastName"];
-                    friend.email = [[child objectForKey:@"user"] objectForKey:@"emailAddress"];
-                    friend.nickname = [child objectForKey:@"nickname"];
-                    [self.friends addObject:friend];
-                }
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"FriendsFetched" object:self];
+                [self loadData:payload];
             }
             else{
 
             }
         });
     });
+}
+
+- (void) loadData: (NSArray*) data{
+    [self.friends removeAllObjects];
+    for(NSDictionary *child in data){
+        Friend *friend = [[Friend alloc] init];
+        friend.id = [child objectForKey:@"id"];
+        friend.firstName = [[child objectForKey:@"user"] objectForKey:@"firstName"];
+        friend.lastName = [[child objectForKey:@"user"] objectForKey:@"lastName"];
+        friend.email = [[child objectForKey:@"user"] objectForKey:@"emailAddress"];
+        friend.nickname = [child objectForKey:@"nickname"];
+        [self.friends addObject:friend];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadFriendTableView" object:self];
 }
 
 - (void) getPendingFriendRequests{

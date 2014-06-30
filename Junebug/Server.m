@@ -12,6 +12,19 @@
 
 NSInteger counter;
 
+- (Server*) init{
+    self = [super init];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults integerForKey:@"cookieId"] && [defaults stringForKey:@"cookie"]){
+        self.cookieId = [defaults objectForKey:@"cookieId"];
+        self.cookie = [defaults stringForKey:@"cookie"];
+    }
+    else{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self];
+    }
+    return self;
+}
+
 -(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)inData{
     NSMutableDictionary *data = [inData mutableCopy];
     NSError *error;
@@ -49,6 +62,9 @@ NSInteger counter;
     NSDictionary *result = [NSJSONSerialization JSONObjectWithData: [jsondata dataUsingEncoding:NSUTF8StringEncoding]
                                                            options: NSJSONReadingMutableContainers
                                                              error: &error];
+    if([[result objectForKey:@"message"] isEqualToString:@"Invalid Cookie"]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self];
+    }
     NSLog(@"%@", result);
     return result;
 }

@@ -17,8 +17,8 @@
         NSDictionary *data = [[NSDictionary alloc] init];
         NSDictionary *result = [self.server queryServerDomain:@"beckon" WithCommand:@"getAll" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                NSArray *payload = [result objectForKey:@"payload"];
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                NSArray *payload = [[result objectForKey:@"payload"] objectForKey:@"beckons"];
                 [self loadData:payload];
             }
             else{

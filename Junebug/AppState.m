@@ -16,18 +16,6 @@
 
 @implementation AppState
 
-- (void) applicationReady{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults stringForKey:@"cookieId"] && [defaults stringForKey:@"cookie"]){
-        self.server.cookieId = [defaults stringForKey:@"cookieId"];
-        self.server.cookie = [defaults stringForKey:@"cookie"];
-        [self getState];
-    }
-    else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self];
-    }
-}
-
 - (void) signInUsingEmail: (NSString *) email AndPassword: (NSString *) password{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
@@ -39,53 +27,53 @@
                 NSDictionary *payload = [result objectForKey:@"payload"];
                 NSDictionary *cookie = [payload objectForKey:@"cookie"];
                 self.server.cookieId = [cookie objectForKey:@"id"];
-                [defaults setObject:self.server.cookieId forKey:@"id"];
+                [defaults setObject:self.server.cookieId forKey:@"cookieId"];
                 self.server.cookie = [cookie objectForKey:@"cookie"];
                 [defaults setObject:self.server.cookie forKey:@"cookie"];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateReady" object:self];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"SignInSuccess" object:self];
             }
             else{
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self userInfo:result];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"SignInFailure" object:self userInfo:result];
             }
         });
     });
 }
 
 - (void) getState{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
         NSDictionary *data = [[NSDictionary alloc] init];
         NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"getState" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
-                //[[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateReady" object:self];
+                NSArray *beckons = [[[result objectForKey:@"payload"] objectForKey:@"user" ]objectForKey:@"beckons"];
+                NSArray *friends = [[[result objectForKey:@"payload"] objectForKey:@"user" ]objectForKey:@"friends"];
+                NSArray *groups = [[[result objectForKey:@"payload"] objectForKey:@"user" ]objectForKey:@"groups"];
+                [self.beckons loadData:beckons];
+                [self.friends loadData:friends];
+                [self.groups loadData:groups];
             }
             else{
-                [defaults removeObjectForKey:@"cookieId"];
-                [defaults removeObjectForKey:@"cookie"];
-                [self applicationReady];
+                
             }
         });
     });
 }
 
 - (void) updateNotificationToken{
-    if(self.server.email && self.server.auth_key && self.server.device_key){
-        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-        dispatch_async(queue, ^{
-            NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:self.token , @"notification_key", nil];
-            NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"updateNotificationKey" andData:data];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                    
-                }
-                else{
-                    
-                }
-            });
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:self.token , @"notificationKey", @"APPLEIOS", @"type", nil];
+        NSDictionary *result = [self.server  queryServerDomain:@"device" WithCommand:@"registerDevice" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                
+            }
+            else{
+                
+            }
         });
-    }
+    });
 }
 
 - (void) signUpWithEmail: (NSString *)email Password: (NSString *)password Firstname: (NSString *)firstname Lastname: (NSString *)lastname{

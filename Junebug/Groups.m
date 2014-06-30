@@ -38,38 +38,26 @@
     });
 }
 
-- (void) addGroup:(NSString *)name{
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-    dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:name, @"group_name", nil];
-        /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"add" andData:data];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupAdded" object:self];
-            }
-            else{
-                
-            }
-        });
-    });
+- (void) addGroup:(Group*)group{
+    [self.groups addObject: group];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadGroupTableView" object:self];
 }
 
-- (void) removeGroup:(NSString *)name{
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-    dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:name, @"group_name", nil];
-        /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"remove" andData:data];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupRemoved" object:self];
-            }
-            else{
-                
-            }
-        });
-    });
+- (void) removeGroup:(Group*)group{
+    [self.groups removeObject:group];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadGroupTableView" object:self];
+}
+
+- (void) loadData: (NSArray*) data{
+    [self.groups removeAllObjects];
+    for(NSDictionary *child in data){
+        Group *group = [[Group alloc] init];
+        group.id = [child objectForKey:@"id"];
+        group.name = [child objectForKey:@"name"];
+        group.server = self.server;
+        [self.groups addObject:group];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadGroupTableView" object:self];
 }
 
 - (NSMutableArray *)groups{
