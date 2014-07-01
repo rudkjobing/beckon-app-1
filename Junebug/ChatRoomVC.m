@@ -75,7 +75,6 @@
     
     ChatMessage *msg = [[ChatMessage alloc] init];
     msg.text = message;
-    msg.fromMe = YES;
     
     [self sendMessage:msg];
 }
