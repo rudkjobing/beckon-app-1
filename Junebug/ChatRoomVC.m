@@ -7,6 +7,7 @@
 //
 
 #import "ChatRoomVC.h"
+#import "ChatMessage.h"
 
 @interface ChatRoomVC ()
 
@@ -19,16 +20,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.chatRoom sync];
     self.dataSource = [[NSMutableArray alloc] init];
     // Do any additional setup after loading the view.
     NSMutableArray *result = [NSMutableArray new];
-    SOMessage *message = [[SOMessage alloc] init];
-        message.fromMe = YES;
+    ChatMessage *message = [[ChatMessage alloc] init];
+        message.fromMe = NO;
         message.text = @"Welcome";
         message.type = SOMessageTypeText;
         message.date = [NSDate date];
         
-            SOMessage *prevMesage = result.lastObject;
+            ChatMessage *prevMesage = result.lastObject;
             message.date = [NSDate dateWithTimeInterval:((10 % 2) ? 2 * 24 * 60 * 60 : 120) sinceDate:prevMesage.date];
         [result addObject:message];
 
@@ -47,13 +49,15 @@
 
 - (void)configureMessageCell:(SOMessageCell *)cell forMessageAtIndex:(NSInteger)index
 {
-    SOMessage *message = self.dataSource[index];
+    ChatMessage *message = self.dataSource[index];
     
     // Customize balloon as you wish
-    if (message.fromMe) {
-        
+    if (!message.fromMe) {
+        cell.contentInsets = UIEdgeInsetsMake(0, 3.0f, 0, 0); //Move content for 3 pt. to right
+        cell.textView.textColor = [UIColor blackColor];
     } else {
-        
+        cell.contentInsets = UIEdgeInsetsMake(0, 0, 0, 3.0f); //Move content for 3 pt. to left
+        cell.textView.textColor = [UIColor whiteColor];
     }
 }
 
@@ -69,7 +73,7 @@
         return;
     }
     
-    SOMessage *msg = [[SOMessage alloc] init];
+    ChatMessage *msg = [[ChatMessage alloc] init];
     msg.text = message;
     msg.fromMe = YES;
     

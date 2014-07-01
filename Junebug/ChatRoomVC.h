@@ -7,7 +7,10 @@
 //
 
 #import "SOMessagingViewController.h"
+#import "ChatRoom.h"
 
 @interface ChatRoomVC : SOMessagingViewController
+
+@property (strong, nonatomic)ChatRoom *chatRoom;
 
 @end

@@ -29,6 +29,8 @@
 		F9163D0D193BADDA002EE1E2 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9163D0C193BADDA002EE1E2 /* MediaPlayer.framework */; };
 		F9163D13193BB23E002EE1E2 /* ChatRoomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9163D12193BB23E002EE1E2 /* ChatRoomVC.m */; };
 		F9163D1A193E1A55002EE1E2 /* ChatRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9163D19193E1A55002EE1E2 /* ChatRoomCell.m */; };
+		F91848391961BAB400BBA75B /* ChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = F91848381961BAB400BBA75B /* ChatRoom.m */; };
+		F918483C1961F91600BBA75B /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F918483B1961F91600BBA75B /* ChatMessage.m */; };
 		F91D14E41933A5380094299C /* BeckonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E31933A5380094299C /* BeckonCell.m */; };
 		F91D14E71933AF670094299C /* BeckonPickFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */; };
 		F91D14EA1933AF9A0094299C /* BeckonPickGroupsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */; };
@@ -111,6 +113,10 @@
 		F9163D12193BB23E002EE1E2 /* ChatRoomVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRoomVC.m; sourceTree = "<group>"; };
 		F9163D18193E1A55002EE1E2 /* ChatRoomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRoomCell.h; sourceTree = "<group>"; };
 		F9163D19193E1A55002EE1E2 /* ChatRoomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRoomCell.m; sourceTree = "<group>"; };
+		F91848371961BAB400BBA75B /* ChatRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatRoom.h; sourceTree = "<group>"; };
+		F91848381961BAB400BBA75B /* ChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRoom.m; sourceTree = "<group>"; };
+		F918483A1961F91500BBA75B /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
+		F918483B1961F91600BBA75B /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
 		F91D14E21933A5380094299C /* BeckonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonCell.h; sourceTree = "<group>"; };
 		F91D14E31933A5380094299C /* BeckonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonCell.m; sourceTree = "<group>"; };
 		F91D14E51933AF670094299C /* BeckonPickFriendsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickFriendsVC.h; sourceTree = "<group>"; };
@@ -255,8 +261,6 @@
 			children = (
 				F95B92BD193A6A5800416BDA /* FriendTabVC.h */,
 				F95B92BE193A6A5800416BDA /* FriendTabVC.m */,
-				F9163D11193BB23E002EE1E2 /* ChatRoomVC.h */,
-				F9163D12193BB23E002EE1E2 /* ChatRoomVC.m */,
 				F9BBEFDD190BF40A00452C5C /* FriendDetailVC.h */,
 				F9BBEFDE190BF40A00452C5C /* FriendDetailVC.m */,
 				F9BBEFCB190BF23800452C5C /* FriendsVC.h */,
@@ -298,6 +302,8 @@
 		F9163D17193BBDC3002EE1E2 /* Supporting View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F9163D11193BB23E002EE1E2 /* ChatRoomVC.h */,
+				F9163D12193BB23E002EE1E2 /* ChatRoomVC.m */,
 				F9BBEFD1190BF26800452C5C /* SignInVC.h */,
 				F9BBEFD2190BF26800452C5C /* SignInVC.m */,
 				F9BBEFD4190BF27700452C5C /* SignUpVC.h */,
@@ -430,6 +436,10 @@
 				F9B0170C192A6CCD0088B6AB /* Friend.m */,
 				F91D14EB1934FD7D0094299C /* Beckon.h */,
 				F91D14EC1934FD7D0094299C /* Beckon.m */,
+				F91848371961BAB400BBA75B /* ChatRoom.h */,
+				F91848381961BAB400BBA75B /* ChatRoom.m */,
+				F918483A1961F91500BBA75B /* ChatMessage.h */,
+				F918483B1961F91600BBA75B /* ChatMessage.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -557,6 +567,7 @@
 				F9BBEFF9190BF6B800452C5C /* Server.m in Sources */,
 				F9BBEFD6190BF27700452C5C /* SignUpVC.m in Sources */,
 				F95B92BF193A6A5800416BDA /* FriendTabVC.m in Sources */,
+				F91848391961BAB400BBA75B /* ChatRoom.m in Sources */,
 				F9BBEFEF190BF68A00452C5C /* Friends.m in Sources */,
 				F9BBEFF2190BF69500452C5C /* Groups.m in Sources */,
 				F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */,
@@ -571,6 +582,7 @@
 				F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */,
 				F9163D06193BAD07002EE1E2 /* SOMessageInputView.m in Sources */,
 				F9163D08193BAD07002EE1E2 /* SOPlaceholderedTextView.m in Sources */,
+				F918483C1961F91600BBA75B /* ChatMessage.m in Sources */,
 				F9163D13193BB23E002EE1E2 /* ChatRoomVC.m in Sources */,
 				F9BBEFE5190BF45D00452C5C /* BeckonCreateVC.m in Sources */,
 				F9163D03193BAD07002EE1E2 /* SOImageBrowserView.m in Sources */,

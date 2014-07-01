@@ -152,24 +152,25 @@
             </objects>
             <point key="canvasLocation" x="1743" y="-2681"/>
         </scene>
-        <!--Beckon DetailVC-->
+        <!--Chat RoomVC-->
         <scene sceneID="z2h-3m-CRz">
             <objects>
-                <viewController id="viS-yh-Esj" customClass="BeckonDetailVC" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="viS-yh-Esj" customClass="ChatRoomVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IUA-40-7Q6"/>
                         <viewControllerLayoutGuide type="bottom" id="NMk-xV-oUz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JZc-WC-hXN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="HMA-1e-rmB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ik4-SR-MWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2209" y="-2681"/>
+            <point key="canvasLocation" x="1270" y="-1923"/>
         </scene>
         <!--Main TabVC-->
         <scene sceneID="4Tf-9e-Gmg">

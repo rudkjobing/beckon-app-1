@@ -34,6 +34,7 @@
         Beckon *beckon = [[Beckon alloc] init];
         beckon.id = [child objectForKey:@"id"];
         beckon.title = [child objectForKey:@"title"];
+        beckon.chatRoomId = [[child objectForKey:@"chatRoom"] objectForKey:@"id"];
         beckon.server = self.server;
         [self.beckons addObject: beckon];
     }
