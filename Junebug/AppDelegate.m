@@ -40,7 +40,7 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateActive) {
-       
+        [self.appState handleNotification:userInfo];
     } else {
         NSLog(@"Offline Message recieved");
     }

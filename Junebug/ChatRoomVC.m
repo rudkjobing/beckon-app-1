@@ -8,10 +8,11 @@
 
 #import "ChatRoomVC.h"
 #import "ChatMessage.h"
+#import "AppDelegate.h"
 
 @interface ChatRoomVC ()
 
-@property (strong, nonatomic) NSMutableArray *dataSource;
+
 
 @end
 
@@ -20,22 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.chatRoom sync];
-    self.dataSource = [[NSMutableArray alloc] init];
-    // Do any additional setup after loading the view.
-    NSMutableArray *result = [NSMutableArray new];
-    ChatMessage *message = [[ChatMessage alloc] init];
-        message.fromMe = NO;
-        message.text = @"Welcome";
-        message.type = SOMessageTypeText;
-        message.date = [NSDate date];
-        
-            ChatMessage *prevMesage = result.lastObject;
-            message.date = [NSDate dateWithTimeInterval:((10 % 2) ? 2 * 24 * 60 * 60 : 120) sinceDate:prevMesage.date];
-        [result addObject:message];
-
-    
-    self.dataSource = result;
+    //self.dataSource = [[NSMutableArray alloc] init];
 }
 
 - (NSMutableArray *)messages
@@ -55,9 +41,11 @@
     if (!message.fromMe) {
         cell.contentInsets = UIEdgeInsetsMake(0, 3.0f, 0, 0); //Move content for 3 pt. to right
         cell.textView.textColor = [UIColor blackColor];
+        cell.timeLabel.text = @"321";
     } else {
         cell.contentInsets = UIEdgeInsetsMake(0, 0, 0, 3.0f); //Move content for 3 pt. to left
         cell.textView.textColor = [UIColor whiteColor];
+        cell.timeLabel.text = @"123";
     }
 }
 
@@ -73,7 +61,8 @@
         return;
     }
     
-    ChatMessage *msg = [[ChatMessage alloc] init];
+    ChatMessage *msg = [[ChatMessage alloc] initWithChatRoomId:self.chatRoomId andMessage:message];
+    [msg flush];
     msg.text = message;
     
     [self sendMessage:msg];

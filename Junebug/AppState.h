@@ -15,14 +15,18 @@
 @interface AppState : NSObject
 
 @property (strong, nonatomic) Server *server;
+
 @property (strong, nonatomic) Friends *friends;
 @property (strong, nonatomic) Groups *groups;
 @property (strong, nonatomic) Beckons *beckons;
+@property (strong, nonatomic) NSMutableDictionary *chatRooms;
 @property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString *userId;
 
 - (void) signUpWithEmail: (NSString *)email Password: (NSString *)password Firstname: (NSString *)firstname Lastname: (NSString *)lastname;
 - (void) signInUsingEmail: (NSString *) email AndPassword: (NSString *) password;
 - (void) updateNotificationToken;
 - (void) getState;
+- (void) handleNotification: (NSDictionary *)userInfo;
 
 @end

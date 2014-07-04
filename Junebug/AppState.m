@@ -7,6 +7,8 @@
 //
 
 #import "AppState.h"
+#import "ChatMessage.h"
+#import "ChatRoom.h"
 
 @interface AppState ()
 
@@ -15,6 +17,31 @@
 @end
 
 @implementation AppState
+
+- (void) handleNotification: (NSDictionary *)userInfo{
+    NSLog(@"%@", userInfo);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:[[userInfo objectForKey:@"prm"] objectForKey:@"nid"], @"notificationId", nil];
+        NSDictionary *result = [self.server  queryServerDomain:@"notification" WithCommand:@"getNotification" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                NSDictionary *payload = [result objectForKey:@"payload"];
+                if([payload objectForKey:@"ChatMessage"]){
+                    NSDictionary *msg = [payload objectForKey:@"ChatMessage"];
+                    ChatMessage *message = [[ChatMessage alloc] initWithChatRoomId:[msg objectForKey:@"chatRoom"] andMessage:[msg objectForKey:@"message"]];
+                    ChatRoom *chatRoom = [self.chatRooms objectForKey:[msg objectForKey:@"chatRoom"]];
+                    if(chatRoom){
+                        [chatRoom recieveMessage:message];
+                    }
+                }
+            }
+            else{
+                
+            }
+        });
+    });
+}
 
 - (void) signInUsingEmail: (NSString *) email AndPassword: (NSString *) password{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
@@ -49,6 +76,7 @@
                 NSArray *beckons = [[[result objectForKey:@"payload"] objectForKey:@"user" ]objectForKey:@"beckons"];
                 NSArray *friends = [[[result objectForKey:@"payload"] objectForKey:@"user" ]objectForKey:@"friends"];
                 NSArray *groups = [[[result objectForKey:@"payload"] objectForKey:@"user" ]objectForKey:@"groups"];
+                self.userId = [result objectForKey:@"id"];
                 [self.beckons loadData:beckons];
                 [self.friends loadData:friends];
                 [self.groups loadData:groups];
@@ -121,6 +149,13 @@
         _beckons.server = self.server;
     }
     return _beckons;
+}
+
+- (NSMutableDictionary *) chatRooms{
+    if(!_chatRooms){
+        _chatRooms = [[NSMutableDictionary alloc] init];
+    }
+    return _chatRooms;
 }
 
 @end

@@ -12,5 +12,9 @@
 @interface ChatMessage : SOMessage
 
 @property (strong, nonatomic) NSString *message;
+@property (strong, nonatomic) NSString *id;
+
+- (ChatMessage*) initWithChatRoomId: (NSString*)id andMessage: (NSString*) message;
+- (void) flush;
 
 @end

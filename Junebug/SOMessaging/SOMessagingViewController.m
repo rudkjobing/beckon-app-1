@@ -102,7 +102,7 @@
     [super viewDidLayoutSubviews];
     
     dispatch_once(&onceToken, ^{
-        if ([self.conversation count]) {
+        if ([self.conversation count] - 1) {//HACK!!! Some object has sneaked into conversations
             NSInteger section = self.conversation.count - 1;
             NSInteger row = [self.conversation[section] count] - 1;
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];

@@ -83,8 +83,11 @@
     if([segue.identifier isEqualToString:@"BeckonsToBeckon"]){
         NSIndexPath *index = [self.beckonTableView indexPathForSelectedRow];
         Beckon *beckon = [self.beckons.beckons objectAtIndex:index.row];
-        ChatRoomVC *detailVC = [segue destinationViewController];
-        detailVC.chatRoom = [[ChatRoom alloc] initWithId:beckon.chatRoomId];
+        ChatRoomVC *chatRoomVC = [segue destinationViewController];
+        beckon.chatRoom.chatRoomVC = chatRoomVC;
+        chatRoomVC.dataSource = beckon.chatRoom.chatMessages;
+        chatRoomVC.chatRoomId = beckon.chatRoomId;
+        [beckon.chatRoom sync];
     }
 }
 

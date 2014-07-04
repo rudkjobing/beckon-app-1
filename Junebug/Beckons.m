@@ -7,6 +7,8 @@
 //
 
 #import "Beckons.h"
+#import "ChatRoom.h"
+#import "AppDelegate.h"
 
 @implementation Beckons
 
@@ -36,6 +38,9 @@
         beckon.title = [child objectForKey:@"title"];
         beckon.chatRoomId = [[child objectForKey:@"chatRoom"] objectForKey:@"id"];
         beckon.server = self.server;
+        beckon.chatRoom = [[ChatRoom alloc] initWithId: beckon.chatRoomId];
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.appState.chatRooms setObject:beckon.chatRoom forKey:beckon.chatRoomId];
         [self.beckons addObject: beckon];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadBeckonTableView" object:self];

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Server.h"
+#import "ChatRoom.h"
 
 @interface Beckon : NSObject
 
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) NSMutableArray *friends;
 @property (strong, nonatomic) NSString *date;
 @property (strong, nonatomic) Server *server;
+@property (strong, nonatomic) ChatRoom *chatRoom;
 
 - (void) flush;
 

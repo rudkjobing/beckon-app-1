@@ -7,10 +7,13 @@
 //
 
 #import "SOMessagingViewController.h"
-#import "ChatRoom.h"
+
 
 @interface ChatRoomVC : SOMessagingViewController
 
-@property (strong, nonatomic)ChatRoom *chatRoom;
+@property (strong, nonatomic) NSMutableArray *dataSource;
+@property (strong, nonatomic) NSString *chatRoomId;
+@property (strong, nonatomic) NSString *clientId;
+@property (strong, nonatomic) NSString *senderId;
 
 @end
