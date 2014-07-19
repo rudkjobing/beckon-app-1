@@ -22,6 +22,7 @@
     self = [super init];
     self.id = id;//ChatRoom ID
     self.text = message;
+    self.message = message;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.server = appDelegate.appState.server;
     return self;
