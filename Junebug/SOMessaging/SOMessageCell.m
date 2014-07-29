@@ -91,6 +91,9 @@ static BOOL cellIsDragging;
     if (self.timeLabel) {
         [self.timeLabel removeFromSuperview];
     }
+    if (self.nameLabel) {
+        [self.nameLabel removeFromSuperview];
+    }
     
     self.userImageView = [[UIImageView alloc] init];
     self.userImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
@@ -99,6 +102,10 @@ static BOOL cellIsDragging;
     self.mediaImageView = [[UIImageView alloc] init];
     self.mediaOverlayView = [[UIView alloc] init];
     self.balloonImageView = [[UIImageView alloc] init];
+    //NameLabel customization
+    CGRect nameLabelRect = CGRectMake(10.0, 0.0, 150, 15);
+    self.nameLabel = [[UILabel alloc] initWithFrame:nameLabelRect];
+    self.nameLabel.font = [UIFont systemFontOfSize:12.0];
 
     if (!CGSizeEqualToSize(self.userImageViewSize, CGSizeZero)) {
         CGRect frame = self.userImageView.frame;
@@ -146,6 +153,7 @@ static BOOL cellIsDragging;
     [self.containerView addSubview:self.userImageView];
     
     [self.contentView addSubview:self.timeLabel];
+    [self.contentView addSubview:self.nameLabel];
     
     self.contentView.clipsToBounds = NO;
     self.clipsToBounds = NO;

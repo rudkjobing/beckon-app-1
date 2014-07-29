@@ -26,22 +26,24 @@
     [super viewDidLoad];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createBeckon)];
     self.navigationItem.rightBarButtonItem = addButton;
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(updateTableView:)
-     name:@"ReloadBeckonTableView"
-     object:nil];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.beckons = appDelegate.appState.beckons;
     self.beckonTableView.dataSource = self;
     self.beckonTableView.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
+    [self.beckons addObserver:self forKeyPath:@"newestBeckonPointer" options:0 context:nil];
+}
+
+-(void)viewEnteredForeground{
+    [self.beckons getUpdates];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    [self.beckons getUpdates];
     [[self tabBarItem] setBadgeValue: nil];
 }
 
-- (void) updateTableView: (NSNotification*) notification{
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     [self.beckonTableView reloadData];
 }
 
@@ -86,8 +88,7 @@
         ChatRoomVC *chatRoomVC = [segue destinationViewController];
         beckon.chatRoom.chatRoomVC = chatRoomVC;
         chatRoomVC.dataSource = beckon.chatRoom.chatMessages;
-        chatRoomVC.chatRoomId = beckon.chatRoomId;
-        [beckon.chatRoom sync];
+        chatRoomVC.chatRoom = beckon.chatRoom;
     }
 }
 

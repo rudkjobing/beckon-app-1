@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSString *message;
 @property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString *from;
 
 - (ChatMessage*) initWithChatRoomId: (NSString*)id andMessage: (NSString*) message;
 - (void) flush;

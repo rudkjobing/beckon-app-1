@@ -7,6 +7,7 @@
 //
 
 #import "ChatRoomVC.h"
+#import "ChatRoom.h"
 #import "ChatMessage.h"
 #import "AppDelegate.h"
 
@@ -21,14 +22,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.dataSource = [[NSMutableArray alloc] init];
+    [self.chatRoom sync];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
+
+}
+
+-(void)viewEnteredForeground{
+    if([self isBeingPresented]){
+         [self.chatRoom sync];
+    }
 }
 
 - (NSMutableArray *)messages
 {
-    
-    
-    
     return self.dataSource;
     //return array of SOMessage objects
 }
@@ -39,13 +45,12 @@
     
     // Customize balloon as you wish
     if (!message.fromMe) {
-        cell.contentInsets = UIEdgeInsetsMake(0, 3.0f, 0, 0); //Move content for 3 pt. to right
+        cell.contentInsets = UIEdgeInsetsMake(0, 4.0f, 0, 0); //Move content for 3 pt. to right
         cell.textView.textColor = [UIColor blackColor];
-        cell.timeLabel.text = @"321";
+        cell.nameLabel.text = message.from;
     } else {
-        cell.contentInsets = UIEdgeInsetsMake(0, 0, 0, 3.0f); //Move content for 3 pt. to left
+        cell.contentInsets = UIEdgeInsetsMake(0, 0, 0, 4.0f); //Move content for 3 pt. to left
         cell.textView.textColor = [UIColor whiteColor];
-        cell.timeLabel.text = @"123";
     }
 }
 
@@ -61,7 +66,7 @@
         return;
     }
     
-    ChatMessage *msg = [[ChatMessage alloc] initWithChatRoomId:self.chatRoomId andMessage:message];
+    ChatMessage *msg = [[ChatMessage alloc] initWithChatRoomId:self.chatRoom.id andMessage:message];
     [msg flush];
     msg.text = message;
     

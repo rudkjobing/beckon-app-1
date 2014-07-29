@@ -15,8 +15,9 @@
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) NSMutableArray *beckons;
+@property (strong, nonatomic) NSNumber *newestBeckonPointer;
 
-- (void) getAllBeckons;
+- (void) getUpdates;
 - (void) addBeckon: (Beckon*)beckon;
 - (void) loadData: (NSArray*)data;
 

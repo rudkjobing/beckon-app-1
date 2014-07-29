@@ -25,10 +25,10 @@
 #import <UIKit/UIKit.h>
 #import "SOMessage.h"
 
-#define kBubbleTopMargin 0
+#define kBubbleTopMargin 20
 #define kBubbleLeftMargin 7
 #define kBubbleRightMargin 7
-#define kBubbleBottomMargin 20
+#define kBubbleBottomMargin 10
 
 @class SOMessageCell;
 @protocol SOMessageCellDelegate <NSObject>
@@ -51,6 +51,7 @@
 @property (strong, nonatomic) UILabel *timeLabel; //appears while dragging cell
 @property (strong, nonatomic) UIImageView *mediaImageView;
 @property (strong, nonatomic) UIView *mediaOverlayView; // For video only
+@property (strong, nonatomic) UILabel *nameLabel;
 
 @property (strong, nonatomic) UIImageView *balloonImageView;
 

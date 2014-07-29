@@ -10,18 +10,18 @@
 #import "ChatRoom.h"
 #import "AppDelegate.h"
 
+
 @implementation Beckons
 
-
-- (void) getAllBeckons{
+- (void) getUpdates{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] init];
-        NSDictionary *result = [self.server queryServerDomain:@"beckon" WithCommand:@"getAll" andData:data];
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.newestBeckonPointer, @"newestBeckonId", nil];
+        NSDictionary *result = [self.server  queryServerDomain:@"beckon" WithCommand:@"getBeckons" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
-                NSArray *payload = [[result objectForKey:@"payload"] objectForKey:@"beckons"];
-                [self loadData:payload];
+                NSArray *beckons = [[result objectForKey:@"payload"] objectForKey:@"beckons"];
+                [self loadData:beckons];
             }
             else{
                 
@@ -42,13 +42,17 @@
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.appState.chatRooms setObject:beckon.chatRoom forKey:beckon.chatRoomId];
         [self.beckons addObject: beckon];
+        if([self.newestBeckonPointer integerValue] < [beckon.id integerValue]){
+            self.newestBeckonPointer = beckon.id;
+        }
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadBeckonTableView" object:self];
 }
 
-- (void) addBeckon:(Beckon*)beckon{
+- (void) addBeckon:(Beckon *)beckon{
     [self.beckons addObject: beckon];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadBeckonTableView" object:self];
+    if(self.newestBeckonPointer < beckon.id){
+        self.newestBeckonPointer = beckon.id;
+    }
 }
 
 - (NSMutableArray *)beckons{
@@ -56,6 +60,13 @@
         _beckons = [[NSMutableArray alloc] init];
     }
     return _beckons;
+}
+
+- (NSNumber *)newestBeckonPointer{
+    if(!_newestBeckonPointer){
+        _newestBeckonPointer = [[NSNumber alloc] initWithInt:0];
+    }
+    return _newestBeckonPointer;
 }
 
 @end

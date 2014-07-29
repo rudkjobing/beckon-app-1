@@ -12,7 +12,7 @@
 
 @interface Beckon : NSObject
 
-@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *chatRoomId;
 @property (strong, nonatomic) NSMutableArray *friends;

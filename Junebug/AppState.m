@@ -30,6 +30,7 @@
                 if([payload objectForKey:@"ChatMessage"]){
                     NSDictionary *msg = [payload objectForKey:@"ChatMessage"];
                     ChatMessage *message = [[ChatMessage alloc] initWithChatRoomId:[msg objectForKey:@"chatRoom"] andMessage:[msg objectForKey:@"message"]];
+                    message.from = [msg objectForKey:@"from"];
                     ChatRoom *chatRoom = [self.chatRooms objectForKey:[msg objectForKey:@"chatRoom"]];
                     if(chatRoom){
                         [chatRoom recieveMessage:message];
@@ -67,7 +68,7 @@
 }
 
 - (void) getState{
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    /*dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
         NSDictionary *data = [[NSDictionary alloc] init];
         NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"getState" andData:data];
@@ -85,7 +86,8 @@
                 
             }
         });
-    });
+    });*/
+    [self.beckons getUpdates];
 }
 
 - (void) updateNotificationToken{

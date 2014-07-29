@@ -211,7 +211,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.balloonImage = message.fromMe ? self.balloonSendImage : self.balloonReceiveImage;
     cell.textView.textColor = message.fromMe ? [UIColor whiteColor] : [UIColor blackColor];
-    cell.message = message;    
+    cell.message = message;
     
     // For user customization
     int index = (int)[[self messages] indexOfObject:message];

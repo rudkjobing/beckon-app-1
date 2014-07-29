@@ -47,16 +47,14 @@
 
 - (void) loadData:(NSArray*)data{
     [self.chatMessages removeAllObjects];
+    [self.chatRoomVC refreshMessages];
     for(NSDictionary *child in data){
         ChatMessage *chatMessage = [[ChatMessage alloc] init];
         chatMessage.text = [child objectForKey:@"message"];
-        //chatMessage.fromMe = [child objectForKey:@"fromMe"];
         chatMessage.type = SOMessageTypeText;
-        //ChatMessage *prevMesage = self.chatMessages.lastObject;
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-m-d HH:mm:ss"];
-        chatMessage.date = [dateFormat dateFromString:[child objectForKey:@"date"]];
-        //[self.chatMessages addObject:chatMessage];
+        chatMessage.from = [child objectForKey:@"from"];
+        chatMessage.date = [self dateFromString:[child objectForKey:@"date"]];
+
         if([[child objectForKey:@"fromMe"] isEqualToNumber:@(1)]){
             [self.chatRoomVC sendMessage: chatMessage];
         }
@@ -77,4 +75,19 @@
     return _chatMessages;
 }
 
+                            
+-(NSDate *)dateFromString:(NSString *)string
+        {
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+            [dateFormat setLocale:locale];
+            [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            NSTimeInterval interval = 5 * 60 * 60;
+            
+            NSDate *date1 = [dateFormat dateFromString:string];
+            date1 = [date1 dateByAddingTimeInterval:interval];
+            if(!date1) date1= [NSDate date];
+            
+            return date1;
+        }
 @end
