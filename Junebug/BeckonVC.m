@@ -66,18 +66,8 @@
     if (!cell) {
         cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    UILabel *lblTeam = (UILabel*)[cell viewWithTag:321];
-    if(!lblTeam){
-        lblTeam = [[UILabel alloc]initWithFrame:CGRectMake(215, 10, 120, 15)];
-        lblTeam.backgroundColor = [UIColor clearColor];
-        lblTeam.textColor = [UIColor colorWithRed:103/255.0 green:103/255.0 blue:103/255.0 alpha:1.0];
-        lblTeam.tag = 321;
-        lblTeam.font = [UIFont fontWithName:@"Futura-Medium" size:12.0];
-        [cell addSubview:lblTeam];
-    }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     cell.textLabel.text = beckon.title;
-    lblTeam.text = @"2H30M";
     return cell;
 }
 

@@ -22,15 +22,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void) viewWillAppear:(BOOL)animated{
     [self.chatRoom sync];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
-
 }
 
 -(void)viewEnteredForeground{
-    if([self isBeingPresented]){
-         [self.chatRoom sync];
-    }
+    [self.chatRoom sync];
+}
+
+-(void) viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (NSMutableArray *)messages
