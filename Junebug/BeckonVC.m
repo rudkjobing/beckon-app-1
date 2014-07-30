@@ -42,6 +42,7 @@
     [self.beckons addObserver:self forKeyPath:@"newestBeckonPointer" options:0 context:nil];
 //added clearcolor background
     self.beckonTableView.backgroundColor = [UIColor clearColor];
+    [self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
 }
 
 
@@ -79,13 +80,15 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier =@"BeckonCell";
-    BeckonCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *cellIdentifier = @"BeckonCell";
+    BeckonCell *cell = (BeckonCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
+        NSLog(@"Before alloc cell");
         cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     cell.textLabel.text = beckon.title;
+    cell.placeOfEventLabel.text = @"Your ASS";
     return cell;
 }
 
