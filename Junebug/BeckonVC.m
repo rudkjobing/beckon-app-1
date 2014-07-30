@@ -86,8 +86,9 @@
         NSLog(@"Before alloc cell");
         cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
-    cell.nameOfEventLabel.text = beckon.title;
+    //Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
+    //cell.nameOfEventLabel.text = beckon.title;
+    cell.nameOfEventLabel.text = @"Party";
     cell.timerLabel.text = @"1W2D";
     cell.placeOfEventLabel.text = @"Your ASS";
     cell.timeOfEventLabel.text = @"13-08-78 13:30";

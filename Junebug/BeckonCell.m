@@ -23,13 +23,13 @@
         CGRect frameOfTimerLabel = CGRectMake(startingPointofLabels, 0.0, 44.0, 55.0);
         self.timerLabel = [[UILabel alloc] initWithFrame:frameOfTimerLabel];
         self.timerLabel.textColor = [UIColor whiteColor];
-        self.timerLabel.font = [UIFont boldSystemFontOfSize:16];
+        self.timerLabel.font = [UIFont boldSystemFontOfSize:14];
         self.timerLabel.backgroundColor = [UIColor clearColor];
         self.timerLabel.textAlignment = UIControlContentHorizontalAlignmentCenter;
         self.timerLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
         
         //referencepoints
-        CGFloat referencepointOnX = (self.timerLabel.frame.size.width + startingPointofLabels);
+        CGFloat referencepointOnX = ((self.timerLabel.frame.size.width + startingPointofLabels) + 10.0);
         CGFloat referencepointOnY = 5.0;
         CGFloat hightOfNameOfEventLabel = 20.0;
         CGFloat widthOfEventLabel = 150.0;
@@ -37,14 +37,13 @@
         //Create UILabel for nameOfEvents
         CGRect placeMentOfNameOfEventLabel = CGRectMake(referencepointOnX, referencepointOnY, widthOfEventLabel, hightOfNameOfEventLabel);
         self.nameOfEventLabel = [[UILabel alloc] initWithFrame:placeMentOfNameOfEventLabel];
-        self.nameOfEventLabel.font = [UIFont boldSystemFontOfSize:12];
+        self.nameOfEventLabel.font = [UIFont boldSystemFontOfSize:16];
         self.nameOfEventLabel.backgroundColor = [UIColor clearColor];
-        self.nameOfEventLabel.textColor = [UIColor clearColor];
+        self.nameOfEventLabel.textColor = [UIColor whiteColor];
         self.nameOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nameOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
         
         //Update referencepoints on X and Y
-        referencepointOnX = (referencepointOnX + widthOfEventLabel);
         referencepointOnY = (referencepointOnY + hightOfNameOfEventLabel);
         
         //add placeOfeventLabel
@@ -52,7 +51,7 @@
         
         CGRect placementOfPlaceOfEventLabel = CGRectMake(referencepointOnX, referencepointOnY, widthOfEventLabel, heightOfPlaceOfEventLabel);
         self.placeOfEventLabel = [[UILabel alloc] initWithFrame:placementOfPlaceOfEventLabel];
-        self.placeOfEventLabel.font = [UIFont systemFontOfSize:10];
+        self.placeOfEventLabel.font = [UIFont systemFontOfSize:12];
         self.placeOfEventLabel.textColor = [UIColor whiteColor];
         self.placeOfEventLabel.backgroundColor = [UIColor clearColor];
         self.placeOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -61,13 +60,15 @@
         //Update referncepoints on Y
         referencepointOnY = (referencepointOnY + heightOfPlaceOfEventLabel);
         
+        
+        //add timeofeventLabel
         CGRect placementofTimeOfEventLabel = CGRectMake(referencepointOnX, referencepointOnY, widthOfEventLabel, 15.0);
         self.timeOfEventLabel = [[UILabel alloc] initWithFrame:placementofTimeOfEventLabel];
         self.timeOfEventLabel.backgroundColor = [UIColor clearColor];
         self.timeOfEventLabel.textColor = [UIColor whiteColor];
-        self.timeOfEventLabel.font = [UIFont italicSystemFontOfSize:10];
-        self.placeOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
-        self.placeOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
+        self.timeOfEventLabel.font = [UIFont italicSystemFontOfSize:12];
+        self.timeOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
+        //self.timeOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
         
         //Set cell opague
         self.backgroundColor = [UIColor clearColor];
