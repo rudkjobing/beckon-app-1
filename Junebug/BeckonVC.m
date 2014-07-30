@@ -87,8 +87,10 @@
         cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
-    cell.textLabel.text = beckon.title;
+    cell.nameOfEventLabel.text = beckon.title;
+    cell.timerLabel.text = @"1W2D";
     cell.placeOfEventLabel.text = @"Your ASS";
+    cell.timeOfEventLabel.text = @"13-08-78 13:30";
     return cell;
 }
 

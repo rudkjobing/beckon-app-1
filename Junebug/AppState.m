@@ -87,6 +87,7 @@
             }
         });
     });*/
+    [self.friends getAllFriends];
     [self.beckons getUpdates];
 }
 

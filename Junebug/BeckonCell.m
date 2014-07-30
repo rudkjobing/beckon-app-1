@@ -68,7 +68,9 @@
         self.timeOfEventLabel.font = [UIFont italicSystemFontOfSize:10];
         self.placeOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
         self.placeOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
-    
+        
+        //Set cell opague
+        self.backgroundColor = [UIColor clearColor];
         
         //add the subviews to contentview of cell
         [self.contentView addSubview:self.nameOfEventLabel];
