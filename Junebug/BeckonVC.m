@@ -24,14 +24,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+//added backgroundLayer
+    CAGradientLayer *bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    
+    self.title = @"Beckons";
+    
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createBeckon)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.beckons = appDelegate.appState.beckons;
     self.beckonTableView.dataSource = self;
     self.beckonTableView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
     [self.beckons addObserver:self forKeyPath:@"newestBeckonPointer" options:0 context:nil];
+//added clearcolor background
+    self.beckonTableView.backgroundColor = [UIColor clearColor];
+}
+
+//Added row height
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
 }
 
 -(void)viewEnteredForeground{

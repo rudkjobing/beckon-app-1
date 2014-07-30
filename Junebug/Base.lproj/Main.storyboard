@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iGb-2C-2tD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iGb-2C-2tD">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Beckon friends-->
+        <!--Beckon CreateVC - Beckon friends-->
         <scene sceneID="SxX-dB-3tm">
             <objects>
                 <viewController id="MiU-PY-Ddc" customClass="BeckonCreateVC" sceneMemberID="viewController">
@@ -84,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="1295" y="-2681"/>
         </scene>
-        <!--Beckons-->
+        <!--BeckonVC-->
         <scene sceneID="l63-Em-TAr">
             <objects>
                 <viewController id="GYV-ga-gUC" customClass="BeckonVC" sceneMemberID="viewController">
@@ -113,7 +113,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Beckons" id="b4u-fN-Nki"/>
+                    <navigationItem key="navigationItem" id="b4u-fN-Nki"/>
                     <connections>
                         <outlet property="beckonTableView" destination="aJa-AD-0rs" id="cGK-rb-kd9"/>
                         <segue destination="T1g-Wn-9a1" kind="modal" identifier="BeckonToCreate" id="UXy-j7-pFa"/>
@@ -123,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="763" y="-1923"/>
         </scene>
-        <!--Pick friends-->
+        <!--Beckon Pick FriendsVC - Pick friends-->
         <scene sceneID="fcO-hw-ZyD">
             <objects>
                 <viewController id="CJY-iP-9oY" customClass="BeckonPickFriendsVC" sceneMemberID="viewController">
@@ -224,7 +224,7 @@
             </objects>
             <point key="canvasLocation" x="1546" y="-348"/>
         </scene>
-        <!--Friends-->
+        <!--FriendsVC - Friends-->
         <scene sceneID="0Ud-wy-SmK">
             <objects>
                 <viewController id="Zjp-ER-XIC" customClass="FriendsVC" sceneMemberID="viewController">
@@ -259,7 +259,7 @@
             </objects>
             <point key="canvasLocation" x="2213" y="-1159"/>
         </scene>
-        <!--Chat-->
+        <!--Chat RoomVC - Chat-->
         <scene sceneID="JWz-jH-WcQ">
             <objects>
                 <viewController id="nfr-Zf-5eo" customClass="ChatRoomVC" sceneMemberID="viewController">
@@ -275,7 +275,7 @@
             </objects>
             <point key="canvasLocation" x="2016" y="-348"/>
         </scene>
-        <!--Edit Group-->
+        <!--Group Edit MembersVC - Edit Group-->
         <scene sceneID="dA5-qK-Wyx">
             <objects>
                 <viewController id="tXq-dz-HMa" customClass="GroupEditMembersVC" sceneMemberID="viewController">
@@ -300,7 +300,7 @@
             </objects>
             <point key="canvasLocation" x="4238" y="-314"/>
         </scene>
-        <!--Members-->
+        <!--Group DetailVC - Members-->
         <scene sceneID="g7r-3c-Dgi">
             <objects>
                 <viewController id="oKL-i1-vlE" customClass="GroupDetailVC" sceneMemberID="viewController">
@@ -336,7 +336,7 @@
             </objects>
             <point key="canvasLocation" x="3706" y="-314"/>
         </scene>
-        <!--Settings-->
+        <!--SettingsVC - Settings-->
         <scene sceneID="Zrf-Jo-bdX">
             <objects>
                 <viewController id="Oec-XW-uA1" customClass="SettingsVC" sceneMemberID="viewController">
@@ -351,7 +351,7 @@
             </objects>
             <point key="canvasLocation" x="2661" y="709"/>
         </scene>
-        <!--Groups-->
+        <!--GroupsVC - Groups-->
         <scene sceneID="dKM-df-IKu">
             <objects>
                 <viewController id="7i1-zh-USo" customClass="GroupsVC" sceneMemberID="viewController">
@@ -607,7 +607,7 @@
             </objects>
             <point key="canvasLocation" x="224" y="391"/>
         </scene>
-        <!--Friends-->
+        <!--Navigation Controller - Friends-->
         <scene sceneID="yuu-A9-XTP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g9R-tf-9Ve" sceneMemberID="viewController">
@@ -626,7 +626,7 @@
             </objects>
             <point key="canvasLocation" x="1729" y="-1159"/>
         </scene>
-        <!--Groups-->
+        <!--Navigation Controller - Groups-->
         <scene sceneID="H3Y-Fl-Nml">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="x4H-ao-anO" sceneMemberID="viewController">
@@ -645,7 +645,7 @@
             </objects>
             <point key="canvasLocation" x="2503" y="-317"/>
         </scene>
-        <!--Beckon-->
+        <!--Navigation Controller - Beckon-->
         <scene sceneID="5aw-qB-IeA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5sj-0x-LIm" sceneMemberID="viewController">
@@ -664,7 +664,7 @@
             </objects>
             <point key="canvasLocation" x="769" y="-1159"/>
         </scene>
-        <!--Chat-->
+        <!--Navigation Controller - Chat-->
         <scene sceneID="lkL-WL-r04">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ska-Hb-ycp" sceneMemberID="viewController">
@@ -705,9 +705,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

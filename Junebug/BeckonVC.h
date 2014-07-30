@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GradientLayers.h"
 
 @interface BeckonVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2688A7421988F51200C7C1E1 /* GradientLayers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688A7411988F51200C7C1E1 /* GradientLayers.m */; };
 		F9163CF8193BAD07002EE1E2 /* NSString+Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = F9163CDB193BAD07002EE1E2 /* NSString+Calculation.m */; };
 		F9163CF9193BAD07002EE1E2 /* attachment.png in Resources */ = {isa = PBXBuildFile; fileRef = F9163CDD193BAD07002EE1E2 /* attachment.png */; };
 		F9163CFA193BAD07002EE1E2 /* attachment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9163CDE193BAD07002EE1E2 /* attachment@2x.png */; };
@@ -78,6 +79,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2688A7401988F51200C7C1E1 /* GradientLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientLayers.h; sourceTree = "<group>"; };
+		2688A7411988F51200C7C1E1 /* GradientLayers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLayers.m; sourceTree = "<group>"; };
 		F9163CDA193BAD07002EE1E2 /* NSString+Calculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Calculation.h"; sourceTree = "<group>"; };
 		F9163CDB193BAD07002EE1E2 /* NSString+Calculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Calculation.m"; sourceTree = "<group>"; };
 		F9163CDD193BAD07002EE1E2 /* attachment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attachment.png; sourceTree = "<group>"; };
@@ -449,6 +452,8 @@
 			children = (
 				F9BBEFF7190BF6B800452C5C /* Server.h */,
 				F9BBEFF8190BF6B800452C5C /* Server.m */,
+				2688A7401988F51200C7C1E1 /* GradientLayers.h */,
+				2688A7411988F51200C7C1E1 /* GradientLayers.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -574,6 +579,7 @@
 				F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */,
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
 				F91D14ED1934FD7D0094299C /* Beckon.m in Sources */,
+				2688A7421988F51200C7C1E1 /* GradientLayers.m in Sources */,
 				F9163D05193BAD07002EE1E2 /* SOMessageCell.m in Sources */,
 				F9B0170A192A68940088B6AB /* Group.m in Sources */,
 				F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */,
