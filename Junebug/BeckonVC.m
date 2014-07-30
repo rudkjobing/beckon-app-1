@@ -42,7 +42,7 @@
     [self.beckons addObserver:self forKeyPath:@"newestBeckonPointer" options:0 context:nil];
 //added clearcolor background
     self.beckonTableView.backgroundColor = [UIColor clearColor];
-    [self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
+    //[self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
 }
 
 
