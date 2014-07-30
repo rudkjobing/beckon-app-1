@@ -44,11 +44,6 @@
     self.beckonTableView.backgroundColor = [UIColor clearColor];
 }
 
-//Added row height
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 55;
-}
 
 -(void)viewEnteredForeground{
     [self.beckons getUpdates];
@@ -71,6 +66,13 @@
 {
     return 1;
 }
+
+//Added row height
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.beckons.beckons.count;
