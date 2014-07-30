@@ -29,7 +29,7 @@
             }
         }
     }
-    else if([updateType isEqualToString:@"Beckons"]){
+    else if([updateType isEqualToString:@"Beckon"]){
         [self.beckons getUpdates];
     }
 }
