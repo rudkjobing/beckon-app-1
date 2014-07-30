@@ -42,7 +42,7 @@
     [self.beckons addObserver:self forKeyPath:@"newestBeckonPointer" options:0 context:nil];
 //added clearcolor background
     self.beckonTableView.backgroundColor = [UIColor clearColor];
-    //[self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
+    [self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
 }
 
 
@@ -51,7 +51,6 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
-    [self.beckons getUpdates];
     [[self tabBarItem] setBadgeValue: nil];
 }
 
@@ -93,6 +92,10 @@
     cell.placeOfEventLabel.text = @"Your ASS";
     cell.timeOfEventLabel.text = @"13-08-78 13:30";
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"BeckonsToBeckon" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

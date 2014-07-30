@@ -20,6 +20,18 @@
 
 - (void) handleNotification: (NSDictionary *)userInfo{
     NSLog(@"%@", userInfo);
+    NSString *updateType = [[userInfo objectForKey:@"prm"] objectForKey:@"ut"];
+    NSString *destinationId = [[userInfo objectForKey:@"prm"] objectForKey:@"did"];
+    if([updateType isEqualToString:@"ChatRoom"]){
+        for(Beckon *beckon in self.beckons.beckons){
+            if([beckon.chatRoom.id isEqualToString:destinationId]){
+                [beckon.chatRoom sync];
+            }
+        }
+    }
+    else if([updateType isEqualToString:@"Beckons"]){
+        [self.beckons getUpdates];
+    }
 }
 
 - (void) signInUsingEmail: (NSString *) email AndPassword: (NSString *) password{
