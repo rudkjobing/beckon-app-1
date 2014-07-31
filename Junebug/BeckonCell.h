@@ -17,5 +17,6 @@
 @property(strong,nonatomic) NSDate *begins;
 
 - (void) startTimer;
+- (void) updateLabel;
 
 @end

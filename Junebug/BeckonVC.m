@@ -85,15 +85,16 @@
     static NSString *cellIdentifier = @"BeckonCell";
     BeckonCell *cell = (BeckonCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        NSLog(@"Before alloc cell");
         cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
-    cell.timerLabel.text = @"NA";
     cell.placeOfEventLabel.text = @"Not Implemented";
-    cell.timeOfEventLabel.text = beckon.ends;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    cell.timeOfEventLabel.text = [formatter stringFromDate:beckon.begins];
+    [cell updateLabel];
     return cell;
 }
 

@@ -13,16 +13,13 @@
 +(NSDate *)dateFromString:(NSString *)string
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-    [dateFormat setLocale:locale];
-    NSTimeZone *tz = [NSTimeZone localTimeZone];
+    NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"UTC"];
     [dateFormat setTimeZone:tz];
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSTimeInterval interval = 5 * 60 * 60;
+    NSTimeInterval interval = 0 * 60 * 60;
     
     NSDate *date1 = [dateFormat dateFromString:string];
     date1 = [date1 dateByAddingTimeInterval:interval];
-    if(!date1) date1= [NSDate date];
     
     return date1;
 }
