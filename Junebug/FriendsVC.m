@@ -120,6 +120,9 @@
     }
     Friend *friend = [self.friends.friends objectAtIndex:indexPath.row];
     cell.nameOfFriend.text = friend.nickname;
+    cell.emailOfFriend.text = @"lalala@gmail.com";
+    cell.nickNameOfFriend.text = @"MEMEME";
+    cell.pictureOfFriend.image = [UIImage imageNamed:@"squirrelquestion.jpg"];
     return cell;
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		263D6467198AE275006255F5 /* squirrelquestion.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 263D6466198AE275006255F5 /* squirrelquestion.jpg */; };
 		2688A7421988F51200C7C1E1 /* GradientLayers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688A7411988F51200C7C1E1 /* GradientLayers.m */; };
 		F9163CF8193BAD07002EE1E2 /* NSString+Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = F9163CDB193BAD07002EE1E2 /* NSString+Calculation.m */; };
 		F9163CF9193BAD07002EE1E2 /* attachment.png in Resources */ = {isa = PBXBuildFile; fileRef = F9163CDD193BAD07002EE1E2 /* attachment.png */; };
@@ -80,6 +81,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		263D6466198AE275006255F5 /* squirrelquestion.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = squirrelquestion.jpg; path = ../../../../../Desktop/squirrelquestion.jpg; sourceTree = "<group>"; };
 		2688A7401988F51200C7C1E1 /* GradientLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientLayers.h; sourceTree = "<group>"; };
 		2688A7411988F51200C7C1E1 /* GradientLayers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLayers.m; sourceTree = "<group>"; };
 		F9163CDA193BAD07002EE1E2 /* NSString+Calculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Calculation.h"; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		F9ADF35D190BFABB002C6809 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				263D6466198AE275006255F5 /* squirrelquestion.jpg */,
 				F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */,
 				F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */,
 				F9BDCFA219379EE10095E598 /* Logo 58x58.png */,
@@ -536,6 +539,7 @@
 				F9163CFC193BAD07002EE1E2 /* bubble@2x.png in Resources */,
 				F9163CFA193BAD07002EE1E2 /* attachment@2x.png in Resources */,
 				F9163D00193BAD07002EE1E2 /* inputTextBG@2x.png in Resources */,
+				263D6467198AE275006255F5 /* squirrelquestion.jpg in Resources */,
 				F9163D01193BAD07002EE1E2 /* play_button.png in Resources */,
 				F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */,
 				F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */,
