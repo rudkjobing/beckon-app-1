@@ -119,9 +119,9 @@
         cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Friend *friend = [self.friends.friends objectAtIndex:indexPath.row];
-    cell.nameOfFriend.text = friend.nickname;
-    cell.emailOfFriend.text = @"lalala@gmail.com";
-    cell.nickNameOfFriend.text = @"MEMEME";
+    cell.nameOfFriend.text = [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
+    cell.emailOfFriend.text = friend.email;
+    cell.nickNameOfFriend.text = friend.nickname;
     cell.pictureOfFriend.image = [UIImage imageNamed:@"squirrel.jpg"];
     return cell;
 }
