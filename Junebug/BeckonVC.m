@@ -88,7 +88,9 @@
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
     cell.placeOfEventLabel.text = @"Not Implemented";
-    cell.timeOfEventLabel.text = beckon.ends;
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    cell.timeOfEventLabel.text = [formatter stringFromDate:beckon.begins];
     [cell updateLabel];
     return cell;
 }

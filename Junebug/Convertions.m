@@ -16,8 +16,10 @@
     NSTimeZone *tz = [NSTimeZone timeZoneWithName:@"UTC"];
     [dateFormat setTimeZone:tz];
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSTimeInterval interval = 0 * 60 * 60;
+    
     NSDate *date1 = [dateFormat dateFromString:string];
-    if(!date1) date1= [NSDate date];
+    date1 = [date1 dateByAddingTimeInterval:interval];
     
     return date1;
 }
