@@ -10,6 +10,7 @@
 #import "FriendsVC.h"
 #import "Friends.h"
 #import "AppDelegate.h"
+#import "GradientLayers.h"
 
 @interface FriendsVC()
 
@@ -24,6 +25,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    self.friendsTableView.backgroundColor = [UIColor clearColor];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView:) name:@"ReloadFriendTableView" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentPendingFriendRequestsAlert:) name:@"PendingFriendRequests" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(FriendRequestAccepted:) name:@"FriendRequestAccepted" object:nil];
@@ -34,6 +41,8 @@
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    [self.friendsTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"FriendCell"];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -90,6 +99,13 @@
 {
     return 1;
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.friends.friends.count;
@@ -104,6 +120,11 @@
     Friend *friend = [self.friends.friends objectAtIndex:indexPath.row];
     cell.textLabel.text = friend.nickname;
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

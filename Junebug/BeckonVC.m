@@ -24,6 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 //added backgroundLayer
     CAGradientLayer *bgLayer = [GradientLayers appBlueGradient];
     bgLayer.frame = self.view.bounds;
@@ -40,8 +41,10 @@
     self.beckonTableView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
     [self.beckons addObserver:self forKeyPath:@"newestBeckonPointer" options:0 context:nil];
+    
 //added clearcolor background
     self.beckonTableView.backgroundColor = [UIColor clearColor];
+    
     [self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
 }
 
@@ -93,6 +96,10 @@
     cell.placeOfEventLabel.text = @"Your ASS";
     cell.timeOfEventLabel.text = @"13-08-78 13:30";
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

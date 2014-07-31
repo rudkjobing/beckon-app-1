@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface FriendCell : UITableViewCell
+
+@property (strong, nonatomic) UILabel *nickNameOfFriend;
+@property(strong, nonatomic) UILabel *nameOfFriend;
+@property(strong, nonatomic) UILabel *emailOfFriend;
+@property(strong, nonatomic) UIImageView *pictureOfFriend;
 
 @end
