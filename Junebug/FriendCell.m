@@ -34,7 +34,7 @@
         
         CGRect frameOfNickNameLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, nickNameLabelHeight);
         UILabel *nickNameOfFriend = [[UILabel alloc] initWithFrame:frameOfNickNameLabel];
-        self.nickNameOfFriend.backgroundColor = [UIColor clearColor];
+        self.nickNameOfFriend.backgroundColor = [UIColor redColor];
         self.nickNameOfFriend.font = [UIFont boldSystemFontOfSize:16];
         self.nickNameOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nickNameOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
@@ -48,7 +48,7 @@
         
         CGRect frameOfNameLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, nameofFriendLabelHeight);
         UILabel *nameOfFriend = [[UILabel alloc] initWithFrame:frameOfNameLabel];
-        self.nameOfFriend.backgroundColor = [UIColor clearColor];
+        self.nameOfFriend.backgroundColor = [UIColor grayColor];
         self.nameOfFriend.font = [UIFont systemFontOfSize:12];
         self.nameOfFriend.textColor = [UIColor whiteColor];
         self.nameOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
@@ -62,7 +62,7 @@
         
         CGRect frameOfEmailLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, emailLabelheight);
         UILabel *emailOfFriend = [[UILabel alloc] initWithFrame:frameOfEmailLabel];
-        self.emailOfFriend.backgroundColor = [UIColor clearColor];
+        self.emailOfFriend.backgroundColor = [UIColor greenColor];
         self.emailOfFriend.font = [UIFont italicSystemFontOfSize:12];
         self.emailOfFriend.textColor = [UIColor whiteColor];
         self.emailOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -74,6 +74,8 @@
         [self.contentView addSubview:nickNameOfFriend];
         [self.contentView addSubview:nameOfFriend];
         [self.contentView addSubview:emailOfFriend];
+        
+        self.backgroundColor = [UIColor clearColor];
         
     }
     return self;

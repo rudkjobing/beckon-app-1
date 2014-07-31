@@ -11,6 +11,7 @@
 #import "Friends.h"
 #import "AppDelegate.h"
 #import "GradientLayers.h"
+#import "FriendCell.h"
 
 @interface FriendsVC()
 
@@ -118,7 +119,7 @@
         cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Friend *friend = [self.friends.friends objectAtIndex:indexPath.row];
-    cell.textLabel.text = friend.nickname;
+    cell.nameOfFriend.text = friend.nickname;
     return cell;
 }
 
