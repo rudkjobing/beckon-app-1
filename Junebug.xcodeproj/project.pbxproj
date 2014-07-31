@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		263D6467198AE275006255F5 /* squirrelquestion.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 263D6466198AE275006255F5 /* squirrelquestion.jpg */; };
 		2688A7421988F51200C7C1E1 /* GradientLayers.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688A7411988F51200C7C1E1 /* GradientLayers.m */; };
 		F9163CF8193BAD07002EE1E2 /* NSString+Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = F9163CDB193BAD07002EE1E2 /* NSString+Calculation.m */; };
 		F9163CF9193BAD07002EE1E2 /* attachment.png in Resources */ = {isa = PBXBuildFile; fileRef = F9163CDD193BAD07002EE1E2 /* attachment.png */; };
@@ -41,6 +40,7 @@
 		F95B92BF193A6A5800416BDA /* FriendTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F95B92BE193A6A5800416BDA /* FriendTabVC.m */; };
 		F95B92CA193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png in Resources */ = {isa = PBXBuildFile; fileRef = F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */; };
 		F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */ = {isa = PBXBuildFile; fileRef = F95B92CB193A8D3E00416BDA /* Lalaatest3ocu.png */; };
+		F99B0B67198AE65C00849B94 /* squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F99B0B66198AE65C00849B94 /* squirrel.jpg */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
 		F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FA1927AA9E0088B6AB /* GroupCell.m */; };
 		F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FD1928E6510088B6AB /* FriendCell.m */; };
@@ -81,7 +81,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		263D6466198AE275006255F5 /* squirrelquestion.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = squirrelquestion.jpg; path = ../../../../../Desktop/squirrelquestion.jpg; sourceTree = "<group>"; };
 		2688A7401988F51200C7C1E1 /* GradientLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientLayers.h; sourceTree = "<group>"; };
 		2688A7411988F51200C7C1E1 /* GradientLayers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientLayers.m; sourceTree = "<group>"; };
 		F9163CDA193BAD07002EE1E2 /* NSString+Calculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Calculation.h"; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		F95B92BE193A6A5800416BDA /* FriendTabVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTabVC.m; sourceTree = "<group>"; };
 		F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lllaallalalalajfæowehfpawpfuawbdpo.png"; sourceTree = "<group>"; };
 		F95B92CB193A8D3E00416BDA /* Lalaatest3ocu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lalaatest3ocu.png; sourceTree = "<group>"; };
+		F99B0B66198AE65C00849B94 /* squirrel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squirrel.jpg; sourceTree = "<group>"; };
 		F9ADF35A190BF9DA002C6809 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		F9ADF35B190BF9DA002C6809 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
 		F9B016F91927AA9E0088B6AB /* GroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCell.h; sourceTree = "<group>"; };
@@ -327,7 +327,7 @@
 		F9ADF35D190BFABB002C6809 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				263D6466198AE275006255F5 /* squirrelquestion.jpg */,
+				F99B0B66198AE65C00849B94 /* squirrel.jpg */,
 				F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */,
 				F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */,
 				F9BDCFA219379EE10095E598 /* Logo 58x58.png */,
@@ -535,11 +535,11 @@
 				F95B92CA193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png in Resources */,
 				F9BBEFAB190AF05C00452C5C /* Images.xcassets in Resources */,
 				F9163D02193BAD07002EE1E2 /* play_button@2x.png in Resources */,
+				F99B0B67198AE65C00849B94 /* squirrel.jpg in Resources */,
 				F9163CFD193BAD07002EE1E2 /* bubbleReceive.png in Resources */,
 				F9163CFC193BAD07002EE1E2 /* bubble@2x.png in Resources */,
 				F9163CFA193BAD07002EE1E2 /* attachment@2x.png in Resources */,
 				F9163D00193BAD07002EE1E2 /* inputTextBG@2x.png in Resources */,
-				263D6467198AE275006255F5 /* squirrelquestion.jpg in Resources */,
 				F9163D01193BAD07002EE1E2 /* play_button.png in Resources */,
 				F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */,
 				F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */,

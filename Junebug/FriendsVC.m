@@ -122,7 +122,7 @@
     cell.nameOfFriend.text = friend.nickname;
     cell.emailOfFriend.text = @"lalala@gmail.com";
     cell.nickNameOfFriend.text = @"MEMEME";
-    cell.pictureOfFriend.image = [UIImage imageNamed:@"squirrelquestion.jpg"];
+    cell.pictureOfFriend.image = [UIImage imageNamed:@"squirrel.jpg"];
     return cell;
 }
 
