@@ -15,7 +15,13 @@
     application.applicationIconBadgeNumber = 0;
     _appState = [[AppState alloc] init];
     // Override point for customization after application launch.
+    
+    //Change tab bar color to transluscent
+    //[[UITabBar appearance] setBarTintColor:[UIColor clearColor]];
+    
+    
     return YES;
+    
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
