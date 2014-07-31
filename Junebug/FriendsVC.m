@@ -42,7 +42,7 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
     self.navigationItem.rightBarButtonItem = addButton;
     
-    [self.friendsTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"FriendCell"];
+    [self.friendsTableView registerClass:[FriendCell class] forCellReuseIdentifier:@"FriendCell"];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
