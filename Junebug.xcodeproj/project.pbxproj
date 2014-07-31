@@ -76,6 +76,7 @@
 		F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA619379EE10095E598 /* logo 640x1136.png */; };
 		F9BDCFAD19379FBF0095E598 /* Bertil3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */; };
 		F9DE061B195EE5A900D3356A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DE061A195EE5A900D3356A /* MapKit.framework */; };
+		F9E9555C198AB79A001519B8 /* Convertions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E9555B198AB79A001519B8 /* Convertions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -196,6 +197,8 @@
 		F9BDCFA619379EE10095E598 /* logo 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 640x1136.png"; sourceTree = "<group>"; };
 		F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bertil3.jpg; sourceTree = "<group>"; };
 		F9DE061A195EE5A900D3356A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F9E9555A198AB79A001519B8 /* Convertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Convertions.h; sourceTree = "<group>"; };
+		F9E9555B198AB79A001519B8 /* Convertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Convertions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,6 +457,8 @@
 				F9BBEFF8190BF6B800452C5C /* Server.m */,
 				2688A7401988F51200C7C1E1 /* GradientLayers.h */,
 				2688A7411988F51200C7C1E1 /* GradientLayers.m */,
+				F9E9555A198AB79A001519B8 /* Convertions.h */,
+				F9E9555B198AB79A001519B8 /* Convertions.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				F9163D04193BAD07002EE1E2 /* SOMessage.m in Sources */,
 				F9B0170D192A6CCD0088B6AB /* Friend.m in Sources */,
 				F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */,
+				F9E9555C198AB79A001519B8 /* Convertions.m in Sources */,
 				F9BBEFDF190BF40A00452C5C /* FriendDetailVC.m in Sources */,
 				F9BBEFF9190BF6B800452C5C /* Server.m in Sources */,
 				F9BBEFD6190BF27700452C5C /* SignUpVC.m in Sources */,

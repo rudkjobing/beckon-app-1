@@ -9,6 +9,7 @@
 #import "Beckons.h"
 #import "ChatRoom.h"
 #import "AppDelegate.h"
+#import "Convertions.h"
 
 
 @implementation Beckons
@@ -38,6 +39,8 @@
         beckon.title = [child objectForKey:@"title"];
         beckon.chatRoomId = [[child objectForKey:@"chatRoom"] objectForKey:@"id"];
         beckon.server = self.server;
+        beckon.begins = [Convertions dateFromString:[child objectForKey:@"begins"]];
+        beckon.ends = [child objectForKey:@"ends"];
         beckon.chatRoom = [[ChatRoom alloc] initWithId: beckon.chatRoomId];
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.appState.chatRooms setObject:beckon.chatRoom forKey:beckon.chatRoomId];

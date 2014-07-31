@@ -14,5 +14,8 @@
 @property(strong,nonatomic) UILabel *placeOfEventLabel;
 @property(strong,nonatomic) UILabel *timeOfEventLabel;
 @property(strong,nonatomic) UILabel *timerLabel;
+@property(strong,nonatomic) NSDate *begins;
+
+- (void) startTimer;
 
 @end

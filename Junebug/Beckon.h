@@ -16,7 +16,8 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *chatRoomId;
 @property (strong, nonatomic) NSMutableArray *friends;
-@property (strong, nonatomic) NSString *date;
+@property (strong, nonatomic) NSDate *begins;
+@property (strong, nonatomic) NSString *ends;
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) ChatRoom *chatRoom;
 

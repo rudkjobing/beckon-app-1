@@ -29,7 +29,7 @@
         NSLog(@"%@", f);
     }
     self.beckon.title = self.beckonName.text;
-    self.beckon.date = self.beckonDate.date.description;
+    self.beckon.ends = self.beckonDate.date.description;
     [self.beckon flush];
 }
 - (IBAction)DiscardBeckon:(id)sender {

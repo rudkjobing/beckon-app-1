@@ -9,6 +9,7 @@
 #import "ChatRoom.h"
 #import "Server.h"
 #import "AppDelegate.h"
+#import "Convertions.h"
 
 @interface ChatRoom ()
 
@@ -53,7 +54,7 @@
         chatMessage.text = [child objectForKey:@"message"];
         chatMessage.type = SOMessageTypeText;
         chatMessage.from = [child objectForKey:@"from"];
-        chatMessage.date = [self dateFromString:[child objectForKey:@"date"]];
+        chatMessage.date = [Convertions dateFromString:[child objectForKey:@"date"]];
 
         if([[child objectForKey:@"fromMe"] isEqualToNumber:@(1)]){
             [self.chatRoomVC sendMessage: chatMessage];
@@ -76,18 +77,4 @@
 }
 
                             
--(NSDate *)dateFromString:(NSString *)string
-        {
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-            [dateFormat setLocale:locale];
-            [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-            NSTimeInterval interval = 5 * 60 * 60;
-            
-            NSDate *date1 = [dateFormat dateFromString:string];
-            date1 = [date1 dateByAddingTimeInterval:interval];
-            if(!date1) date1= [NSDate date];
-            
-            return date1;
-        }
 @end

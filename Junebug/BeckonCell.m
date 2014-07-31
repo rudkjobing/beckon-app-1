@@ -7,6 +7,7 @@
 //
 
 #import "BeckonCell.h"
+#import "Convertions.h"
 
 @implementation BeckonCell
 
@@ -78,6 +79,8 @@
         [self.contentView addSubview:self.timerLabel];
         [self.contentView addSubview:self.placeOfEventLabel];
         [self.contentView addSubview:self.timeOfEventLabel];
+        
+        [self startTimer];
     }
     return self;
 }
@@ -87,6 +90,21 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void) startTimer{
+    [self updateLabel];
+    NSTimer *timer = [[NSTimer alloc] init];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateLabel) userInfo:nil repeats:YES];
+    
+}
+
+- (void) updateLabel{
+    if(self.begins){
+        NSTimeInterval ti = [self.begins timeIntervalSinceDate:[[NSDate alloc] init]];
+        NSString *stringTi = [Convertions stringFromTimeInterval:ti];
+        self.timerLabel.text = stringTi;
+    }
 }
 
 @end
