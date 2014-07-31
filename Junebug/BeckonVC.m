@@ -82,7 +82,6 @@
     static NSString *cellIdentifier = @"BeckonCell";
     BeckonCell *cell = (BeckonCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        NSLog(@"Before alloc cell");
         cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
