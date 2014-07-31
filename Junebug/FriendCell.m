@@ -23,7 +23,7 @@
         CGFloat widthOfFriendImage = 45.0;
         
         CGRect frameOfFriendImage = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, widthOfFriendImage, heightOfFriendImage);
-        UIImageView *imageOfFriend = [[UIImageView alloc] initWithFrame:frameOfFriendImage];
+        self.pictureOfFriend = [[UIImageView alloc] initWithFrame:frameOfFriendImage];
         
         //Update Referencepoints for next subviews
         startingPointOfSubViewOnX = widthOfFriendImage + startingPointOfSubViewOnX;
@@ -33,7 +33,7 @@
         CGFloat nickNameLabelWidth = 150.0;
         
         CGRect frameOfNickNameLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, nickNameLabelHeight);
-        UILabel *nickNameOfFriend = [[UILabel alloc] initWithFrame:frameOfNickNameLabel];
+        self.nickNameOfFriend = [[UILabel alloc] initWithFrame:frameOfNickNameLabel];
         self.nickNameOfFriend.backgroundColor = [UIColor redColor];
         self.nickNameOfFriend.font = [UIFont boldSystemFontOfSize:16];
         self.nickNameOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -47,7 +47,7 @@
         CGFloat nameofFriendLabelHeight = 15;
         
         CGRect frameOfNameLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, nameofFriendLabelHeight);
-        UILabel *nameOfFriend = [[UILabel alloc] initWithFrame:frameOfNameLabel];
+        self.nameOfFriend = [[UILabel alloc] initWithFrame:frameOfNameLabel];
         self.nameOfFriend.backgroundColor = [UIColor grayColor];
         self.nameOfFriend.font = [UIFont systemFontOfSize:12];
         self.nameOfFriend.textColor = [UIColor whiteColor];
@@ -61,7 +61,7 @@
         CGFloat emailLabelheight = 15.0;
         
         CGRect frameOfEmailLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, emailLabelheight);
-        UILabel *emailOfFriend = [[UILabel alloc] initWithFrame:frameOfEmailLabel];
+        self.emailOfFriend = [[UILabel alloc] initWithFrame:frameOfEmailLabel];
         self.emailOfFriend.backgroundColor = [UIColor greenColor];
         self.emailOfFriend.font = [UIFont italicSystemFontOfSize:12];
         self.emailOfFriend.textColor = [UIColor whiteColor];
@@ -70,10 +70,10 @@
         
         
         //add subviews to cell
-        [self.contentView addSubview:imageOfFriend];
-        [self.contentView addSubview:nickNameOfFriend];
-        [self.contentView addSubview:nameOfFriend];
-        [self.contentView addSubview:emailOfFriend];
+        [self.contentView addSubview:self.pictureOfFriend];
+        [self.contentView addSubview:self.nickNameOfFriend];
+        [self.contentView addSubview:self.nameOfFriend];
+        [self.contentView addSubview:self.emailOfFriend];
         
         self.backgroundColor = [UIColor clearColor];
         
