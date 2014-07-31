@@ -88,9 +88,9 @@
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
-    cell.timerLabel.text = @"NA";
     cell.placeOfEventLabel.text = @"Not Implemented";
     cell.timeOfEventLabel.text = beckon.ends;
+    [cell updateLabel];
     return cell;
 }
 
