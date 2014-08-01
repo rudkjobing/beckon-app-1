@@ -99,7 +99,6 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self performSegueWithIdentifier:@"BeckonsToBeckon" sender:self];
 }
 
@@ -111,6 +110,7 @@
         beckon.chatRoom.chatRoomVC = chatRoomVC;
         chatRoomVC.dataSource = beckon.chatRoom.chatMessages;
         chatRoomVC.chatRoom = beckon.chatRoom;
+        [self.beckonTableView deselectRowAtIndexPath:index animated:NO];
     }
 }
 
