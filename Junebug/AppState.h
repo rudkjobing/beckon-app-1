@@ -28,5 +28,6 @@
 - (void) updateNotificationToken;
 - (void) getState;
 - (void) handleNotification: (NSDictionary *)userInfo;
+- (void) signOut;
 
 @end

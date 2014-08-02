@@ -30,6 +30,10 @@
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationWhenInUsageDescription</key>
+	<string>Allows Beckon to set the location of an event and show you how far you are from current or future events</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This allows Beckon to set the location of an event and show you how far you are from current or future events</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

@@ -8,12 +8,12 @@
 
 #import "BeckonPickLocationVC.h"
 #import "BeckonPickDateVC.h"
-#import <MapKit/MapKit.h>
 
 @interface BeckonPickLocationVC ()
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet MKMapView *beckonMap;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -25,10 +25,36 @@
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
     self.navigationItem.leftBarButtonItem = previousButton;
     self.navigationItem.rightBarButtonItem = nextButton;
+    if ([CLLocationManager locationServicesEnabled]) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+            [self.locationManager requestAlwaysAuthorization];
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        self.locationManager.delegate = self;
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [self.locationManager setDesiredAccuracy:kCLDistanceFilterNone];
+        
+        [self.locationManager startMonitoringSignificantLocationChanges];
+    }
     self.progressView.progress = 0.75;
-    self.beckonMap.showsUserLocation = YES;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 2000, 2000);
-    [self.beckonMap setRegion:region animated:NO];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    for(CLLocation *location in locations){
+        MKCoordinateRegion myPosition;
+        myPosition.center.latitude = location.coordinate.latitude;
+        myPosition.center.longitude = location.coordinate.longitude;
+        myPosition.span.latitudeDelta = 0.008388;
+        myPosition.span.longitudeDelta = 0.016243;
+        [self.beckonMap setRegion:myPosition animated:YES];
+        MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude) addressDictionary:nil];
+        [self.beckonMap addAnnotation:placemark];
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"%@", error);
 }
 
 - (void)nextStep{

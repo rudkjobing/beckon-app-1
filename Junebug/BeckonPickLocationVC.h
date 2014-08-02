@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Beckon.h"
 
-@interface BeckonPickLocationVC : UIViewController
+@interface BeckonPickLocationVC : UIViewController<CLLocationManagerDelegate>
 
 @property (strong, nonatomic) Beckon *beckon;
 

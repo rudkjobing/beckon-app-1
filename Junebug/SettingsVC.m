@@ -7,43 +7,34 @@
 //
 
 #import "SettingsVC.h"
+#import "AppDelegate.h"
+#import "AppState.h"
 
 @interface SettingsVC ()
+
+@property (weak, nonatomic) IBOutlet UIButton *signOutButton;
 
 @end
 
 @implementation SettingsVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (IBAction)signOutAction:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState signOut];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(signOutComplete)
+     name:@"UserSignOutSuccess"
+     object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)signOutComplete {
+    [self performSegueWithIdentifier:@"settingsToSignIn" sender:self];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

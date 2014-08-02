@@ -97,6 +97,27 @@
     });
 }
 
+- (void) signOut{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc]init];
+        NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"signOut" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                self.server.cookie = nil;
+                self.server.cookieId = nil;
+                [defaults removeObjectForKey:@"cookieId"];
+                [defaults removeObjectForKey:@"cookie"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UserSignOutSuccess" object:self userInfo:result];
+            }
+            else{
+                
+            }
+        });
+    });
+}
+
 - (void) signUpWithEmail: (NSString *)email Password: (NSString *)password Firstname: (NSString *)firstname Lastname: (NSString *)lastname{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
