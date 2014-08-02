@@ -8,6 +8,7 @@
 
 #import "SignUpVC.h"
 #import "AppDelegate.h"
+#import "GradientLayers.h"
 
 @interface SignUpVC ()
 
@@ -79,6 +80,9 @@
      selector:@selector(switchScene)
      name:@"AppStateReady"
      object:nil];
+    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
 }
 
 - (void)didReceiveMemoryWarning

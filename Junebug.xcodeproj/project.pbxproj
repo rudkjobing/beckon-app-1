@@ -80,6 +80,7 @@
 		F9BDCFAA19379EE10095E598 /* logo 640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA519379EE10095E598 /* logo 640x960.png */; };
 		F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA619379EE10095E598 /* logo 640x1136.png */; };
 		F9BDCFAD19379FBF0095E598 /* Bertil3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */; };
+		F9CAF2F3198D8201003E3F4F /* BeckonTab@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */; };
 		F9DE061B195EE5A900D3356A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DE061A195EE5A900D3356A /* MapKit.framework */; };
 		F9E9555C198AB79A001519B8 /* Convertions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E9555B198AB79A001519B8 /* Convertions.m */; };
 /* End PBXBuildFile section */
@@ -209,6 +210,7 @@
 		F9BDCFA519379EE10095E598 /* logo 640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 640x960.png"; sourceTree = "<group>"; };
 		F9BDCFA619379EE10095E598 /* logo 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 640x1136.png"; sourceTree = "<group>"; };
 		F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bertil3.jpg; sourceTree = "<group>"; };
+		F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeckonTab@2x-iphone.png"; sourceTree = "<group>"; };
 		F9DE061A195EE5A900D3356A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F9E9555A198AB79A001519B8 /* Convertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Convertions.h; sourceTree = "<group>"; };
 		F9E9555B198AB79A001519B8 /* Convertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Convertions.m; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 		F9ADF35D190BFABB002C6809 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */,
 				F99B0B66198AE65C00849B94 /* squirrel.jpg */,
 				F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */,
 				F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */,
@@ -557,6 +560,7 @@
 				F99B0B67198AE65C00849B94 /* squirrel.jpg in Resources */,
 				F9163CFD193BAD07002EE1E2 /* bubbleReceive.png in Resources */,
 				F9163CFC193BAD07002EE1E2 /* bubble@2x.png in Resources */,
+				F9CAF2F3198D8201003E3F4F /* BeckonTab@2x-iphone.png in Resources */,
 				F9163CFA193BAD07002EE1E2 /* attachment@2x.png in Resources */,
 				F9163D00193BAD07002EE1E2 /* inputTextBG@2x.png in Resources */,
 				F9163D01193BAD07002EE1E2 /* play_button.png in Resources */,

@@ -63,7 +63,7 @@
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ETR-m9-W2C" id="tmM-4N-1m9">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -218,7 +218,6 @@
                         <segue destination="5sj-0x-LIm" kind="relationship" relationship="viewControllers" id="WpN-kr-RRT"/>
                         <segue destination="x4H-ao-anO" kind="relationship" relationship="viewControllers" id="SV7-s6-Qlo"/>
                         <segue destination="g9R-tf-9Ve" kind="relationship" relationship="viewControllers" id="TN8-Bl-IE9"/>
-                        <segue destination="ska-Hb-ycp" kind="relationship" relationship="viewControllers" id="eKH-Gv-yLg"/>
                         <segue destination="Oec-XW-uA1" kind="relationship" relationship="viewControllers" id="Seg-dT-bej"/>
                         <segue destination="Xfi-79-HdU" kind="modal" identifier="MainToLogin" id="w1u-9D-f40"/>
                     </connections>
@@ -226,41 +225,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bR8-yD-zwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="224" y="-524"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="KKZ-xk-jmw">
-            <objects>
-                <viewController id="U1J-lE-6lQ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NYF-OG-yXi">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="AfO-Fy-5Cy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ChatRoomCell" id="Xx0-aR-9Eh" customClass="ChatRoomCell">
-                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xx0-aR-9Eh" id="WSz-Hc-Iwq">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="nfr-Zf-5eo" kind="push" id="9Ee-4Q-l8T"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="adV-JN-wCG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dRy-gf-zH1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1546" y="-348"/>
         </scene>
         <!--Friends-->
         <scene sceneID="0Ud-wy-SmK">
@@ -297,22 +261,6 @@
             </objects>
             <point key="canvasLocation" x="2213" y="-1159"/>
         </scene>
-        <!--Chat-->
-        <scene sceneID="JWz-jH-WcQ">
-            <objects>
-                <viewController id="nfr-Zf-5eo" customClass="ChatRoomVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jdv-vF-WYJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Chat" id="zJx-lS-DhI"/>
-                    <navigationItem key="navigationItem" id="BYH-LP-nk3"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iKr-5P-rhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2016" y="-348"/>
-        </scene>
         <!--Edit Group-->
         <scene sceneID="dA5-qK-Wyx">
             <objects>
@@ -336,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYu-Fj-Icy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4238" y="-314"/>
+            <point key="canvasLocation" x="2740" y="-312"/>
         </scene>
         <!--Members-->
         <scene sceneID="g7r-3c-Dgi">
@@ -372,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6a-jn-Psj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3706" y="-314"/>
+            <point key="canvasLocation" x="2208" y="-312"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Zrf-Jo-bdX">
@@ -392,6 +340,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zek-oU-osw">
                                 <rect key="frame" x="108" y="65" width="104" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Sign out now">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -456,7 +405,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </objects>
-            <point key="canvasLocation" x="3143" y="-314"/>
+            <point key="canvasLocation" x="1645" y="-312"/>
         </scene>
         <!--Sign InVC-->
         <scene sceneID="eSC-hO-VvB">
@@ -709,13 +658,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pn2-F6-toP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="-317"/>
+            <point key="canvasLocation" x="1005" y="-315"/>
         </scene>
-        <!--Beckon-->
+        <!--Navigation Controller-->
         <scene sceneID="5aw-qB-IeA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5sj-0x-LIm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Beckon" id="MEp-AY-wzc"/>
+                    <tabBarItem key="tabBarItem" title="" image="BeckonTab@2x-iphone.png" selectedImage="BeckonTab@2x-iphone.png" id="MEp-AY-wzc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fDn-Wa-plV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -729,25 +678,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVd-hZ-f81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="769" y="-1159"/>
-        </scene>
-        <!--Chat-->
-        <scene sceneID="lkL-WL-r04">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ska-Hb-ycp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chat" id="ZrO-AA-NWK"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xZz-pF-P6T">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="U1J-lE-6lQ" kind="relationship" relationship="rootViewController" id="YNE-5d-645"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Q8-j8-l16" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1020" y="-348"/>
         </scene>
         <!--Beckon Creat NavigationVC-->
         <scene sceneID="KEG-la-ofp">
@@ -768,6 +698,9 @@
             <point key="canvasLocation" x="763" y="-2681"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BeckonTab@2x-iphone.png" width="60" height="60"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
