@@ -9,6 +9,7 @@
 #import "SettingsVC.h"
 #import "AppDelegate.h"
 #import "AppState.h"
+#import "GradientLayers.h"
 
 @interface SettingsVC ()
 
@@ -31,6 +32,9 @@
      selector:@selector(signOutComplete)
      name:@"UserSignOutSuccess"
      object:nil];
+    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
 }
 
 - (IBAction)signOutComplete {

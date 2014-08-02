@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "GroupCell.h"
 #import "Friend.h"
+#import "GradientLayers.h"
 
 @interface GroupsVC ()
 
@@ -30,6 +31,10 @@
      selector:@selector(updateTableView:)
      name:@"ReloadGroupTableView"
      object:nil];
+    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    self.groupTableView.backgroundColor = [UIColor clearColor];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.groups = appDelegate.appState.groups;
     self.groupTableView.dataSource = self;
