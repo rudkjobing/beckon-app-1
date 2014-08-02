@@ -13,7 +13,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title" minimumFontSize="17" id="ubR-vC-y5Q">
+                            <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title" minimumFontSize="17" clearButtonMode="whileEditing" id="ubR-vC-y5Q">
                                 <rect key="frame" x="20" y="74" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -26,11 +26,11 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter description" minimumFontSize="17" id="8d4-pc-TvF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter description" minimumFontSize="17" clearButtonMode="whileEditing" id="8d4-pc-TvF">
                                 <rect key="frame" x="20" y="112" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -144,6 +144,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Select Location" id="pj9-L3-8z2"/>
                     <connections>
+                        <outlet property="beckonMap" destination="uGv-to-XcG" id="E6d-Kt-aOk"/>
                         <outlet property="progressView" destination="kDE-cH-dze" id="fac-s6-B8h"/>
                         <segue destination="4oP-aE-Lrt" kind="push" identifier="selectDate" id="GdD-61-S3J"/>
                     </connections>

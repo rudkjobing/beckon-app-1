@@ -92,6 +92,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         [self.beckon.friends addObject:friend.id];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

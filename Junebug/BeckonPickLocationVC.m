@@ -8,10 +8,12 @@
 
 #import "BeckonPickLocationVC.h"
 #import "BeckonPickDateVC.h"
+#import <MapKit/MapKit.h>
 
 @interface BeckonPickLocationVC ()
 
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet MKMapView *beckonMap;
 
 @end
 
@@ -24,6 +26,9 @@
     self.navigationItem.leftBarButtonItem = previousButton;
     self.navigationItem.rightBarButtonItem = nextButton;
     self.progressView.progress = 0.75;
+    self.beckonMap.showsUserLocation = YES;
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 2000, 2000);
+    [self.beckonMap setRegion:region animated:NO];
 }
 
 - (void)nextStep{

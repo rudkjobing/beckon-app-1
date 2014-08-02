@@ -29,12 +29,13 @@
     CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
     bgLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:bgLayer atIndex:0];
-    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
+    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
     self.navigationItem.leftBarButtonItem = previousButton;
     self.navigationItem.rightBarButtonItem = nextButton;
     self.progressView.progress = 0.25;
     self.beckon = [[Beckon alloc] init];
+    [self.beckonTitle becomeFirstResponder];
 }
 
 - (void)nextStep{
@@ -43,6 +44,7 @@
 }
 
 - (void)previousStep{
+    [self.beckonTitle resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
