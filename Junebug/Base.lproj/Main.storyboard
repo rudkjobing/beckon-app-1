@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iGb-2C-2tD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iGb-2C-2tD">
     <dependencies>
         <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
@@ -16,7 +16,7 @@
                             <textField appearanceType="aqua" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title" minimumFontSize="17" clearButtonMode="whileEditing" id="ubR-vC-y5Q">
                                 <rect key="frame" x="20" y="74" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <action selector="EndEditing:" destination="MiU-PY-Ddc" eventType="editingDidEndOnExit" id="dD9-eg-hcK"/>
@@ -29,7 +29,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter description" minimumFontSize="17" clearButtonMode="whileEditing" id="8d4-pc-TvF">
                                 <rect key="frame" x="20" y="112" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                         </subviews>
@@ -415,46 +415,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z90-y2-kYF">
-                                <rect key="frame" x="173" y="85" width="127" height="38"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="21" id="9lT-2i-8Yw">
+                                <rect key="frame" x="20" y="97" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="tintColor" red="0.67485484500000004" green="0.67263292829999999" blue="0.71195652170000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sign Up">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signUpPressed:" destination="QUj-od-CAN" eventType="touchUpInside" id="HaB-TX-NkY"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="21" id="9lT-2i-8Yw">
-                                <rect key="frame" x="20" y="156" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
                                     <action selector="textFieldReturn:" destination="QUj-od-CAN" eventType="editingDidEndOnExit" id="e2Z-gZ-9tx"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="21" id="p0p-bt-TJr">
-                                <rect key="frame" x="20" y="194" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="21" id="p0p-bt-TJr">
+                                <rect key="frame" x="20" y="141" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="deviceRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="textFieldReturn:" destination="QUj-od-CAN" eventType="editingDidEndOnExit" id="gAb-9T-zEK"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PHo-6C-fQF">
-                                <rect key="frame" x="20" y="232" width="280" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PHo-6C-fQF">
+                                <rect key="frame" x="20" y="185" width="127" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -463,9 +449,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signInTabbed:" destination="QUj-od-CAN" eventType="touchUpInside" id="mMv-eh-GCf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z90-y2-kYF">
+                                <rect key="frame" x="173" y="185" width="127" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="tintColor" red="0.67485484500000004" green="0.67263292829999999" blue="0.71195652170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="New User">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpPressed:" destination="QUj-od-CAN" eventType="touchUpInside" id="HaB-TX-NkY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -477,7 +478,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="RXw-1T-Fl5"/>
                     <connections>
+                        <outlet property="signInButton" destination="PHo-6C-fQF" id="iK0-Je-UgU"/>
                         <outlet property="signInPassword" destination="p0p-bt-TJr" id="vvl-TD-HaF"/>
+                        <outlet property="signUpButton" destination="z90-y2-kYF" id="wLh-61-q3Z"/>
                         <outlet property="singInEmail" destination="9lT-2i-8Yw" id="BZb-Un-yTo"/>
                         <segue destination="LSL-YF-a9a" kind="push" identifier="SignInToSignUp" id="qac-Rm-6VR"/>
                     </connections>
