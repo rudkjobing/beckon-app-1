@@ -75,6 +75,8 @@
     self.inputView.tableView = self.tableView;
     [self.view addSubview:self.inputView];
     [self.inputView adjustPosition];
+    //Custom
+    self.tableViewHeaderView.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - View lifecicle

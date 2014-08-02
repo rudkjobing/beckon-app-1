@@ -75,7 +75,7 @@ static BOOL cellIsDragging;
         [self addGestureRecognizer:self.panGesture];
         
         [self setInitialSizes];
-        
+        self.backgroundColor = [UIColor clearColor];
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOrientationWillChandeNote:) name:UIApplicationWillChangeStatusBarFrameNotification object:nil];
     }

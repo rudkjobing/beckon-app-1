@@ -7,11 +7,18 @@
 //
 
 #import "BeckonCreateVC.h"
+#import "GradientLayers.h"
+#import "BeckonCreatNavigationVC.h"
+#import "Beckon.h"
+#import "BeckonPickFriendsVC.h"
 
 @interface BeckonCreateVC ()
-@property (weak, nonatomic) IBOutlet UITextField *beckonName;
-@property (weak, nonatomic) IBOutlet UIDatePicker *beckonDate;
-@property (weak, nonatomic) IBOutlet MKMapView *beckonLocation;
+
+@property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UITextField *beckonDescription;
+@property (weak, nonatomic) IBOutlet UITextField *beckonTitle;
+@property (strong, nonatomic) Beckon* beckon;
+
 @end
 
 @implementation BeckonCreateVC
@@ -19,34 +26,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
+    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
+    self.navigationItem.leftBarButtonItem = previousButton;
+    self.navigationItem.rightBarButtonItem = nextButton;
+    self.progressView.progress = 0.25;
     self.beckon = [[Beckon alloc] init];
 }
 
-- (IBAction)FlushBeckon:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"%@ , %@", self.beckonName.text, self.beckonDate.date.description);
-    for(Friend *f in self.beckon.friends){
-        NSLog(@"%@", f);
-    }
-    self.beckon.title = self.beckonName.text;
-    self.beckon.ends = self.beckonDate.date.description;
-    [self.beckon flush];
+- (void)nextStep{
+    self.beckon.title = self.beckonTitle.text;
+    [self performSegueWithIdentifier:@"selectFriends" sender:self];
 }
-- (IBAction)DiscardBeckon:(id)sender {
+
+- (void)previousStep{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"BeckonCreateToFriends"]){
-        BeckonPickFriendsVC *friendVC = [segue destinationViewController];
-        friendVC.beckon = self.beckon;
-    }
+- (IBAction)DiscardBeckon:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)EndEditing:(id)sender {
     [self resignFirstResponder];
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"selectFriends"]){
+        BeckonPickFriendsVC *targetVC = [segue destinationViewController];
+        targetVC.beckon = self.beckon;
+    }
+}
+
+- (Beckon *) _beckon{
+    if(!_beckon){
+        _beckon = [[Beckon alloc] init];
+    }
+    return _beckon;
+}
 
 
 @end

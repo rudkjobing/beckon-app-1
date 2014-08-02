@@ -10,6 +10,7 @@
 #import "ChatRoom.h"
 #import "ChatMessage.h"
 #import "AppDelegate.h"
+#import "GradientLayers.h"
 
 @interface ChatRoomVC ()
 
@@ -22,6 +23,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated{

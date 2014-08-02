@@ -23,8 +23,7 @@
      addObserver:self
      selector:@selector(goToSignIn:)
      name:@"AppStateNotReady"
-     object:nil];
-    
+     object:nil];    
 }
 
 - (void) viewDidAppear:(BOOL)animated{

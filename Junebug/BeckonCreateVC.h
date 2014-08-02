@@ -13,6 +13,4 @@
 
 @interface BeckonCreateVC : UIViewController
 
-@property (strong, nonatomic) Beckon *beckon;
-
 @end

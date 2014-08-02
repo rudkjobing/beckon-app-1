@@ -41,6 +41,9 @@
 		F95B92CA193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png in Resources */ = {isa = PBXBuildFile; fileRef = F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */; };
 		F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */ = {isa = PBXBuildFile; fileRef = F95B92CB193A8D3E00416BDA /* Lalaatest3ocu.png */; };
 		F99B0B67198AE65C00849B94 /* squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F99B0B66198AE65C00849B94 /* squirrel.jpg */; };
+		F99B0B6A198C4B1A00849B94 /* BeckonPickLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B69198C4B1A00849B94 /* BeckonPickLocationVC.m */; };
+		F99B0B6D198C4CFF00849B94 /* BeckonPickDateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B6C198C4CFF00849B94 /* BeckonPickDateVC.m */; };
+		F99B0B70198C547800849B94 /* BeckonCreatNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B6F198C547800849B94 /* BeckonCreatNavigationVC.m */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
 		F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FA1927AA9E0088B6AB /* GroupCell.m */; };
 		F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FD1928E6510088B6AB /* FriendCell.m */; };
@@ -137,6 +140,12 @@
 		F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lllaallalalalajfæowehfpawpfuawbdpo.png"; sourceTree = "<group>"; };
 		F95B92CB193A8D3E00416BDA /* Lalaatest3ocu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lalaatest3ocu.png; sourceTree = "<group>"; };
 		F99B0B66198AE65C00849B94 /* squirrel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squirrel.jpg; sourceTree = "<group>"; };
+		F99B0B68198C4B1A00849B94 /* BeckonPickLocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickLocationVC.h; sourceTree = "<group>"; };
+		F99B0B69198C4B1A00849B94 /* BeckonPickLocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonPickLocationVC.m; sourceTree = "<group>"; };
+		F99B0B6B198C4CFF00849B94 /* BeckonPickDateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickDateVC.h; sourceTree = "<group>"; };
+		F99B0B6C198C4CFF00849B94 /* BeckonPickDateVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonPickDateVC.m; sourceTree = "<group>"; };
+		F99B0B6E198C547800849B94 /* BeckonCreatNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonCreatNavigationVC.h; sourceTree = "<group>"; };
+		F99B0B6F198C547800849B94 /* BeckonCreatNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonCreatNavigationVC.m; sourceTree = "<group>"; };
 		F9ADF35A190BF9DA002C6809 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		F9ADF35B190BF9DA002C6809 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
 		F9B016F91927AA9E0088B6AB /* GroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCell.h; sourceTree = "<group>"; };
@@ -303,6 +312,12 @@
 				F9BBEFE7190BF47100452C5C /* BeckonDetailVC.m */,
 				F9BBEFC8190BF22700452C5C /* BeckonVC.h */,
 				F9BBEFC9190BF22700452C5C /* BeckonVC.m */,
+				F99B0B68198C4B1A00849B94 /* BeckonPickLocationVC.h */,
+				F99B0B69198C4B1A00849B94 /* BeckonPickLocationVC.m */,
+				F99B0B6B198C4CFF00849B94 /* BeckonPickDateVC.h */,
+				F99B0B6C198C4CFF00849B94 /* BeckonPickDateVC.m */,
+				F99B0B6E198C547800849B94 /* BeckonCreatNavigationVC.h */,
+				F99B0B6F198C547800849B94 /* BeckonCreatNavigationVC.m */,
 			);
 			name = Beckon;
 			sourceTree = "<group>";
@@ -587,6 +602,8 @@
 				F9BBEFF2190BF69500452C5C /* Groups.m in Sources */,
 				F9BBEFF5190BF6A000452C5C /* Beckons.m in Sources */,
 				F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */,
+				F99B0B70198C547800849B94 /* BeckonCreatNavigationVC.m in Sources */,
+				F99B0B6A198C4B1A00849B94 /* BeckonPickLocationVC.m in Sources */,
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
 				F91D14ED1934FD7D0094299C /* Beckon.m in Sources */,
 				2688A7421988F51200C7C1E1 /* GradientLayers.m in Sources */,
@@ -603,6 +620,7 @@
 				F9BBEFE5190BF45D00452C5C /* BeckonCreateVC.m in Sources */,
 				F9163D03193BAD07002EE1E2 /* SOImageBrowserView.m in Sources */,
 				F9BBEFE2190BF41C00452C5C /* GroupDetailVC.m in Sources */,
+				F99B0B6D198C4CFF00849B94 /* BeckonPickDateVC.m in Sources */,
 				F9163D07193BAD07002EE1E2 /* SOMessagingViewController.m in Sources */,
 				F9163D1A193E1A55002EE1E2 /* ChatRoomCell.m in Sources */,
 				F9B01707192A67150088B6AB /* GroupEditMembersVC.m in Sources */,
