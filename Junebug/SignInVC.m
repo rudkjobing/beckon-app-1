@@ -33,6 +33,7 @@
     //custom buttons and textfields
     self.title = @"Login to beckon";
     self.singInEmail.textColor = [UIColor blackColor];
+    self.signInPassword.textColor = [UIColor blackColor];
     
     self.signInButton.backgroundColor = [UIColor clearColor];
     self.signInButton.tintColor = [UIColor whiteColor];
