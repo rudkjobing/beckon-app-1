@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *singInEmail;
 @property (weak, nonatomic) IBOutlet UITextField *signInPassword;
 @property (weak, nonatomic) IBOutlet UIButton *signUpButton;
-
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 
 
@@ -32,11 +31,22 @@
     [self.view.layer insertSublayer:bgLayer atIndex:0];
     
     //custom buttons and textfields
-    self.singInEmail.backgroundColor = [UIColor whiteColor];
-    self.singInEmail.textColor = [UIColor blueColor];
+    self.title = @"Login to beckon";
+    self.singInEmail.textColor = [UIColor blackColor];
     
     self.signInButton.backgroundColor = [UIColor clearColor];
-    self.signInButton.textcolor = [UIColor]
+    self.signInButton.tintColor = [UIColor whiteColor];
+    self.signInButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    self.signInButton.titleLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
+    [self.signInButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    self.signUpButton.backgroundColor = [UIColor clearColor];
+    self.signUpButton.tintColor = [UIColor whiteColor];
+    self.signUpButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    self.signUpButton.titleLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
+    [self.signUpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
