@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GradientLayers.h"
 /*#import "User.h"*/
 
 @interface SignInVC : UIViewController

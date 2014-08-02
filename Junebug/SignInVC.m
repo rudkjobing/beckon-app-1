@@ -13,6 +13,9 @@
 @interface SignInVC ()
 @property (weak, nonatomic) IBOutlet UITextField *singInEmail;
 @property (weak, nonatomic) IBOutlet UITextField *signInPassword;
+@property (weak, nonatomic) IBOutlet UIButton *signUpButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *signInButton;
 
 
 @end
@@ -22,6 +25,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //added backgroundLayer
+    CAGradientLayer *bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    
+    //custom buttons and textfields
+    self.singInEmail.backgroundColor = [UIColor whiteColor];
+    self.singInEmail.textColor = [UIColor blueColor];
+    
+    self.signInButton.backgroundColor = [UIColor clearColor];
+    self.signInButton.textcolor = [UIColor]
+    
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(goToMenu:)

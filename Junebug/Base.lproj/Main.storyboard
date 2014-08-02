@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iGb-2C-2tD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="iGb-2C-2tD">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
     <scenes>
@@ -505,7 +504,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="RXw-1T-Fl5"/>
                     <connections>
+                        <outlet property="signInButton" destination="PHo-6C-fQF" id="bUv-Fb-obP"/>
                         <outlet property="signInPassword" destination="p0p-bt-TJr" id="vvl-TD-HaF"/>
+                        <outlet property="signUpButton" destination="z90-y2-kYF" id="db0-g3-lL8"/>
+                        <outlet property="signinButton" destination="z90-y2-kYF" id="vIA-ap-Zqg"/>
                         <outlet property="singInEmail" destination="9lT-2i-8Yw" id="BZb-Un-yTo"/>
                         <segue destination="LSL-YF-a9a" kind="push" identifier="SignInToSignUp" id="qac-Rm-6VR"/>
                     </connections>
