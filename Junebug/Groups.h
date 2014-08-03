@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) NSMutableArray *groups;
+@property (strong, nonatomic) NSNumber *newestGroupPointer;
 
 - (void) getAllGroups;
 - (void) addGroup: (Group *)name;

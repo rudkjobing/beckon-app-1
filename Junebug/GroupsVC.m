@@ -26,11 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(updateTableView:)
-     name:@"ReloadGroupTableView"
-     object:nil];
     CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
     bgLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:bgLayer atIndex:0];
@@ -42,9 +37,14 @@
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGroup)];
     self.navigationItem.rightBarButtonItem = addButton;
+    [self.groups addObserver:self forKeyPath:@"newestGroupPointer" options:0 context:nil];
 }
 
 - (void) updateTableView: (NSNotification*) notification{
+    [self.groupTableView reloadData];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     [self.groupTableView reloadData];
 }
 

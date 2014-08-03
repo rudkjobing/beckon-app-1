@@ -17,19 +17,11 @@
     dispatch_async(queue, ^{
         NSDictionary *data = [[NSDictionary alloc] init];
         /*This is where we have a json string that can be sent over the interwebs*/
-        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"getAll" andData:data];
+        NSDictionary *result = [self.server queryServerDomain:@"group" WithCommand:@"getGroups" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
-            if([[result objectForKey:@"success"] isEqualToString:@"1"]){
-                NSArray *payload = [result objectForKey:@"payload"];
-                [self.groups removeAllObjects];
-                for(NSDictionary *child in payload){
-                    Group *group = [[Group alloc] init];
-                    group.name = [child objectForKey:@"name"];
-                    group.id = [child objectForKey:@"id"];
-                    group.server = self.server;
-                    [self.groups addObject: group];
-                }
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"GroupsFetched" object:self];
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                NSArray *groups = [[result objectForKey:@"payload"] objectForKey:@"groups"];
+                [self loadData:groups];
             }
             else{
                 
@@ -56,8 +48,10 @@
         group.name = [child objectForKey:@"name"];
         group.server = self.server;
         [self.groups addObject:group];
+        if([self.newestGroupPointer integerValue] < [group.id integerValue]){
+            self.newestGroupPointer = group.id;
+        }
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadGroupTableView" object:self];
 }
 
 - (NSMutableArray *)groups{
@@ -67,5 +61,11 @@
     return _groups;
 }
 
+- (NSNumber *)newestGroupPointer{
+    if(!_newestGroupPointer){
+        _newestGroupPointer = [[NSNumber alloc] initWithInt:0];
+    }
+    return _newestGroupPointer;
+}
 
 @end

@@ -77,6 +77,7 @@
             }
         });
     });*/
+    [self.groups getAllGroups];
     [self.friends getAllFriends];
     [self.beckons getUpdates];
 }
