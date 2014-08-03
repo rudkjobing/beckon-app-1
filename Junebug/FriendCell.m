@@ -24,13 +24,20 @@
         
         CGRect frameOfFriendImage = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, widthOfFriendImage, heightOfFriendImage);
         self.pictureOfFriend = [[UIImageView alloc] initWithFrame:frameOfFriendImage];
+        self.pictureOfFriend.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.pictureOfFriend.layer.shadowOffset = CGSizeMake(0, 1);
+        self.pictureOfFriend.layer.shadowOpacity = 1;
+        self.pictureOfFriend.layer.shadowRadius = 1.0;
+        [self.pictureOfFriend.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+        [self.pictureOfFriend.layer setBorderWidth:1.5];
         
         //Update Referencepoints for next subviews
         startingPointOfSubViewOnX = widthOfFriendImage + startingPointOfSubViewOnX + 10.0;
+        startingPointOfSubviewOnY = startingPointOfSubviewOnY - 3;
         
         //add NickName Label
         CGFloat nickNameLabelHeight = 20.0;
-        CGFloat nickNameLabelWidth = 150.0;
+        CGFloat nickNameLabelWidth = 200.0;
         
         CGRect frameOfNickNameLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, nickNameLabelHeight);
         self.nickNameOfFriend = [[UILabel alloc] initWithFrame:frameOfNickNameLabel];
@@ -39,6 +46,12 @@
         self.nickNameOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nickNameOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
         self.nickNameOfFriend.textColor = [UIColor whiteColor];
+        
+        self.nickNameOfFriend.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.nickNameOfFriend.layer.shadowOffset = CGSizeMake(0, 1);
+        self.nickNameOfFriend.layer.shadowOpacity = 1;
+        self.nickNameOfFriend.layer.shadowRadius = 1.0;
+        
         
         //Update referencepoints for next subviews
         startingPointOfSubviewOnY = startingPointOfSubviewOnY + nickNameLabelHeight;
