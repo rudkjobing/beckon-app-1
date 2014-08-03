@@ -29,14 +29,15 @@
         self.pictureOfFriend.layer.shadowOpacity = 1;
         self.pictureOfFriend.layer.shadowRadius = 1.0;
         [self.pictureOfFriend.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-        [self.pictureOfFriend.layer setBorderWidth:2.0];
+        [self.pictureOfFriend.layer setBorderWidth:1.5];
         
         //Update Referencepoints for next subviews
         startingPointOfSubViewOnX = widthOfFriendImage + startingPointOfSubViewOnX + 10.0;
+        startingPointOfSubviewOnY = startingPointOfSubviewOnY - 3;
         
         //add NickName Label
         CGFloat nickNameLabelHeight = 20.0;
-        CGFloat nickNameLabelWidth = 150.0;
+        CGFloat nickNameLabelWidth = 200.0;
         
         CGRect frameOfNickNameLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, nickNameLabelHeight);
         self.nickNameOfFriend = [[UILabel alloc] initWithFrame:frameOfNickNameLabel];

@@ -18,7 +18,7 @@
         // Initialization code
         
         //Create referencepoints
-        CGFloat startingPointofLabels = 5.0;
+        CGFloat startingPointofLabels = 20.0;
 
         //Create UILabel for countdowntimer
         CGRect frameOfTimerLabel = CGRectMake(startingPointofLabels, 0.0, 44.0, 55.0);
@@ -29,11 +29,16 @@
         self.timerLabel.textAlignment = UIControlContentHorizontalAlignmentCenter;
         self.timerLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
         
+        self.timerLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.timerLabel.layer.shadowOffset = CGSizeMake(0, 1);
+        self.timerLabel.layer.shadowOpacity = 1;
+        self.timerLabel.layer.shadowRadius = 1.0;
+        
         //referencepoints
         CGFloat referencepointOnX = ((self.timerLabel.frame.size.width + startingPointofLabels) + 10.0);
         CGFloat referencepointOnY = 5.0;
         CGFloat hightOfNameOfEventLabel = 20.0;
-        CGFloat widthOfEventLabel = 150.0;
+        CGFloat widthOfEventLabel = 200.0;
         
         //Create UILabel for nameOfEvents
         CGRect placeMentOfNameOfEventLabel = CGRectMake(referencepointOnX, referencepointOnY, widthOfEventLabel, hightOfNameOfEventLabel);
