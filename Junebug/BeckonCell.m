@@ -44,6 +44,11 @@
         self.nameOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nameOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
         
+        self.nameOfEventLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.nameOfEventLabel.layer.shadowOffset = CGSizeMake(0, 1);
+        self.nameOfEventLabel.layer.shadowOpacity = 1;
+        self.nameOfEventLabel.layer.shadowRadius = 1.0;
+        
         //Update referencepoints on X and Y
         referencepointOnY = (referencepointOnY + hightOfNameOfEventLabel);
         
