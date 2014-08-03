@@ -58,6 +58,8 @@
 }
 
 - (void)nextStep{
+    self.beckon.latitude = [[NSNumber alloc] initWithDouble:self.locationManager.location.coordinate.latitude];
+    self.beckon.longitude = [[NSNumber alloc] initWithDouble:self.locationManager.location.coordinate.longitude];
     [self performSegueWithIdentifier:@"selectDate" sender:self];
 }
 

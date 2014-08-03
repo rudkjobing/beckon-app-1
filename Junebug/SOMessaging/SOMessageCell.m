@@ -105,7 +105,8 @@ static BOOL cellIsDragging;
     //NameLabel customization
     CGRect nameLabelRect = CGRectMake(10.0, 0.0, 150, 15);
     self.nameLabel = [[UILabel alloc] initWithFrame:nameLabelRect];
-    self.nameLabel.font = [UIFont systemFontOfSize:12.0];
+    self.nameLabel.font = [UIFont systemFontOfSize:14.0];
+    self.nameLabel.textColor = [UIColor whiteColor];
 
     if (!CGSizeEqualToSize(self.userImageViewSize, CGSizeZero)) {
         CGRect frame = self.userImageView.frame;
@@ -159,7 +160,7 @@ static BOOL cellIsDragging;
     self.clipsToBounds = NO;
     
     self.timeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
-    self.timeLabel.textColor = [UIColor grayColor];
+    self.timeLabel.textColor = [UIColor whiteColor];
     self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 }
 

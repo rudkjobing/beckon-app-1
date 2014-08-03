@@ -33,7 +33,8 @@
 - (void) flush{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
-        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.title, @"title", self.ends, @"begins", self.ends, @"ends", self.friends, @"friends", [[NSArray alloc] init], @"groups", nil];
+        NSDictionary *location = [[NSDictionary alloc] initWithObjectsAndKeys:self.latitude, @"latitude", self.longitude, @"longitude", nil];
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.title, @"title", self.ends, @"begins", self.ends, @"ends", location, @"location", self.friends, @"friends", [[NSArray alloc] init], @"groups", nil];
         NSDictionary *object = [[NSDictionary alloc] initWithObjectsAndKeys:data, @"beckon", nil];
         NSDictionary *result = [self.server queryServerDomain:@"beckon" WithCommand:@"addBeckon" andData:object];
         dispatch_async(dispatch_get_main_queue(), ^{

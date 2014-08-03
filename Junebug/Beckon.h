@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSMutableArray *friends;
 @property (strong, nonatomic) NSDate *begins;
 @property (strong, nonatomic) NSString *ends;
+@property (strong, nonatomic) NSNumber *latitude;
+@property (strong, nonatomic) NSNumber *longitude;
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) ChatRoom *chatRoom;
 

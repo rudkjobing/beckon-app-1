@@ -13,6 +13,7 @@
 #import "BeckonCell.h"
 #import "ChatRoomVC.h"
 #import "ChatRoom.h"
+#import "BeckonDetailNavigationVC.h"
 
 @interface BeckonVC ()
 @property (weak, nonatomic) IBOutlet UITableView *beckonTableView;
@@ -106,7 +107,8 @@
     if([segue.identifier isEqualToString:@"BeckonsToBeckon"]){
         NSIndexPath *index = [self.beckonTableView indexPathForSelectedRow];
         Beckon *beckon = [self.beckons.beckons objectAtIndex:index.row];
-        ChatRoomVC *chatRoomVC = [segue destinationViewController];
+        BeckonDetailNavigationVC *nav = [segue destinationViewController];
+        ChatRoomVC *chatRoomVC = [[nav viewControllers] objectAtIndex:0];
         beckon.chatRoom.chatRoomVC = chatRoomVC;
         chatRoomVC.dataSource = beckon.chatRoom.chatMessages;
         chatRoomVC.chatRoom = beckon.chatRoom;
