@@ -8,7 +8,8 @@
 
 #import "GroupDetailVC.h"
 #import "GroupEditMembersVC.h"
-#import "MemberCell.h"
+#import "FriendCell.h"
+#import "GradientLayers.h"
 
 @interface GroupDetailVC ()
 
@@ -26,6 +27,10 @@
      selector:@selector(updateTableView:)
      name:@"GroupFetched"
      object:nil];
+    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    self.memberTableView.backgroundColor = [UIColor clearColor];
     UIBarButtonItem *manageButton = [[UIBarButtonItem alloc] initWithTitle:@"Manage" style:UIBarButtonItemStyleBordered target:self action:@selector(manageGroup)];
     self.navigationItem.rightBarButtonItem = manageButton;
     self.memberTableView.dataSource = self;
@@ -60,13 +65,16 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier =@"GroupCell";
-    MemberCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    static NSString *cellIdentifier = @"FriendCell";
+    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[MemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Friend *friend = [self.group.members objectAtIndex:indexPath.row];
-    cell.textLabel.text = friend.nickname;
+    cell.nameOfFriend.text = [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
+    cell.emailOfFriend.text = friend.email;
+    cell.nickNameOfFriend.text = friend.nickname;
+    cell.pictureOfFriend.image = [UIImage imageNamed:@"squirrel.jpg"];
     return cell;
 }
 
@@ -74,6 +82,7 @@
     if([segue.identifier isEqualToString:@"GroupMembersToEdit"]){
         GroupEditMembersVC *memberVC = [segue destinationViewController];
         memberVC.group = self.group;
+        
     }
 }
 

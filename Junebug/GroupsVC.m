@@ -110,6 +110,7 @@
         GroupDetailVC *detailVC = [segue destinationViewController];
         detailVC.group = [appDelegate.appState.groups.groups objectAtIndex:index.row];
         detailVC.hidesBottomBarWhenPushed = YES;
+        [self.groupTableView deselectRowAtIndexPath:index animated:NO];
         
     }
 }

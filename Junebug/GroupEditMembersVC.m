@@ -10,6 +10,7 @@
 #import "FriendCell.h"
 #import "Friend.h"
 #import "AppDelegate.h"
+#import "GradientLayers.h"
 
 @interface GroupEditMembersVC ()
 
@@ -22,6 +23,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    bgLayer.frame = self.view.bounds;
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    self.memberTableView.backgroundColor = [UIColor clearColor];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.friends = appDelegate.appState.friends;
     self.memberTableView.dataSource = self;
@@ -33,10 +38,17 @@
 {
     return 1;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.friends.friends.count;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"FriendCell";
@@ -45,6 +57,7 @@
         cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Friend *friend = [self.friends.friends objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.nameOfFriend.text = [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
     cell.emailOfFriend.text = friend.email;
     cell.nickNameOfFriend.text = friend.nickname;

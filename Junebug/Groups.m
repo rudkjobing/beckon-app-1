@@ -32,12 +32,17 @@
 
 - (void) addGroup:(Group*)group{
     [self.groups addObject: group];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadGroupTableView" object:self];
+    if(group.id > self.newestGroupPointer){
+        self.newestGroupPointer = group.id;//Notify observer
+    }
+    else{
+        self.newestGroupPointer = self.newestGroupPointer;//Notify observer
+    }
 }
 
 - (void) removeGroup:(Group*)group{
     [self.groups removeObject:group];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadGroupTableView" object:self];
+    self.newestGroupPointer = self.newestGroupPointer;//Notify observer
 }
 
 - (void) loadData: (NSArray*) data{
@@ -49,7 +54,7 @@
         group.server = self.server;
         [self.groups addObject:group];
         if([self.newestGroupPointer integerValue] < [group.id integerValue]){
-            self.newestGroupPointer = group.id;
+            self.newestGroupPointer = group.id;//Notify observer
         }
     }
 }
