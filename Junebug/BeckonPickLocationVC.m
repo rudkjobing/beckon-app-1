@@ -35,7 +35,7 @@
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         [self.locationManager setDesiredAccuracy:kCLDistanceFilterNone];
         
-        [self.locationManager startMonitoringSignificantLocationChanges];
+        [self.locationManager startUpdatingLocation];
     }
     self.progressView.progress = 0.75;
 }
@@ -47,10 +47,11 @@
         myPosition.center.longitude = location.coordinate.longitude;
         myPosition.span.latitudeDelta = 0.008388;
         myPosition.span.longitudeDelta = 0.016243;
-        [self.beckonMap setRegion:myPosition animated:YES];
+        [self.beckonMap setRegion:myPosition animated:NO];
         MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude) addressDictionary:nil];
         [self.beckonMap addAnnotation:placemark];
     }
+    [self.locationManager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
