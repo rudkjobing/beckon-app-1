@@ -56,6 +56,7 @@
         }
     }
     [self purgeExpiredBeckons];
+    [self sortBeckons];
 }
 
 - (void) addBeckon:(Beckon *)beckon{
@@ -85,7 +86,27 @@
     
 }
 
-
+- (void) sortBeckons{
+    NSMutableArray *beckons = [self.beckons mutableCopy];
+    for(int i = 0; i < beckons.count; i++){
+        NSLog(@"Outer for, %i", i);
+        Beckon *first = [beckons objectAtIndex:i];
+        NSDate *firstDate = [Convertions dateFromString:first.ends];
+        for(int j = 0; j < beckons.count; j++){
+            NSLog(@"Inner for, %i", j);
+            Beckon *second = [beckons objectAtIndex:j];
+            NSDate *secondDate = [Convertions dateFromString:second.ends];
+            if([[firstDate earlierDate:secondDate] isEqualToDate:firstDate]){
+                beckons[i] = second;
+                beckons[j] = first;
+                first = [beckons objectAtIndex:i];
+                firstDate = [Convertions dateFromString:first.ends];
+            }
+        }
+    }
+    self.beckons = beckons;
+    self.newestBeckonPointer = self.newestBeckonPointer;
+}
 
 - (void) purgeExpiredBeckons{
     NSDate *now = [[NSDate alloc] init];
