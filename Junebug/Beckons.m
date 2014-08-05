@@ -89,11 +89,9 @@
 - (void) sortBeckons{
     NSMutableArray *beckons = [self.beckons mutableCopy];
     for(int i = 0; i < beckons.count; i++){
-        NSLog(@"Outer for, %i", i);
         Beckon *first = [beckons objectAtIndex:i];
         NSDate *firstDate = [Convertions dateFromString:first.ends];
         for(int j = 0; j < beckons.count; j++){
-            NSLog(@"Inner for, %i", j);
             Beckon *second = [beckons objectAtIndex:j];
             NSDate *secondDate = [Convertions dateFromString:second.ends];
             if([[firstDate earlierDate:secondDate] isEqualToDate:firstDate]){
