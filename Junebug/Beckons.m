@@ -14,6 +14,12 @@
 
 @implementation Beckons
 
+- (Beckons *) init{
+    self = [super init];
+    [self startTimer];
+    return self;
+}
+
 - (void) getUpdates{
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
     dispatch_async(queue, ^{
@@ -49,6 +55,7 @@
             self.newestBeckonPointer = beckon.id;
         }
     }
+    [self purgeExpiredBeckons];
 }
 
 - (void) addBeckon:(Beckon *)beckon{
@@ -70,6 +77,25 @@
         _newestBeckonPointer = [[NSNumber alloc] initWithInt:0];
     }
     return _newestBeckonPointer;
+}
+
+- (void) startTimer{
+    NSTimer *timer = [[NSTimer alloc] init];
+    timer = [NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(purgeExpiredBeckons) userInfo:nil repeats:YES];
+    
+}
+
+
+
+- (void) purgeExpiredBeckons{
+    NSDate *now = [[NSDate alloc] init];
+    NSArray *tempArr = [self.beckons copy];
+    for(Beckon *beckon in tempArr){
+        if(![[[Convertions dateFromString:beckon.ends] earlierDate:now] isEqualToDate:now]){
+            [self.beckons removeObject:beckon];
+            self.newestBeckonPointer = self.newestBeckonPointer;
+        }
+    }
 }
 
 @end
