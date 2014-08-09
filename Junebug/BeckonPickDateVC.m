@@ -32,7 +32,8 @@
 }
 
 - (void)done{      
-    self.beckon.ends = self.date.date.description;
+    self.beckon.begins = self.date.date;
+    self.beckon.ends = [self.date.date dateByAddingTimeInterval:60*60];
     [self.beckon flush];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

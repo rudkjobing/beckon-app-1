@@ -45,8 +45,10 @@
         beckon.title = [child objectForKey:@"title"];
         beckon.chatRoomId = [child objectForKey:@"chatRoom"];
         beckon.server = self.server;
-        beckon.begins = [Convertions dateFromString:[child objectForKey:@"begins"]];
-        beckon.ends = [child objectForKey:@"ends"];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-M-d HH:mm:ss"];
+        beckon.begins = [dateFormat dateFromString:[child objectForKey:@"begins"]];
+        beckon.ends = [dateFormat dateFromString:[child objectForKey:@"ends"]];
         beckon.chatRoom = [[ChatRoom alloc] initWithId: beckon.chatRoomId];
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.appState.chatRooms setObject:beckon.chatRoom forKey:beckon.chatRoomId];
@@ -90,15 +92,15 @@
     NSMutableArray *beckons = [self.beckons mutableCopy];
     for(int i = 0; i < beckons.count; i++){
         Beckon *first = [beckons objectAtIndex:i];
-        NSDate *firstDate = [Convertions dateFromString:first.ends];
+        NSDate *firstDate = first.ends;
         for(int j = 0; j < beckons.count; j++){
             Beckon *second = [beckons objectAtIndex:j];
-            NSDate *secondDate = [Convertions dateFromString:second.ends];
+            NSDate *secondDate = second.ends;
             if([[firstDate earlierDate:secondDate] isEqualToDate:firstDate]){
                 beckons[i] = second;
                 beckons[j] = first;
                 first = [beckons objectAtIndex:i];
-                firstDate = [Convertions dateFromString:first.ends];
+                firstDate = first.ends;
             }
         }
     }
@@ -110,9 +112,13 @@
     NSDate *now = [[NSDate alloc] init];
     NSArray *tempArr = [self.beckons copy];
     for(Beckon *beckon in tempArr){
-        if(![[[Convertions dateFromString:beckon.ends] earlierDate:now] isEqualToDate:now]){
+        if(![[beckon.ends earlierDate:now] isEqualToDate:now]){
+            NSLog(beckon.ends.description);
             [self.beckons removeObject:beckon];
             self.newestBeckonPointer = self.newestBeckonPointer;
+        }
+        else{
+            
         }
     }
 }

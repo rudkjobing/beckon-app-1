@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 General Bits. All rights reserved.
 //
 
+#import "Convertions.h"
 #import "AppDelegate.h"
 
 @implementation AppDelegate
@@ -72,15 +73,18 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     for(Beckon *beckon in self.appState.beckons.beckons){
-        UILocalNotification *notification15 = [[UILocalNotification alloc] init];
-        notification15.fireDate = [beckon.begins dateByAddingTimeInterval:-60*15];
-        notification15.alertBody = [@"15 minutes: " stringByAppendingString:beckon.title];
-        [[UIApplication sharedApplication] scheduleLocalNotification:notification15];
-        
-        UILocalNotification *notificationNow = [[UILocalNotification alloc] init];
-        notificationNow.fireDate = beckon.begins;
-        notificationNow.alertBody = [@"Now: " stringByAppendingString:beckon.title];
-        [[UIApplication sharedApplication] scheduleLocalNotification:notificationNow];
+        if(beckon.begins > [[[NSDate alloc] init] dateByAddingTimeInterval:60*15]){
+            UILocalNotification *notification15 = [[UILocalNotification alloc] init];
+            notification15.fireDate = [beckon.begins dateByAddingTimeInterval:-60*15];
+            notification15.alertBody = [@"15 minutes: " stringByAppendingString:beckon.title];
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification15];
+        }
+        if(beckon.begins > [[NSDate alloc] init]){
+            UILocalNotification *notificationNow = [[UILocalNotification alloc] init];
+            notificationNow.fireDate = beckon.begins;
+            notificationNow.alertBody = [@"Now: " stringByAppendingString:beckon.title];
+            [[UIApplication sharedApplication] scheduleLocalNotification:notificationNow];
+        }
     }
 }
 
