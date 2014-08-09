@@ -43,7 +43,7 @@
         Beckon *beckon = [[Beckon alloc] init];
         beckon.id = [child objectForKey:@"id"];
         beckon.title = [child objectForKey:@"title"];
-        beckon.chatRoomId = [[child objectForKey:@"chatRoom"] objectForKey:@"id"];
+        beckon.chatRoomId = [child objectForKey:@"chatRoom"];
         beckon.server = self.server;
         beckon.begins = [Convertions dateFromString:[child objectForKey:@"begins"]];
         beckon.ends = [child objectForKey:@"ends"];
