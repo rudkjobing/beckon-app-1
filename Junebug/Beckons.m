@@ -47,6 +47,8 @@
         beckon.server = self.server;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-M-d HH:mm:ss"];
+        NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+        [dateFormat setTimeZone:timeZone];
         beckon.begins = [dateFormat dateFromString:[child objectForKey:@"begins"]];
         beckon.ends = [dateFormat dateFromString:[child objectForKey:@"ends"]];
         beckon.chatRoom = [[ChatRoom alloc] initWithId: beckon.chatRoomId];
