@@ -113,7 +113,6 @@
     NSArray *tempArr = [self.beckons copy];
     for(Beckon *beckon in tempArr){
         if(![[beckon.ends earlierDate:now] isEqualToDate:now]){
-            NSLog(beckon.ends.description);
             [self.beckons removeObject:beckon];
             self.newestBeckonPointer = self.newestBeckonPointer;
         }
