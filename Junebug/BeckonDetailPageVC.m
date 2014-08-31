@@ -2,16 +2,13 @@
 #import "ChatRoomVC.h"
 
 @implementation BeckonDetailPageVC
-@synthesize viewControllerArray;
-@synthesize manualSelectionBar;
-@synthesize pageController;
-@synthesize navigationView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    viewControllerArray = [[NSMutableArray alloc]init];
+    self.viewControllerArray = [[NSMutableArray alloc]init];
     ChatRoomVC *chatVC = [[ChatRoomVC alloc]init];
+    self.beckon.chatRoom.chatRoomVC = chatVC;
     chatVC.chatRoom = self.beckon.chatRoom;
     chatVC.dataSource = self.beckon.chatRoom.chatMessages;
     UIViewController *asd = [[UIViewController alloc] init];
@@ -25,16 +22,15 @@
 
 -(void)setupPageViewController
 {
-    pageController = self;
-    pageController.delegate = self;
-    pageController.dataSource = self;
-    [pageController setViewControllers:@[[viewControllerArray objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    self.delegate = self;
+    self.dataSource = self;
+    [self setViewControllers:@[[self.viewControllerArray objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 -(NSInteger)indexOfController:(UIViewController *)viewController
 {
-    for (int i = 0; i<[viewControllerArray count]; i++) {
-        if (viewController == [viewControllerArray objectAtIndex:i])
+    for (int i = 0; i<[self.viewControllerArray count]; i++) {
+        if (viewController == [self.viewControllerArray objectAtIndex:i])
         {
             return i;
         }
@@ -53,7 +49,7 @@
     }
     
     index--;
-    return [viewControllerArray objectAtIndex:index];
+    return [self.viewControllerArray objectAtIndex:index];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
@@ -65,10 +61,10 @@
     }
     index++;
     
-    if (index == [viewControllerArray count]) {
+    if (index == [self.viewControllerArray count]) {
         return nil;
     }
-    return [viewControllerArray objectAtIndex:index];
+    return [self.viewControllerArray objectAtIndex:index];
 }
 
 @end
