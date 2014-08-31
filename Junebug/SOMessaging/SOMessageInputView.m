@@ -205,8 +205,8 @@
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, keyboardFrame.size.height + self.frame.size.height, 0.0);
 
-    NSInteger section = [self.tableView numberOfSections] - 1;
-    NSInteger row = [self.tableView numberOfRowsInSection:section] - 1;
+    NSInteger section = [self.tableView numberOfSections];
+    NSInteger row = [self.tableView numberOfRowsInSection:section];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
     
     [UIView beginAnimations:@"anim" context:NULL];

@@ -27,23 +27,11 @@
     bgLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:bgLayer atIndex:0];
     self.tableView.backgroundColor = [UIColor clearColor];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    UIBarButtonItem *detailsButton = [[UIBarButtonItem alloc] initWithTitle:@"Details" style:UIBarButtonItemStylePlain target:self action:@selector(showDetails)];
-    self.navigationItem.leftBarButtonItem = backButton;
-    self.navigationItem.rightBarButtonItem = detailsButton;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     [self.chatRoom sync];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
-}
-
-- (void)showDetails{
-    [self performSegueWithIdentifier:@"BeckonToDetails" sender:self];
-}
-
-- (void)back{
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)viewEnteredForeground{

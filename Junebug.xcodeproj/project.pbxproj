@@ -81,8 +81,8 @@
 		F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA619379EE10095E598 /* logo 640x1136.png */; };
 		F9BDCFAD19379FBF0095E598 /* Bertil3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */; };
 		F9CAF2F3198D8201003E3F4F /* BeckonTab@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */; };
-		F9D88EC8198E49DA00AC7B54 /* BeckonDetailNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D88EC7198E49DA00AC7B54 /* BeckonDetailNavigationVC.m */; };
 		F9DE061B195EE5A900D3356A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DE061A195EE5A900D3356A /* MapKit.framework */; };
+		F9E8611819B24CF900C26A69 /* BeckonDetailPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8611719B24CF900C26A69 /* BeckonDetailPageVC.m */; };
 		F9E9555C198AB79A001519B8 /* Convertions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E9555B198AB79A001519B8 /* Convertions.m */; };
 /* End PBXBuildFile section */
 
@@ -212,9 +212,9 @@
 		F9BDCFA619379EE10095E598 /* logo 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 640x1136.png"; sourceTree = "<group>"; };
 		F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bertil3.jpg; sourceTree = "<group>"; };
 		F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeckonTab@2x-iphone.png"; sourceTree = "<group>"; };
-		F9D88EC6198E49DA00AC7B54 /* BeckonDetailNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonDetailNavigationVC.h; sourceTree = "<group>"; };
-		F9D88EC7198E49DA00AC7B54 /* BeckonDetailNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonDetailNavigationVC.m; sourceTree = "<group>"; };
 		F9DE061A195EE5A900D3356A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F9E8611619B24CF900C26A69 /* BeckonDetailPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonDetailPageVC.h; sourceTree = "<group>"; };
+		F9E8611719B24CF900C26A69 /* BeckonDetailPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonDetailPageVC.m; sourceTree = "<group>"; };
 		F9E9555A198AB79A001519B8 /* Convertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Convertions.h; sourceTree = "<group>"; };
 		F9E9555B198AB79A001519B8 /* Convertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Convertions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -326,8 +326,8 @@
 				F99B0B6C198C4CFF00849B94 /* BeckonPickDateVC.m */,
 				F99B0B6E198C547800849B94 /* BeckonCreatNavigationVC.h */,
 				F99B0B6F198C547800849B94 /* BeckonCreatNavigationVC.m */,
-				F9D88EC6198E49DA00AC7B54 /* BeckonDetailNavigationVC.h */,
-				F9D88EC7198E49DA00AC7B54 /* BeckonDetailNavigationVC.m */,
+				F9E8611619B24CF900C26A69 /* BeckonDetailPageVC.h */,
+				F9E8611719B24CF900C26A69 /* BeckonDetailPageVC.m */,
 			);
 			name = Beckon;
 			sourceTree = "<group>";
@@ -600,7 +600,7 @@
 				F9163CF8193BAD07002EE1E2 /* NSString+Calculation.m in Sources */,
 				F91D14E71933AF670094299C /* BeckonPickFriendsVC.m in Sources */,
 				F9BBEFA3190AF05C00452C5C /* AppDelegate.m in Sources */,
-				F9D88EC8198E49DA00AC7B54 /* BeckonDetailNavigationVC.m in Sources */,
+				F9E8611819B24CF900C26A69 /* BeckonDetailPageVC.m in Sources */,
 				F9163D09193BAD07002EE1E2 /* UINavigationController+Rotation.m in Sources */,
 				F91D14EA1933AF9A0094299C /* BeckonPickGroupsVC.m in Sources */,
 				F9163D04193BAD07002EE1E2 /* SOMessage.m in Sources */,

@@ -104,9 +104,10 @@
     [super viewDidLayoutSubviews];
     
     dispatch_once(&onceToken, ^{
-        if ([self.conversation count] - 1) {//HACK!!! Some object has sneaked into conversations
-            NSInteger section = self.conversation.count - 1;
-            NSInteger row = [self.conversation[section] count] - 1;
+        NSLog(@"%lu", [self.conversation count]);
+        if (self.conversation.count) {//HACK!!! Some object has sneaked into conversations
+            NSInteger section = self.conversation.count;
+            NSInteger row = [self.conversation[section] count];
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
             [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         }
@@ -365,8 +366,8 @@
     self.conversation = [self grouppedMessages];
     [self.tableView reloadData];
     
-    NSInteger section = [self.tableView numberOfSections] - 1;
-    NSInteger row = [self.tableView numberOfRowsInSection:section] - 1;
+    NSInteger section = [self.tableView numberOfSections];
+    NSInteger row = [self.tableView numberOfRowsInSection:section];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
     if (row >= 0) {
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
