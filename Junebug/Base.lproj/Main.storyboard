@@ -50,6 +50,7 @@
         <scene sceneID="p8W-nY-XUo">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" hidesBottomBarWhenPushed="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="oQv-Vl-4Jo" customClass="BeckonDetailPageVC" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="TIM-Ro-B8u"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </pageViewController>

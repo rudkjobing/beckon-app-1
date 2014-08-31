@@ -35,7 +35,7 @@
 
 @interface SOMessagingViewController () <UITableViewDelegate, SOMessageCellDelegate>
 {
-
+    
 }
 
 @property (strong, nonatomic) UIImage *balloonSendImage;
@@ -83,7 +83,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
+    
     [self setup];
     
     self.balloonSendImage    = [self balloonImageForSending];
@@ -104,10 +104,9 @@
     [super viewDidLayoutSubviews];
     
     dispatch_once(&onceToken, ^{
-        NSLog(@"%lu", [self.conversation count]);
-        if (self.conversation.count) {//HACK!!! Some object has sneaked into conversations
-            NSInteger section = self.conversation.count;
-            NSInteger row = [self.conversation[section] count];
+        if ([self.conversation count] - 1) {//HACK!!! Some object has sneaked into conversations
+            NSInteger section = self.conversation.count - 1;
+            NSInteger row = [self.conversation[section] count] - 1;
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
             [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
         }
@@ -144,7 +143,7 @@
     SOMessage *message = self.conversation[indexPath.section][indexPath.row];
     int index = (int)[[self messages] indexOfObject:message];
     height = [self heightForMessageForIndex:index];
-
+    
     return height;
 }
 
@@ -193,9 +192,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"sendCell";
-
+    
     SOMessageCell *cell;
-
+    
     SOMessage *message = self.conversation[indexPath.section][indexPath.row];
     
     cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -248,7 +247,7 @@
             CGFloat messageMinWidth = self.balloonMinWidth - [SOMessageCell messageLeftMargin] - [SOMessageCell messageRightMargin];
             if (size.width <  messageMinWidth) {
                 size.width = messageMinWidth;
-
+                
                 CGSize newSize = [message.text usedSizeForMaxWidth:messageMinWidth withFont:[self messageFont]];
                 if (message.attributes) {
                     newSize = [message.text usedSizeForMaxWidth:messageMinWidth withAttributes:message.attributes];
@@ -308,7 +307,7 @@
 
 - (void)configureMessageCell:(SOMessageCell *)cell forMessageAtIndex:(NSInteger)index
 {
-
+    
 }
 
 - (CGFloat)messageMaxWidth
@@ -347,17 +346,17 @@
     message.fromMe = YES;
     NSMutableArray *messages = [self messages];
     [messages addObject:message];
-
+    
     [self refreshMessages];
 }
 
 - (void)receiveMessage:(SOMessage *)message
 {
     message.fromMe = NO;
-
+    
     NSMutableArray *messages = [self messages];
     [messages addObject:message];
-
+    
     [self refreshMessages];
 }
 
@@ -366,8 +365,8 @@
     self.conversation = [self grouppedMessages];
     [self.tableView reloadData];
     
-    NSInteger section = [self.tableView numberOfSections];
-    NSInteger row = [self.tableView numberOfRowsInSection:section];
+    NSInteger section = [self.tableView numberOfSections] - 1;
+    NSInteger row = [self.tableView numberOfRowsInSection:section] - 1;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
     if (row >= 0) {
         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
@@ -386,7 +385,7 @@
     } else {
         int groupIndex = 0;
         NSMutableArray *allMessages = [self messages];
-
+        
         for (int i = 0; i < allMessages.count; i++) {
             if (i == 0) {
                 NSMutableArray *firstGroup = [NSMutableArray new];
@@ -429,7 +428,7 @@
         self.imageBrowser = [[SOImageBrowserView alloc] init];
         
         self.imageBrowser.image = [UIImage imageWithData:cell.message.media];
-
+        
         self.imageBrowser.startFrame = [cell convertRect:cell.containerView.frame toView:self.view];
         
         [self.imageBrowser show];
@@ -438,11 +437,11 @@
         NSString *appFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"video.mp4"];
         [cell.message.media writeToFile:appFile atomically:YES];
         
-
+        
         self.moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:appFile]];
         [self.moviePlayerController.moviePlayer prepareToPlay];
         [self.moviePlayerController.moviePlayer setShouldAutoplay:YES];
-
+        
         [self presentViewController:self.moviePlayerController animated:YES completion:^{
             [[UIApplication sharedApplication] setStatusBarHidden:YES];
         }];
