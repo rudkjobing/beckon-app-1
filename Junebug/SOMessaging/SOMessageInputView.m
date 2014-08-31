@@ -150,12 +150,12 @@
     CGRect txtBgFrame = self.textBgImageView.frame;
     txtBgFrame.origin = CGPointMake(self.mediaButton.frame.origin.x + self.mediaButton.frame.size.width + self.textleftMargin, self.textTopMargin);
     txtBgFrame.size = CGSizeMake(self.frame.size.width - self.mediaButton.frame.size.width - self.textleftMargin - self.sendButton.frame.size.width - self.textRightMargin, self.textInitialHeight - self.textTopMargin - self.textBottomMargin);
-
+    
     self.textBgImageView.frame = txtBgFrame;
     
     UIImage *image = [UIImage imageNamed:@"inputTextBG.png"];
     self.textBgImageView.image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(13, 13, 13, 13)];
-
+    
     CGFloat topPadding = 6.0f;
     CGFloat bottomPadding = 5.0f;
     CGFloat leftPadding = 6.0f;
@@ -204,9 +204,9 @@
 - (void)adjustTableViewWithCurve:(BOOL)withCurve scrollsToBottom:(BOOL)scrollToBottom
 {
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, keyboardFrame.size.height + self.frame.size.height, 0.0);
-
-    NSInteger section = [self.tableView numberOfSections];
-    NSInteger row = [self.tableView numberOfRowsInSection:section];
+    
+    NSInteger section = [self.tableView numberOfSections] - 1;
+    NSInteger row = [self.tableView numberOfRowsInSection:section] - 1;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
     
     [UIView beginAnimations:@"anim" context:NULL];
@@ -251,7 +251,7 @@
     CGRect frame = self.textView.frame;
     CGFloat delta = ceilf(usedFrame.size.height) - frame.size.height;
     
-     CGFloat lineHeight = self.textView.font.lineHeight;
+    CGFloat lineHeight = self.textView.font.lineHeight;
     int numberOfActualLines = (int)ceilf(usedFrame.size.height / lineHeight);
     
     CGFloat actualHeight = numberOfActualLines * lineHeight;
@@ -269,7 +269,7 @@
         
         [UIView animateWithDuration:0.3 animations:^{
             self.frame = frm;
-
+            
         } completion:^(BOOL finished) {
             [self.textView scrollRectToVisible:usedFrame animated:YES];
         }];
@@ -283,7 +283,7 @@
 #pragma mark - textview delegate
 - (void)textViewDidChange:(UITextView *)textView
 {
-    [self adjustTextViewSize];    
+    [self adjustTextViewSize];
 }
 
 #pragma mark - Notifications handlers
@@ -296,10 +296,10 @@
     
     keyboardFrame = keyboardRect;
     
-	UIViewAnimationCurve curve = [[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    UIViewAnimationCurve curve = [[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
     keyboardCurve = curve;
     
-	double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     keyboardDuration = duration;
     
     CGRect frame = self.frame;
@@ -320,8 +320,8 @@
 
 - (void)handleKeyboardWillHideNote:(NSNotification *)notification
 {
-	UIViewAnimationCurve curve = [[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
-	double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    UIViewAnimationCurve curve = [[notification.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     keyboardCurve = curve;
     keyboardDuration = duration;
     
@@ -332,7 +332,7 @@
         [UIView setAnimationCurve:curve];
         self.frame = frame;
     } completion:^(BOOL finished) {
-
+        
     }];
     
     [self adjustTableViewWithCurve:YES scrollsToBottom:!keyboardHidesFromDragging];
@@ -378,7 +378,7 @@
     CGRect kbFrame = self.keyboardView.frame;
     
     CGPoint point = [pan locationInView:self.superview];
-
+    
     if (!panDidEnterIntoThisView) {
         if (CGRectContainsPoint(self.frame, point)) {
             panDidEnterIntoThisView = YES;
@@ -410,14 +410,14 @@
         {
             UINavigationController *nc = [self navigationControllerInstance];
             nc.cantAutorotate = NO;
-
+            
             panDidEnterIntoThisView = NO;
             panDidStartetFromThisView = NO;
             _viewIsDragging = NO;
             
             CGPoint vel = [pan velocityInView:pan.view];
-
-         /* if (frame.origin.y < initialPosY + (self.frame.size.height + self.keyboardView.frame.size.height)/2 && NO) { */
+            
+            /* if (frame.origin.y < initialPosY + (self.frame.size.height + self.keyboardView.frame.size.height)/2 && NO) { */
             if (vel.y < 0) { // if scroll direction is up , then fully open keyboard
                 frame.origin.y   = initialPosY;
                 kbFrame.origin.y = kbInitialPosY;
@@ -441,14 +441,14 @@
                 }];
                 kbFrame.size.height = 0;
             }
-
+            
             UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, kbFrame.size.height + self.frame.size.height, 0.0);
             [UIView beginAnimations:@"animKb" context:NULL];
             [UIView setAnimationDuration:keyboardDuration];
-
+            
             self.tableView.contentInset = contentInsets;
             self.tableView.scrollIndicatorInsets = contentInsets;
-
+            
             [UIView commitAnimations];
             
             return;
@@ -474,7 +474,7 @@
             
             UINavigationController *nc = [self navigationControllerInstance];
             nc.cantAutorotate = NO;
-
+            
             
             panDidEnterIntoThisView = NO;
             _viewIsDragging = NO;
@@ -517,7 +517,7 @@
     CGRect selfFrame = self.frame;
     frame.origin.y = self.superview.frame.size.height;
     selfFrame.origin.y = frame.origin.y - selfFrame.size.height;
-
+    
     __weak SOMessageInputView *weakSelf = self;
     [UIView animateWithDuration:keyboardDuration animations:^{
         weakSelf.keyboardView.frame = frame;
@@ -539,7 +539,7 @@
     [UIView commitAnimations];
 }
 
-#pragma mark - 
+#pragma mark -
 - (UINavigationController*)navigationControllerInstance
 {
     UINavigationController *resultNVC = nil;
