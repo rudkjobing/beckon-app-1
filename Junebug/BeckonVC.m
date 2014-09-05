@@ -30,7 +30,11 @@
     CAGradientLayer *bgLayer = [GradientLayers appBlueGradient];
     bgLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:bgLayer atIndex:0];
-    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(goToSignIn:)
+     name:@"UserMustSignIn"
+     object:nil];
     self.title = @"Beckons";
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createBeckon)];
@@ -49,13 +53,17 @@
     [self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
 }
 
+-(void) goToSignIn:(NSNotification*) notification{
+    [self performSegueWithIdentifier:@"LoginModal" sender:self];
+}
 
 -(void)viewEnteredForeground{
     [self.beckons getUpdates];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
-    [[self tabBarItem] setBadgeValue: nil];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState getState];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -107,8 +115,9 @@
     if([segue.identifier isEqualToString:@"BeckonsToBeckon"]){
         NSIndexPath *index = [self.beckonTableView indexPathForSelectedRow];
         Beckon *beckon = [self.beckons.beckons objectAtIndex:index.row];
-        BeckonDetailPageVC *pageVC = [segue destinationViewController];
-//        ChatRoomVC *chatRoomVC = [[pageVC viewControllers] objectAtIndex:0];
+        UINavigationController *nav = [segue destinationViewController];
+//        BeckonDetailPageVC *pageVC = [segue destinationViewController];
+        BeckonDetailPageVC *pageVC = [[nav viewControllers] objectAtIndex:0];
 //        beckon.chatRoom.chatRoomVC = chatRoomVC;
 //        chatRoomVC.dataSource = beckon.chatRoom.chatMessages;
 //        chatRoomVC.chatRoom = beckon.chatRoom;

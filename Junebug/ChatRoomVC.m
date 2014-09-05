@@ -27,10 +27,10 @@
     bgLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:bgLayer atIndex:0];
     self.tableView.backgroundColor = [UIColor clearColor];
+    [self.chatRoom sync];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    [self.chatRoom sync];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
 }
 

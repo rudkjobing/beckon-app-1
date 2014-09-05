@@ -13,8 +13,6 @@
 
 @interface SettingsVC ()
 
-@property (weak, nonatomic) IBOutlet UIButton *signOutButton;
-
 @end
 
 @implementation SettingsVC
@@ -27,15 +25,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(signOutComplete)
-     name:@"UserSignOutSuccess"
-     object:nil];
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = previousButton;
 }
+
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 - (IBAction)signOutComplete {
     [self performSegueWithIdentifier:@"settingsToSignIn" sender:self];

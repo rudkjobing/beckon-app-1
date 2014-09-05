@@ -22,7 +22,7 @@
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(goToSignIn:)
-     name:@"AppStateNotReady"
+     name:@"UserMustSignIn"
      object:nil];    
 }
 
@@ -32,7 +32,7 @@
 }
 
 - (void) goToSignIn:(NSNotification*) notification{
-    [self performSegueWithIdentifier:@"MainToLogin" sender:self];
+    [self performSegueWithIdentifier:@"LoginModal" sender:self];
 }
 
 @end

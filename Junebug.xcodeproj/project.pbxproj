@@ -36,6 +36,10 @@
 		F91D14E71933AF670094299C /* BeckonPickFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */; };
 		F91D14EA1933AF9A0094299C /* BeckonPickGroupsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */; };
 		F91D14ED1934FD7D0094299C /* Beckon.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14EC1934FD7D0094299C /* Beckon.m */; };
+		F951963019B3ACEB004CBC94 /* 19-gear.png in Resources */ = {isa = PBXBuildFile; fileRef = F951962F19B3ACEB004CBC94 /* 19-gear.png */; };
+		F951963419B4C161004CBC94 /* 111-user.png in Resources */ = {isa = PBXBuildFile; fileRef = F951963319B4C161004CBC94 /* 111-user.png */; };
+		F951963E19B4C795004CBC94 /* BeckonMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F951963C19B4C795004CBC94 /* BeckonMapViewController.m */; };
+		F951963F19B4C795004CBC94 /* BeckonMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F951963D19B4C795004CBC94 /* BeckonMapViewController.xib */; };
 		F9572A20192135F500D7D51E /* AppState.m in Sources */ = {isa = PBXBuildFile; fileRef = F9572A1F192135F500D7D51E /* AppState.m */; };
 		F95B92BF193A6A5800416BDA /* FriendTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F95B92BE193A6A5800416BDA /* FriendTabVC.m */; };
 		F95B92CA193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png in Resources */ = {isa = PBXBuildFile; fileRef = F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */; };
@@ -136,6 +140,11 @@
 		F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonPickGroupsVC.m; sourceTree = "<group>"; };
 		F91D14EB1934FD7D0094299C /* Beckon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beckon.h; sourceTree = "<group>"; };
 		F91D14EC1934FD7D0094299C /* Beckon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beckon.m; sourceTree = "<group>"; };
+		F951962F19B3ACEB004CBC94 /* 19-gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-gear.png"; sourceTree = "<group>"; };
+		F951963319B4C161004CBC94 /* 111-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user.png"; sourceTree = "<group>"; };
+		F951963B19B4C795004CBC94 /* BeckonMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonMapViewController.h; sourceTree = "<group>"; };
+		F951963C19B4C795004CBC94 /* BeckonMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonMapViewController.m; sourceTree = "<group>"; };
+		F951963D19B4C795004CBC94 /* BeckonMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeckonMapViewController.xib; sourceTree = "<group>"; };
 		F9572A1E192135F500D7D51E /* AppState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppState.h; sourceTree = "<group>"; };
 		F9572A1F192135F500D7D51E /* AppState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppState.m; sourceTree = "<group>"; };
 		F95B92BD193A6A5800416BDA /* FriendTabVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTabVC.h; sourceTree = "<group>"; };
@@ -310,6 +319,7 @@
 		F9163D16193BBD8B002EE1E2 /* Beckon */ = {
 			isa = PBXGroup;
 			children = (
+				F951963519B4C2FE004CBC94 /* BeckonDetail */,
 				F91D14E51933AF670094299C /* BeckonPickFriendsVC.h */,
 				F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */,
 				F91D14E81933AF9A0094299C /* BeckonPickGroupsVC.h */,
@@ -349,9 +359,21 @@
 			name = "Supporting View Controllers";
 			sourceTree = "<group>";
 		};
+		F951963519B4C2FE004CBC94 /* BeckonDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F951963B19B4C795004CBC94 /* BeckonMapViewController.h */,
+				F951963C19B4C795004CBC94 /* BeckonMapViewController.m */,
+				F951963D19B4C795004CBC94 /* BeckonMapViewController.xib */,
+			);
+			name = BeckonDetail;
+			sourceTree = "<group>";
+		};
 		F9ADF35D190BFABB002C6809 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F951963319B4C161004CBC94 /* 111-user.png */,
+				F951962F19B3ACEB004CBC94 /* 19-gear.png */,
 				F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */,
 				F99B0B66198AE65C00849B94 /* squirrel.jpg */,
 				F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */,
@@ -564,12 +586,14 @@
 				F9163D02193BAD07002EE1E2 /* play_button@2x.png in Resources */,
 				F99B0B67198AE65C00849B94 /* squirrel.jpg in Resources */,
 				F9163CFD193BAD07002EE1E2 /* bubbleReceive.png in Resources */,
+				F951963419B4C161004CBC94 /* 111-user.png in Resources */,
 				F9163CFC193BAD07002EE1E2 /* bubble@2x.png in Resources */,
 				F9CAF2F3198D8201003E3F4F /* BeckonTab@2x-iphone.png in Resources */,
 				F9163CFA193BAD07002EE1E2 /* attachment@2x.png in Resources */,
 				F9163D00193BAD07002EE1E2 /* inputTextBG@2x.png in Resources */,
 				F9163D01193BAD07002EE1E2 /* play_button.png in Resources */,
 				F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */,
+				F951963019B3ACEB004CBC94 /* 19-gear.png in Resources */,
 				F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */,
 				F9BDCFAA19379EE10095E598 /* logo 640x960.png in Resources */,
 				F9163CFB193BAD07002EE1E2 /* bubble.png in Resources */,
@@ -577,6 +601,7 @@
 				F9BDCFA919379EE10095E598 /* logo 120x120.png in Resources */,
 				F9BBEF9D190AF05C00452C5C /* InfoPlist.strings in Resources */,
 				F9BDCFA819379EE10095E598 /* logo 80x80.png in Resources */,
+				F951963F19B4C795004CBC94 /* BeckonMapViewController.xib in Resources */,
 				F9163CFF193BAD07002EE1E2 /* inputTextBG.png in Resources */,
 				F9BBEFA6190AF05C00452C5C /* Main.storyboard in Resources */,
 				F9163CFE193BAD07002EE1E2 /* bubbleReceive@2x.png in Resources */,
@@ -626,6 +651,7 @@
 				F9BBEFD3190BF26800452C5C /* SignInVC.m in Sources */,
 				F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */,
 				F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */,
+				F951963E19B4C795004CBC94 /* BeckonMapViewController.m in Sources */,
 				F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */,
 				F9163D06193BAD07002EE1E2 /* SOMessageInputView.m in Sources */,
 				F9163D08193BAD07002EE1E2 /* SOPlaceholderedTextView.m in Sources */,

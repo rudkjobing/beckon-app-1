@@ -20,7 +20,7 @@ NSInteger counter;
         self.cookie = [defaults stringForKey:@"cookie"];
     }
     else{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserMustSignIn" object:self];
     }
     return self;
 }
@@ -63,7 +63,7 @@ NSInteger counter;
                                                            options: NSJSONReadingMutableContainers
                                                              error: &error];
     if([[result objectForKey:@"message"] isEqualToString:@"Invalid Cookie"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AppStateNotReady" object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserMustSignIn" object:self];
     }
     NSLog(@"%@", result);
     return result;

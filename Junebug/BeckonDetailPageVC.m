@@ -1,5 +1,6 @@
 #import "BeckonDetailPageVC.h"
 #import "ChatRoomVC.h"
+#import "BeckonMapViewController.h"
 
 @implementation BeckonDetailPageVC
 
@@ -11,13 +12,19 @@
     self.beckon.chatRoom.chatRoomVC = chatVC;
     chatVC.chatRoom = self.beckon.chatRoom;
     chatVC.dataSource = self.beckon.chatRoom.chatMessages;
-    UIViewController *asd = [[UIViewController alloc] init];
-    [self.viewControllerArray addObjectsFromArray:@[chatVC, asd]];
+    BeckonMapViewController *map = [[BeckonMapViewController alloc] initWithNibName:@"BeckonMapViewController" bundle:nil];
+    [self.viewControllerArray addObjectsFromArray:@[chatVC, map]];
+    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = previousButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self setupPageViewController];
+}
+
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)setupPageViewController
