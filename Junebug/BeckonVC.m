@@ -82,7 +82,7 @@
 //Added row height
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55;
+    return 65;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -100,6 +100,7 @@
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
     cell.placeOfEventLabel.text = @"Not Implemented";
+    cell.beckonIconImage.image = [UIImage imageNamed:@"Bertil3.jpg"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     cell.timeOfEventLabel.text = [formatter stringFromDate:beckon.begins];
