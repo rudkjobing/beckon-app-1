@@ -10,13 +10,27 @@
 
 @implementation FriendCell
 
+
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
-        CGFloat startingPointOfSubViewOnX = 10.0;
-        CGFloat startingPointOfSubviewOnY = 5.0;
+        
+        //Add new custom subview. Relates to heightforRowAtIndexPath in FriendsVC
+        CGFloat heightOfCellInTableView = 55.0;
+        
+        CGRect rectForCustomSubView = CGRectMake(self.contentView.frame.origin.x,
+                                                 self.contentView.frame.origin.y + 5.0,
+                                                 self.contentView.frame.size.width,
+                                                 heightOfCellInTableView);
+        self.customSubview = [[UIView alloc] initWithFrame:rectForCustomSubView];
+        self.customSubview.backgroundColor = [UIColor colorWithRed:255/255 green:255/255 blue:255/255 alpha:0.7];
+        
+        
+        // Initialization of subviews in contentview
+        CGFloat startingPointOfSubViewOnX = self.customSubview.bounds.origin.x + 10.0;
+        CGFloat startingPointOfSubviewOnY = self.customSubview.bounds.origin.y + 5.0;
         
         //add Image of Friend
         CGFloat heightOfFriendImage = 45.0;
@@ -45,12 +59,12 @@
         self.nickNameOfFriend.font = [UIFont boldSystemFontOfSize:16];
         self.nickNameOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nickNameOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
-        self.nickNameOfFriend.textColor = [UIColor whiteColor];
+        self.nickNameOfFriend.textColor = [UIColor blackColor];
         
-        self.nickNameOfFriend.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.nickNameOfFriend.layer.shadowOffset = CGSizeMake(0, 1);
-        self.nickNameOfFriend.layer.shadowOpacity = 1;
-        self.nickNameOfFriend.layer.shadowRadius = 1.0;
+        /*self.nickNameOfFriend.layer.shadowColor = [UIColor grayColor].CGColor;
+         self.nickNameOfFriend.layer.shadowOffset = CGSizeMake(0, 1);
+         self.nickNameOfFriend.layer.shadowOpacity = 1;
+         self.nickNameOfFriend.layer.shadowRadius = 0.6;*/
         
         
         //Update referencepoints for next subviews
@@ -63,7 +77,7 @@
         self.nameOfFriend = [[UILabel alloc] initWithFrame:frameOfNameLabel];
         self.nameOfFriend.backgroundColor = [UIColor clearColor];
         self.nameOfFriend.font = [UIFont systemFontOfSize:12];
-        self.nameOfFriend.textColor = [UIColor whiteColor];
+        self.nameOfFriend.textColor = [UIColor blackColor];
         self.nameOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
         
         //Update referencepoint of next subview
@@ -76,21 +90,49 @@
         self.emailOfFriend = [[UILabel alloc] initWithFrame:frameOfEmailLabel];
         self.emailOfFriend.backgroundColor = [UIColor clearColor];
         self.emailOfFriend.font = [UIFont italicSystemFontOfSize:12];
-        self.emailOfFriend.textColor = [UIColor whiteColor];
+        self.emailOfFriend.textColor = [UIColor blackColor];
         self.emailOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.emailOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
         
+        self.contentView.backgroundColor = [UIColor clearColor];
+        //Customize cellboarder
+        [self.customSubview.layer setBorderColor:[UIColor clearColor].CGColor];
+        [self.customSubview.layer setBorderWidth:1.0f];
         
         //add subviews to cell
-        [self.contentView addSubview:self.pictureOfFriend];
-        [self.contentView addSubview:self.nickNameOfFriend];
-        [self.contentView addSubview:self.nameOfFriend];
-        [self.contentView addSubview:self.emailOfFriend];
+        [self.contentView addSubview:self.customSubview];
+        [self.customSubview addSubview:self.pictureOfFriend];
+        [self.customSubview addSubview:self.nickNameOfFriend];
+        [self.customSubview addSubview:self.nameOfFriend];
+        [self.customSubview addSubview:self.emailOfFriend];
         
         self.backgroundColor = [UIColor clearColor];
         
+        
     }
     return self;
+}
+
+
+//set width of cells contentview
+
+- (void)setFrame:(CGRect)frame {
+    
+    frame.origin.x += 20;
+    frame.size.width -= 2 * 20;
+    [super setFrame:frame];
+}
+
+
+- (void)layoutSubviews
+{
+    self.contentView.bounds = CGRectMake(self.bounds.origin.x,
+                                         self.bounds.origin.y,
+                                         self.bounds.size.width - 50,
+                                         self.bounds.size.height);
+    
+    [super layoutSubviews];
+    
 }
 
 - (void)awakeFromNib
@@ -101,7 +143,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

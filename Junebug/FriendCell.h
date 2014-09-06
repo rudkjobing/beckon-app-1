@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UILabel *nickNameOfFriend;
 @property(strong, nonatomic) UILabel *nameOfFriend;
 @property(strong, nonatomic) UILabel *emailOfFriend;
+@property(strong, nonatomic) UIView *customSubview;
 @property(strong, nonatomic) UIImageView *pictureOfFriend;
 
 @end
