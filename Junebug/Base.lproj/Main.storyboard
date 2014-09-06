@@ -37,6 +37,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Description" id="t7W-vy-SpD"/>
                     <connections>
+                        <outlet property="beckonDescription" destination="8d4-pc-TvF" id="Ybs-bu-T70"/>
                         <outlet property="beckonTitle" destination="ubR-vC-y5Q" id="kf1-ER-xji"/>
                         <outlet property="progressView" destination="2zs-qM-240" id="4gV-Ri-cV7"/>
                         <segue destination="CJY-iP-9oY" kind="push" identifier="selectFriends" id="4Nu-ku-eCk"/>

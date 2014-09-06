@@ -28,6 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    BeckonDetailPageVC *parentVC = [self parentViewController];
+    self.titleLabel.text = parentVC.beckon.title;
+    self.descriptionLabel.text = parentVC.beckon.beckonDescription;
     // Do any additional setup after loading the view from its nib.
 }
 

@@ -18,6 +18,8 @@
 @interface BeckonVC ()
 @property (weak, nonatomic) IBOutlet UITableView *beckonTableView;
 @property (strong, nonatomic) Beckons *beckons;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *userLocation;
 @end
 
 @implementation BeckonVC
@@ -51,6 +53,26 @@
     self.beckonTableView.backgroundColor = [UIColor clearColor];
     
     [self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
+    if ([CLLocationManager locationServicesEnabled]) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+            [self.locationManager requestAlwaysAuthorization];
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        self.locationManager.delegate = self;
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [self.locationManager setDesiredAccuracy:kCLDistanceFilterNone];
+        
+        [self.locationManager startMonitoringSignificantLocationChanges];
+    }
+
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    for(CLLocation *location in locations){
+        self.userLocation = location;
+    }
+    [self.locationManager stopUpdatingLocation];
 }
 
 -(void) goToSignIn:(NSNotification*) notification{
@@ -99,7 +121,10 @@
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
-    cell.placeOfEventLabel.text = @"Not Implemented";
+    CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
+    CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];
+    NSString *distanceString = [NSString stringWithFormat: @"%f", distance];
+    cell.placeOfEventLabel.text = distanceString;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     cell.timeOfEventLabel.text = [formatter stringFromDate:beckon.begins];

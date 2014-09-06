@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "GradientLayers.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface BeckonVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface BeckonVC : UIViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @end

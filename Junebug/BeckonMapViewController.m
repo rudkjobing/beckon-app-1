@@ -7,8 +7,11 @@
 //
 
 #import "BeckonMapViewController.h"
+#import "BeckonDetailPageVC.h"
 
 @interface BeckonMapViewController ()
+
+@property (weak, nonatomic) IBOutlet MKMapView *map;
 
 @end
 
@@ -16,6 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    BeckonDetailPageVC *parentVC = [self parentViewController];
+    MKCoordinateRegion myPosition;
+    myPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
+    myPosition.center.longitude = [parentVC.beckon.longitude doubleValue];
+    myPosition.span.latitudeDelta = 0.008388;
+    myPosition.span.longitudeDelta = 0.016243;
+    [self.map setRegion:myPosition animated:NO];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
+    [self.map addAnnotation:placemark];
+
     // Do any additional setup after loading the view from its nib.
 }
 
