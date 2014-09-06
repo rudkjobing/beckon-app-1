@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *beckonDescription;
 @property (strong, nonatomic) NSString *chatRoomId;
 @property (strong, nonatomic) NSMutableArray *friends;
 @property (strong, nonatomic) NSDate *begins;
@@ -22,7 +23,9 @@
 @property (strong, nonatomic) NSNumber *longitude;
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) ChatRoom *chatRoom;
+@property (strong, nonatomic) NSString *status;
 
 - (void) flush;
-
+- (void) acceptBeckon;
+- (void) rejectBeckon;
 @end

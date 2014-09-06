@@ -1,6 +1,7 @@
 #import "BeckonDetailPageVC.h"
 #import "ChatRoomVC.h"
 #import "BeckonMapViewController.h"
+#import "BeckonAcceptDeclineViewController.h"
 
 @implementation BeckonDetailPageVC
 
@@ -13,7 +14,8 @@
     chatVC.chatRoom = self.beckon.chatRoom;
     chatVC.dataSource = self.beckon.chatRoom.chatMessages;
     BeckonMapViewController *map = [[BeckonMapViewController alloc] initWithNibName:@"BeckonMapViewController" bundle:nil];
-    [self.viewControllerArray addObjectsFromArray:@[chatVC, map]];
+    BeckonAcceptDeclineViewController *acceptReject = [[BeckonAcceptDeclineViewController alloc] initWithNibName:@"BeckonAcceptDeclineViewController" bundle:nil];
+    [self.viewControllerArray addObjectsFromArray:@[chatVC, acceptReject, map]];
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = previousButton;
 }

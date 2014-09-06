@@ -40,6 +40,7 @@
 
 - (void)nextStep{
     self.beckon.title = self.beckonTitle.text;
+    self.beckon.beckonDescription = self.beckonDescription.text;
     [self performSegueWithIdentifier:@"selectFriends" sender:self];
 }
 

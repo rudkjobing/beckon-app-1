@@ -43,6 +43,7 @@
         Beckon *beckon = [[Beckon alloc] init];
         beckon.id = [child objectForKey:@"id"];
         beckon.title = [child objectForKey:@"title"];
+        beckon.beckonDescription = [child objectForKey:@"description"];
         beckon.chatRoomId = [child objectForKey:@"chatRoom"];
         beckon.server = self.server;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
