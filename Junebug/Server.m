@@ -39,11 +39,13 @@ NSInteger counter;
     NSLog(@"%@ %@", domain, command);
     NSLog(@"%@", post);
     
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"https://gateway.beckon.dk/Beckon/router.php"]];
+//    [request setURL:[NSURL URLWithString:@"https://gateway.beckon.dk/Beckon/router.php"]];
+//    [request setURL:[NSURL URLWithString:@"http://178.62.173.9/Beckon/router.php"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.1.230:8090/router.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];

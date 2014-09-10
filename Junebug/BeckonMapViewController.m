@@ -12,6 +12,9 @@
 @interface BeckonMapViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *map;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *acceptButton;
+@property (weak, nonatomic) IBOutlet UIButton *declineButton;
 
 @end
 
@@ -19,7 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BeckonDetailPageVC *parentVC = [self parentViewController];
+    BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+    self.titleLabel.text = parentVC.beckon.title;
     MKCoordinateRegion myPosition;
     myPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
     myPosition.center.longitude = [parentVC.beckon.longitude doubleValue];
@@ -29,7 +33,17 @@
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
     [self.map addAnnotation:placemark];
 
-    // Do any additional setup after loading the view from its nib.
+    //<3 = true
+}
+
+- (IBAction)acceptButtonAction:(UIButton *)sender {
+    BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+    [parentVC.beckon acceptBeckon];
+}
+
+- (IBAction)declineButtonAction:(UIButton *)sender {
+    BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+    [parentVC.beckon rejectBeckon];
 }
 
 - (void)didReceiveMemoryWarning {

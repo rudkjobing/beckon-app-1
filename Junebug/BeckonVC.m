@@ -63,7 +63,7 @@
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         [self.locationManager setDesiredAccuracy:kCLDistanceFilterNone];
         
-        [self.locationManager startMonitoringSignificantLocationChanges];
+        
     }
 
 }
@@ -80,10 +80,12 @@
 }
 
 -(void)viewEnteredForeground{
+    [self.locationManager startUpdatingLocation];
     [self.beckons getUpdates];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    [self.locationManager startUpdatingLocation];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState getState];
 }
@@ -123,10 +125,20 @@
     cell.nameOfEventLabel.text = beckon.title;
     CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
     CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];
-    NSString *distanceString = [NSString stringWithFormat: @"%f", distance];
-    cell.placeOfEventLabel.text = distanceString;
+    if(distance < 1000 && distance > 100){
+        cell.placeOfEventLabel.text = @"You are allmost there";
+    }
+    else if (distance < 100){
+        cell.placeOfEventLabel.text = @"You are there";
+    }
+    else{
+        distance = distance / 1000;
+        NSString *distanceString = [NSString stringWithFormat: @"%f", distance];
+        cell.placeOfEventLabel.text = distanceString;
+    }
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     cell.timeOfEventLabel.text = [formatter stringFromDate:beckon.begins];
     [cell updateLabel];
     return cell;

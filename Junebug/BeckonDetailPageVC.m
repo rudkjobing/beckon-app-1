@@ -14,8 +14,8 @@
     chatVC.chatRoom = self.beckon.chatRoom;
     chatVC.dataSource = self.beckon.chatRoom.chatMessages;
     BeckonMapViewController *map = [[BeckonMapViewController alloc] initWithNibName:@"BeckonMapViewController" bundle:nil];
-    BeckonAcceptDeclineViewController *acceptReject = [[BeckonAcceptDeclineViewController alloc] initWithNibName:@"BeckonAcceptDeclineViewController" bundle:nil];
-    [self.viewControllerArray addObjectsFromArray:@[chatVC, acceptReject, map]];
+    //BeckonAcceptDeclineViewController *acceptReject = [[BeckonAcceptDeclineViewController alloc] initWithNibName:@"BeckonAcceptDeclineViewController" bundle:nil];
+    [self.viewControllerArray addObjectsFromArray:@[chatVC, map]];
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = previousButton;
 }

@@ -25,7 +25,7 @@
                                                  self.contentView.frame.size.width,
                                                  heightOfCellInTableView);
         self.customBeckonCellView = [[UIView alloc] initWithFrame:rectForCustomSubView];
-        self.customBeckonCellView.backgroundColor = [UIColor colorWithRed:255/255 green:255/255 blue:255/255 alpha:0.7];
+        self.customBeckonCellView.backgroundColor = [UIColor colorWithRed:255/255 green:255/255 blue:255/255 alpha:0.9];
         
         self.customBeckonCellView.layer.shadowColor = [UIColor blackColor].CGColor;
          self.customBeckonCellView.layer.shadowOffset = CGSizeMake(0, 1);

@@ -43,7 +43,7 @@
         Beckon *beckon = [[Beckon alloc] init];
         beckon.id = [child objectForKey:@"id"];
         beckon.title = [child objectForKey:@"title"];
-        beckon.beckonDescription = [child objectForKey:@"description"];
+        //beckon.beckonDescription = [child objectForKey:@"description"];
         beckon.chatRoomId = [child objectForKey:@"chatRoom"];
         beckon.latitude = [child objectForKey:@"latitude"];
         beckon.longitude = [child objectForKey:@"longitude"];
