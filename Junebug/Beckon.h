@@ -23,6 +23,8 @@
 @property (strong, nonatomic) NSNumber *longitude;
 @property (strong, nonatomic) Server *server;
 @property (strong, nonatomic) ChatRoom *chatRoom;
+@property (strong, nonatomic) NSString *status;
+@property (strong, nonatomic) NSMutableArray *members;
 
 - (void) flush;
 - (void) acceptBeckon;

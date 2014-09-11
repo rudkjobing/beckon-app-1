@@ -21,7 +21,7 @@
 @property (strong, nonatomic) Beckons *beckons;
 @property (strong, nonatomic) NSMutableDictionary *chatRooms;
 @property (strong, nonatomic) NSString *token;
-@property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) NSNumber *userId;
 
 - (void) signUpWithEmail: (NSString *)email Password: (NSString *)password Firstname: (NSString *)firstname Lastname: (NSString *)lastname;
 - (void) signInUsingEmail: (NSString *) email AndPassword: (NSString *) password;

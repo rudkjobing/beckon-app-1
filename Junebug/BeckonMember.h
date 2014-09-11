@@ -1,5 +1,5 @@
 //
-//  User.h
+//  BeckonMember.h
 //  Junebug
 //
 //  Created by Steffen Rudkjøbing on 10/09/14.
@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
-@interface User : NSObject
+@interface BeckonMember : NSObject
 
 @property (strong, nonatomic) NSNumber *id;
-@property (strong, nonatomic) NSString *firstName;
-@property (strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) NSString *status;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "Server.h"
+#import "AppDelegate.h"
 
 @implementation Server
 
@@ -15,9 +16,11 @@ NSInteger counter;
 - (Server*) init{
     self = [super init];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([defaults integerForKey:@"cookieId"] && [defaults stringForKey:@"cookie"]){
+    if([defaults integerForKey:@"cookieId"] && [defaults stringForKey:@"cookie"] && [defaults integerForKey:@"userId"] ){
         self.cookieId = [defaults objectForKey:@"cookieId"];
         self.cookie = [defaults stringForKey:@"cookie"];
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.appState.userId = [[NSNumber alloc] initWithLong:[defaults integerForKey:@"userId"]];
     }
     else{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserMustSignIn" object:self];
@@ -44,8 +47,8 @@ NSInteger counter;
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
 //    [request setURL:[NSURL URLWithString:@"https://gateway.beckon.dk/Beckon/router.php"]];
-//    [request setURL:[NSURL URLWithString:@"http://178.62.173.9/Beckon/router.php"]];
-    [request setURL:[NSURL URLWithString:@"http://192.168.1.230:8090/router.php"]];
+    [request setURL:[NSURL URLWithString:@"http://178.62.173.9/Beckon/router.php"]];
+//    [request setURL:[NSURL URLWithString:@"http://192.168.1.230:8090/router.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];

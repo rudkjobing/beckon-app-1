@@ -27,12 +27,13 @@
     MKCoordinateRegion myPosition;
     myPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
     myPosition.center.longitude = [parentVC.beckon.longitude doubleValue];
-    myPosition.span.latitudeDelta = 0.008388;
-    myPosition.span.longitudeDelta = 0.016243;
+    myPosition.span.latitudeDelta = 0.008388 / 2;
+    myPosition.span.longitudeDelta = 0.016243 / 2;
     [self.map setRegion:myPosition animated:NO];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
     [self.map addAnnotation:placemark];
-
+    [parentVC.beckon addObserver:self forKeyPath:@"status" options:0 context:nil];
+    [self updateButtonState];
     //<3 = true
 }
 
@@ -49,6 +50,37 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    [self updateButtonState];
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+    [parentVC.beckon removeObserver:self forKeyPath:@"status"];
+}
+
+- (void)updateButtonState {
+    BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+    if([parentVC.beckon.status isEqualToString:@"ACCEPTED"]){
+        [self.acceptButton setTitle:@"Accepted" forState:UIControlStateNormal];
+        [self.acceptButton setAlpha:1.0];
+        [self.acceptButton setEnabled:NO];
+        
+        [self.declineButton setTitle:@"Decline" forState:UIControlStateNormal];
+        [self.declineButton setAlpha:0.5];
+        [self.declineButton setEnabled:YES];
+    }
+    else if ([parentVC.beckon.status isEqualToString:@"REJECTED"]){
+        [self.declineButton setTitle:@"Declined" forState:UIControlStateNormal];
+        [self.declineButton setAlpha:1.0];
+        [self.declineButton setEnabled:NO];
+        
+        [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
+        [self.acceptButton setAlpha:0.5];
+        [self.acceptButton setEnabled:YES];
+    }
 }
 
 /*

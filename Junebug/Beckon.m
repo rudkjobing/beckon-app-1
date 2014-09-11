@@ -57,7 +57,7 @@
         NSDictionary *result = [self.server queryServerDomain:@"beckon" WithCommand:@"acceptBeckon" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
-                NSLog(@"Accepted beckon");
+                self.status = @"ACCEPTED";
             }
             else{
                 
@@ -73,7 +73,7 @@
         NSDictionary *result = [self.server queryServerDomain:@"beckon" WithCommand:@"rejectBeckon" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
-                NSLog(@"Rejected beckon");
+                self.status = @"REJECTED";
             }
             else{
                 

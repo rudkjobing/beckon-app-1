@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet MKMapView *beckonMap;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (strong, nonatomic) NSNumber *latitude;
+@property (strong, nonatomic) NSNumber *longitude;
 
 @end
 
@@ -40,11 +43,37 @@
     self.progressView.progress = 0.75;
 }
 
+- (IBAction)addressEnteredAction:(UITextField *)sender {
+    [self.addressTextField resignFirstResponder];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:self.addressTextField.text completionHandler:^(NSArray *placemarks, NSError *error) {
+        //Error checking
+        
+        CLPlacemark *placemark = [placemarks objectAtIndex:0];
+        MKCoordinateRegion region;
+     
+        region.center.latitude = placemark.location.coordinate.latitude;
+        region.center.longitude = placemark.location.coordinate.longitude;
+        self.latitude = [[NSNumber alloc] initWithDouble:region.center.latitude];
+        self.longitude = [[NSNumber alloc] initWithDouble:region.center.longitude];
+        MKCoordinateSpan span;
+        double radius = [(CLCircularRegion*)placemark.region radius] / 100; // convert to km
+        span.latitudeDelta = radius / 112.0;
+        region.span = span;
+        [self.beckonMap removeAnnotations:self.beckonMap.annotations];
+        MKPlacemark *placemarkForAnnotation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]) addressDictionary:nil];
+        [self.beckonMap addAnnotation:placemarkForAnnotation];
+        [self.beckonMap setRegion:region animated:YES];
+    }];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     for(CLLocation *location in locations){
         MKCoordinateRegion myPosition;
         myPosition.center.latitude = location.coordinate.latitude;
         myPosition.center.longitude = location.coordinate.longitude;
+        self.latitude = [[NSNumber alloc] initWithDouble:location.coordinate.latitude];
+        self.longitude = [[NSNumber alloc] initWithDouble:location.coordinate.longitude];
         myPosition.span.latitudeDelta = 0.008388;
         myPosition.span.longitudeDelta = 0.016243;
         [self.beckonMap setRegion:myPosition animated:NO];
@@ -59,8 +88,8 @@
 }
 
 - (void)nextStep{
-    self.beckon.latitude = [[NSNumber alloc] initWithDouble:self.locationManager.location.coordinate.latitude];
-    self.beckon.longitude = [[NSNumber alloc] initWithDouble:self.locationManager.location.coordinate.longitude];
+    self.beckon.latitude = self.latitude;
+    self.beckon.longitude = self.longitude;
     [self performSegueWithIdentifier:@"selectDate" sender:self];
 }
 

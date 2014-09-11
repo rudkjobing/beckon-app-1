@@ -46,6 +46,8 @@
 		F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */ = {isa = PBXBuildFile; fileRef = F95B92CB193A8D3E00416BDA /* Lalaatest3ocu.png */; };
 		F986E64319BB5B0800637366 /* BeckonMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F986E64119BB5B0800637366 /* BeckonMemberViewController.m */; };
 		F986E64419BB5B0800637366 /* BeckonMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F986E64219BB5B0800637366 /* BeckonMemberViewController.xib */; };
+		F986E64719C0B0D800637366 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F986E64619C0B0D800637366 /* User.m */; };
+		F986E64A19C0B19700637366 /* BeckonMember.m in Sources */ = {isa = PBXBuildFile; fileRef = F986E64919C0B19700637366 /* BeckonMember.m */; };
 		F99B0B67198AE65C00849B94 /* squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F99B0B66198AE65C00849B94 /* squirrel.jpg */; };
 		F99B0B6A198C4B1A00849B94 /* BeckonPickLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B69198C4B1A00849B94 /* BeckonPickLocationVC.m */; };
 		F99B0B6D198C4CFF00849B94 /* BeckonPickDateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B6C198C4CFF00849B94 /* BeckonPickDateVC.m */; };
@@ -87,8 +89,6 @@
 		F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA619379EE10095E598 /* logo 640x1136.png */; };
 		F9BDCFAD19379FBF0095E598 /* Bertil3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */; };
 		F9CAF2F3198D8201003E3F4F /* BeckonTab@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */; };
-		F9D5D26619BA52C400120FAC /* BeckonAcceptDeclineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D5D26419BA52C400120FAC /* BeckonAcceptDeclineViewController.m */; };
-		F9D5D26719BA52C400120FAC /* BeckonAcceptDeclineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D5D26519BA52C400120FAC /* BeckonAcceptDeclineViewController.xib */; };
 		F9DE061B195EE5A900D3356A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DE061A195EE5A900D3356A /* MapKit.framework */; };
 		F9E8611819B24CF900C26A69 /* BeckonDetailPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8611719B24CF900C26A69 /* BeckonDetailPageVC.m */; };
 		F9E9555C198AB79A001519B8 /* Convertions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E9555B198AB79A001519B8 /* Convertions.m */; };
@@ -158,6 +158,10 @@
 		F986E64019BB5B0800637366 /* BeckonMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonMemberViewController.h; sourceTree = "<group>"; };
 		F986E64119BB5B0800637366 /* BeckonMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonMemberViewController.m; sourceTree = "<group>"; };
 		F986E64219BB5B0800637366 /* BeckonMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeckonMemberViewController.xib; sourceTree = "<group>"; };
+		F986E64519C0B0D800637366 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		F986E64619C0B0D800637366 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		F986E64819C0B19700637366 /* BeckonMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonMember.h; sourceTree = "<group>"; };
+		F986E64919C0B19700637366 /* BeckonMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonMember.m; sourceTree = "<group>"; };
 		F99B0B66198AE65C00849B94 /* squirrel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squirrel.jpg; sourceTree = "<group>"; };
 		F99B0B68198C4B1A00849B94 /* BeckonPickLocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickLocationVC.h; sourceTree = "<group>"; };
 		F99B0B69198C4B1A00849B94 /* BeckonPickLocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonPickLocationVC.m; sourceTree = "<group>"; };
@@ -228,9 +232,6 @@
 		F9BDCFA619379EE10095E598 /* logo 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 640x1136.png"; sourceTree = "<group>"; };
 		F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bertil3.jpg; sourceTree = "<group>"; };
 		F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeckonTab@2x-iphone.png"; sourceTree = "<group>"; };
-		F9D5D26319BA52C400120FAC /* BeckonAcceptDeclineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonAcceptDeclineViewController.h; sourceTree = "<group>"; };
-		F9D5D26419BA52C400120FAC /* BeckonAcceptDeclineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonAcceptDeclineViewController.m; sourceTree = "<group>"; };
-		F9D5D26519BA52C400120FAC /* BeckonAcceptDeclineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeckonAcceptDeclineViewController.xib; sourceTree = "<group>"; };
 		F9DE061A195EE5A900D3356A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F9E8611619B24CF900C26A69 /* BeckonDetailPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonDetailPageVC.h; sourceTree = "<group>"; };
 		F9E8611719B24CF900C26A69 /* BeckonDetailPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonDetailPageVC.m; sourceTree = "<group>"; };
@@ -375,9 +376,6 @@
 				F951963B19B4C795004CBC94 /* BeckonMapViewController.h */,
 				F951963C19B4C795004CBC94 /* BeckonMapViewController.m */,
 				F951963D19B4C795004CBC94 /* BeckonMapViewController.xib */,
-				F9D5D26319BA52C400120FAC /* BeckonAcceptDeclineViewController.h */,
-				F9D5D26419BA52C400120FAC /* BeckonAcceptDeclineViewController.m */,
-				F9D5D26519BA52C400120FAC /* BeckonAcceptDeclineViewController.xib */,
 				F986E64019BB5B0800637366 /* BeckonMemberViewController.h */,
 				F986E64119BB5B0800637366 /* BeckonMemberViewController.m */,
 				F986E64219BB5B0800637366 /* BeckonMemberViewController.xib */,
@@ -514,6 +512,10 @@
 				F91848381961BAB400BBA75B /* ChatRoom.m */,
 				F918483A1961F91500BBA75B /* ChatMessage.h */,
 				F918483B1961F91600BBA75B /* ChatMessage.m */,
+				F986E64519C0B0D800637366 /* User.h */,
+				F986E64619C0B0D800637366 /* User.m */,
+				F986E64819C0B19700637366 /* BeckonMember.h */,
+				F986E64919C0B19700637366 /* BeckonMember.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -609,7 +611,6 @@
 				F9163CFA193BAD07002EE1E2 /* attachment@2x.png in Resources */,
 				F9163D00193BAD07002EE1E2 /* inputTextBG@2x.png in Resources */,
 				F9163D01193BAD07002EE1E2 /* play_button.png in Resources */,
-				F9D5D26719BA52C400120FAC /* BeckonAcceptDeclineViewController.xib in Resources */,
 				F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */,
 				F951963019B3ACEB004CBC94 /* 19-gear.png in Resources */,
 				F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */,
@@ -643,7 +644,6 @@
 				F9163CF8193BAD07002EE1E2 /* NSString+Calculation.m in Sources */,
 				F91D14E71933AF670094299C /* BeckonPickFriendsVC.m in Sources */,
 				F9BBEFA3190AF05C00452C5C /* AppDelegate.m in Sources */,
-				F9D5D26619BA52C400120FAC /* BeckonAcceptDeclineViewController.m in Sources */,
 				F986E64319BB5B0800637366 /* BeckonMemberViewController.m in Sources */,
 				F9E8611819B24CF900C26A69 /* BeckonDetailPageVC.m in Sources */,
 				F9163D09193BAD07002EE1E2 /* UINavigationController+Rotation.m in Sources */,
@@ -665,6 +665,7 @@
 				F99B0B6A198C4B1A00849B94 /* BeckonPickLocationVC.m in Sources */,
 				F9BBEF9F190AF05C00452C5C /* main.m in Sources */,
 				F91D14ED1934FD7D0094299C /* Beckon.m in Sources */,
+				F986E64A19C0B19700637366 /* BeckonMember.m in Sources */,
 				2688A7421988F51200C7C1E1 /* GradientLayers.m in Sources */,
 				F9163D05193BAD07002EE1E2 /* SOMessageCell.m in Sources */,
 				F9B0170A192A68940088B6AB /* Group.m in Sources */,
@@ -672,6 +673,7 @@
 				F9BBEFCD190BF23800452C5C /* FriendsVC.m in Sources */,
 				F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */,
 				F951963E19B4C795004CBC94 /* BeckonMapViewController.m in Sources */,
+				F986E64719C0B0D800637366 /* User.m in Sources */,
 				F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */,
 				F9163D06193BAD07002EE1E2 /* SOMessageInputView.m in Sources */,
 				F9163D08193BAD07002EE1E2 /* SOPlaceholderedTextView.m in Sources */,

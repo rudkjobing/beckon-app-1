@@ -12,4 +12,6 @@
 
 @interface BeckonMapViewController : UIViewController
 
+- (void)updateButtonState;
+
 @end

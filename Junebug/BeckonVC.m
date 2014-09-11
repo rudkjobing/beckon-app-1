@@ -122,7 +122,7 @@
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     cell.begins = beckon.begins;
-    cell.nameOfEventLabel.text = beckon.title;
+    cell.nameOfEventLabel.text = [[beckon.title stringByAppendingString:@" - "] stringByAppendingString:beckon.status];
     CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
     CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];
     if(distance < 1000 && distance > 100){

@@ -1,13 +1,13 @@
 //
-//  User.m
+//  BeckonMember.m
 //  Junebug
 //
 //  Created by Steffen Rudkjøbing on 10/09/14.
 //  Copyright (c) 2014 General Bits. All rights reserved.
 //
 
-#import "User.h"
+#import "BeckonMember.h"
 
-@implementation User
+@implementation BeckonMember
 
 @end

@@ -48,6 +48,8 @@
                 [defaults setObject:self.server.cookieId forKey:@"cookieId"];
                 self.server.cookie = [cookie objectForKey:@"cookie"];
                 [defaults setObject:self.server.cookie forKey:@"cookie"];
+                self.userId = [payload objectForKey:@"userId"];
+                [defaults setObject:self.userId forKey:@"userId"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"SignInSuccess" object:self];
             }
             else{
@@ -126,6 +128,15 @@
         NSDictionary *result = [self.server  queryServerDomain:@"user" WithCommand:@"signUp" andData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                NSDictionary *payload = [result objectForKey:@"payload"];
+                NSDictionary *cookie = [payload objectForKey:@"cookie"];
+                self.server.cookieId = [cookie objectForKey:@"id"];
+                [defaults setObject:self.server.cookieId forKey:@"cookieId"];
+                self.server.cookie = [cookie objectForKey:@"cookie"];
+                [defaults setObject:self.server.cookie forKey:@"cookie"];
+                self.userId = [payload objectForKey:@"userId"];
+                [defaults setObject:self.userId forKey:@"userId"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"UserSignedUp" object:self];
             }
             else{

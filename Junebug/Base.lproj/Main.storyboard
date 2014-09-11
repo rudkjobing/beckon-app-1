@@ -193,17 +193,21 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Or enter location" minimumFontSize="17" id="XKq-92-ndN">
-                                <rect key="frame" x="20" y="74" width="280" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Or enter adress" minimumFontSize="17" id="rNQ-U4-F56">
+                                <rect key="frame" x="16" y="74" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="addressEnteredAction:" destination="s4W-9L-Jn5" eventType="editingDidEndOnExit" id="Sdz-VD-Y1N"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Select Location" id="pj9-L3-8z2"/>
                     <connections>
+                        <outlet property="addressTextField" destination="rNQ-U4-F56" id="utg-7r-y9d"/>
                         <outlet property="beckonMap" destination="uGv-to-XcG" id="E6d-Kt-aOk"/>
                         <outlet property="progressView" destination="kDE-cH-dze" id="fac-s6-B8h"/>
                         <segue destination="4oP-aE-Lrt" kind="push" identifier="selectDate" id="GdD-61-S3J"/>

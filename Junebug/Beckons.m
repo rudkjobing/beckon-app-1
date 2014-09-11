@@ -10,6 +10,7 @@
 #import "ChatRoom.h"
 #import "AppDelegate.h"
 #import "Convertions.h"
+#import "BeckonMember.h"
 
 
 @implementation Beckons
@@ -38,9 +39,18 @@
 }
 
 - (void) loadData:(NSArray*)data{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.beckons removeAllObjects];
     for(NSDictionary *child in data){
         Beckon *beckon = [[Beckon alloc] init];
+        for(NSDictionary *member in [child objectForKey:@"members"]){
+            if([[member objectForKey:@"user"] intValue] == [appDelegate.appState.userId intValue]){
+                beckon.status = [member objectForKey:@"status"];
+            }
+            BeckonMember *beckonMember = [[BeckonMember alloc] init];
+            beckonMember.status = [member objectForKey:@"status"];
+            [beckon.members addObject:beckonMember];
+        }
         beckon.id = [child objectForKey:@"id"];
         beckon.title = [child objectForKey:@"title"];
         //beckon.beckonDescription = [child objectForKey:@"description"];
@@ -55,7 +65,6 @@
         beckon.begins = [dateFormat dateFromString:[child objectForKey:@"begins"]];
         beckon.ends = [dateFormat dateFromString:[child objectForKey:@"ends"]];
         beckon.chatRoom = [[ChatRoom alloc] initWithId: beckon.chatRoomId];
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [appDelegate.appState.chatRooms setObject:beckon.chatRoom forKey:beckon.chatRoomId];
         [self.beckons addObject: beckon];
         if([self.newestBeckonPointer integerValue] < [beckon.id integerValue]){
