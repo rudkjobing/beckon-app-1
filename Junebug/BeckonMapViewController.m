@@ -32,7 +32,7 @@
     [self.map setRegion:myPosition animated:NO];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
     [self.map addAnnotation:placemark];
-    [parentVC.beckon addObserver:self forKeyPath:@"status" options:0 context:nil];
+    
     [self updateButtonState];
     //<3 = true
 }
@@ -54,6 +54,11 @@
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     [self updateButtonState];
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+    [parentVC.beckon addObserver:self forKeyPath:@"status" options:0 context:nil];
 }
 
 - (void) viewWillDisappear:(BOOL)animated{

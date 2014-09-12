@@ -126,7 +126,7 @@
     CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
     CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];
     if(distance < 1000 && distance > 100){
-        cell.placeOfEventLabel.text = @"You are allmost there";
+        cell.placeOfEventLabel.text = @"You are almost there";
     }
     else if (distance < 100){
         cell.placeOfEventLabel.text = @"You are there";

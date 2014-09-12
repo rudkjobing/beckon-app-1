@@ -1,7 +1,6 @@
 #import "BeckonDetailPageVC.h"
 #import "ChatRoomVC.h"
 #import "BeckonMapViewController.h"
-#import "BeckonAcceptDeclineViewController.h"
 
 @implementation BeckonDetailPageVC
 
