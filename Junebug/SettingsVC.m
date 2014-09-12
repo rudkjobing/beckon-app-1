@@ -10,21 +10,23 @@
 #import "AppDelegate.h"
 #import "AppState.h"
 #import "GradientLayers.h"
+#import "SettingsCell.h"
 
 @interface SettingsVC ()
+
+@property (weak, nonatomic) IBOutlet UITableView *settingsTable;
+@property (strong, nonatomic) NSArray *settingsArray;
 
 @end
 
 @implementation SettingsVC
 
-- (IBAction)signOutAction:(id)sender {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState signOut];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.settingsArray = @[@"Friends", @"Groups"];
+    self.settingsTable.dataSource = self;
+    self.settingsTable.delegate = self;
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = previousButton;
 }
@@ -33,9 +35,43 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-- (IBAction)signOutComplete {
-    [self performSegueWithIdentifier:@"settingsToSignIn" sender:self];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
+
+//Added row height
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.settingsArray.count;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"SettingsCell";
+    SettingsCell *cell = (SettingsCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[SettingsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.textLabel.text = [self.settingsArray objectAtIndex:indexPath.row];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if([[self.settingsArray objectAtIndex:indexPath.row] isEqualToString:@"Friends"]){
+        [self performSegueWithIdentifier:@"settingsToFriends" sender:self];
+    }
+    else if([[self.settingsArray objectAtIndex:indexPath.row] isEqualToString:@"Groups"]){
+        [self performSegueWithIdentifier:@"settingsToGroups" sender:self];
+    }
+    
+    
+}
+
+
 
 @end

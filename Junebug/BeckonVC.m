@@ -106,7 +106,7 @@
 //Added row height
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 65;
+    return 75;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -122,7 +122,8 @@
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     cell.begins = beckon.begins;
-    cell.nameOfEventLabel.text = [[beckon.title stringByAppendingString:@" - "] stringByAppendingString:beckon.status];
+    cell.nameOfEventLabel.text = beckon.title;
+    cell.statusLabel.text = beckon.status;
     CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
     CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];
     if(distance < 1000 && distance > 100){
@@ -133,7 +134,7 @@
     }
     else{
         distance = distance / 1000;
-        NSString *distanceString = [NSString stringWithFormat: @"%f", distance];
+        NSString *distanceString = [NSString stringWithFormat: @"%.0f km away", distance];
         cell.placeOfEventLabel.text = distanceString;
     }
     

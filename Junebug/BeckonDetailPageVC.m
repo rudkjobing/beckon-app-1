@@ -1,6 +1,7 @@
 #import "BeckonDetailPageVC.h"
 #import "ChatRoomVC.h"
 #import "BeckonMapViewController.h"
+#import "BeckonMembersViewController.h"
 
 @implementation BeckonDetailPageVC
 
@@ -8,13 +9,20 @@
 {
     [super viewDidLoad];
     self.viewControllerArray = [[NSMutableArray alloc]init];
+    
     ChatRoomVC *chatVC = [[ChatRoomVC alloc]init];
     self.beckon.chatRoom.chatRoomVC = chatVC;
     chatVC.chatRoom = self.beckon.chatRoom;
     chatVC.dataSource = self.beckon.chatRoom.chatMessages;
+    
     BeckonMapViewController *map = [[BeckonMapViewController alloc] initWithNibName:@"BeckonMapViewController" bundle:nil];
-    //BeckonAcceptDeclineViewController *acceptReject = [[BeckonAcceptDeclineViewController alloc] initWithNibName:@"BeckonAcceptDeclineViewController" bundle:nil];
-    [self.viewControllerArray addObjectsFromArray:@[chatVC, map]];
+    
+    BeckonMembersViewController *members = [[BeckonMembersViewController alloc] initWithNibName:@"BeckonMembersViewController" bundle:nil];
+    
+    [self.viewControllerArray addObjectsFromArray:@[chatVC, members, map]];
+    
+    
+    
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = previousButton;
 }
@@ -32,7 +40,12 @@
 {
     self.delegate = self;
     self.dataSource = self;
-    [self setViewControllers:@[[self.viewControllerArray objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    if([self.beckon.status isEqualToString:@"PENDING"]){
+        [self setViewControllers:@[[self.viewControllerArray objectAtIndex:2]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }
+    else{
+        [self setViewControllers:@[[self.viewControllerArray objectAtIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    }
 }
 
 -(NSInteger)indexOfController:(UIViewController *)viewController

@@ -39,7 +39,8 @@
     self.friends = appDelegate.appState.friends;
     self.friendsTableView.dataSource = self;
     self.friendsTableView.delegate = self;
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+//    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+//    self.navigationItem.leftBarButtonItem = previousButton;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
     self.navigationItem.rightBarButtonItem = addButton;
     
@@ -48,6 +49,10 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [[self tabBarItem] setBadgeValue: nil];
+}
+
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) FriendRequestAccepted: (NSNotification*) notification{

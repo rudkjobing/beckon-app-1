@@ -34,7 +34,6 @@
     self.groups = appDelegate.appState.groups;
     self.groupTableView.dataSource = self;
     self.groupTableView.delegate = self;
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGroup)];
     self.navigationItem.rightBarButtonItem = addButton;
     [self.groups addObserver:self forKeyPath:@"newestGroupPointer" options:0 context:nil];

@@ -17,6 +17,7 @@
 @property(strong,nonatomic) UILabel *timerLabel;
 @property(strong,nonatomic) NSDate *begins;
 @property(strong, nonatomic) UIImageView *beckonIconImage;
+@property (strong, nonatomic) UILabel *statusLabel;
 
 - (void) startTimer;
 - (void) updateLabel;

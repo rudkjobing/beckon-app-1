@@ -18,14 +18,14 @@
         // Initialization code
         
         //Add new custom subview. Relates to heightforRowAtIndexPath in FriendsVC
-        CGFloat heightOfCellInTableView = 55.0;
+        CGFloat heightOfCellInTableView = 65.0;
         
-        CGRect rectForCustomSubView = CGRectMake(self.contentView.frame.origin.x,
+        CGRect rectForCustomSubView = CGRectMake(self.contentView.frame.origin.x - 12.0,
                                                  self.contentView.frame.origin.y + 5.0,
-                                                 self.contentView.frame.size.width,
+                                                 self.contentView.frame.size.width +24.0,
                                                  heightOfCellInTableView);
         self.customBeckonCellView = [[UIView alloc] initWithFrame:rectForCustomSubView];
-        self.customBeckonCellView.backgroundColor = [UIColor colorWithRed:255/255 green:255/255 blue:255/255 alpha:0.9];
+        self.customBeckonCellView.backgroundColor = [UIColor colorWithRed:255/255 green:255/255 blue:255/255 alpha:0.8];
         
         self.customBeckonCellView.layer.shadowColor = [UIColor blackColor].CGColor;
          self.customBeckonCellView.layer.shadowOffset = CGSizeMake(0, 1);
@@ -34,25 +34,24 @@
         
         // Initialization of subviews in contentview
         CGFloat startingPointOfSubViewOnX = self.customBeckonCellView.bounds.origin.x + 10.0;
-        CGFloat startingPointOfSubviewOnY = self.customBeckonCellView.bounds.origin.y + 5.0;
         
         //Create referencepoints
         CGFloat startingPointofLabels = startingPointOfSubViewOnX;
 
         //Create UILabel for imageView
-        CGRect frameOfImageView = CGRectMake(startingPointofLabels, startingPointOfSubviewOnY, 44.0, 44.0);
+        /*CGRect frameOfImageView = CGRectMake(startingPointofLabels, startingPointOfSubviewOnY, 44.0, 44.0);
         self.beckonIconImage = [[UIImageView alloc] initWithFrame:frameOfImageView];
         self.beckonIconImage.layer.shadowColor = [UIColor blackColor].CGColor;
         self.beckonIconImage.layer.shadowOffset = CGSizeMake(0, 1);
         self.beckonIconImage.layer.shadowOpacity = 1;
         self.beckonIconImage.layer.shadowRadius = 1.0;
         [self.beckonIconImage.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-        [self.beckonIconImage.layer setBorderWidth:1.5];
+        [self.beckonIconImage.layer setBorderWidth:1.5];*/
 
     
         
         //referencepoints
-        CGFloat referencepointOnX = ((self.beckonIconImage.frame.size.width + startingPointofLabels) + 10.0);
+        CGFloat referencepointOnX = startingPointofLabels;
         CGFloat referencepointOnY = 5.0;
         CGFloat hightOfNameOfEventLabel = 20.0;
         CGFloat widthOfEventLabel = 165.0;
@@ -100,20 +99,29 @@
         
         //adjust referencepoints
         referencepointOnX = referencepointOnX + widthOfEventLabel;
-        
-        //Create UILabel for countdowntimer
-        CGRect frameOfTimerLabel = CGRectMake(referencepointOnX, 5.0, 44.0, hightOfNameOfEventLabel);
-        self.timerLabel = [[UILabel alloc] initWithFrame:frameOfTimerLabel];
-        self.timerLabel.textColor = [UIColor blackColor];
-        self.timerLabel.font = [UIFont boldSystemFontOfSize:14];
-        self.timerLabel.backgroundColor = [UIColor clearColor];
-        self.timerLabel.textAlignment = UIControlContentHorizontalAlignmentCenter;
-        self.timerLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
-        
+       
         /*self.timerLabel.layer.shadowColor = [UIColor blackColor].CGColor;
          self.timerLabel.layer.shadowOffset = CGSizeMake(0, 1);
          self.timerLabel.layer.shadowOpacity = 1;
          self.timerLabel.layer.shadowRadius = 1.0;*/
+        
+        // set statuslabel
+        CGFloat widthOfStatuslabel = 90;
+        
+        CGRect frameOfStatusLabel = CGRectMake((self.customBeckonCellView.frame.size.width - widthOfStatuslabel - 10), referencepointOnY, widthOfStatuslabel, 15);
+        self.statusLabel = [[UILabel alloc] initWithFrame:frameOfStatusLabel];
+        self.statusLabel.textColor = [UIColor blackColor];
+        self.statusLabel.font = [UIFont italicSystemFontOfSize:12];
+        self.statusLabel.backgroundColor = [UIColor clearColor];
+        self.statusLabel.textAlignment = UIControlContentHorizontalAlignmentRight;
+
+        //Create UILabel for countdowntimer
+        CGRect frameOfTimerLabel = CGRectMake((self.customBeckonCellView.frame.size.width - widthOfStatuslabel - 10), 5.0, widthOfStatuslabel, hightOfNameOfEventLabel);
+        self.timerLabel = [[UILabel alloc] initWithFrame:frameOfTimerLabel];
+        self.timerLabel.textColor = [UIColor blackColor];
+        self.timerLabel.font = [UIFont boldSystemFontOfSize:14];
+        self.timerLabel.backgroundColor = [UIColor clearColor];
+        self.timerLabel.textAlignment = UIControlContentHorizontalAlignmentRight;
         
         //Set cell opague
         self.backgroundColor = [UIColor clearColor];
@@ -128,6 +136,7 @@
         [self.customBeckonCellView addSubview:self.timerLabel];
         [self.customBeckonCellView addSubview:self.placeOfEventLabel];
         [self.customBeckonCellView addSubview:self.timeOfEventLabel];
+        [self.customBeckonCellView addSubview:self.statusLabel];
         
         [self startTimer];
     }

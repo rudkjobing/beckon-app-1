@@ -79,7 +79,7 @@
             notification15.alertBody = [@"15 minutes: " stringByAppendingString:beckon.title];
             [[UIApplication sharedApplication] scheduleLocalNotification:notification15];
         }
-        if([beckon.begins laterDate:[[NSDate alloc] init]] == beckon.begins){
+        if([beckon.begins laterDate:[[NSDate alloc] init]] != beckon.begins){
             UILocalNotification *notificationNow = [[UILocalNotification alloc] init];
             notificationNow.fireDate = beckon.begins;
             notificationNow.alertBody = [@"Now: " stringByAppendingString:beckon.title];
