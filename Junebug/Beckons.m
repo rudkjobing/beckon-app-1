@@ -49,6 +49,8 @@
             }
             BeckonMember *beckonMember = [[BeckonMember alloc] init];
             beckonMember.status = [member objectForKey:@"status"];
+            beckonMember.user = [[User alloc] init];
+            beckonMember.user.firstName = [member objectForKey:@"firstName"];
             [beckon.members addObject:beckonMember];
         }
         beckon.id = [child objectForKey:@"id"];

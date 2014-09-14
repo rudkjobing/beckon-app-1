@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BeckonMemberViewController : UIViewController
+@interface BeckonMemberViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

@@ -70,9 +70,9 @@ static BOOL cellIsDragging;
     if (self) {
         self.messageMaxWidth = messageMaxWidth;
         
-        self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-        self.panGesture.delegate = self;
-        [self addGestureRecognizer:self.panGesture];
+//        self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+//        self.panGesture.delegate = self;
+//        [self addGestureRecognizer:self.panGesture];
         
         [self setInitialSizes];
         self.backgroundColor = [UIColor clearColor];

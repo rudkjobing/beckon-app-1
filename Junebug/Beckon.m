@@ -22,6 +22,7 @@
     
     self = [super init];
     self.friends = [[NSMutableArray alloc] init];
+    self.members = [[NSMutableArray alloc] init];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.server = appDelegate.appState.server;
     self.beckons = appDelegate.appState.beckons;
@@ -41,7 +42,8 @@
             if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
                 NSDictionary *payload = [result objectForKey:@"payload"];
                 self.id = [payload objectForKey:@"id"];
-                [self.beckons addBeckon:self];
+                AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appDelegate.appState getState];
             }
             else{
                 

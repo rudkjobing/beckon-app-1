@@ -1,7 +1,7 @@
 #import "BeckonDetailPageVC.h"
 #import "ChatRoomVC.h"
 #import "BeckonMapViewController.h"
-#import "BeckonMembersViewController.h"
+#import "BeckonMemberViewController.h"
 
 @implementation BeckonDetailPageVC
 
@@ -17,11 +17,9 @@
     
     BeckonMapViewController *map = [[BeckonMapViewController alloc] initWithNibName:@"BeckonMapViewController" bundle:nil];
     
-    BeckonMembersViewController *members = [[BeckonMembersViewController alloc] initWithNibName:@"BeckonMembersViewController" bundle:nil];
+    BeckonMemberViewController *members = [[BeckonMemberViewController alloc] initWithNibName:@"BeckonMemberViewController" bundle:nil];
     
     [self.viewControllerArray addObjectsFromArray:@[chatVC, members, map]];
-    
-    
     
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = previousButton;

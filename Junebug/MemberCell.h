@@ -10,4 +10,10 @@
 
 @interface MemberCell : UITableViewCell
 
+@property (strong, nonatomic) UIView *containerView;
+@property (strong, nonatomic) UIView *subContainerView;
+@property (strong,nonatomic) UILabel *firstName;
+@property (strong,nonatomic) UILabel *lastName;
+@property (strong, nonatomic) UILabel *statusLabel;
+
 @end
