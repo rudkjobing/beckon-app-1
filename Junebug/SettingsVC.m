@@ -27,7 +27,7 @@
     self.settingsArray = @[@"Friends", @"Groups"];
     self.settingsTable.dataSource = self;
     self.settingsTable.delegate = self;
-    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = previousButton;
 }
 

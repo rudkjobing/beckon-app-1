@@ -75,11 +75,8 @@ NSInteger counter;
 }
 
 -(void) startIndicator{
-    if(!counter){
-        counter = 0;
-    }
     ++counter;
-    if (counter >= 1) {
+    if (counter == 1) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible=YES;
     }
     
@@ -87,7 +84,7 @@ NSInteger counter;
 
 -(void) stopIndicator{
     --counter;
-    if (counter <= 0) {
+    if (counter == 0) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
     }
 }

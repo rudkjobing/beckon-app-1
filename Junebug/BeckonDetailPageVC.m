@@ -21,7 +21,7 @@
     
     [self.viewControllerArray addObjectsFromArray:@[chatVC, members, map]];
     
-    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
     self.navigationItem.leftBarButtonItem = previousButton;
 }
 
