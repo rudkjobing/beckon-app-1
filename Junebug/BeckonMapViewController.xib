@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="acceptButton" destination="GFR-9K-85q" id="IJ3-GF-CE5"/>
                 <outlet property="declineButton" destination="m4w-VW-gAd" id="5xT-wX-qgv"/>
+                <outlet property="locationLabel" destination="OMe-KV-0pA" id="CW6-zB-t0E"/>
                 <outlet property="map" destination="E4k-b2-Jgz" id="Xc4-yT-7wg"/>
                 <outlet property="titleLabel" destination="VvX-AN-vML" id="LpE-dN-m2M"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -53,7 +54,7 @@
                         <action selector="acceptButtonAction:" destination="-1" eventType="touchUpInside" id="fwB-8l-SrN"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.64999999999999969" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-AN-vML">
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-AN-vML">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -61,6 +62,16 @@
                     <nil key="highlightedColor"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="8" y="75" width="304" height="21"/>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.79999999999999982" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMe-KV-0pA">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="8" y="104" width="304" height="21"/>
                     </variation>
                 </label>
             </subviews>
@@ -76,6 +87,7 @@
                     <exclude reference="m4w-VW-gAd"/>
                     <exclude reference="GFR-9K-85q"/>
                     <exclude reference="VvX-AN-vML"/>
+                    <exclude reference="OMe-KV-0pA"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -84,6 +96,7 @@
                     <include reference="m4w-VW-gAd"/>
                     <include reference="GFR-9K-85q"/>
                     <include reference="VvX-AN-vML"/>
+                    <include reference="OMe-KV-0pA"/>
                 </mask>
             </variation>
         </view>

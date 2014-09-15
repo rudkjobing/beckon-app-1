@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
 @property (weak, nonatomic) IBOutlet UIButton *declineButton;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 @end
 
@@ -24,6 +25,7 @@
     [super viewDidLoad];
     BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
     self.titleLabel.text = parentVC.beckon.title;
+    self.locationLabel.text = parentVC.beckon.locationString;
     MKCoordinateRegion myPosition;
     myPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
     myPosition.center.longitude = [parentVC.beckon.longitude doubleValue];

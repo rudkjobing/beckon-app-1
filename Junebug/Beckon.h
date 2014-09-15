@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *beckonDescription;
+@property (strong, nonatomic) NSString *locationString;
 @property (strong, nonatomic) NSString *chatRoomId;
 @property (strong, nonatomic) NSMutableArray *friends;
 @property (strong, nonatomic) NSDate *begins;

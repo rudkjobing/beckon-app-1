@@ -77,7 +77,7 @@
 }
 
 - (IBAction)signUpPressed:(id)sender {
-    [self performSegueWithIdentifier:@"SignInToSignUp" sender:self];
+    [self performSegueWithIdentifier:@"signInToSignUp" sender:self];
 }
 - (IBAction)textFieldReturn:(id)sender{
     [self resignFirstResponder];

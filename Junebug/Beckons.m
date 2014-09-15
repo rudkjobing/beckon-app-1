@@ -59,6 +59,7 @@
         beckon.chatRoomId = [child objectForKey:@"chatRoom"];
         beckon.latitude = [child objectForKey:@"latitude"];
         beckon.longitude = [child objectForKey:@"longitude"];
+        beckon.locationString = [child objectForKey:@"locationString"];
         beckon.server = self.server;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-M-d HH:mm:ss"];

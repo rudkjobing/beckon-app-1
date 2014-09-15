@@ -106,7 +106,7 @@
     if (self.placeholderText.length && !self.text.length) {
 
         if (!self.font) {
-            self.font = [UIFont systemFontOfSize:12];
+            self.font = [UIFont systemFontOfSize:15];
         }
         NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.placeholderText attributes:@{NSForegroundColorAttributeName : self.placeholderTextColor, NSFontAttributeName : self.font}];
         

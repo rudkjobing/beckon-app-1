@@ -11,7 +11,7 @@
 
 @implementation Server
 
-NSInteger counter;
+NSInteger counter = 0;
 
 - (Server*) init{
     self = [super init];
