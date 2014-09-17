@@ -62,7 +62,7 @@ NSInteger counter = 0;
     [self startIndicator];
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     [self stopIndicator];
-    /*[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;*/
+
     NSString *jsondata = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
     NSDictionary *result = [NSJSONSerialization JSONObjectWithData: [jsondata dataUsingEncoding:NSUTF8StringEncoding]
                                                            options: NSJSONReadingMutableContainers

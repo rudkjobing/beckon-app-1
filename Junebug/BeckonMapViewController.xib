@@ -22,33 +22,29 @@
             <subviews>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4k-b2-Jgz">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    </variation>
                 </mapView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4w-VW-gAd">
-                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.093978255940000005" blue="0.42039106180000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Decline">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="172" y="517" width="140" height="42"/>
-                    </variation>
-                    <connections>
-                        <action selector="declineButtonAction:" destination="-1" eventType="touchUpInside" id="l6y-i6-0Gh"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFR-9K-85q">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                     <color key="backgroundColor" red="0.1411764771" green="0.74509805439999999" blue="0.60392159219999997" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="RoS-xm-l7L"/>
+                        <constraint firstAttribute="width" constant="140" id="ZEd-4X-q4g"/>
+                    </constraints>
                     <state key="normal" title="Accept">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="8" y="515" width="140" height="45"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="RoS-xm-l7L"/>
+                            <exclude reference="ZEd-4X-q4g"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="RoS-xm-l7L"/>
+                            <include reference="ZEd-4X-q4g"/>
+                        </mask>
                     </variation>
                     <connections>
                         <action selector="acceptButtonAction:" destination="-1" eventType="touchUpInside" id="fwB-8l-SrN"/>
@@ -74,8 +70,45 @@
                         <rect key="frame" x="8" y="104" width="304" height="21"/>
                     </variation>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4w-VW-gAd">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.093978255940000005" blue="0.42039106180000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="BFk-Gh-Ng4"/>
+                        <constraint firstAttribute="width" constant="140" id="ikq-Kl-AMC"/>
+                    </constraints>
+                    <state key="normal" title="Decline">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="BFk-Gh-Ng4"/>
+                            <exclude reference="ikq-Kl-AMC"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="BFk-Gh-Ng4"/>
+                            <include reference="ikq-Kl-AMC"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="declineButtonAction:" destination="-1" eventType="touchUpInside" id="l6y-i6-0Gh"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="GFR-9K-85q" secondAttribute="bottom" constant="8" id="8PN-Ij-4ah"/>
+                <constraint firstItem="E4k-b2-Jgz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GRL-6Y-lBx"/>
+                <constraint firstAttribute="bottom" secondItem="m4w-VW-gAd" secondAttribute="bottom" constant="10" id="JaS-hL-OP5"/>
+                <constraint firstAttribute="bottom" secondItem="E4k-b2-Jgz" secondAttribute="bottom" id="Kw3-w2-fcH"/>
+                <constraint firstItem="E4k-b2-Jgz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X9l-tj-e2V"/>
+                <constraint firstItem="GFR-9K-85q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="jtc-m8-gL1"/>
+                <constraint firstAttribute="trailing" secondItem="m4w-VW-gAd" secondAttribute="trailing" constant="8" id="ulZ-tL-63u"/>
+                <constraint firstAttribute="trailing" secondItem="E4k-b2-Jgz" secondAttribute="trailing" id="xsb-3d-0wR"/>
+            </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
                 <size key="portraitSize" width="320" height="568"/>
@@ -84,21 +117,42 @@
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="E4k-b2-Jgz"/>
-                    <exclude reference="m4w-VW-gAd"/>
                     <exclude reference="GFR-9K-85q"/>
                     <exclude reference="VvX-AN-vML"/>
                     <exclude reference="OMe-KV-0pA"/>
+                    <exclude reference="m4w-VW-gAd"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="GRL-6Y-lBx"/>
+                    <exclude reference="Kw3-w2-fcH"/>
+                    <exclude reference="X9l-tj-e2V"/>
+                    <exclude reference="xsb-3d-0wR"/>
+                    <exclude reference="8PN-Ij-4ah"/>
+                    <exclude reference="jtc-m8-gL1"/>
+                    <exclude reference="JaS-hL-OP5"/>
+                    <exclude reference="ulZ-tL-63u"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
                     <include reference="E4k-b2-Jgz"/>
-                    <include reference="m4w-VW-gAd"/>
                     <include reference="GFR-9K-85q"/>
                     <include reference="VvX-AN-vML"/>
                     <include reference="OMe-KV-0pA"/>
+                    <include reference="m4w-VW-gAd"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="GRL-6Y-lBx"/>
+                    <include reference="Kw3-w2-fcH"/>
+                    <include reference="X9l-tj-e2V"/>
+                    <include reference="xsb-3d-0wR"/>
+                    <include reference="8PN-Ij-4ah"/>
+                    <include reference="jtc-m8-gL1"/>
+                    <include reference="JaS-hL-OP5"/>
+                    <include reference="ulZ-tL-63u"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="502" y="544"/>
         </view>
     </objects>
 </document>

@@ -15,5 +15,7 @@
 @property (strong, nonatomic) NSString *cookie;
 
 -(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)data;
+-(void) startIndicator;
+-(void) stopIndicator;
 
 @end

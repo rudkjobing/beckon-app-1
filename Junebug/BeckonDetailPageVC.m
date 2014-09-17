@@ -27,10 +27,12 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    self.beckon.isInFocus = YES;
     [self setupPageViewController];
 }
 
 - (void)backAction{
+    self.beckon.isInFocus = NO;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -24,10 +24,11 @@
     NSString *destinationId = [[userInfo objectForKey:@"prm"] objectForKey:@"did"];
     if([updateType isEqualToString:@"ChatRoom"]){
         for(Beckon *beckon in self.beckons.beckons){
-            if([beckon.chatRoom.id isEqualToString:destinationId]){
-                [beckon.chatRoom sync];
+            if([beckon.chatRoom.id isEqualToString:destinationId] && beckon.isInFocus){
+                [beckon.chatRoom sync];//TODO this breakes hasUnreadMessages if the chatroom exists on the device!
             }
         }
+        [self.beckons getUpdates];
     }
     else if([updateType isEqualToString:@"Beckon"]){
         [self.beckons getUpdates];

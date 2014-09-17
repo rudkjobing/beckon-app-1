@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.locationString = @"Undefined";
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
     self.navigationItem.leftBarButtonItem = previousButton;
@@ -133,11 +134,13 @@
         
         //Get the initial address
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [self.beckon.server startIndicator];
         [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-            NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+            [self.beckon.server stopIndicator];
             if (error == nil && [placemarks count] > 0) {
                 MKPlacemark *placemark = [placemarks lastObject];
                 self.addressTextField.text = [NSString stringWithFormat:@"%@", placemark.name];
+                self.locationString = placemark.name;
             } else {
                 NSLog(@"%@", error.debugDescription);
             }

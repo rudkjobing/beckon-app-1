@@ -19,28 +19,48 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="My0-7A-keF">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="0.0" y="66" width="320" height="502"/>
-                    </variation>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="My0-7A-keF" secondAttribute="bottom" id="2w4-q7-39f"/>
+                <constraint firstItem="My0-7A-keF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RLh-ke-4Rl"/>
+                <constraint firstItem="My0-7A-keF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="RdC-gr-mJv"/>
+                <constraint firstItem="My0-7A-keF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Sbq-Y8-W6I"/>
+                <constraint firstAttribute="trailing" secondItem="My0-7A-keF" secondAttribute="trailing" id="VKf-DF-KOO"/>
+                <constraint firstAttribute="trailing" secondItem="My0-7A-keF" secondAttribute="trailing" id="YoB-Sz-hmN"/>
+                <constraint firstAttribute="bottom" secondItem="My0-7A-keF" secondAttribute="bottom" id="z19-ci-HjH"/>
+            </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
-                <size key="portraitSize" width="320" height="568"/>
-                <size key="landscapeSize" width="568" height="320"/>
-            </simulatedScreenMetrics>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="My0-7A-keF"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="2w4-q7-39f"/>
+                    <exclude reference="RLh-ke-4Rl"/>
+                    <exclude reference="RdC-gr-mJv"/>
+                    <exclude reference="Sbq-Y8-W6I"/>
+                    <exclude reference="VKf-DF-KOO"/>
+                    <exclude reference="YoB-Sz-hmN"/>
+                    <exclude reference="z19-ci-HjH"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
                     <include reference="My0-7A-keF"/>
                 </mask>
+                <mask key="constraints">
+                    <include reference="2w4-q7-39f"/>
+                    <include reference="RLh-ke-4Rl"/>
+                    <include reference="RdC-gr-mJv"/>
+                    <include reference="Sbq-Y8-W6I"/>
+                    <include reference="VKf-DF-KOO"/>
+                    <include reference="YoB-Sz-hmN"/>
+                    <include reference="z19-ci-HjH"/>
+                </mask>
             </variation>
+            <point key="canvasLocation" x="383" y="470"/>
         </view>
     </objects>
 </document>

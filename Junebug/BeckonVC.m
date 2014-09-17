@@ -123,7 +123,12 @@
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
-    cell.statusLabel.text = beckon.status;
+    if([beckon.hasUnreadMessages intValue] == 1){
+        cell.statusLabel.text = [beckon.status stringByAppendingString:@"(!)"];
+    }
+    else{
+        cell.statusLabel.text = beckon.status;
+    }
     CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
     CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];
     if(distance < 1000 && distance > 100){
@@ -137,7 +142,6 @@
         NSString *distanceString = [NSString stringWithFormat: @"%.0f km away", distance];
         cell.placeOfEventLabel.text = distanceString;
     }
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     cell.timeOfEventLabel.text = [formatter stringFromDate:beckon.begins];

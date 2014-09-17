@@ -26,6 +26,8 @@
 @property (strong, nonatomic) ChatRoom *chatRoom;
 @property (strong, nonatomic) NSString *status;
 @property (strong, nonatomic) NSMutableArray *members;
+@property (strong, nonatomic) NSNumber *hasUnreadMessages;
+@property (assign) BOOL isInFocus;//To tell if a viewController is presenting data from this beckon;
 
 - (void) flush;
 - (void) acceptBeckon;

@@ -349,8 +349,6 @@
 		F9163D17193BBDC3002EE1E2 /* Supporting View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F9163D11193BB23E002EE1E2 /* ChatRoomVC.h */,
-				F9163D12193BB23E002EE1E2 /* ChatRoomVC.m */,
 				F9BBEFD1190BF26800452C5C /* SignInVC.h */,
 				F9BBEFD2190BF26800452C5C /* SignInVC.m */,
 				F9BBEFD4190BF27700452C5C /* SignUpVC.h */,
@@ -366,6 +364,8 @@
 		F951963519B4C2FE004CBC94 /* BeckonDetail */ = {
 			isa = PBXGroup;
 			children = (
+				F9163D11193BB23E002EE1E2 /* ChatRoomVC.h */,
+				F9163D12193BB23E002EE1E2 /* ChatRoomVC.m */,
 				F951963B19B4C795004CBC94 /* BeckonMapViewController.h */,
 				F951963C19B4C795004CBC94 /* BeckonMapViewController.m */,
 				F951963D19B4C795004CBC94 /* BeckonMapViewController.xib */,
