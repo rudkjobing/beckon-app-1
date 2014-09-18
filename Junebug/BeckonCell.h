@@ -19,6 +19,7 @@
 @property(strong, nonatomic) UIImageView *beckonIconImage;
 @property (strong, nonatomic) UILabel *statusLabel;
 
+- (void) setCellColor:(UIColor*)color;
 - (void) startTimer;
 - (void) updateLabel;
 

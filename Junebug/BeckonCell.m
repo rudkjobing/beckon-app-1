@@ -21,16 +21,16 @@
         CGFloat heightOfCellInTableView = 65.0;
         
         CGRect rectForCustomSubView = CGRectMake(self.contentView.frame.origin.x - 12.0,
-                                                 self.contentView.frame.origin.y + 5.0,
+                                                 self.contentView.frame.origin.y + 9.0,
                                                  self.contentView.frame.size.width +24.0,
                                                  heightOfCellInTableView);
         self.customBeckonCellView = [[UIView alloc] initWithFrame:rectForCustomSubView];
-        self.customBeckonCellView.backgroundColor = [UIColor colorWithRed:255/255 green:255/255 blue:255/255 alpha:0.8];
+        self.customBeckonCellView.backgroundColor = [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.8];
         
         self.customBeckonCellView.layer.shadowColor = [UIColor blackColor].CGColor;
          self.customBeckonCellView.layer.shadowOffset = CGSizeMake(0, 1);
-         self.customBeckonCellView.layer.shadowOpacity = 0.3;
-         self.customBeckonCellView.layer.shadowRadius = 3.0;
+         self.customBeckonCellView.layer.shadowOpacity = 0.4;
+         self.customBeckonCellView.layer.shadowRadius = 4.0;
         
         // Initialization of subviews in contentview
         CGFloat startingPointOfSubViewOnX = self.customBeckonCellView.bounds.origin.x + 10.0;
@@ -61,7 +61,7 @@
         self.nameOfEventLabel = [[UILabel alloc] initWithFrame:placeMentOfNameOfEventLabel];
         self.nameOfEventLabel.font = [UIFont boldSystemFontOfSize:16];
         self.nameOfEventLabel.backgroundColor = [UIColor clearColor];
-        self.nameOfEventLabel.textColor = [UIColor blackColor];
+        self.nameOfEventLabel.textColor = [UIColor whiteColor];
         self.nameOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nameOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
         
@@ -79,7 +79,7 @@
         CGRect placementOfPlaceOfEventLabel = CGRectMake(referencepointOnX, referencepointOnY, widthOfEventLabel, heightOfPlaceOfEventLabel);
         self.placeOfEventLabel = [[UILabel alloc] initWithFrame:placementOfPlaceOfEventLabel];
         self.placeOfEventLabel.font = [UIFont systemFontOfSize:12];
-        self.placeOfEventLabel.textColor = [UIColor blackColor];
+        self.placeOfEventLabel.textColor = [UIColor whiteColor];
         self.placeOfEventLabel.backgroundColor = [UIColor clearColor];
         self.placeOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.placeOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
@@ -92,7 +92,7 @@
         CGRect placementofTimeOfEventLabel = CGRectMake(referencepointOnX, referencepointOnY, widthOfEventLabel, 15.0);
         self.timeOfEventLabel = [[UILabel alloc] initWithFrame:placementofTimeOfEventLabel];
         self.timeOfEventLabel.backgroundColor = [UIColor clearColor];
-        self.timeOfEventLabel.textColor = [UIColor blackColor];
+        self.timeOfEventLabel.textColor = [UIColor whiteColor];
         self.timeOfEventLabel.font = [UIFont italicSystemFontOfSize:12];
         self.timeOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
         //self.timeOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -110,7 +110,7 @@
         
         CGRect frameOfStatusLabel = CGRectMake((self.customBeckonCellView.frame.size.width - widthOfStatuslabel - 10), referencepointOnY, widthOfStatuslabel, 15);
         self.statusLabel = [[UILabel alloc] initWithFrame:frameOfStatusLabel];
-        self.statusLabel.textColor = [UIColor blackColor];
+        self.statusLabel.textColor = [UIColor whiteColor];
         self.statusLabel.font = [UIFont italicSystemFontOfSize:12];
         self.statusLabel.backgroundColor = [UIColor clearColor];
         self.statusLabel.textAlignment = UIControlContentHorizontalAlignmentRight;
@@ -118,7 +118,7 @@
         //Create UILabel for countdowntimer
         CGRect frameOfTimerLabel = CGRectMake((self.customBeckonCellView.frame.size.width - widthOfStatuslabel - 10), 5.0, widthOfStatuslabel, hightOfNameOfEventLabel);
         self.timerLabel = [[UILabel alloc] initWithFrame:frameOfTimerLabel];
-        self.timerLabel.textColor = [UIColor blackColor];
+        self.timerLabel.textColor = [UIColor whiteColor];
         self.timerLabel.font = [UIFont boldSystemFontOfSize:14];
         self.timerLabel.backgroundColor = [UIColor clearColor];
         self.timerLabel.textAlignment = UIControlContentHorizontalAlignmentRight;
@@ -143,13 +143,16 @@
     return self;
 }
 
+- (void) setCellColor:(UIColor*)color{
+    self.customBeckonCellView.backgroundColor = color;
+}
+
 - (void)setFrame:(CGRect)frame {
     
     frame.origin.x += 20;
     frame.size.width -= 2 * 20;
     [super setFrame:frame];
 }
-
 
 - (void)layoutSubviews
 {

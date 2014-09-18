@@ -11,6 +11,7 @@
 
 @interface BeckonMapViewController ()
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
@@ -34,17 +35,19 @@
     [self.map setRegion:myPosition animated:NO];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
     [self.map addAnnotation:placemark];
-    
+    [self.view bringSubviewToFront:self.activityIndicator];
     [self updateButtonState];
     //<3 = true
 }
 
 - (IBAction)acceptButtonAction:(UIButton *)sender {
+    [self.activityIndicator startAnimating];
     BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
     [parentVC.beckon acceptBeckon];
 }
 
 - (IBAction)declineButtonAction:(UIButton *)sender {
+    [self.activityIndicator startAnimating];
     BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
     [parentVC.beckon rejectBeckon];
 }
@@ -55,6 +58,7 @@
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    [self.activityIndicator stopAnimating];
     [self updateButtonState];
 }
 
@@ -64,6 +68,7 @@
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
+    [self.activityIndicator stopAnimating];
     BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
     [parentVC.beckon removeObserver:self forKeyPath:@"status"];
 }

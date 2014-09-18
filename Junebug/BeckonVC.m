@@ -16,6 +16,7 @@
 #import "BeckonDetailPageVC.h"
 
 @interface BeckonVC ()
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *beckonTableView;
 @property (strong, nonatomic) Beckons *beckons;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -29,9 +30,9 @@
     [super viewDidLoad];
     
 //added backgroundLayer
-    CAGradientLayer *bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
+//    CAGradientLayer *bgLayer = [GradientLayers appBlueGradient];
+//    bgLayer.frame = self.view.bounds;
+//    [self.view.layer insertSublayer:bgLayer atIndex:0];
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(goToSignIn:)
@@ -40,8 +41,8 @@
     self.title = @"Beckons";
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createBeckon)];
+    addButton.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = addButton;
-    
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.beckons = appDelegate.appState.beckons;
     self.beckonTableView.dataSource = self;
@@ -80,17 +81,25 @@
 }
 
 -(void)viewEnteredForeground{
+    [self.activityIndicator startAnimating];
     [self.locationManager startUpdatingLocation];
+    [self.activityIndicator startAnimating];
     [self.beckons getUpdates];
 }
 
+- (void) viewDidDisappear:(BOOL)animated{
+    [self.activityIndicator stopAnimating];
+}
+
 - (void) viewWillAppear:(BOOL)animated{
+    [self.activityIndicator startAnimating];
     [self.locationManager startUpdatingLocation];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [appDelegate.appState getState];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    [self.activityIndicator stopAnimating];
     [self.beckonTableView reloadData];
 }
 
@@ -121,6 +130,9 @@
         cell = [[BeckonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
+    //Set the color of the cell differently according to status
+    
+    
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
     if([beckon.hasUnreadMessages intValue] == 1){
@@ -128,6 +140,15 @@
     }
     else{
         cell.statusLabel.text = beckon.status;
+    }
+    if([beckon.status isEqualToString:@"PENDING"]){
+        [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:118.0/255.0 blue:0.0/255.0 alpha:0.6]];
+    }
+    else if ([beckon.status isEqualToString:@"ACCEPTED"]){
+        [cell setCellColor: [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.7]];
+    }
+    else if ([beckon.status isEqualToString:@"REJECTED"]){
+        [cell setCellColor: [UIColor colorWithRed:240.0/255.0 green:31.0/255.0 blue:0.0/255.0 alpha:0.6]];
     }
     CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
     CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];
@@ -155,6 +176,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"BeckonsToBeckon"]){
+        [self.activityIndicator startAnimating];
         NSIndexPath *index = [self.beckonTableView indexPathForSelectedRow];
         Beckon *beckon = [self.beckons.beckons objectAtIndex:index.row];
         UINavigationController *nav = [segue destinationViewController];
