@@ -3,7 +3,7 @@
 //  Junebug
 //
 //  Created by Bertil Andersen on 30/07/14.
-//  Copyright (c) 2014 General Bits. All rights reserved.
+//  Copyright (c) 2014 Steffen Rudkjøbing. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -3,7 +3,7 @@
 //  Junebug
 //
 //  Created by Steffen Rudkjøbing on 01/06/14.
-//  Copyright (c) 2014 General Bits. All rights reserved.
+//  Copyright (c) 2014 Beckon Steffen Rudkjøbing. All rights reserved.
 //
 
 #import "ChatRoomVC.h"
