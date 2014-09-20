@@ -29,7 +29,7 @@
         
         self.customBeckonCellView.layer.shadowColor = [UIColor blackColor].CGColor;
          self.customBeckonCellView.layer.shadowOffset = CGSizeMake(0, 1);
-         self.customBeckonCellView.layer.shadowOpacity = 0.4;
+         self.customBeckonCellView.layer.shadowOpacity = 0.5;
          self.customBeckonCellView.layer.shadowRadius = 4.0;
         
         // Initialization of subviews in contentview
@@ -106,6 +106,11 @@
          self.timerLabel.layer.shadowRadius = 1.0;*/
         
         // set statuslabel
+        
+        
+        self.chatImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.customBeckonCellView.frame.size.width - 25, 25, 15, 15)];
+        self.chatImageView.image = [UIImage imageNamed:@"chatbubble.png"];
+        
         CGFloat widthOfStatuslabel = 90;
         
         CGRect frameOfStatusLabel = CGRectMake((self.customBeckonCellView.frame.size.width - widthOfStatuslabel - 10), referencepointOnY, widthOfStatuslabel, 15);
@@ -138,9 +143,18 @@
         [self.customBeckonCellView addSubview:self.timeOfEventLabel];
         [self.customBeckonCellView addSubview:self.statusLabel];
         
+        
         [self startTimer];
     }
     return self;
+}
+
+- (void) activateChatIndicator{
+    [self.customBeckonCellView addSubview:self.chatImageView];
+}
+
+- (void) deactivateChatIndicator{
+    [self.chatImageView removeFromSuperview];
 }
 
 - (void) setCellColor:(UIColor*)color{

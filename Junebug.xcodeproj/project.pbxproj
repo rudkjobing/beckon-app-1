@@ -36,6 +36,7 @@
 		F91D14E71933AF670094299C /* BeckonPickFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */; };
 		F91D14EA1933AF9A0094299C /* BeckonPickGroupsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */; };
 		F91D14ED1934FD7D0094299C /* Beckon.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14EC1934FD7D0094299C /* Beckon.m */; };
+		F922246319CD924800A64ABB /* chatbubble.png in Resources */ = {isa = PBXBuildFile; fileRef = F922246219CD924800A64ABB /* chatbubble.png */; };
 		F951963019B3ACEB004CBC94 /* 19-gear.png in Resources */ = {isa = PBXBuildFile; fileRef = F951962F19B3ACEB004CBC94 /* 19-gear.png */; };
 		F951963419B4C161004CBC94 /* 111-user.png in Resources */ = {isa = PBXBuildFile; fileRef = F951963319B4C161004CBC94 /* 111-user.png */; };
 		F951963E19B4C795004CBC94 /* BeckonMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F951963C19B4C795004CBC94 /* BeckonMapViewController.m */; };
@@ -143,6 +144,7 @@
 		F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonPickGroupsVC.m; sourceTree = "<group>"; };
 		F91D14EB1934FD7D0094299C /* Beckon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beckon.h; sourceTree = "<group>"; };
 		F91D14EC1934FD7D0094299C /* Beckon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beckon.m; sourceTree = "<group>"; };
+		F922246219CD924800A64ABB /* chatbubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatbubble.png; sourceTree = "<group>"; };
 		F951962F19B3ACEB004CBC94 /* 19-gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "19-gear.png"; sourceTree = "<group>"; };
 		F951963319B4C161004CBC94 /* 111-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user.png"; sourceTree = "<group>"; };
 		F951963B19B4C795004CBC94 /* BeckonMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonMapViewController.h; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 		F9ADF35D190BFABB002C6809 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F922246219CD924800A64ABB /* chatbubble.png */,
 				F951963319B4C161004CBC94 /* 111-user.png */,
 				F951962F19B3ACEB004CBC94 /* 19-gear.png */,
 				F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */,
@@ -614,6 +617,7 @@
 				F9163CF9193BAD07002EE1E2 /* attachment.png in Resources */,
 				F9BDCFA919379EE10095E598 /* logo 120x120.png in Resources */,
 				F9BBEF9D190AF05C00452C5C /* InfoPlist.strings in Resources */,
+				F922246319CD924800A64ABB /* chatbubble.png in Resources */,
 				F9BDCFA819379EE10095E598 /* logo 80x80.png in Resources */,
 				F951963F19B4C795004CBC94 /* BeckonMapViewController.xib in Resources */,
 				F9163CFF193BAD07002EE1E2 /* inputTextBG.png in Resources */,

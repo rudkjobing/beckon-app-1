@@ -18,9 +18,13 @@
 @property(strong,nonatomic) NSDate *begins;
 @property(strong, nonatomic) UIImageView *beckonIconImage;
 @property (strong, nonatomic) UILabel *statusLabel;
+@property (strong, nonatomic) UIImageView *chatImageView;
 
 - (void) setCellColor:(UIColor*)color;
 - (void) startTimer;
 - (void) updateLabel;
+- (void) activateChatIndicator;
+- (void) deactivateChatIndicator;
+
 
 @end

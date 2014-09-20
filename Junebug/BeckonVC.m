@@ -131,15 +131,15 @@
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     //Set the color of the cell differently according to status
-    
+    cell.statusLabel.text = beckon.status;
     
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
     if([beckon.hasUnreadMessages intValue] == 1){
-        cell.statusLabel.text = [beckon.status stringByAppendingString:@"(!)"];
+        [cell activateChatIndicator];
     }
     else{
-        cell.statusLabel.text = beckon.status;
+        [cell deactivateChatIndicator];
     }
     if([beckon.status isEqualToString:@"PENDING"]){
         [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:118.0/255.0 blue:0.0/255.0 alpha:0.6]];
