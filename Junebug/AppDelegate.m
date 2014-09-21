@@ -73,13 +73,13 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     for(Beckon *beckon in self.appState.beckons.beckons){
-        if([beckon.begins laterDate:[[[NSDate alloc] init] dateByAddingTimeInterval:60*15]] == beckon.begins){
+        if([[[[NSDate alloc] init]dateByAddingTimeInterval: + 60*60] laterDate:beckon.begins] == beckon.begins){
             UILocalNotification *notification15 = [[UILocalNotification alloc] init];
-            notification15.fireDate = [beckon.begins dateByAddingTimeInterval:-60*15];
-            notification15.alertBody = [@"15 minutes: " stringByAppendingString:beckon.title];
+            notification15.fireDate = [beckon.begins dateByAddingTimeInterval:-60*60];
+            notification15.alertBody = [@"1 Hour: " stringByAppendingString:beckon.title];
             [[UIApplication sharedApplication] scheduleLocalNotification:notification15];
         }
-        if([beckon.begins laterDate:[[NSDate alloc] init]] != beckon.begins){
+        if([beckon.begins laterDate:[[NSDate alloc] init]] == beckon.begins){
             UILocalNotification *notificationNow = [[UILocalNotification alloc] init];
             notificationNow.fireDate = beckon.begins;
             notificationNow.alertBody = [@"Now: " stringByAppendingString:beckon.title];

@@ -28,6 +28,8 @@
     self.locationString = @"Undefined";
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
+    previousButton.tintColor = [UIColor blackColor];
+    nextButton.tintColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = previousButton;
     self.navigationItem.rightBarButtonItem = nextButton;
     if ([CLLocationManager locationServicesEnabled]) {

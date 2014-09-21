@@ -110,15 +110,15 @@
     NSMutableArray *beckons = [self.beckons mutableCopy];
     for(int i = 0; i < beckons.count; i++){
         Beckon *first = [beckons objectAtIndex:i];
-        NSDate *firstDate = first.ends;
+        NSDate *firstDate = first.begins;
         for(int j = 0; j < beckons.count; j++){
             Beckon *second = [beckons objectAtIndex:j];
-            NSDate *secondDate = second.ends;
+            NSDate *secondDate = second.begins;
             if([[firstDate earlierDate:secondDate] isEqualToDate:firstDate]){
                 beckons[i] = second;
                 beckons[j] = first;
                 first = [beckons objectAtIndex:i];
-                firstDate = first.ends;
+                firstDate = first.begins;
             }
         }
     }

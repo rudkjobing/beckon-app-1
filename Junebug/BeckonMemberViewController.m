@@ -22,9 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CAGradientLayer *bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
     self.memberTableView.backgroundColor = [UIColor clearColor];
     
     [self.memberTableView registerClass:[MemberCell class] forCellReuseIdentifier:@"MemberCell"];

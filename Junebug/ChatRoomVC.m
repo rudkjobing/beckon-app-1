@@ -14,8 +14,6 @@
 
 @interface ChatRoomVC ()
 
-
-
 @end
 
 @implementation ChatRoomVC
@@ -23,9 +21,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
+//    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+//    bgLayer.frame = self.view.bounds;
+//    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.backgroundColor = [UIColor clearColor];
     [self.chatRoom sync];
 }
@@ -55,11 +54,12 @@
     // Customize balloon as you wish
     if (!message.fromMe) {
         cell.contentInsets = UIEdgeInsetsMake(0, 4.0f, 0, 0); //Move content for 3 pt. to right
-        cell.textView.textColor = [UIColor blackColor];
+        cell.textView.textColor = [UIColor whiteColor];
         cell.nameLabel.text = message.from;
+        cell.nameLabel.textColor = [UIColor blackColor];
     } else {
         cell.contentInsets = UIEdgeInsetsMake(0, 0, 0, 4.0f); //Move content for 3 pt. to left
-        cell.textView.textColor = [UIColor blackColor];
+        cell.textView.textColor = [UIColor whiteColor];
     }
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5sj-0x-LIm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="5sj-0x-LIm">
     <dependencies>
         <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Description-->
+        <!--The basics-->
         <scene sceneID="SxX-dB-3tm">
             <objects>
                 <viewController id="MiU-PY-Ddc" customClass="BeckonCreateVC" sceneMemberID="viewController">
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter description" minimumFontSize="17" clearButtonMode="whileEditing" id="8d4-pc-TvF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter description (optional)" minimumFontSize="17" clearButtonMode="whileEditing" id="8d4-pc-TvF">
                                 <rect key="frame" x="20" y="112" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -35,7 +35,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Description" id="t7W-vy-SpD"/>
+                    <navigationItem key="navigationItem" title="The basics" id="t7W-vy-SpD"/>
                     <connections>
                         <outlet property="beckonDescription" destination="8d4-pc-TvF" id="Ybs-bu-T70"/>
                         <outlet property="beckonTitle" destination="ubR-vC-y5Q" id="kf1-ER-xji"/>
@@ -155,7 +155,7 @@
             </objects>
             <point key="canvasLocation" x="479" y="-1135"/>
         </scene>
-        <!--Select Friends-->
+        <!--Select friends-->
         <scene sceneID="fcO-hw-ZyD">
             <objects>
                 <viewController id="CJY-iP-9oY" customClass="BeckonPickFriendsVC" sceneMemberID="viewController">
@@ -175,7 +175,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Friends" id="a7B-y5-wZz"/>
+                    <navigationItem key="navigationItem" title="Select friends" id="a7B-y5-wZz"/>
                     <connections>
                         <outlet property="beckonFriendsTable" destination="JTp-j7-RKD" id="NFf-Pr-4NW"/>
                         <outlet property="progressView" destination="lZR-LS-2ic" id="XYE-dp-FHS"/>
@@ -202,7 +202,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Or enter a location" minimumFontSize="17" clearButtonMode="always" id="rNQ-U4-F56">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for a location" minimumFontSize="17" clearButtonMode="always" id="rNQ-U4-F56">
                                 <rect key="frame" x="16" y="74" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -238,14 +238,41 @@
                                 <rect key="frame" x="1" y="64" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" id="wMr-MN-rPf">
-                                <rect key="frame" x="0.0" y="194" width="320" height="180"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" id="wMr-MN-rPf">
+                                <rect key="frame" x="16" y="105" width="288" height="141"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <date key="date" timeIntervalSinceReferenceDate="428625279.26276302">
                                     <!--2014-08-01 22:34:39 +0000-->
                                 </date>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iub-XU-p47">
+                                <rect key="frame" x="16" y="293" width="68" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.1411764771" green="0.74509805439999999" blue="0.60392159219999997" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Hour" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ypA-pK-WbF">
+                                <rect key="frame" x="211" y="293" width="93" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event start" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Hk-xA-cxW">
+                                <rect key="frame" x="17" y="76" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.14117647058823529" green="0.74509803921568629" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="36" id="sNw-m2-yuv">
+                                <rect key="frame" x="15" y="322" width="292" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" red="0.14117647059999999" green="0.74509803919999995" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -254,6 +281,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="date" destination="wMr-MN-rPf" id="2mS-TD-baM"/>
+                        <outlet property="durationLabel" destination="ypA-pK-WbF" id="zDJ-PN-c9l"/>
+                        <outlet property="durationSlider" destination="sNw-m2-yuv" id="S5H-ew-55Q"/>
                         <outlet property="progressView" destination="zxQ-36-gig" id="EwD-DG-JcL"/>
                     </connections>
                 </viewController>
@@ -403,7 +432,7 @@
             </objects>
             <point key="canvasLocation" x="2109" y="-1383"/>
         </scene>
-        <!--Sign InVC-->
+        <!--Please sign in-->
         <scene sceneID="eSC-hO-VvB">
             <objects>
                 <viewController id="QUj-od-CAN" customClass="SignInVC" sceneMemberID="viewController">
@@ -412,7 +441,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" clearsOnBeginEditing="YES" minimumFontSize="21" id="9lT-2i-8Yw">
-                                <rect key="frame" x="20" y="97" width="280" height="30"/>
+                                <rect key="frame" x="20" y="112" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -424,7 +453,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" clearsOnBeginEditing="YES" minimumFontSize="21" id="p0p-bt-TJr">
-                                <rect key="frame" x="20" y="141" width="280" height="30"/>
+                                <rect key="frame" x="20" y="150" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="deviceRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -435,8 +464,23 @@
                                     <action selector="textFieldReturn:" destination="QUj-od-CAN" eventType="editingDidEndOnExit" id="gAb-9T-zEK"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z90-y2-kYF">
+                                <rect key="frame" x="211" y="71" width="89" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="tintColor" red="0.67485484500000004" green="0.67263292829999999" blue="0.71195652170000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="New User">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpPressed:" destination="QUj-od-CAN" eventType="touchUpInside" id="HaB-TX-NkY"/>
+                                    <segue destination="LSL-YF-a9a" kind="push" identifier="signInToSignUp" id="Or1-LN-G9V"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PHo-6C-fQF">
-                                <rect key="frame" x="20" y="185" width="127" height="33"/>
+                                <rect key="frame" x="130" y="188" width="60" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -444,26 +488,11 @@
                                 </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Sign In">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.1411764771" green="0.74509805439999999" blue="0.60392159219999997" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signInTabbed:" destination="QUj-od-CAN" eventType="touchUpInside" id="mMv-eh-GCf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z90-y2-kYF">
-                                <rect key="frame" x="173" y="185" width="127" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="tintColor" red="0.67485484500000004" green="0.67263292829999999" blue="0.71195652170000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="New User">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="signUpPressed:" destination="QUj-od-CAN" eventType="touchUpInside" id="HaB-TX-NkY"/>
-                                    <segue destination="LSL-YF-a9a" kind="push" identifier="signInToSignUp" id="Or1-LN-G9V"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -473,7 +502,7 @@
                             <outletCollection property="gestureRecognizers" destination="FJD-mk-kma" appends="YES" id="h5V-1K-ZmC"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="RXw-1T-Fl5"/>
+                    <navigationItem key="navigationItem" title="Please sign in" id="RXw-1T-Fl5"/>
                     <connections>
                         <outlet property="signInButton" destination="PHo-6C-fQF" id="iK0-Je-UgU"/>
                         <outlet property="signInPassword" destination="p0p-bt-TJr" id="vvl-TD-HaF"/>
@@ -490,7 +519,7 @@
             </objects>
             <point key="canvasLocation" x="1301" y="-724"/>
         </scene>
-        <!--Sign UpVC-->
+        <!--Welcome! :)-->
         <scene sceneID="oud-s8-fNu">
             <objects>
                 <viewController id="LSL-YF-a9a" customClass="SignUpVC" sceneMemberID="viewController">
@@ -498,18 +527,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" minimumFontSize="21" id="WlK-sd-ixb">
-                                <rect key="frame" x="20" y="83" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                <connections>
-                                    <action selector="textFieldReturn:" destination="LSL-YF-a9a" eventType="editingDidEndOnExit" id="bPm-ZV-s3N"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lastname" minimumFontSize="21" id="5XB-05-tD7">
                                 <rect key="frame" x="20" y="121" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -558,8 +575,20 @@
                                     <action selector="textFieldReturn:" destination="LSL-YF-a9a" eventType="editingDidEndOnExit" id="LVg-35-WSl"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Firstname" minimumFontSize="21" id="WlK-sd-ixb">
+                                <rect key="frame" x="20" y="83" width="280" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <action selector="textFieldReturn:" destination="LSL-YF-a9a" eventType="editingDidEndOnExit" id="bPm-ZV-s3N"/>
+                                </connections>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MYb-vA-2Ya">
-                                <rect key="frame" x="20" y="273" width="280" height="30"/>
+                                <rect key="frame" x="126" y="273" width="69" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -567,7 +596,7 @@
                                 </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.1411764771" green="0.74509805439999999" blue="0.60392159219999997" alpha="1" colorSpace="deviceRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="signUpButtonTabbed:" destination="LSL-YF-a9a" eventType="touchUpInside" id="BUk-iB-SvR"/>
@@ -580,7 +609,7 @@
                             <outletCollection property="gestureRecognizers" destination="ztG-P3-o0c" appends="YES" id="abJ-Ll-GMx"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="M39-pg-MFS"/>
+                    <navigationItem key="navigationItem" title="Welcome! :)" id="M39-pg-MFS"/>
                     <connections>
                         <outlet property="signUpButton" destination="MYb-vA-2Ya" id="9cA-a7-AOf"/>
                         <outlet property="signUpConfirmedPassword" destination="Mci-84-Uen" id="1Vh-zR-pw3"/>
@@ -630,6 +659,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FD1-Lb-Sft">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.83529411760000005" green="0.83921568629999999" blue="0.92941176469999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -649,6 +682,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CRP-4S-aJr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.83529411760000005" green="0.83921568629999999" blue="0.92941176469999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -668,6 +705,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4yW-v5-JKI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.83529411760000005" green="0.83921568629999999" blue="0.92941176469999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -686,6 +727,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d89-so-woo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.83529411760000005" green="0.83921568629999999" blue="0.92941176469999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -704,9 +749,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

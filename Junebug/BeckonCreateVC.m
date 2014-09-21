@@ -26,11 +26,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
+    previousButton.tintColor = [UIColor blackColor];
+    nextButton.tintColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = previousButton;
     self.navigationItem.rightBarButtonItem = nextButton;
     self.progressView.progress = 0.25;

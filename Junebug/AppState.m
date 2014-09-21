@@ -9,6 +9,7 @@
 #import "AppState.h"
 #import "ChatMessage.h"
 #import "ChatRoom.h"
+#import <AudioToolbox/AudioServices.h>
 
 @interface AppState ()
 
@@ -25,10 +26,11 @@
     if([updateType isEqualToString:@"ChatRoom"]){
         for(Beckon *beckon in self.beckons.beckons){
             if([beckon.chatRoom.id isEqualToString:destinationId] && beckon.isInFocus){
-                [beckon.chatRoom sync];//TODO this breakes hasUnreadMessages if the chatroom exists on the device!
-            }
+                [beckon.chatRoom sync];            }
         }
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [self.beckons getUpdates];
+        
     }
     else if([updateType isEqualToString:@"Beckon"]){
         [self.beckons getUpdates];

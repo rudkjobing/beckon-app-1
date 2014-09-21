@@ -145,7 +145,7 @@
         [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:118.0/255.0 blue:0.0/255.0 alpha:0.6]];
     }
     else if ([beckon.status isEqualToString:@"ACCEPTED"]){
-        [cell setCellColor: [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.7]];
+        [cell setCellColor: [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.65]];
     }
     else if ([beckon.status isEqualToString:@"REJECTED"]){
         [cell setCellColor: [UIColor colorWithRed:240.0/255.0 green:31.0/255.0 blue:0.0/255.0 alpha:0.6]];

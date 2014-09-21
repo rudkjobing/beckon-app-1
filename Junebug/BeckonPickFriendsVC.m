@@ -23,14 +23,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
     self.beckonFriendsTable.backgroundColor = [UIColor clearColor];
     
     [self.beckonFriendsTable registerClass:[FriendCell class] forCellReuseIdentifier:@"FriendCell"];
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
+    previousButton.tintColor = [UIColor blackColor];
+    nextButton.tintColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = previousButton;
     self.navigationItem.rightBarButtonItem = nextButton;
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

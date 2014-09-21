@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BeckonMapViewController">
@@ -131,10 +131,7 @@
                 <constraint firstAttribute="trailing" secondItem="E4k-b2-Jgz" secondAttribute="trailing" id="xsb-3d-0wR"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4">
-                <size key="portraitSize" width="320" height="568"/>
-                <size key="landscapeSize" width="568" height="320"/>
-            </simulatedScreenMetrics>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="Fph-e3-2b9"/>
@@ -145,20 +142,20 @@
                     <exclude reference="m4w-VW-gAd"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="GRL-6Y-lBx"/>
-                    <exclude reference="Kw3-w2-fcH"/>
-                    <exclude reference="X9l-tj-e2V"/>
-                    <exclude reference="xsb-3d-0wR"/>
-                    <exclude reference="I9O-de-CmL"/>
                     <exclude reference="Jr5-B5-Nnv"/>
                     <exclude reference="V5T-Kr-N0e"/>
                     <exclude reference="XGK-zr-TcB"/>
                     <exclude reference="oGh-bB-q0k"/>
                     <exclude reference="wOS-Uy-wr4"/>
+                    <exclude reference="I9O-de-CmL"/>
                     <exclude reference="8PN-Ij-4ah"/>
                     <exclude reference="jtc-m8-gL1"/>
                     <exclude reference="JaS-hL-OP5"/>
                     <exclude reference="ulZ-tL-63u"/>
+                    <exclude reference="GRL-6Y-lBx"/>
+                    <exclude reference="Kw3-w2-fcH"/>
+                    <exclude reference="X9l-tj-e2V"/>
+                    <exclude reference="xsb-3d-0wR"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -171,20 +168,20 @@
                     <include reference="m4w-VW-gAd"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="GRL-6Y-lBx"/>
-                    <include reference="Kw3-w2-fcH"/>
-                    <include reference="X9l-tj-e2V"/>
-                    <include reference="xsb-3d-0wR"/>
-                    <include reference="I9O-de-CmL"/>
                     <include reference="Jr5-B5-Nnv"/>
                     <include reference="V5T-Kr-N0e"/>
                     <include reference="XGK-zr-TcB"/>
                     <include reference="oGh-bB-q0k"/>
                     <include reference="wOS-Uy-wr4"/>
+                    <include reference="I9O-de-CmL"/>
                     <include reference="8PN-Ij-4ah"/>
                     <include reference="jtc-m8-gL1"/>
                     <include reference="JaS-hL-OP5"/>
                     <include reference="ulZ-tL-63u"/>
+                    <include reference="GRL-6Y-lBx"/>
+                    <include reference="Kw3-w2-fcH"/>
+                    <include reference="X9l-tj-e2V"/>
+                    <include reference="xsb-3d-0wR"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="502" y="544"/>

@@ -12,6 +12,8 @@
 
 @interface BeckonPickDateVC ()
 
+@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
+@property (weak, nonatomic) IBOutlet UISlider *durationSlider;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UIDatePicker *date;
 
@@ -21,19 +23,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
     UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
     UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(done)];
+    previousButton.tintColor = [UIColor blackColor];
+    nextButton.tintColor = [UIColor blackColor];
     self.navigationItem.leftBarButtonItem = previousButton;
     self.navigationItem.rightBarButtonItem = nextButton;
+    
+    [self.durationSlider addTarget:self action:@selector(updateDuration) forControlEvents:UIControlEventValueChanged];
+    
     self.progressView.progress = 1.0;
 }
 
-- (void)done{      
+- (void) updateDuration{;
+    int sliderData = self.durationSlider.value;
+    if(sliderData == 1){
+        self.durationLabel.text = [[NSString alloc] initWithFormat:@"%i Hour", sliderData];
+    }
+    else if(sliderData < 24){
+        self.durationLabel.text = [[NSString alloc] initWithFormat:@"%i Hours", sliderData];
+    }
+    else if (sliderData == 24){
+        self.durationLabel.text = [[NSString alloc] initWithFormat:@"%i Day", sliderData - 23];
+    }
+    else if(sliderData > 24 && sliderData < 30){
+        self.durationLabel.text = [[NSString alloc] initWithFormat:@"%i Days", sliderData - 23];
+    }
+    else if(sliderData == 30){
+        self.durationLabel.text = [[NSString alloc] initWithFormat:@"%i Week", sliderData - 23 - 6];
+    }
+    else if(sliderData > 30){
+        self.durationLabel.text = [[NSString alloc] initWithFormat:@"%i Weeks", sliderData - 23 - 6];
+    }
+}
+
+- (void)done{
+    int duration = self.durationSlider.value;
     self.beckon.begins = self.date.date;
-    self.beckon.ends = [self.date.date dateByAddingTimeInterval:60*60];
+    if(duration < 24){
+        self.beckon.ends = [self.date.date dateByAddingTimeInterval: duration * 60 * 60];
+    }
+    else if(duration > 23 && duration < 30){
+        self.beckon.ends = [self.date.date dateByAddingTimeInterval: (duration - 23) * 60 * 60 * 24];
+    }
+    else if(duration > 29 ){
+        self.beckon.ends = [self.date.date dateByAddingTimeInterval: (duration - 23 - 6)  * 60 * 60 * 24 * 7];
+    }
     [self.beckon flush];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
