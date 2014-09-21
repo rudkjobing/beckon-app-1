@@ -84,4 +84,20 @@
     });
 }
 
+- (void) deleteBeckon{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:self.id, @"beckonId", nil];
+        NSDictionary *result = [self.server queryServerDomain:@"beckon" WithCommand:@"deleteBeckon" andData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if([[result objectForKey:@"status"] isEqualToNumber:@(1)]){
+                self.status = @"DELETED";
+            }
+            else{
+                
+            }
+        });
+    });
+}
+
 @end

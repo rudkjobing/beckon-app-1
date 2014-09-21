@@ -131,7 +131,6 @@
     }
     Beckon *beckon = [self.beckons.beckons objectAtIndex:indexPath.row];
     //Set the color of the cell differently according to status
-    cell.statusLabel.text = beckon.status;
     
     cell.begins = beckon.begins;
     cell.nameOfEventLabel.text = beckon.title;
@@ -141,6 +140,7 @@
     else{
         [cell deactivateChatIndicator];
     }
+
     if([beckon.status isEqualToString:@"PENDING"]){
         [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:118.0/255.0 blue:0.0/255.0 alpha:0.6]];
     }
@@ -153,16 +153,17 @@
     CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
     CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];
     if(distance < 1000 && distance > 100){
-        cell.placeOfEventLabel.text = @"You are almost there";
+        cell.statusLabel.text = @"You are almost there";
     }
     else if (distance < 100){
-        cell.placeOfEventLabel.text = @"You are there";
+        cell.statusLabel.text = @"You are there";
     }
     else{
         distance = distance / 1000;
         NSString *distanceString = [NSString stringWithFormat: @"%.0f km away", distance];
-        cell.placeOfEventLabel.text = distanceString;
+        cell.statusLabel.text = distanceString;
     }
+    cell.placeOfEventLabel.text = beckon.locationString;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     cell.timeOfEventLabel.text = [formatter stringFromDate:beckon.begins];

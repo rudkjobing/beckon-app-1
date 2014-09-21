@@ -17,38 +17,28 @@
         // Initialization code
         
         //Add new custom subview. Relates to heightforRowAtIndexPath in FriendsVC
-        CGFloat heightOfCellInTableView = 65.0;
-        
-        CGRect rectForContainerView = CGRectMake(self.contentView.frame.origin.x,
-                                                 self.contentView.frame.origin.y,
-                                                 self.contentView.frame.size.width,
-                                                 heightOfCellInTableView);
+        CGFloat heightOfCellInTableView = 40.0;
         
         
-        self.containerView = [[UIView alloc] initWithFrame:rectForContainerView];
+        self.containerView = [[UIView alloc] initWithFrame:CGRectMake(self.contentView.frame.origin.x,
+                                                                      self.contentView.frame.origin.y,
+                                                                      self.contentView.frame.size.width,
+                                                                      heightOfCellInTableView)];
         
-        CGRect rectForSubContainerView = CGRectMake(self.containerView.frame.origin.x +5,
-                                                 self.containerView.frame.origin.y + 5,
-                                                 self.containerView.frame.size.width -10,
-                                                 heightOfCellInTableView);
+      
+        self.subContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.containerView.frame.origin.x + 2,
+                                                                         self.containerView.frame.origin.y + 2,
+                                                                         self.containerView.frame.size.width -4,
+                                                                         heightOfCellInTableView -4)];
         
-        self.subContainerView = [[UIView alloc] initWithFrame:rectForSubContainerView];
+        self.name = [[UILabel alloc] initWithFrame:CGRectMake(self.subContainerView.frame.origin.x, self.subContainerView.frame.origin.y, 220, 30)];
+        self.name.font = [UIFont boldSystemFontOfSize:22];
+        self.name.backgroundColor = [UIColor clearColor];
+        self.name.textColor = [UIColor whiteColor];
+        self.name.textAlignment = UIControlContentHorizontalAlignmentLeft;
         
-        self.subContainerView.backgroundColor = [UIColor colorWithRed:255/255 green:255/255 blue:255/255 alpha:0.8];
-        
-//        self.subContainerView.layer.shadowColor = [UIColor blackColor].CGColor;
-//        self.subContainerView.layer.shadowOffset = CGSizeMake(0, 1);
-//        self.subContainerView.layer.shadowOpacity = 0.3;
-//        self.subContainerView.layer.shadowRadius = 3.0;
-        
-        
-        
-        CGRect placeMentOfNameOfEventLabel = CGRectMake(self.subContainerView.frame.origin.x + 5, self.subContainerView.frame.origin.x + 5, 180, 20);
-        self.firstName = [[UILabel alloc] initWithFrame:placeMentOfNameOfEventLabel];
-        self.firstName.font = [UIFont boldSystemFontOfSize:16];
-        self.firstName.backgroundColor = [UIColor clearColor];
-        self.firstName.textColor = [UIColor blackColor];
-        self.firstName.textAlignment = UIControlContentHorizontalAlignmentLeft;
+        self.creatorIconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.containerView.frame.size.width - 25, self.subContainerView.frame.origin.y + 8, 20, 20)];
+        self.creatorIconImageView.image = [UIImage imageNamed:@"creatoricon.png"];
         
         //Set cell opague
         self.backgroundColor = [UIColor clearColor];
@@ -59,9 +49,21 @@
         //add the subviews to contentview of cell
         [self.contentView addSubview:self.containerView];
         [self.containerView addSubview:self.subContainerView];
-        [self.self.subContainerView addSubview:self.firstName];
+        [self.self.subContainerView addSubview:self.name];
     }
     return self;
+}
+
+- (void) activateCreatorIndicator{
+    [self.containerView addSubview:self.creatorIconImageView];
+}
+
+- (void) deactivateCreatorIndicator{
+    [self.creatorIconImageView removeFromSuperview];
+}
+
+- (void) setCellColor:(UIColor*)color{
+    self.subContainerView.backgroundColor = color;
 }
 
 - (void)awakeFromNib

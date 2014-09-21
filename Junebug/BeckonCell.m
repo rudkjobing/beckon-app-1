@@ -54,7 +54,7 @@
         CGFloat referencepointOnX = startingPointofLabels;
         CGFloat referencepointOnY = 5.0;
         CGFloat hightOfNameOfEventLabel = 20.0;
-        CGFloat widthOfEventLabel = 165.0;
+        CGFloat widthOfEventLabel = 195.0;
         
         //Create UILabel for nameOfEvents
         CGRect placeMentOfNameOfEventLabel = CGRectMake(referencepointOnX, referencepointOnY, widthOfEventLabel, hightOfNameOfEventLabel);
@@ -108,10 +108,10 @@
         // set statuslabel
         
         
-        self.chatImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.customBeckonCellView.frame.size.width - 25, 25, 15, 15)];
+        self.chatImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.customBeckonCellView.frame.size.width - 28, 23, 18, 18)];
         self.chatImageView.image = [UIImage imageNamed:@"chatbubble.png"];
         
-        CGFloat widthOfStatuslabel = 90;
+        CGFloat widthOfStatuslabel = 150;
         
         CGRect frameOfStatusLabel = CGRectMake((self.customBeckonCellView.frame.size.width - widthOfStatuslabel - 10), referencepointOnY, widthOfStatuslabel, 15);
         self.statusLabel = [[UILabel alloc] initWithFrame:frameOfStatusLabel];

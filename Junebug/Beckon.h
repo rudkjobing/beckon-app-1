@@ -27,9 +27,13 @@
 @property (strong, nonatomic) NSString *status;
 @property (strong, nonatomic) NSMutableArray *members;
 @property (strong, nonatomic) NSNumber *hasUnreadMessages;
+@property (strong, nonatomic) NSNumber *invited;
+@property (strong, nonatomic) NSNumber *accepted;
 @property (assign) BOOL isInFocus;//To tell if a viewController is presenting data from this beckon;
 
 - (void) flush;
 - (void) acceptBeckon;
 - (void) rejectBeckon;
+- (void) deleteBeckon;
+
 @end

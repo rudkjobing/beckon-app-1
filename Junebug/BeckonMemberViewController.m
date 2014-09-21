@@ -31,7 +31,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 75;
+    return 40;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -54,7 +54,25 @@
         cell = [[MemberCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     BeckonMember *beckonMember = [parentVC.beckon.members objectAtIndex:indexPath.row];
-    cell.firstName.text = [[[beckonMember.user.firstName stringByAppendingString:@" ("] stringByAppendingString:beckonMember.status] stringByAppendingString:@")"];
+    cell.name.text = [[beckonMember.user.firstName stringByAppendingString:@" "] stringByAppendingString:beckonMember.user.lastName];
+    
+    if([beckonMember.status isEqualToString:@"PENDING"]){
+        [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:118.0/255.0 blue:0.0/255.0 alpha:0.6]];
+    }
+    else if ([beckonMember.status isEqualToString:@"ACCEPTED"]){
+        [cell setCellColor: [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.65]];
+    }
+    else if ([beckonMember.status isEqualToString:@"REJECTED"]){
+        [cell setCellColor: [UIColor colorWithRed:240.0/255.0 green:31.0/255.0 blue:0.0/255.0 alpha:0.6]];
+    }
+    
+    if(beckonMember.isCreator == YES){
+        [cell activateCreatorIndicator];
+    }
+    else{
+        [cell deactivateCreatorIndicator];
+    }
+    
     return cell;
 }
 
