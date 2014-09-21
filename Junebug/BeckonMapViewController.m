@@ -35,7 +35,6 @@
     [self.map setRegion:myPosition animated:NO];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
     [self.map addAnnotation:placemark];
-    [self.view bringSubviewToFront:self.activityIndicator];
     [self updateButtonState];
     //<3 = true
 }
