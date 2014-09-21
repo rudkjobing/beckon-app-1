@@ -27,9 +27,9 @@
      selector:@selector(updateTableView:)
      name:@"GroupFetched"
      object:nil];
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    /*CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
     bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    [self.view.layer insertSublayer:bgLayer atIndex:0];*/
     self.memberTableView.backgroundColor = [UIColor clearColor];
     UIBarButtonItem *manageButton = [[UIBarButtonItem alloc] initWithTitle:@"Manage" style:UIBarButtonItemStyleBordered target:self action:@selector(manageGroup)];
     self.navigationItem.rightBarButtonItem = manageButton;
@@ -56,7 +56,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55;
+    return 65;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -27,9 +27,9 @@
 {
     [super viewDidLoad];
     
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    /*CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
     bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    [self.view.layer insertSublayer:bgLayer atIndex:0];*/
     self.friendsTableView.backgroundColor = [UIColor clearColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTableView:) name:@"ReloadFriendTableView" object:nil];

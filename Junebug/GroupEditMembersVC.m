@@ -23,9 +23,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    /*CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
     bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    [self.view.layer insertSublayer:bgLayer atIndex:0];*/
     self.memberTableView.backgroundColor = [UIColor clearColor];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.friends = appDelegate.appState.friends;
@@ -41,7 +41,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55;
+    return 65;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

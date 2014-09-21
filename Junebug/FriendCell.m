@@ -25,7 +25,7 @@
                                                  self.contentView.frame.size.width,
                                                  heightOfCellInTableView);
         self.customSubview = [[UIView alloc] initWithFrame:rectForCustomSubView];
-        self.customSubview.backgroundColor = [UIColor colorWithRed:255/255 green:255/255 blue:255/255 alpha:0.7];
+        self.customSubview.backgroundColor = [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.65];
         
         
         // Initialization of subviews in contentview
@@ -59,7 +59,7 @@
         self.nickNameOfFriend.font = [UIFont boldSystemFontOfSize:16];
         self.nickNameOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nickNameOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
-        self.nickNameOfFriend.textColor = [UIColor blackColor];
+        self.nickNameOfFriend.textColor = [UIColor whiteColor];
         
         /*self.nickNameOfFriend.layer.shadowColor = [UIColor grayColor].CGColor;
          self.nickNameOfFriend.layer.shadowOffset = CGSizeMake(0, 1);
@@ -77,7 +77,7 @@
         self.nameOfFriend = [[UILabel alloc] initWithFrame:frameOfNameLabel];
         self.nameOfFriend.backgroundColor = [UIColor clearColor];
         self.nameOfFriend.font = [UIFont systemFontOfSize:12];
-        self.nameOfFriend.textColor = [UIColor blackColor];
+        self.nameOfFriend.textColor = [UIColor whiteColor];
         self.nameOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
         
         //Update referencepoint of next subview
@@ -90,7 +90,7 @@
         self.emailOfFriend = [[UILabel alloc] initWithFrame:frameOfEmailLabel];
         self.emailOfFriend.backgroundColor = [UIColor clearColor];
         self.emailOfFriend.font = [UIFont italicSystemFontOfSize:12];
-        self.emailOfFriend.textColor = [UIColor blackColor];
+        self.emailOfFriend.textColor = [UIColor whiteColor];
         self.emailOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.emailOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
         
