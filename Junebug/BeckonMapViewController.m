@@ -35,7 +35,6 @@
     [self.map setRegion:myPosition animated:NO];
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
     [self.map addAnnotation:placemark];
-    [self.view bringSubviewToFront:self.activityIndicator];
     [self updateButtonState];
     //<3 = true
 }
@@ -49,7 +48,12 @@
 - (IBAction)declineButtonAction:(UIButton *)sender {
     [self.activityIndicator startAnimating];
     BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
-    [parentVC.beckon rejectBeckon];
+    if([sender.titleLabel.text isEqualToString:@"Delete"]){
+        [parentVC.beckon deleteBeckon];
+    }
+    else{
+        [parentVC.beckon rejectBeckon];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,13 +89,17 @@
         [self.declineButton setEnabled:YES];
     }
     else if ([parentVC.beckon.status isEqualToString:@"REJECTED"]){
-        [self.declineButton setTitle:@"Declined" forState:UIControlStateNormal];
+        [self.declineButton setTitle:@"Delete" forState:UIControlStateNormal];
         [self.declineButton setAlpha:1.0];
-        [self.declineButton setEnabled:NO];
+        [self.declineButton setEnabled:YES];
         
         [self.acceptButton setTitle:@"Accept" forState:UIControlStateNormal];
         [self.acceptButton setAlpha:0.5];
         [self.acceptButton setEnabled:YES];
+    }
+    else if([parentVC.beckon.status isEqualToString:@"DELETED"]){
+        BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+        [parentVC dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

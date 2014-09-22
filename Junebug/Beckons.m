@@ -51,6 +51,16 @@
             beckonMember.status = [member objectForKey:@"status"];
             beckonMember.user = [[User alloc] init];
             beckonMember.user.firstName = [member objectForKey:@"firstName"];
+            beckonMember.user.lastName = [member objectForKey:@"lastName"];
+            
+            //This is to enable the crown icon in beckon details, indicating that that user is the creator of the beckon.
+            beckonMember.user.id = [member objectForKey:@"user"];
+            if([beckonMember.user.id intValue] == [[child objectForKey:@"owner"] intValue]){
+                beckonMember.isCreator = YES;
+            }
+            else{
+                beckonMember.isCreator = NO;
+            }
             [beckon.members addObject:beckonMember];
         }
         beckon.id = [child objectForKey:@"id"];
@@ -61,6 +71,8 @@
         beckon.longitude = [child objectForKey:@"longitude"];
         beckon.hasUnreadMessages = [child objectForKey:@"hasUnreadMessages"];
         beckon.locationString = [child objectForKey:@"locationString"];
+        beckon.invited = [child objectForKey:@"invited"];
+        beckon.accepted = [child objectForKey:@"accepted"];
         beckon.server = self.server;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-M-d HH:mm:ss"];

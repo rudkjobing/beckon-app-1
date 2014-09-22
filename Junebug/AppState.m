@@ -28,12 +28,12 @@
             if([beckon.chatRoom.id isEqualToString:destinationId] && beckon.isInFocus){
                 [beckon.chatRoom sync];            }
         }
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         [self.beckons getUpdates];
-        
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
     else if([updateType isEqualToString:@"Beckon"]){
         [self.beckons getUpdates];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
 }
 

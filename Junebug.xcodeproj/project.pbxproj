@@ -32,6 +32,7 @@
 		F9163D1A193E1A55002EE1E2 /* ChatRoomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9163D19193E1A55002EE1E2 /* ChatRoomCell.m */; };
 		F91848391961BAB400BBA75B /* ChatRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = F91848381961BAB400BBA75B /* ChatRoom.m */; };
 		F918483C1961F91600BBA75B /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = F918483B1961F91600BBA75B /* ChatMessage.m */; };
+		F91BAD2019CF30FF00F54C7E /* creatoricon.png in Resources */ = {isa = PBXBuildFile; fileRef = F91BAD1F19CF30FF00F54C7E /* creatoricon.png */; };
 		F91D14E41933A5380094299C /* BeckonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E31933A5380094299C /* BeckonCell.m */; };
 		F91D14E71933AF670094299C /* BeckonPickFriendsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E61933AF670094299C /* BeckonPickFriendsVC.m */; };
 		F91D14EA1933AF9A0094299C /* BeckonPickGroupsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D14E91933AF9A0094299C /* BeckonPickGroupsVC.m */; };
@@ -136,6 +137,7 @@
 		F91848381961BAB400BBA75B /* ChatRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatRoom.m; sourceTree = "<group>"; };
 		F918483A1961F91500BBA75B /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
 		F918483B1961F91600BBA75B /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
+		F91BAD1F19CF30FF00F54C7E /* creatoricon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creatoricon.png; sourceTree = "<group>"; };
 		F91D14E21933A5380094299C /* BeckonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonCell.h; sourceTree = "<group>"; };
 		F91D14E31933A5380094299C /* BeckonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonCell.m; sourceTree = "<group>"; };
 		F91D14E51933AF670094299C /* BeckonPickFriendsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickFriendsVC.h; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 		F9ADF35D190BFABB002C6809 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F91BAD1F19CF30FF00F54C7E /* creatoricon.png */,
 				F922246219CD924800A64ABB /* chatbubble.png */,
 				F951963319B4C161004CBC94 /* 111-user.png */,
 				F951962F19B3ACEB004CBC94 /* 19-gear.png */,
@@ -613,6 +616,7 @@
 				F951963019B3ACEB004CBC94 /* 19-gear.png in Resources */,
 				F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */,
 				F9BDCFAA19379EE10095E598 /* logo 640x960.png in Resources */,
+				F91BAD2019CF30FF00F54C7E /* creatoricon.png in Resources */,
 				F9163CFB193BAD07002EE1E2 /* bubble.png in Resources */,
 				F9163CF9193BAD07002EE1E2 /* attachment.png in Resources */,
 				F9BDCFA919379EE10095E598 /* logo 120x120.png in Resources */,

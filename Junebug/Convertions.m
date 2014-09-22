@@ -29,16 +29,25 @@
     if(interval > 60*60*24){
         NSInteger ti = (NSInteger)interval;
         NSInteger days = ti/60/60/24;
+        if(days == 1){
+                return [NSString stringWithFormat:@"%li Day", (long)days];
+        }
         return [NSString stringWithFormat:@"%li Days", (long)days];
     }
     else if (interval > 60*60 && interval <= 60*60*24){
         NSInteger ti = (NSInteger)interval;
         NSInteger hours = ti/60/60;
+        if(hours == 1){
+           return [NSString stringWithFormat:@"%li Hour", (long)hours];
+        }
         return [NSString stringWithFormat:@"%li Hours", (long)hours];
     }
     else if (interval <= 60*60 && interval > 0){
         NSInteger ti = (NSInteger)interval;
         NSInteger minutes = ti/60;
+        if(minutes == 1){
+            return [NSString stringWithFormat:@"%li Minute", (long)minutes];
+        }
         return [NSString stringWithFormat:@"%li Minutes", (long)minutes];
     }
 //    NSInteger ti = (NSInteger)interval;

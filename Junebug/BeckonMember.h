@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) NSString *status;
+@property (assign) BOOL isCreator;
 
 @end
