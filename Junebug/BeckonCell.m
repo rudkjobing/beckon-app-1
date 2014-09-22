@@ -29,7 +29,7 @@
         
         self.customBeckonCellView.layer.shadowColor = [UIColor blackColor].CGColor;
          self.customBeckonCellView.layer.shadowOffset = CGSizeMake(0, 1);
-         self.customBeckonCellView.layer.shadowOpacity = 0.5;
+         self.customBeckonCellView.layer.shadowOpacity = 0.6;
          self.customBeckonCellView.layer.shadowRadius = 4.0;
         
         // Initialization of subviews in contentview
