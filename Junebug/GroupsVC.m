@@ -26,9 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
+    /*CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
     bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
+    [self.view.layer insertSublayer:bgLayer atIndex:0];*/
     self.groupTableView.backgroundColor = [UIColor clearColor];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.groups = appDelegate.appState.groups;
