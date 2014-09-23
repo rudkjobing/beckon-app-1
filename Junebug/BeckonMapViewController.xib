@@ -21,19 +21,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fph-e3-2b9">
-                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                        <rect key="frame" x="141" y="266" width="37" height="37"/>
-                    </variation>
-                </activityIndicatorView>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4k-b2-Jgz">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFR-9K-85q">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <color key="backgroundColor" red="0.1411764771" green="0.74509805439999999" blue="0.60392159219999997" alpha="1" colorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.14117647058823529" green="0.74509803921568629" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="RoS-xm-l7L"/>
                         <constraint firstAttribute="width" constant="140" id="ZEd-4X-q4g"/>
@@ -112,10 +105,16 @@
                         <action selector="declineButtonAction:" destination="-1" eventType="touchUpInside" id="l6y-i6-0Gh"/>
                     </connections>
                 </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fph-e3-2b9">
+                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="Fph-e3-2b9" secondAttribute="centerX" id="3b1-Ao-VqC"/>
                 <constraint firstAttribute="bottom" secondItem="GFR-9K-85q" secondAttribute="bottom" constant="8" id="8PN-Ij-4ah"/>
+                <constraint firstAttribute="centerY" secondItem="Fph-e3-2b9" secondAttribute="centerY" id="9go-FP-OPb"/>
                 <constraint firstItem="E4k-b2-Jgz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GRL-6Y-lBx"/>
                 <constraint firstItem="VvX-AN-vML" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="I9O-de-CmL"/>
                 <constraint firstAttribute="bottom" secondItem="m4w-VW-gAd" secondAttribute="bottom" constant="10" id="JaS-hL-OP5"/>
@@ -131,57 +130,60 @@
                 <constraint firstAttribute="trailing" secondItem="E4k-b2-Jgz" secondAttribute="trailing" id="xsb-3d-0wR"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="subviews">
-                    <exclude reference="Fph-e3-2b9"/>
                     <exclude reference="E4k-b2-Jgz"/>
                     <exclude reference="GFR-9K-85q"/>
                     <exclude reference="VvX-AN-vML"/>
                     <exclude reference="OMe-KV-0pA"/>
                     <exclude reference="m4w-VW-gAd"/>
+                    <exclude reference="Fph-e3-2b9"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="GRL-6Y-lBx"/>
+                    <exclude reference="Kw3-w2-fcH"/>
+                    <exclude reference="X9l-tj-e2V"/>
+                    <exclude reference="xsb-3d-0wR"/>
+                    <exclude reference="I9O-de-CmL"/>
                     <exclude reference="Jr5-B5-Nnv"/>
                     <exclude reference="V5T-Kr-N0e"/>
                     <exclude reference="XGK-zr-TcB"/>
                     <exclude reference="oGh-bB-q0k"/>
                     <exclude reference="wOS-Uy-wr4"/>
-                    <exclude reference="I9O-de-CmL"/>
+                    <exclude reference="3b1-Ao-VqC"/>
+                    <exclude reference="9go-FP-OPb"/>
                     <exclude reference="8PN-Ij-4ah"/>
                     <exclude reference="jtc-m8-gL1"/>
                     <exclude reference="JaS-hL-OP5"/>
                     <exclude reference="ulZ-tL-63u"/>
-                    <exclude reference="GRL-6Y-lBx"/>
-                    <exclude reference="Kw3-w2-fcH"/>
-                    <exclude reference="X9l-tj-e2V"/>
-                    <exclude reference="xsb-3d-0wR"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
-                    <include reference="Fph-e3-2b9"/>
                     <include reference="E4k-b2-Jgz"/>
                     <include reference="GFR-9K-85q"/>
                     <include reference="VvX-AN-vML"/>
                     <include reference="OMe-KV-0pA"/>
                     <include reference="m4w-VW-gAd"/>
+                    <include reference="Fph-e3-2b9"/>
                 </mask>
                 <mask key="constraints">
+                    <include reference="GRL-6Y-lBx"/>
+                    <include reference="Kw3-w2-fcH"/>
+                    <include reference="X9l-tj-e2V"/>
+                    <include reference="xsb-3d-0wR"/>
+                    <include reference="I9O-de-CmL"/>
                     <include reference="Jr5-B5-Nnv"/>
                     <include reference="V5T-Kr-N0e"/>
                     <include reference="XGK-zr-TcB"/>
                     <include reference="oGh-bB-q0k"/>
                     <include reference="wOS-Uy-wr4"/>
-                    <include reference="I9O-de-CmL"/>
+                    <include reference="3b1-Ao-VqC"/>
+                    <include reference="9go-FP-OPb"/>
                     <include reference="8PN-Ij-4ah"/>
                     <include reference="jtc-m8-gL1"/>
                     <include reference="JaS-hL-OP5"/>
                     <include reference="ulZ-tL-63u"/>
-                    <include reference="GRL-6Y-lBx"/>
-                    <include reference="Kw3-w2-fcH"/>
-                    <include reference="X9l-tj-e2V"/>
-                    <include reference="xsb-3d-0wR"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="502" y="544"/>
