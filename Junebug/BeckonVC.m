@@ -142,13 +142,17 @@
     }
 
     if([beckon.status isEqualToString:@"PENDING"]){
-        [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:118.0/255.0 blue:0.0/255.0 alpha:0.6]];
+//        [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:118.0/255.0 blue:0.0/255.0 alpha:0.6]];
+        [cell setCellColor: [UIColor colorWithRed:230.0/255.0 green:180.0/255.0 blue:0.0/255.0 alpha:1.0]];
     }
     else if ([beckon.status isEqualToString:@"ACCEPTED"]){
-        [cell setCellColor: [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.65]];
+//        [cell setCellColor: [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.65]];
+//        [cell setCellColor: [UIColor colorWithRed:36.0/255.0 green:192.0/255.0 blue:154.0/255.0 alpha:1.00]];
+        [cell setCellColor: [UIColor colorWithRed:30.0/255.0 green:180.0/255.0 blue:100.0/255.0 alpha:1.00]];
     }
     else if ([beckon.status isEqualToString:@"REJECTED"]){
-        [cell setCellColor: [UIColor colorWithRed:240.0/255.0 green:31.0/255.0 blue:0.0/255.0 alpha:0.6]];
+//        [cell setCellColor: [UIColor colorWithRed:240.0/255.0 green:31.0/255.0 blue:0.0/255.0 alpha:0.6]];
+        [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:44.0/255.0 blue:107.0/255.0 alpha:1.0]];
     }
     CLLocation *beckonLocation = [[CLLocation alloc] initWithLatitude:[beckon.latitude doubleValue] longitude:[beckon.longitude doubleValue]];
     CLLocationDistance distance = [self.userLocation distanceFromLocation:beckonLocation];

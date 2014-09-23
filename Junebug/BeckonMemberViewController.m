@@ -60,12 +60,15 @@
         [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:118.0/255.0 blue:0.0/255.0 alpha:0.6]];
     }
     else if ([beckonMember.status isEqualToString:@"ACCEPTED"]){
-        [cell setCellColor: [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.65]];
+//        [cell setCellColor: [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.65]];
+        [cell setCellColor: [UIColor colorWithRed:36.0/255.0 green:192.0/255.0 blue:154.0/255.0 alpha:1.00]];
     }
     else if ([beckonMember.status isEqualToString:@"REJECTED"]){
-        [cell setCellColor: [UIColor colorWithRed:240.0/255.0 green:31.0/255.0 blue:0.0/255.0 alpha:0.6]];
+//        [cell setCellColor: [UIColor colorWithRed:240.0/255.0 green:31.0/255.0 blue:0.0/255.0 alpha:0.6]];
+        [cell setCellColor: [UIColor colorWithRed:255.0/255.0 green:44.0/255.0 blue:107.0/255.0 alpha:1.0]];
     }
-    
+//    24BE9A 36 192 154
+//    FF186B 255 44 107
     if(beckonMember.isCreator == YES){
         [cell activateCreatorIndicator];
     }
