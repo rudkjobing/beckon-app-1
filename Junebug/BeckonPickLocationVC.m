@@ -119,8 +119,8 @@
         myPosition.center.longitude = location.coordinate.longitude;
         self.latitude = [[NSNumber alloc] initWithDouble:location.coordinate.latitude];
         self.longitude = [[NSNumber alloc] initWithDouble:location.coordinate.longitude];
-        myPosition.span.latitudeDelta = 0.008388;
-        myPosition.span.longitudeDelta = 0.016243;
+        myPosition.span.latitudeDelta = 0.008388 * 1;
+        myPosition.span.longitudeDelta = 0.016243 * 1;
         [self.beckonMap setRegion:myPosition animated:NO];
         MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude) addressDictionary:nil];
         MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
@@ -204,8 +204,8 @@
     
     //Set zoom of map
     MKCoordinateSpan span;
-    double radius = [(CLCircularRegion*)item.placemark.region radius] / 100; // convert to km
-    span.latitudeDelta = radius / 112.0;
+    span.latitudeDelta = 0.008388 * 1;
+    span.longitudeDelta = 0.016243 * 1;
     region.span = span;
     
     //Remove annotations and place the new one
