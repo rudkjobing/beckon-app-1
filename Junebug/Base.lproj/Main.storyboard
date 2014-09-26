@@ -213,7 +213,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="locationEnteredAction:" destination="s4W-9L-Jn5" eventType="editingDidEndOnExit" id="9Yk-Vt-lqz"/>
                                     <action selector="locationSearchBegin:" destination="s4W-9L-Jn5" eventType="editingDidBegin" id="QnG-2N-Ymz"/>
                                     <action selector="locationSearchChanged:" destination="s4W-9L-Jn5" eventType="editingChanged" id="nNd-d8-eGy"/>
                                 </connections>

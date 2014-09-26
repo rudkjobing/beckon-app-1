@@ -55,7 +55,7 @@
 - (IBAction)locationSearchChanged:(UITextField *)sender {
     MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = sender.text;
-    request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 300, 300);
+    request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 0.5, 0.5);
    
     MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
@@ -63,49 +63,12 @@
         for(MKMapItem *item in response.mapItems){
             for(NSString *add in item.placemark.addressDictionary){
                 NSLog(@"%@, %@", add, item.placemark.addressDictionary[add]);
-//            NSLog(@"%@, %@, %@", item.name, item.placemark.addressDictionary[@"Street"], item.phoneNumber);
             }
         }
         [self.searchResultsTableView reloadData];
     }];
 }
 
-- (IBAction)locationEnteredAction:(UITextField *)sender{
-//    MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
-//    request.naturalLanguageQuery = sender.text;
-//    request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 120701, 120701);
-//    
-//    MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
-//    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-//        for(MKMapItem *item in response.mapItems){
-//            self.latitude = [[NSNumber alloc] initWithDouble:item.placemark.coordinate.latitude];
-//            self.longitude = [[NSNumber alloc] initWithDouble:item.placemark.coordinate.longitude];
-//            self.locationString = item.name;
-//            
-//            //Set new center for the map
-//            MKCoordinateRegion region;
-//            region.center.latitude = [self.latitude doubleValue];
-//            region.center.longitude = [self.longitude doubleValue];
-//
-//            //Set zoom of map
-//            MKCoordinateSpan span;
-//            double radius = [(CLCircularRegion*)item.placemark.region radius] / 100; // convert to km
-//            span.latitudeDelta = radius / 112.0;
-//            region.span = span;
-//            
-//            //Remove annotations and place the new one
-//            [self.beckonMap removeAnnotations:self.beckonMap.annotations];
-//            MKPlacemark *placemarkForAnnotation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]) addressDictionary:nil];
-//            [self.beckonMap addAnnotation:placemarkForAnnotation];
-//            [self.beckonMap setRegion:region animated:YES];
-//            
-//            //Log stuff
-//            NSLog(@"%@, %@", item.name ,item.phoneNumber);
-//            NSLog(@"%f, %f", item.placemark.coordinate.latitude, item.placemark.coordinate.longitude);
-//            break;
-//        }
-//    }];
-}
 
 - (IBAction)locationSearchBegin:(id)sender {
     self.searchResultsTableView.layer.hidden = NO;
@@ -187,6 +150,7 @@
     MKMapItem *item                 =   [self.searchResults objectAtIndex:indexPath.row];
     
     cell.textLabel.text             =   item.name;
+    cell.detailTextLabel.text       =   [item.placemark.addressDictionary objectForKey:@"Street"];
     
     return cell;
 }
@@ -209,6 +173,7 @@
     region.span = span;
     
     //Remove annotations and place the new one
+    self.addressTextField.text = item.name;
     [self.beckonMap removeAnnotations:self.beckonMap.annotations];
     MKPlacemark *placemarkForAnnotation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]) addressDictionary:nil];
     [self.beckonMap addAnnotation:placemarkForAnnotation];
