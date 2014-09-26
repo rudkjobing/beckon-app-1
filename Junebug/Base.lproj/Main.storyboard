@@ -202,13 +202,20 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </progressView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for a location" minimumFontSize="17" clearButtonMode="always" id="rNQ-U4-F56">
+                            <tableView clipsSubviews="YES" alpha="0.79999999999999982" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hnZ-PW-Ies">
+                                <rect key="frame" x="16" y="106" width="288" height="462"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" alpha="0.89999999999999991" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for a location" minimumFontSize="17" clearButtonMode="always" id="rNQ-U4-F56">
                                 <rect key="frame" x="16" y="74" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="locationEnteredAction:" destination="s4W-9L-Jn5" eventType="editingDidEndOnExit" id="9Yk-Vt-lqz"/>
+                                    <action selector="locationSearchBegin:" destination="s4W-9L-Jn5" eventType="editingDidBegin" id="QnG-2N-Ymz"/>
+                                    <action selector="locationSearchChanged:" destination="s4W-9L-Jn5" eventType="editingChanged" id="nNd-d8-eGy"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -216,9 +223,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Select Location" id="pj9-L3-8z2"/>
                     <connections>
-                        <outlet property="addressTextField" destination="rNQ-U4-F56" id="utg-7r-y9d"/>
                         <outlet property="beckonMap" destination="uGv-to-XcG" id="E6d-Kt-aOk"/>
                         <outlet property="progressView" destination="kDE-cH-dze" id="fac-s6-B8h"/>
+                        <outlet property="searchResultsTableView" destination="hnZ-PW-Ies" id="KBq-vw-WOq"/>
                         <segue destination="4oP-aE-Lrt" kind="push" identifier="selectDate" id="GdD-61-S3J"/>
                     </connections>
                 </viewController>

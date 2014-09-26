@@ -8,6 +8,7 @@
 
 #import "BeckonPickLocationVC.h"
 #import "BeckonPickDateVC.h"
+#import <AddressBook/AddressBook.h>
 
 @interface BeckonPickLocationVC ()
 
@@ -18,6 +19,8 @@
 @property (strong, nonatomic) NSNumber *latitude;
 @property (strong, nonatomic) NSNumber *longitude;
 @property (strong, nonatomic) NSString *locationString;
+@property (weak, nonatomic) IBOutlet UITableView *searchResultsTableView;
+@property (strong, nonatomic) NSArray *searchResults;
 
 @end
 
@@ -25,100 +28,88 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.locationString = @"Undefined";
-    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
-    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
-    previousButton.tintColor = [UIColor blackColor];
-    nextButton.tintColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem = previousButton;
-    self.navigationItem.rightBarButtonItem = nextButton;
+    self.locationString                     =   @"Undefined";
+    UIBarButtonItem *previousButton         =   [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
+    UIBarButtonItem *nextButton             =   [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
+    previousButton.tintColor                =   [UIColor blackColor];
+    nextButton.tintColor                    =   [UIColor blackColor];
+    self.navigationItem.leftBarButtonItem   =   previousButton;
+    self.navigationItem.rightBarButtonItem  =   nextButton;
     if ([CLLocationManager locationServicesEnabled]) {
-        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager    =   [[CLLocationManager alloc] init];
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
             [self.locationManager requestAlwaysAuthorization];
             [self.locationManager requestWhenInUseAuthorization];
         }
-        self.locationManager.delegate = self;
+        self.locationManager.delegate   =   self;
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         [self.locationManager setDesiredAccuracy:kCLDistanceFilterNone];
-        
         [self.locationManager startUpdatingLocation];
     }
     self.progressView.progress = 0.75;
+    self.searchResultsTableView.dataSource      =   self;
+    self.searchResultsTableView.delegate        =   self;
+    self.searchResultsTableView.layer.hidden    =   YES;
 }
 
-//- (IBAction)addressEnteredAction:(UITextField *)sender {
-//    [self.addressTextField resignFirstResponder];
-//    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-//    [geocoder geocodeAddressString:self.addressTextField.text completionHandler:^(NSArray *placemarks, NSError *error) {
-//        //Error checking
-//        
-//        CLPlacemark *placemark = [placemarks objectAtIndex:0];
-//        MKCoordinateRegion region;
-//     
-//        region.center.latitude = placemark.location.coordinate.latitude;
-//        region.center.longitude = placemark.location.coordinate.longitude;
-//        self.latitude = [[NSNumber alloc] initWithDouble:region.center.latitude];
-//        self.longitude = [[NSNumber alloc] initWithDouble:region.center.longitude];
-//        MKCoordinateSpan span;
-//        double radius = [(CLCircularRegion*)placemark.region radius] / 100; // convert to km
-//        span.latitudeDelta = radius / 112.0;
-//        region.span = span;
-//        [self.beckonMap removeAnnotations:self.beckonMap.annotations];
-//        MKPlacemark *placemarkForAnnotation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]) addressDictionary:nil];
-//        [self.beckonMap addAnnotation:placemarkForAnnotation];
-//        [self.beckonMap setRegion:region animated:YES];
-//    }];
-//}
-
-- (IBAction)locationEnteredAction:(UITextField *)sender{
+- (IBAction)locationSearchChanged:(UITextField *)sender {
     MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = sender.text;
-    request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 120701, 120701);
-    
+    request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 300, 300);
+   
     MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        self.searchResults = response.mapItems;
         for(MKMapItem *item in response.mapItems){
-            self.latitude = [[NSNumber alloc] initWithDouble:item.placemark.coordinate.latitude];
-            self.longitude = [[NSNumber alloc] initWithDouble:item.placemark.coordinate.longitude];
-            self.locationString = item.name;
-            
-            //Set new center for the map
-            MKCoordinateRegion region;
-            region.center.latitude = [self.latitude doubleValue];
-            region.center.longitude = [self.longitude doubleValue];
-
-            //Set zoom of map
-            MKCoordinateSpan span;
-            double radius = [(CLCircularRegion*)item.placemark.region radius] / 100; // convert to km
-            span.latitudeDelta = radius / 112.0;
-            region.span = span;
-            
-            //Remove annotations and place the new one
-            [self.beckonMap removeAnnotations:self.beckonMap.annotations];
-            MKPlacemark *placemarkForAnnotation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]) addressDictionary:nil];
-            [self.beckonMap addAnnotation:placemarkForAnnotation];
-            [self.beckonMap setRegion:region animated:YES];
-            
-            //Log stuff
-            NSLog(@"%@, %@", item.name ,item.phoneNumber);
-            NSLog(@"%f, %f", item.placemark.coordinate.latitude, item.placemark.coordinate.longitude);
-            break;
+            for(NSString *add in item.placemark.addressDictionary){
+                NSLog(@"%@, %@", add, item.placemark.addressDictionary[add]);
+//            NSLog(@"%@, %@, %@", item.name, item.placemark.addressDictionary[@"Street"], item.phoneNumber);
+            }
         }
+        [self.searchResultsTableView reloadData];
     }];
 }
 
-//Search for local stuff, like waxies
-
-//MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
-//request.naturalLanguageQuery = @"Waxies";
-//request.region = MKCoordinateRegionMakeWithDistance(loc, kSearchMapBoundingBoxDistanceInMetres, kSearchMapBoundingBoxDistanceInMetres);
+- (IBAction)locationEnteredAction:(UITextField *)sender{
+//    MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
+//    request.naturalLanguageQuery = sender.text;
+//    request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 120701, 120701);
+//    
+//    MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
+//    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+//        for(MKMapItem *item in response.mapItems){
+//            self.latitude = [[NSNumber alloc] initWithDouble:item.placemark.coordinate.latitude];
+//            self.longitude = [[NSNumber alloc] initWithDouble:item.placemark.coordinate.longitude];
+//            self.locationString = item.name;
+//            
+//            //Set new center for the map
+//            MKCoordinateRegion region;
+//            region.center.latitude = [self.latitude doubleValue];
+//            region.center.longitude = [self.longitude doubleValue];
 //
-//MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
-//[search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-//    yourArray = response.mapItems; // array of MKMapItems
-//    // .. do you other logic here
-//}];
+//            //Set zoom of map
+//            MKCoordinateSpan span;
+//            double radius = [(CLCircularRegion*)item.placemark.region radius] / 100; // convert to km
+//            span.latitudeDelta = radius / 112.0;
+//            region.span = span;
+//            
+//            //Remove annotations and place the new one
+//            [self.beckonMap removeAnnotations:self.beckonMap.annotations];
+//            MKPlacemark *placemarkForAnnotation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]) addressDictionary:nil];
+//            [self.beckonMap addAnnotation:placemarkForAnnotation];
+//            [self.beckonMap setRegion:region animated:YES];
+//            
+//            //Log stuff
+//            NSLog(@"%@, %@", item.name ,item.phoneNumber);
+//            NSLog(@"%f, %f", item.placemark.coordinate.latitude, item.placemark.coordinate.longitude);
+//            break;
+//        }
+//    }];
+}
+
+- (IBAction)locationSearchBegin:(id)sender {
+    self.searchResultsTableView.layer.hidden = NO;
+}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     for(CLLocation *location in locations){
@@ -132,7 +123,9 @@
         myPosition.span.longitudeDelta = 0.016243;
         [self.beckonMap setRegion:myPosition animated:NO];
         MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude) addressDictionary:nil];
-        [self.beckonMap addAnnotation:placemark];
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc]init];
+        annotation.coordinate = placemark.coordinate;
+        [self.beckonMap addAnnotation:annotation];
         
         //Get the initial address
         CLGeocoder *geocoder = [[CLGeocoder alloc] init];
@@ -172,6 +165,59 @@
         targetVC.beckon = self.beckon;
     }
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.searchResults.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier =   @"MapSearchCell";
+    UITableViewCell *cell           =   (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell                        =   [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    MKMapItem *item                 =   [self.searchResults objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text             =   item.name;
+    
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MKMapItem *item = [self.searchResults objectAtIndex:indexPath.row];
+    self.latitude = [[NSNumber alloc] initWithDouble:item.placemark.coordinate.latitude];
+    self.longitude = [[NSNumber alloc] initWithDouble:item.placemark.coordinate.longitude];
+    self.locationString = item.name;
+    
+    //Set new center for the map
+    MKCoordinateRegion region;
+    region.center.latitude = [self.latitude doubleValue];
+    region.center.longitude = [self.longitude doubleValue];
+    
+    //Set zoom of map
+    MKCoordinateSpan span;
+    double radius = [(CLCircularRegion*)item.placemark.region radius] / 100; // convert to km
+    span.latitudeDelta = radius / 112.0;
+    region.span = span;
+    
+    //Remove annotations and place the new one
+    [self.beckonMap removeAnnotations:self.beckonMap.annotations];
+    MKPlacemark *placemarkForAnnotation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]) addressDictionary:nil];
+    [self.beckonMap addAnnotation:placemarkForAnnotation];
+    [self.beckonMap setRegion:region animated:YES];
+    [self.view endEditing:YES];
+    self.searchResultsTableView.layer.hidden = YES;
+    
+}
+
 
 - (Beckon *) _beckon{
     if(!_beckon){

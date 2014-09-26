@@ -11,7 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Beckon.h"
 
-@interface BeckonPickLocationVC : UIViewController<CLLocationManagerDelegate>
+@interface BeckonPickLocationVC : UIViewController<CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) Beckon *beckon;
 
