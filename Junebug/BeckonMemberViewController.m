@@ -27,6 +27,15 @@
     [self.memberTableView registerClass:[MemberCell class] forCellReuseIdentifier:@"MemberCell"];
     self.memberTableView.dataSource = self;
     self.memberTableView.delegate = self;
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUser)];
+    addButton.tintColor = [UIColor blackColor];
+    self.navigationItem.rightBarButtonItem = addButton;
+
+}
+
+- (void) addUser{
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -61,12 +61,10 @@
         MKCoordinateRegion mapRegion;
    
         mapRegion.center.latitude = (location.coordinate.latitude + [parentVC.beckon.latitude doubleValue]) / 2;
-        mapRegion.span.latitudeDelta = fabs(location.coordinate.latitude - [parentVC.beckon.latitude doubleValue]) * 1.5;
+        mapRegion.span.latitudeDelta = fabs(location.coordinate.latitude - [parentVC.beckon.latitude doubleValue]) * 1.8;
         
         mapRegion.center.longitude = (location.coordinate.longitude + [parentVC.beckon.longitude doubleValue]) / 2;
-        mapRegion.span.longitudeDelta = fabs(location.coordinate.longitude - [parentVC.beckon.longitude doubleValue]) * 1.5;
-        
-        NSLog(@"%f, %f, %f, %f", mapRegion.center.latitude, mapRegion.center.longitude, fabs(location.coordinate.latitude - [parentVC.beckon.latitude doubleValue]), fabs(location.coordinate.longitude - [parentVC.beckon.longitude doubleValue]));
+        mapRegion.span.longitudeDelta = fabs(location.coordinate.longitude - [parentVC.beckon.longitude doubleValue]) * 1.3;
         
         MKCoordinateRegion beckonPosition;
         beckonPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
