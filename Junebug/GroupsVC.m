@@ -26,16 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*CAGradientLayer * bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];*/
-    self.groupTableView.backgroundColor = [UIColor clearColor];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.groups = appDelegate.appState.groups;
-    self.groupTableView.dataSource = self;
-    self.groupTableView.delegate = self;
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGroup)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    [self.groupTableView registerClass:[GroupCell class] forCellReuseIdentifier:@"GroupCell"];
+
+    AppDelegate *appDelegate                =   (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.groupTableView.backgroundColor     =   [UIColor clearColor];
+    self.groups                             =   appDelegate.appState.groups;
+    self.groupTableView.dataSource          =   self;
+    self.groupTableView.delegate            =   self;
+    UIBarButtonItem *addButton              =   [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addGroup)];
+    self.navigationItem.rightBarButtonItem  =   addButton;
     [self.groups addObserver:self forKeyPath:@"newestGroupPointer" options:0 context:nil];
 }
 
@@ -76,7 +75,10 @@
     return 1;
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 45;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -90,7 +92,7 @@
         cell = [[GroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     Group *group = [self.groups.groups objectAtIndex:indexPath.row];
-    cell.textLabel.text = group.name;
+    cell.nameOfGroup.text = group.name;
     return cell;
 }
 

@@ -9,6 +9,7 @@
 #import "BeckonPickFriendsVC.h"
 #import "GradientLayers.h"
 #import "BeckonPickLocationVC.h"
+#import "GroupCell.h"
 
 @interface BeckonPickFriendsVC ()
 
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     
     [self.beckonFriendsTable registerClass:[FriendCell class] forCellReuseIdentifier:@"FriendCell"];
+    [self.beckonFriendsTable registerClass:[GroupCell class] forCellReuseIdentifier:@"GroupCell"];
 
     self.beckonFriendsTable.backgroundColor =   [UIColor clearColor];
     UIBarButtonItem *previousButton         =   [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
@@ -35,6 +37,7 @@
     self.navigationItem.rightBarButtonItem  =   nextButton;
     AppDelegate *appDelegate                =   (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.friends                            =   appDelegate.appState.friends;
+    self.groups                             =   appDelegate.appState.groups;
     self.beckonFriendsTable.delegate        =   self;
     self.beckonFriendsTable.dataSource      =   self;
     self.progressView.progress              =   0.50;
@@ -54,50 +57,101 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.friends.friends.count;
+    if(section == 0){
+        return self.groups.groups.count;
+    }
+    else{
+        return self.friends.friends.count;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0){
+        return @"Groups";
+    }
+    else{
+        return @"Friends";
+    }
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"FriendCell";
-    FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (!cell) {
-        cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    if(indexPath.section == 0){
+        static NSString *cellIdentifier = @"GroupCell";
+        GroupCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[GroupCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        Group *group                =   [self.groups.groups objectAtIndex:indexPath.row];
+        cell.nameOfGroup.text       =   group.name;
+        
+        if([self.beckon.groups containsObject:group.id]){
+            [cell setActivated];
+        }
+        return cell;
     }
-    Friend *friend              =   [self.friends.friends objectAtIndex:indexPath.row];
-    cell.nameOfFriend.text      =   [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
-    cell.emailOfFriend.text     =   friend.email;
-    cell.nickNameOfFriend.text  =   friend.nickname;
-    
-    if([self.beckon.friends containsObject:friend.id]){
-        [cell setActivated];
+    else{
+        static NSString *cellIdentifier = @"FriendCell";
+        FriendCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        if (!cell) {
+            cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        }
+        Friend *friend              =   [self.friends.friends objectAtIndex:indexPath.row];
+        cell.nameOfFriend.text      =   [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
+        cell.emailOfFriend.text     =   friend.email;
+        cell.nickNameOfFriend.text  =   friend.nickname;
+        
+        if([self.beckon.friends containsObject:friend.id]){
+            [cell setActivated];
+        }
+        return cell;
     }
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 65;
+    if(indexPath.section == 0){
+        return 45;
+    }
+    else{
+        return 65;
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    FriendCell *cell    =   (FriendCell *)[tableView cellForRowAtIndexPath:indexPath];
-    Friend *friend      =   [self.friends.friends objectAtIndex:indexPath.row];
-
-    if(cell.isActivated){
-        [cell setDeactivated];
-        [self.beckon.friends removeObject:friend.id];
+    if(indexPath.section == 0){
+        GroupCell *cell    =   (GroupCell *)[tableView cellForRowAtIndexPath:indexPath];
+        Group *group      =   [self.groups.groups objectAtIndex:indexPath.row];
+        
+        if(cell.isActivated){
+            [cell setDeactivated];
+            [self.beckon.groups removeObject:group.id];
+        }
+        else{
+            [cell setActivated];
+            [self.beckon.groups addObject:group.id];
+        }
     }
     else{
-        [cell setActivated];
-        [self.beckon.friends addObject:friend.id];
+        FriendCell *cell    =   (FriendCell *)[tableView cellForRowAtIndexPath:indexPath];
+        Friend *friend      =   [self.friends.friends objectAtIndex:indexPath.row];
+        
+        if(cell.isActivated){
+            [cell setDeactivated];
+            [self.beckon.friends removeObject:friend.id];
+        }
+        else{
+            [cell setActivated];
+            [self.beckon.friends addObject:friend.id];
+        }
     }
-    //[tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *locationString;
 @property (strong, nonatomic) NSString *chatRoomId;
 @property (strong, nonatomic) NSMutableArray *friends;
+@property (strong, nonatomic) NSMutableArray *groups;
 @property (strong, nonatomic) NSDate *begins;
 @property (strong, nonatomic) NSDate *ends;
 @property (strong, nonatomic) NSNumber *latitude;

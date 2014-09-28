@@ -61,7 +61,6 @@
     cell.nameOfFriend.text = [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
     cell.emailOfFriend.text = friend.email;
     cell.nickNameOfFriend.text = friend.nickname;
-    cell.pictureOfFriend.image = [UIImage imageNamed:@"squirrel.jpg"];
     if([self.group.members containsObject:[self.friends.friends objectAtIndex:indexPath.row]]){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }

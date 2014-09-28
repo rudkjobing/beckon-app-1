@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface BeckonMapViewController : UIViewController
+@interface BeckonMapViewController : UIViewController <CLLocationManagerDelegate>
 
 - (void)updateButtonState;
 

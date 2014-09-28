@@ -10,4 +10,12 @@
 
 @interface GroupCell : UITableViewCell
 
+@property(strong, nonatomic) UILabel *nameOfGroup;
+@property (strong, nonatomic) UIView *containerView;
+@property (strong, nonatomic) UIView *subContainerView;
+@property (assign) BOOL isActivated;
+
+- (void)setActivated;
+- (void)setDeactivated;
+
 @end

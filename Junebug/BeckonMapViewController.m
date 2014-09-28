@@ -8,10 +8,12 @@
 
 #import "BeckonMapViewController.h"
 #import "BeckonDetailPageVC.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface BeckonMapViewController ()
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *acceptButton;
@@ -36,7 +38,43 @@
     MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
     [self.map addAnnotation:placemark];
     [self updateButtonState];
+    
+    if ([CLLocationManager locationServicesEnabled]) {
+        self.locationManager    =   [[CLLocationManager alloc] init];
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+            [self.locationManager requestAlwaysAuthorization];
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        self.locationManager.delegate   =   self;
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        //        [self.locationManager setDesiredAccuracy:kCLDistanceFilterNone];
+        [self.locationManager startUpdatingLocation];
+    }
+    
     //<3 = true
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    for(CLLocation *location in locations){
+        
+        BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+        MKCoordinateRegion mapRegion;
+   
+        mapRegion.center.latitude = (location.coordinate.latitude + [parentVC.beckon.latitude doubleValue]) / 2;
+        mapRegion.span.latitudeDelta = fabs(location.coordinate.latitude - [parentVC.beckon.latitude doubleValue]) * 1.5;
+        
+        mapRegion.center.longitude = (location.coordinate.longitude + [parentVC.beckon.longitude doubleValue]) / 2;
+        mapRegion.span.longitudeDelta = fabs(location.coordinate.longitude - [parentVC.beckon.longitude doubleValue]) * 1.5;
+        
+        NSLog(@"%f, %f, %f, %f", mapRegion.center.latitude, mapRegion.center.longitude, fabs(location.coordinate.latitude - [parentVC.beckon.latitude doubleValue]), fabs(location.coordinate.longitude - [parentVC.beckon.longitude doubleValue]));
+        
+        MKCoordinateRegion beckonPosition;
+        beckonPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
+        beckonPosition.center.longitude = [parentVC.beckon.longitude doubleValue];
+        [self.map setRegion:mapRegion animated:YES];
+        break;
+    }
+    //[self.locationManager stopUpdatingLocation];
 }
 
 - (IBAction)acceptButtonAction:(UIButton *)sender {

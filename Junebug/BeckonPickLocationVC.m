@@ -199,9 +199,17 @@
     MKPlacemark *placemarkForAnnotation = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([self.latitude doubleValue], [self.longitude doubleValue]) addressDictionary:nil];
     [self.beckonMap addAnnotation:placemarkForAnnotation];
     [self.beckonMap setRegion:region animated:YES];
-    [self.view endEditing:YES];
-    self.searchResultsTableView.layer.hidden = YES;
     
+    //Reset the search text field
+    [self.view endEditing:YES];
+    self.searchResultsTableView.layer.hidden    =   YES;
+    self.cancelButton.layer.hidden              =   YES;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.addressTextField.frame = CGRectMake(self.addressTextField.frame.origin.x, self.addressTextField.frame.origin.y, self.addressTextField.frame.size.width + 50, self.addressTextField.frame.size.height);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 
