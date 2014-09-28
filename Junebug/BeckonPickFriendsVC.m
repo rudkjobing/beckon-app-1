@@ -23,20 +23,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.beckonFriendsTable.backgroundColor = [UIColor clearColor];
     
     [self.beckonFriendsTable registerClass:[FriendCell class] forCellReuseIdentifier:@"FriendCell"];
-    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
-    UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
-    previousButton.tintColor = [UIColor blackColor];
-    nextButton.tintColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem = previousButton;
-    self.navigationItem.rightBarButtonItem = nextButton;
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.friends = appDelegate.appState.friends;
-    self.beckonFriendsTable.delegate = self;
-    self.beckonFriendsTable.dataSource = self;
-    self.progressView.progress = 0.50;
+
+    self.beckonFriendsTable.backgroundColor =   [UIColor clearColor];
+    UIBarButtonItem *previousButton         =   [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(previousStep)];
+    UIBarButtonItem *nextButton             =   [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStylePlain target:self action:@selector(nextStep)];
+    previousButton.tintColor                =   [UIColor blackColor];
+    nextButton.tintColor                    =   [UIColor blackColor];
+    self.navigationItem.leftBarButtonItem   =   previousButton;
+    self.navigationItem.rightBarButtonItem  =   nextButton;
+    AppDelegate *appDelegate                =   (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.friends                            =   appDelegate.appState.friends;
+    self.beckonFriendsTable.delegate        =   self;
+    self.beckonFriendsTable.dataSource      =   self;
+    self.progressView.progress              =   0.50;
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [self.beckonFriendsTable reloadData];
 }
 
 - (void)nextStep{
@@ -51,10 +56,12 @@
 {
     return 1;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.friends.friends.count;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"FriendCell";
@@ -62,14 +69,13 @@
     if (!cell) {
         cell = [[FriendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    Friend *friend = [self.friends.friends objectAtIndex:indexPath.row];
-    cell.nameOfFriend.text = [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
-    cell.emailOfFriend.text = friend.email;
-    cell.nickNameOfFriend.text = friend.nickname;
-    cell.pictureOfFriend.image = [UIImage imageNamed:@"squirrel.jpg"];
-
-    if([self.beckon.friends containsObject:[self.friends.friends objectAtIndex:indexPath.row]]){
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    Friend *friend              =   [self.friends.friends objectAtIndex:indexPath.row];
+    cell.nameOfFriend.text      =   [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
+    cell.emailOfFriend.text     =   friend.email;
+    cell.nickNameOfFriend.text  =   friend.nickname;
+    
+    if([self.beckon.friends containsObject:friend.id]){
+        [cell setActivated];
     }
     return cell;
 }
@@ -80,24 +86,24 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    Friend *friend = [self.friends.friends objectAtIndex:indexPath.row];
+    FriendCell *cell    =   (FriendCell *)[tableView cellForRowAtIndexPath:indexPath];
+    Friend *friend      =   [self.friends.friends objectAtIndex:indexPath.row];
 
-    if(cell.accessoryType == UITableViewCellAccessoryCheckmark){
-        cell.accessoryType = UITableViewCellAccessoryNone;
+    if(cell.isActivated){
+        [cell setDeactivated];
         [self.beckon.friends removeObject:friend.id];
     }
     else{
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [cell setActivated];
         [self.beckon.friends addObject:friend.id];
     }
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    //[tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"selectLocation"]){
-        BeckonPickFriendsVC *targetVC = [segue destinationViewController];
-        targetVC.beckon = self.beckon;
+        BeckonPickFriendsVC *targetVC   =   [segue destinationViewController];
+        targetVC.beckon                 =   self.beckon;
     }
 }
 

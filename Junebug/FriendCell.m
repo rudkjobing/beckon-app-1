@@ -18,40 +18,29 @@
     if (self) {
         
         //Add new custom subview. Relates to heightforRowAtIndexPath in FriendsVC
-        CGFloat heightOfCellInTableView = 55.0;
+        CGFloat heightOfCellInTableView = 65.0;
         
-        CGRect rectForCustomSubView = CGRectMake(self.contentView.frame.origin.x,
-                                                 self.contentView.frame.origin.y + 5.0,
-                                                 self.contentView.frame.size.width,
-                                                 heightOfCellInTableView);
-        self.customSubview = [[UIView alloc] initWithFrame:rectForCustomSubView];
-        self.customSubview.backgroundColor = [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.65];
+        self.containerView = [[UIView alloc] initWithFrame:CGRectMake(self.contentView.frame.origin.x,
+                                                                      self.contentView.frame.origin.y,
+                                                                      self.contentView.frame.size.width,
+                                                                      heightOfCellInTableView)];
         
+        
+        self.subContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.containerView.frame.origin.x + 3,
+                                                                         self.containerView.frame.origin.y + 2,
+                                                                         self.containerView.frame.size.width -6,
+                                                                         heightOfCellInTableView -4)];
+    
+        self.subContainerView.backgroundColor = [UIColor colorWithRed:80.0/255.0 green:122.0/255.0 blue:154.0/255.0 alpha:1.00];
+        self.backgroundColor = [UIColor clearColor];
         
         // Initialization of subviews in contentview
-        CGFloat startingPointOfSubViewOnX = self.customSubview.bounds.origin.x + 10.0;
-        CGFloat startingPointOfSubviewOnY = self.customSubview.bounds.origin.y + 5.0;
-        
-        //add Image of Friend
-        CGFloat heightOfFriendImage = 45.0;
-        CGFloat widthOfFriendImage = 45.0;
-        
-        CGRect frameOfFriendImage = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, widthOfFriendImage, heightOfFriendImage);
-        self.pictureOfFriend = [[UIImageView alloc] initWithFrame:frameOfFriendImage];
-        self.pictureOfFriend.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.pictureOfFriend.layer.shadowOffset = CGSizeMake(0, 1);
-        self.pictureOfFriend.layer.shadowOpacity = 1;
-        self.pictureOfFriend.layer.shadowRadius = 1.0;
-        [self.pictureOfFriend.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-        [self.pictureOfFriend.layer setBorderWidth:1.5];
-        
-        //Update Referencepoints for next subviews
-        startingPointOfSubViewOnX = widthOfFriendImage + startingPointOfSubViewOnX + 10.0;
-        startingPointOfSubviewOnY = startingPointOfSubviewOnY - 3;
+        CGFloat startingPointOfSubViewOnX = self.subContainerView.bounds.origin.x + 8.0;
+        CGFloat startingPointOfSubviewOnY = self.subContainerView.bounds.origin.y + 5.0;
         
         //add NickName Label
         CGFloat nickNameLabelHeight = 20.0;
-        CGFloat nickNameLabelWidth = 200.0;
+        CGFloat nickNameLabelWidth = 230.0;
         
         CGRect frameOfNickNameLabel = CGRectMake(startingPointOfSubViewOnX, startingPointOfSubviewOnY, nickNameLabelWidth, nickNameLabelHeight);
         self.nickNameOfFriend = [[UILabel alloc] initWithFrame:frameOfNickNameLabel];
@@ -60,13 +49,7 @@
         self.nickNameOfFriend.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nickNameOfFriend.textAlignment = UIControlContentVerticalAlignmentCenter;
         self.nickNameOfFriend.textColor = [UIColor whiteColor];
-        
-        /*self.nickNameOfFriend.layer.shadowColor = [UIColor grayColor].CGColor;
-         self.nickNameOfFriend.layer.shadowOffset = CGSizeMake(0, 1);
-         self.nickNameOfFriend.layer.shadowOpacity = 1;
-         self.nickNameOfFriend.layer.shadowRadius = 0.6;*/
-        
-        
+       
         //Update referencepoints for next subviews
         startingPointOfSubviewOnY = startingPointOfSubviewOnY + nickNameLabelHeight;
         
@@ -96,43 +79,21 @@
         
         self.contentView.backgroundColor = [UIColor clearColor];
         //Customize cellboarder
-        [self.customSubview.layer setBorderColor:[UIColor clearColor].CGColor];
-        [self.customSubview.layer setBorderWidth:1.0f];
+        [self.subContainerView.layer setBorderColor:[UIColor clearColor].CGColor];
+        [self.subContainerView.layer setBorderWidth:1.0f];
         
         //add subviews to cell
-        [self.contentView addSubview:self.customSubview];
-        [self.customSubview addSubview:self.pictureOfFriend];
-        [self.customSubview addSubview:self.nickNameOfFriend];
-        [self.customSubview addSubview:self.nameOfFriend];
-        [self.customSubview addSubview:self.emailOfFriend];
+        [self.containerView addSubview:self.subContainerView];
+        [self.contentView addSubview:self.containerView];
         
-        self.backgroundColor = [UIColor clearColor];
-        
-        
+//        [self.customSubview addSubview:self.pictureOfFriend];
+        [self.subContainerView addSubview:self.nickNameOfFriend];
+        [self.subContainerView addSubview:self.nameOfFriend];
+        [self.subContainerView addSubview:self.emailOfFriend];
+      
+        self.isActivated = NO;
     }
     return self;
-}
-
-
-//set width of cells contentview
-
-- (void)setFrame:(CGRect)frame {
-    
-    frame.origin.x += 20;
-    frame.size.width -= 2 * 20;
-    [super setFrame:frame];
-}
-
-
-- (void)layoutSubviews
-{
-    self.contentView.bounds = CGRectMake(self.bounds.origin.x,
-                                         self.bounds.origin.y,
-                                         self.bounds.size.width - 50,
-                                         self.bounds.size.height);
-    
-    [super layoutSubviews];
-    
 }
 
 - (void)awakeFromNib
@@ -142,9 +103,19 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super setSelected:selected animated:animated];
+    //[super setSelected:selected animated:animated];
     
     // Configure the view for the selected state
+}
+
+- (void)setActivated{
+    self.subContainerView.backgroundColor = [UIColor colorWithRed:36.0/255.0 green:192.0/255.0 blue:154.0/255.0 alpha:1.00];
+    self.isActivated = YES;
+}
+
+- (void)setDeactivated{
+    self.subContainerView.backgroundColor = [UIColor colorWithRed:80.0/255.0 green:122.0/255.0 blue:154.0/255.0 alpha:1.00];
+    self.isActivated = NO;
 }
 
 @end

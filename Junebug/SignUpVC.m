@@ -39,10 +39,7 @@
 {
     [super viewDidLoad];
     //added backgroundLayer
-    CAGradientLayer *bgLayer = [GradientLayers appBlueGradient];
-    bgLayer.frame = self.view.bounds;
-    [self.view.layer insertSublayer:bgLayer atIndex:0];
-    
+   
     self.title = @"Sign up for Beckon";
     
     //customize signupFirstName textfield

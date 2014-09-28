@@ -9,6 +9,7 @@
 #import "BeckonPickLocationVC.h"
 #import "BeckonPickDateVC.h"
 #import <AddressBook/AddressBook.h>
+#import "AppDelegate.h"
 
 @interface BeckonPickLocationVC ()
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSString *locationString;
 @property (weak, nonatomic) IBOutlet UITableView *searchResultsTableView;
 @property (strong, nonatomic) NSArray *searchResults;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @end
 
@@ -43,35 +45,51 @@
         }
         self.locationManager.delegate   =   self;
         [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        [self.locationManager setDesiredAccuracy:kCLDistanceFilterNone];
+//        [self.locationManager setDesiredAccuracy:kCLDistanceFilterNone];
         [self.locationManager startUpdatingLocation];
     }
     self.progressView.progress = 0.75;
     self.searchResultsTableView.dataSource      =   self;
     self.searchResultsTableView.delegate        =   self;
     self.searchResultsTableView.layer.hidden    =   YES;
+    self.cancelButton.layer.hidden              =   YES;
 }
 
 - (IBAction)locationSearchChanged:(UITextField *)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate.appState.server startIndicator];
     MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = sender.text;
     request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 0.5, 0.5);
    
     MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
     [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        [appDelegate.appState.server stopIndicator];
         self.searchResults = response.mapItems;
-        for(MKMapItem *item in response.mapItems){
-            for(NSString *add in item.placemark.addressDictionary){
-                NSLog(@"%@, %@", add, item.placemark.addressDictionary[add]);
-            }
-        }
         [self.searchResultsTableView reloadData];
     }];
 }
 
+- (IBAction)cancelAction:(id)sender {
+    [self.view endEditing:YES];
+    self.searchResultsTableView.layer.hidden    =   YES;
+    self.cancelButton.layer.hidden              =   YES;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.addressTextField.frame = CGRectMake(self.addressTextField.frame.origin.x, self.addressTextField.frame.origin.y, self.addressTextField.frame.size.width + 50, self.addressTextField.frame.size.height);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
 
 - (IBAction)locationSearchBegin:(id)sender {
     self.searchResultsTableView.layer.hidden = NO;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.addressTextField.frame = CGRectMake(self.addressTextField.frame.origin.x, self.addressTextField.frame.origin.y, self.addressTextField.frame.size.width - 50, self.addressTextField.frame.size.height);
+       
+    } completion:^(BOOL finished) {
+        self.cancelButton.layer.hidden  =   NO;
+    }];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
@@ -97,12 +115,15 @@
             [self.beckon.server stopIndicator];
             if (error == nil && [placemarks count] > 0) {
                 MKPlacemark *placemark = [placemarks lastObject];
-                self.addressTextField.text = [NSString stringWithFormat:@"%@", placemark.name];
+//                self.addressTextField.text = [NSString stringWithFormat:@"%@", placemark.name];
+                [self.addressTextField setText:placemark.name];
                 self.locationString = placemark.name;
+                NSLog(@"%@", placemark.name);
             } else {
                 NSLog(@"%@", error.debugDescription);
             }
         } ];
+        break;
     }
     [self.locationManager stopUpdatingLocation];
 }

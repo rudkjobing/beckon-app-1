@@ -40,6 +40,7 @@
     self.friendsTableView.dataSource = self;
     self.friendsTableView.delegate = self;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriend)];
+    addButton.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = addButton;
     
     [self.friendsTableView registerClass:[FriendCell class] forCellReuseIdentifier:@"FriendCell"];
@@ -125,7 +126,6 @@
     cell.nameOfFriend.text = [[friend.firstName stringByAppendingString:@" "] stringByAppendingString:friend.lastName];
     cell.emailOfFriend.text = friend.email;
     cell.nickNameOfFriend.text = friend.nickname;
-    cell.pictureOfFriend.image = [UIImage imageNamed:@"squirrel.jpg"];
     return cell;
 }
 
