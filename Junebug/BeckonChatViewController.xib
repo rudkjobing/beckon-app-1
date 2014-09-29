@@ -28,7 +28,6 @@
                 <constraint firstAttribute="trailing" secondItem="4fo-kH-0c2" secondAttribute="trailing" id="SP1-Aq-kge"/>
                 <constraint firstItem="4fo-kH-0c2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="v6L-YV-sbH"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="4fo-kH-0c2"/>
@@ -49,7 +48,7 @@
                     <include reference="v6L-YV-sbH"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="149" y="478"/>
+            <point key="canvasLocation" x="148" y="481"/>
         </view>
     </objects>
 </document>
