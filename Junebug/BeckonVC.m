@@ -184,12 +184,7 @@
         [self.activityIndicator startAnimating];
         NSIndexPath *index = [self.beckonTableView indexPathForSelectedRow];
         Beckon *beckon = [self.beckons.beckons objectAtIndex:index.row];
-        UINavigationController *nav = [segue destinationViewController];
-//        BeckonDetailPageVC *pageVC = [segue destinationViewController];
-        BeckonDetailPageVC *pageVC = [[nav viewControllers] objectAtIndex:0];
-//        beckon.chatRoom.chatRoomVC = chatRoomVC;
-//        chatRoomVC.dataSource = beckon.chatRoom.chatMessages;
-//        chatRoomVC.chatRoom = beckon.chatRoom;
+        BeckonDetailPageVC *pageVC = [segue destinationViewController];
         pageVC.beckon = beckon;
         [self.beckonTableView deselectRowAtIndexPath:index animated:NO];
     }

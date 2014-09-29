@@ -1,21 +1,21 @@
 //
-//  FriendChatVC.m
+//  BeckonChatViewController.m
 //  Junebug
 //
-//  Created by Steffen Rudkjøbing on 01/06/14.
-//  Copyright (c) 2014 Beckon Steffen Rudkjøbing. All rights reserved.
+//  Created by Steffen Rudkjøbing on 28/09/14.
+//  Copyright (c) 2014 General Bits. All rights reserved.
 //
 
-#import "ChatRoomVC.h"
+#import "BeckonChatViewController.h"
 #import "ChatRoom.h"
 #import "ChatMessage.h"
 #import "AppDelegate.h"
 
-@interface ChatRoomVC ()
+@interface BeckonChatViewController ()
 
 @end
 
-@implementation ChatRoomVC
+@implementation BeckonChatViewController
 
 - (void)viewDidLoad
 {

@@ -2,6 +2,7 @@
 #import "ChatRoomVC.h"
 #import "BeckonMapViewController.h"
 #import "BeckonMemberViewController.h"
+#import "BeckonChatViewController.h"
 
 @implementation BeckonDetailPageVC
 
@@ -10,20 +11,20 @@
     [super viewDidLoad];
     self.viewControllerArray = [[NSMutableArray alloc]init];
     
-    ChatRoomVC *chatVC = [[ChatRoomVC alloc]init];
-    self.beckon.chatRoom.chatRoomVC = chatVC;
-    chatVC.chatRoom = self.beckon.chatRoom;
-    chatVC.dataSource = self.beckon.chatRoom.chatMessages;
+    BeckonChatViewController *chat = [[BeckonChatViewController alloc] initWithNibName:@"BeckonChatViewController" bundle:nil];
+    self.beckon.chatRoom.chatRoomVC = chat;
+    chat.chatRoom = self.beckon.chatRoom;
+    chat.dataSource = self.beckon.chatRoom.chatMessages;
     
     BeckonMapViewController *map = [[BeckonMapViewController alloc] initWithNibName:@"BeckonMapViewController" bundle:nil];
     
     BeckonMemberViewController *members = [[BeckonMemberViewController alloc] initWithNibName:@"BeckonMemberViewController" bundle:nil];
     
-    [self.viewControllerArray addObjectsFromArray:@[chatVC, members, map]];
+    [self.viewControllerArray addObjectsFromArray:@[chat, members, map]];
     
-    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
-    previousButton.tintColor = [UIColor blackColor];
-    self.navigationItem.leftBarButtonItem = previousButton;
+//    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+//    previousButton.tintColor = [UIColor blackColor];
+//    self.navigationItem.leftBarButtonItem = previousButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated

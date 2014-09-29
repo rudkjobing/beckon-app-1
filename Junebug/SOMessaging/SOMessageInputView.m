@@ -67,7 +67,7 @@
     frame.size.width = [UIScreen mainScreen].bounds.size.width;
     self.frame = frame;
     
-    self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
+    self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;// | UIViewAutoresizingFlexibleWidth;
 }
 
 - (void)setup

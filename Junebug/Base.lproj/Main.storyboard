@@ -57,7 +57,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rj-2i-Sq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="-1383"/>
+            <point key="canvasLocation" x="891" y="-1383"/>
         </scene>
         <!--SettingsVC-->
         <scene sceneID="2me-XN-AfV">
@@ -115,9 +115,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="wdD-eH-G7n" kind="modal" identifier="BeckonsToBeckon" modalTransitionStyle="flipHorizontal" id="EvU-kf-7l9"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -149,6 +146,7 @@
                         <outlet property="beckonTableView" destination="aJa-AD-0rs" id="cGK-rb-kd9"/>
                         <segue destination="T1g-Wn-9a1" kind="modal" identifier="BeckonToCreate" id="UXy-j7-pFa"/>
                         <segue destination="iwm-92-zIM" kind="modal" identifier="LoginModal" animates="NO" id="IJZ-z0-s68"/>
+                        <segue destination="oQv-Vl-4Jo" kind="modal" identifier="BeckonsToBeckon" modalTransitionStyle="coverVertical" id="FDH-IZ-V5Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ob-h5-6Eq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -682,29 +680,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ytc-Uc-M77" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="891" y="-2743"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ENz-Vd-KnA">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wdD-eH-G7n" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="nyS-Wj-oWd"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CRP-4S-aJr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.83529411760000005" green="0.83921568629999999" blue="0.92941176469999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="oQv-Vl-4Jo" kind="relationship" relationship="rootViewController" id="ePN-fK-PCp"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LQF-rZ-odH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="891" y="-1383"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NKL-oV-gtp">

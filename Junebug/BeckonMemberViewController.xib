@@ -31,7 +31,7 @@
                 <constraint firstAttribute="trailing" secondItem="My0-7A-keF" secondAttribute="trailing" id="YoB-Sz-hmN"/>
                 <constraint firstAttribute="bottom" secondItem="My0-7A-keF" secondAttribute="bottom" id="z19-ci-HjH"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedTopBarMetrics"/>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="My0-7A-keF"/>

@@ -55,6 +55,8 @@
 		F99B0B70198C547800849B94 /* BeckonCreatNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B6F198C547800849B94 /* BeckonCreatNavigationVC.m */; };
 		F99B0B74198CEAC500849B94 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99B0B73198CEAC500849B94 /* CoreLocation.framework */; };
 		F9AAEC1F19D5F63A00DDC3EF /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AAEC1E19D5F63A00DDC3EF /* AddressBook.framework */; };
+		F9AAEC2319D8679000DDC3EF /* BeckonChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9AAEC2119D8679000DDC3EF /* BeckonChatViewController.m */; };
+		F9AAEC2419D8679000DDC3EF /* BeckonChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AAEC2219D8679000DDC3EF /* BeckonChatViewController.xib */; };
 		F9ADF35C190BF9DA002C6809 /* SettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ADF35B190BF9DA002C6809 /* SettingsVC.m */; };
 		F9B016FB1927AA9E0088B6AB /* GroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FA1927AA9E0088B6AB /* GroupCell.m */; };
 		F9B016FE1928E6510088B6AB /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9B016FD1928E6510088B6AB /* FriendCell.m */; };
@@ -172,6 +174,9 @@
 		F99B0B6F198C547800849B94 /* BeckonCreatNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonCreatNavigationVC.m; sourceTree = "<group>"; };
 		F99B0B73198CEAC500849B94 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F9AAEC1E19D5F63A00DDC3EF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		F9AAEC2019D8679000DDC3EF /* BeckonChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonChatViewController.h; sourceTree = "<group>"; };
+		F9AAEC2119D8679000DDC3EF /* BeckonChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonChatViewController.m; sourceTree = "<group>"; };
+		F9AAEC2219D8679000DDC3EF /* BeckonChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeckonChatViewController.xib; sourceTree = "<group>"; };
 		F9ADF35A190BF9DA002C6809 /* SettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsVC.h; sourceTree = "<group>"; };
 		F9ADF35B190BF9DA002C6809 /* SettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsVC.m; sourceTree = "<group>"; };
 		F9B016F91927AA9E0088B6AB /* GroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCell.h; sourceTree = "<group>"; };
@@ -374,6 +379,9 @@
 				F986E64019BB5B0800637366 /* BeckonMemberViewController.h */,
 				F986E64119BB5B0800637366 /* BeckonMemberViewController.m */,
 				F986E64219BB5B0800637366 /* BeckonMemberViewController.xib */,
+				F9AAEC2019D8679000DDC3EF /* BeckonChatViewController.h */,
+				F9AAEC2119D8679000DDC3EF /* BeckonChatViewController.m */,
+				F9AAEC2219D8679000DDC3EF /* BeckonChatViewController.xib */,
 			);
 			name = BeckonDetail;
 			sourceTree = "<group>";
@@ -612,6 +620,7 @@
 				F9163D00193BAD07002EE1E2 /* inputTextBG@2x.png in Resources */,
 				F9163D01193BAD07002EE1E2 /* play_button.png in Resources */,
 				F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */,
+				F9AAEC2419D8679000DDC3EF /* BeckonChatViewController.xib in Resources */,
 				F951963019B3ACEB004CBC94 /* 19-gear.png in Resources */,
 				F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */,
 				F9BDCFAA19379EE10095E598 /* logo 640x960.png in Resources */,
@@ -675,6 +684,7 @@
 				F986E64719C0B0D800637366 /* User.m in Sources */,
 				F9BBEFE8190BF47100452C5C /* BeckonDetailVC.m in Sources */,
 				F9163D06193BAD07002EE1E2 /* SOMessageInputView.m in Sources */,
+				F9AAEC2319D8679000DDC3EF /* BeckonChatViewController.m in Sources */,
 				F9163D08193BAD07002EE1E2 /* SOPlaceholderedTextView.m in Sources */,
 				F918483C1961F91600BBA75B /* ChatMessage.m in Sources */,
 				F9163D13193BB23E002EE1E2 /* ChatRoomVC.m in Sources */,

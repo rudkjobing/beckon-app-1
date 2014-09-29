@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *searchResultsTableView;
 @property (strong, nonatomic) NSArray *searchResults;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (assign) float sizeOfAddressTextField;
 
 @end
 
@@ -53,6 +54,7 @@
     self.searchResultsTableView.delegate        =   self;
     self.searchResultsTableView.layer.hidden    =   YES;
     self.cancelButton.layer.hidden              =   YES;
+    self.sizeOfAddressTextField = self.addressTextField.frame.size.width;
 }
 
 - (IBAction)locationSearchChanged:(UITextField *)sender {
@@ -71,25 +73,11 @@
 }
 
 - (IBAction)cancelAction:(id)sender {
-    [self.view endEditing:YES];
-    self.searchResultsTableView.layer.hidden    =   YES;
-    self.cancelButton.layer.hidden              =   YES;
-    [UIView animateWithDuration:0.5 animations:^{
-        self.addressTextField.frame = CGRectMake(self.addressTextField.frame.origin.x, self.addressTextField.frame.origin.y, self.addressTextField.frame.size.width + 50, self.addressTextField.frame.size.height);
-        
-    } completion:^(BOOL finished) {
-        
-    }];
+    [self hideSearchView];
 }
 
 - (IBAction)locationSearchBegin:(id)sender {
-    self.searchResultsTableView.layer.hidden = NO;
-    [UIView animateWithDuration:0.5 animations:^{
-        self.addressTextField.frame = CGRectMake(self.addressTextField.frame.origin.x, self.addressTextField.frame.origin.y, self.addressTextField.frame.size.width - 50, self.addressTextField.frame.size.height);
-       
-    } completion:^(BOOL finished) {
-        self.cancelButton.layer.hidden  =   NO;
-    }];
+    [self presentSearchView];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
@@ -160,6 +148,10 @@
     return self.searchResults.count;
 }
 
+- (void) viewDidDisappear:(BOOL)animated{
+    [self hideSearchView];
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier =   @"MapSearchCell";
@@ -200,18 +192,30 @@
     [self.beckonMap addAnnotation:placemarkForAnnotation];
     [self.beckonMap setRegion:region animated:YES];
     
-    //Reset the search text field
+    [self hideSearchView];
+}
+
+- (void) presentSearchView{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.addressTextField.frame = CGRectMake(self.addressTextField.frame.origin.x, self.addressTextField.frame.origin.y, self.sizeOfAddressTextField - 55, self.addressTextField.frame.size.height);
+        self.searchResultsTableView.layer.hidden = NO;
+        
+    } completion:^(BOOL finished) {
+        self.cancelButton.layer.hidden  =   NO;
+    }];
+}
+
+- (void) hideSearchView{
     [self.view endEditing:YES];
     self.searchResultsTableView.layer.hidden    =   YES;
     self.cancelButton.layer.hidden              =   YES;
     [UIView animateWithDuration:0.5 animations:^{
-        self.addressTextField.frame = CGRectMake(self.addressTextField.frame.origin.x, self.addressTextField.frame.origin.y, self.addressTextField.frame.size.width + 50, self.addressTextField.frame.size.height);
-        
+        self.addressTextField.frame = CGRectMake(self.addressTextField.frame.origin.x, self.addressTextField.frame.origin.y, self.sizeOfAddressTextField, self.addressTextField.frame.size.height);
+        self.searchResultsTableView.layer.hidden    =   YES;        
     } completion:^(BOOL finished) {
         
     }];
 }
-
 
 - (Beckon *) _beckon{
     if(!_beckon){
