@@ -29,7 +29,6 @@
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     self.appState.token = token;
-    NSLog(@"%@", token);
     [self.appState updateNotificationToken];
 }
 

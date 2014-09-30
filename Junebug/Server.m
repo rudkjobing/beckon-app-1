@@ -8,6 +8,7 @@
 
 #import "Server.h"
 #import "AppDelegate.h"
+#import <CommonCrypto/CommonHMAC.h>
 
 @implementation Server
 
@@ -29,16 +30,23 @@ NSInteger counter = 0;
 }
 
 -(NSDictionary *) queryServerDomain:(NSString*)domain WithCommand:(NSString *)command andData:(NSDictionary *)inData{
-    NSMutableDictionary *data = [inData mutableCopy];
-    NSError *error;
+    NSMutableDictionary *data   =   [inData mutableCopy];
+    NSString *hashedNonce       =   @"";
+
+    
     if(self.cookieId && self.cookie){
-        NSMutableDictionary *cookie = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.cookieId, @"id", self.cookie, @"cookie", nil];
+        NSString *nonce = [[NSUUID UUID] UUIDString];
+        hashedNonce = [self hmacForKey:self.cookie AndData: nonce];
+        NSMutableDictionary *cookie = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.cookieId, @"id", nonce, @"nonce", nil];
         [data setObject:cookie forKey:@"cookie"];
     }
+    
+    NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", hashedNonce);
     NSLog(@"%@ %@", domain, command);
     NSLog(@"%@", post);
     
@@ -53,6 +61,7 @@ NSInteger counter = 0;
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setValue:command forHTTPHeaderField:domain];
+    [request setValue:hashedNonce forHTTPHeaderField:@"hash"];
     [request setValue:@"6752dad744e6ab1bd0e65dbf4f2ffc77" forHTTPHeaderField:@"appkey"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
@@ -87,6 +96,20 @@ NSInteger counter = 0;
     if (counter == 0) {
         [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
     }
+}
+
+- (NSString *)hmacForKey: (NSString *)key AndData: (NSString *)data
+{
+    const char *cKey  = [key cStringUsingEncoding:NSASCIIStringEncoding];
+    const char *cData = [data cStringUsingEncoding:NSASCIIStringEncoding];
+    unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
+    
+    CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
+    
+    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
+    NSString *hash = [HMAC base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    
+    return hash;
 }
 
 @end
