@@ -32,7 +32,7 @@
                 [self loadData:beckons];
             }
             else{
-                
+                NSLog(@"ERROR");
             }
         });
     });

@@ -24,20 +24,23 @@
 
 @implementation BeckonMapViewController
 
+MKCoordinateRegion currentRegion;
+int locationRuns;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
-    self.titleLabel.text = parentVC.beckon.title;
-    self.locationLabel.text = parentVC.beckon.locationString;
-    MKCoordinateRegion myPosition;
-    myPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
-    myPosition.center.longitude = [parentVC.beckon.longitude doubleValue];
-    myPosition.span.latitudeDelta = 0.008388 / 2;
-    myPosition.span.longitudeDelta = 0.016243 / 2;
-    [self.map setRegion:myPosition animated:NO];
-    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(myPosition.center.latitude, myPosition.center.longitude) addressDictionary:nil];
+    locationRuns                        = 0;
+    BeckonDetailPageVC *parentVC        = (BeckonDetailPageVC *)self.parentViewController;
+    self.titleLabel.text                = parentVC.beckon.title;
+    self.locationLabel.text             = parentVC.beckon.locationString;
+    currentRegion.center.latitude       = [parentVC.beckon.latitude doubleValue];
+    currentRegion.center.longitude      = [parentVC.beckon.longitude doubleValue];
+    currentRegion.span.latitudeDelta    = 0.008388 / 2;
+    currentRegion.span.longitudeDelta   = 0.016243 / 2;
+    [self.map setRegion:currentRegion animated:NO];
+    MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(currentRegion.center.latitude, currentRegion.center.longitude) addressDictionary:nil];
     [self.map addAnnotation:placemark];
-    [self updateButtonState];
+    
     
     if ([CLLocationManager locationServicesEnabled]) {
         self.locationManager    =   [[CLLocationManager alloc] init];
@@ -51,28 +54,36 @@
         [self.locationManager startUpdatingLocation];
     }
     
+    [self updateButtonState];
+    
     //<3 = true
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    for(CLLocation *location in locations){
-        
-        BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
-        MKCoordinateRegion mapRegion;
-   
-        mapRegion.center.latitude = (location.coordinate.latitude + [parentVC.beckon.latitude doubleValue]) / 2;
-        mapRegion.span.latitudeDelta = fabs(location.coordinate.latitude - [parentVC.beckon.latitude doubleValue]) * 1.8;
-        
-        mapRegion.center.longitude = (location.coordinate.longitude + [parentVC.beckon.longitude doubleValue]) / 2;
-        mapRegion.span.longitudeDelta = fabs(location.coordinate.longitude - [parentVC.beckon.longitude doubleValue]) * 1.3;
-        
-        MKCoordinateRegion beckonPosition;
-        beckonPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
-        beckonPosition.center.longitude = [parentVC.beckon.longitude doubleValue];
-        [self.map setRegion:mapRegion animated:YES];
-        break;
+    if(locationRuns < 6){
+        for(CLLocation *location in locations){
+            
+            BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
+            MKCoordinateRegion mapRegion;
+
+            mapRegion.center.latitude = (location.coordinate.latitude + [parentVC.beckon.latitude doubleValue]) / 2;
+            mapRegion.span.latitudeDelta = fabs(location.coordinate.latitude - [parentVC.beckon.latitude doubleValue]) * 1.8;
+            
+            mapRegion.center.longitude = (location.coordinate.longitude + [parentVC.beckon.longitude doubleValue]) / 2;
+            mapRegion.span.longitudeDelta = fabs(location.coordinate.longitude - [parentVC.beckon.longitude doubleValue]) * 1.3;
+            
+            MKCoordinateRegion beckonPosition;
+            beckonPosition.center.latitude = [parentVC.beckon.latitude doubleValue];
+            beckonPosition.center.longitude = [parentVC.beckon.longitude doubleValue];
+            [self.map setRegion:mapRegion animated:YES];
+            currentRegion = mapRegion;
+            break;
+        }
+        locationRuns++;
     }
-    //[self.locationManager stopUpdatingLocation];
+    else{
+        [self.locationManager stopUpdatingLocation];
+    }
 }
 
 - (IBAction)acceptButtonAction:(UIButton *)sender {
@@ -105,6 +116,7 @@
 - (void) viewWillAppear:(BOOL)animated{
     BeckonDetailPageVC *parentVC = (BeckonDetailPageVC *)self.parentViewController;
     [parentVC.beckon addObserver:self forKeyPath:@"status" options:0 context:nil];
+    [self.map setRegion:currentRegion animated:NO];
 }
 
 - (void) viewWillDisappear:(BOOL)animated{

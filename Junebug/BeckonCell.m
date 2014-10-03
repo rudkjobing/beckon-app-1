@@ -16,39 +16,31 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        
+    
         //Add new custom subview. Relates to heightforRowAtIndexPath in FriendsVC
-        CGFloat heightOfCellInTableView = 65.0;
+        CGFloat heightOfCellInTableView = 75.0;
         
-        CGRect rectForCustomSubView = CGRectMake(self.contentView.frame.origin.x - 12.0,
-                                                 self.contentView.frame.origin.y + 9.0,
-                                                 self.contentView.frame.size.width +24.0,
-                                                 heightOfCellInTableView);
-        self.customBeckonCellView = [[UIView alloc] initWithFrame:rectForCustomSubView];
-        self.customBeckonCellView.backgroundColor = [UIColor colorWithRed:93.0/255.0 green:119.0/255.0 blue:55.0/255.0 alpha:0.8];
+        self.containerView = [[UIView alloc] initWithFrame:CGRectMake(self.contentView.frame.origin.x,
+                                                                      self.contentView.frame.origin.y,
+                                                                      self.contentView.frame.size.width,
+                                                                      heightOfCellInTableView)];
         
-        self.customBeckonCellView.layer.shadowColor = [UIColor blackColor].CGColor;
-         self.customBeckonCellView.layer.shadowOffset = CGSizeMake(0, 1);
-         self.customBeckonCellView.layer.shadowOpacity = 0.6;
-         self.customBeckonCellView.layer.shadowRadius = 4.0;
+        
+        self.subContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.containerView.frame.origin.x + 3,
+                                                                         self.containerView.frame.origin.y + 4,
+                                                                         self.containerView.frame.size.width -6,
+                                                                         heightOfCellInTableView -8)];
+    
+        self.subContainerView.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.subContainerView.layer.shadowOffset = CGSizeMake(0, 1);
+        self.subContainerView.layer.shadowOpacity = 0.6;
+        self.subContainerView.layer.shadowRadius = 4.0;
         
         // Initialization of subviews in contentview
-        CGFloat startingPointOfSubViewOnX = self.customBeckonCellView.bounds.origin.x + 10.0;
+        CGFloat startingPointOfSubViewOnX = self.subContainerView.bounds.origin.x + 5;
         
         //Create referencepoints
         CGFloat startingPointofLabels = startingPointOfSubViewOnX;
-
-        //Create UILabel for imageView
-        /*CGRect frameOfImageView = CGRectMake(startingPointofLabels, startingPointOfSubviewOnY, 44.0, 44.0);
-        self.beckonIconImage = [[UIImageView alloc] initWithFrame:frameOfImageView];
-        self.beckonIconImage.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.beckonIconImage.layer.shadowOffset = CGSizeMake(0, 1);
-        self.beckonIconImage.layer.shadowOpacity = 1;
-        self.beckonIconImage.layer.shadowRadius = 1.0;
-        [self.beckonIconImage.layer setBorderColor:[[UIColor whiteColor] CGColor]];
-        [self.beckonIconImage.layer setBorderWidth:1.5];*/
-
-    
         
         //referencepoints
         CGFloat referencepointOnX = startingPointofLabels;
@@ -64,12 +56,7 @@
         self.nameOfEventLabel.textColor = [UIColor whiteColor];
         self.nameOfEventLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
         self.nameOfEventLabel.textAlignment = UIControlContentVerticalAlignmentCenter;
-        
-        /*self.nameOfEventLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.nameOfEventLabel.layer.shadowOffset = CGSizeMake(0, 1);
-        self.nameOfEventLabel.layer.shadowOpacity = 1;
-        self.nameOfEventLabel.layer.shadowRadius = 1.0;*/
-        
+       
         //Update referencepoints on X and Y
         referencepointOnY = (referencepointOnY + hightOfNameOfEventLabel);
         
@@ -108,12 +95,12 @@
         // set statuslabel
         
         
-        self.chatImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.customBeckonCellView.frame.size.width - 28, 23, 18, 18)];
+        self.chatImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.subContainerView.frame.size.width - 28, 23, 18, 18)];
         self.chatImageView.image = [UIImage imageNamed:@"chatbubble.png"];
         
         CGFloat widthOfStatuslabel = 150;
         
-        CGRect frameOfStatusLabel = CGRectMake((self.customBeckonCellView.frame.size.width - widthOfStatuslabel - 10), referencepointOnY, widthOfStatuslabel, 15);
+        CGRect frameOfStatusLabel = CGRectMake((self.subContainerView.frame.size.width - widthOfStatuslabel - 10), referencepointOnY, widthOfStatuslabel, 15);
         self.statusLabel = [[UILabel alloc] initWithFrame:frameOfStatusLabel];
         self.statusLabel.textColor = [UIColor whiteColor];
         self.statusLabel.font = [UIFont italicSystemFontOfSize:12];
@@ -121,7 +108,7 @@
         self.statusLabel.textAlignment = UIControlContentHorizontalAlignmentRight;
 
         //Create UILabel for countdowntimer
-        CGRect frameOfTimerLabel = CGRectMake((self.customBeckonCellView.frame.size.width - widthOfStatuslabel - 10), 5.0, widthOfStatuslabel, hightOfNameOfEventLabel);
+        CGRect frameOfTimerLabel = CGRectMake((self.subContainerView.frame.size.width - widthOfStatuslabel - 10), 5.0, widthOfStatuslabel, hightOfNameOfEventLabel);
         self.timerLabel = [[UILabel alloc] initWithFrame:frameOfTimerLabel];
         self.timerLabel.textColor = [UIColor whiteColor];
         self.timerLabel.font = [UIFont boldSystemFontOfSize:14];
@@ -135,13 +122,13 @@
         [self.customBeckonCellView.layer setBorderWidth:1.0f];
         
         //add the subviews to contentview of cell
-        [self.contentView addSubview:self.customBeckonCellView];
-        [self.customBeckonCellView addSubview:self.beckonIconImage];
-        [self.customBeckonCellView addSubview:self.nameOfEventLabel];
-        [self.customBeckonCellView addSubview:self.timerLabel];
-        [self.customBeckonCellView addSubview:self.placeOfEventLabel];
-        [self.customBeckonCellView addSubview:self.timeOfEventLabel];
-        [self.customBeckonCellView addSubview:self.statusLabel];
+        [self.contentView addSubview:self.containerView];
+        [self.containerView addSubview:self.subContainerView];
+        [self.subContainerView addSubview:self.nameOfEventLabel];
+        [self.subContainerView addSubview:self.timerLabel];
+        [self.subContainerView addSubview:self.placeOfEventLabel];
+        [self.subContainerView addSubview:self.timeOfEventLabel];
+        [self.subContainerView addSubview:self.statusLabel];
         
         
         [self startTimer];
@@ -150,7 +137,7 @@
 }
 
 - (void) activateChatIndicator{
-    [self.customBeckonCellView addSubview:self.chatImageView];
+    [self.subContainerView addSubview:self.chatImageView];
 }
 
 - (void) deactivateChatIndicator{
@@ -158,25 +145,12 @@
 }
 
 - (void) setCellColor:(UIColor*)color{
-    self.customBeckonCellView.backgroundColor = color;
-}
-
-- (void)setFrame:(CGRect)frame {
-    
-    frame.origin.x += 20;
-    frame.size.width -= 2 * 20;
-    [super setFrame:frame];
+    self.subContainerView.backgroundColor = color;
 }
 
 - (void)layoutSubviews
 {
-    self.contentView.bounds = CGRectMake(self.bounds.origin.x,
-                                         self.bounds.origin.y,
-                                         self.bounds.size.width - 50,
-                                         self.bounds.size.height);
-    
     [super layoutSubviews];
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

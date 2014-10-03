@@ -15,6 +15,7 @@
 @interface BeckonMemberViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *memberTableView;
+@property (strong, nonatomic) UIBarButtonItem *addButton;
 
 @end
 
@@ -27,15 +28,20 @@
     [self.memberTableView registerClass:[MemberCell class] forCellReuseIdentifier:@"MemberCell"];
     self.memberTableView.dataSource = self;
     self.memberTableView.delegate = self;
-    
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUser)];
-    addButton.tintColor = [UIColor blackColor];
-    self.navigationItem.rightBarButtonItem = addButton;
-
+    self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addMember)];
+    self.addButton.tintColor = [UIColor blackColor];
 }
 
-- (void) addUser{
+-(void)addMember{
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    self.parentViewController.navigationItem.rightBarButtonItem = self.addButton;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    self.parentViewController.navigationItem.rightBarButtonItem = nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

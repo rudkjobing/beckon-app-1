@@ -184,7 +184,8 @@
         [self.activityIndicator startAnimating];
         NSIndexPath *index = [self.beckonTableView indexPathForSelectedRow];
         Beckon *beckon = [self.beckons.beckons objectAtIndex:index.row];
-        BeckonDetailPageVC *pageVC = [segue destinationViewController];
+        UINavigationController *navController = [segue destinationViewController];
+        BeckonDetailPageVC *pageVC = [[navController viewControllers] objectAtIndex:0];
         pageVC.beckon = beckon;
         [self.beckonTableView deselectRowAtIndexPath:index animated:NO];
     }

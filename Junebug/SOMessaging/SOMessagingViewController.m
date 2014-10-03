@@ -107,9 +107,11 @@
         if ([self.conversation count]) {
             NSInteger section = self.conversation.count - 1;
             NSArray *sectionOne = [self.conversation objectAtIndex:section];
-            NSInteger row = sectionOne.count - 1;
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+            NSInteger row = sectionOne.count;
+            if(row > 0){
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row - 1 inSection:section];
+                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+            }
         }
     });
 }

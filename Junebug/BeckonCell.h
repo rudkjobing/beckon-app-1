@@ -19,6 +19,8 @@
 @property(strong, nonatomic) UIImageView *beckonIconImage;
 @property (strong, nonatomic) UILabel *statusLabel;
 @property (strong, nonatomic) UIImageView *chatImageView;
+@property (strong, nonatomic) UIView *containerView;
+@property (strong, nonatomic) UIView *subContainerView;
 
 - (void) setCellColor:(UIColor*)color;
 - (void) startTimer;

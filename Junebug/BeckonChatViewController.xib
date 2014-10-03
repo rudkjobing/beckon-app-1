@@ -14,27 +14,6 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fo-kH-0c2">
-                    <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                    <color key="barTintColor" red="0.83529411760000005" green="0.83921568629999999" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <textAttributes key="titleTextAttributes">
-                        <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
-                    </textAttributes>
-                    <items>
-                        <navigationItem title="Title" id="lQo-3P-FUG">
-                            <barButtonItem key="leftBarButtonItem" title="Back" id="D6s-Y4-vmT">
-                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                            </barButtonItem>
-                        </navigationItem>
-                    </items>
-                </navigationBar>
-            </subviews>
-            <constraints>
-                <constraint firstItem="4fo-kH-0c2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5PG-Wp-ike"/>
-                <constraint firstItem="4fo-kH-0c2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="8MV-jn-M67"/>
-                <constraint firstAttribute="trailing" secondItem="4fo-kH-0c2" secondAttribute="trailing" id="9WG-KI-aaG"/>
-            </constraints>
             <point key="canvasLocation" x="148" y="481"/>
         </view>
     </objects>

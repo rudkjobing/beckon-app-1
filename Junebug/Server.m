@@ -93,7 +93,8 @@ NSInteger counter = 0;
 
 -(void) stopIndicator{
     --counter;
-    if (counter == 0) {
+    if (counter <= 0) {
+        counter = 0;
         [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
     }
 }

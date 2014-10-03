@@ -10,8 +10,11 @@
 #import "ChatRoom.h"
 #import "ChatMessage.h"
 #import "AppDelegate.h"
+#import "BeckonDetailPageVC.h"
 
 @interface BeckonChatViewController ()
+
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end
 
@@ -28,7 +31,7 @@
 -(void) viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
 }
-
+    
 -(void)viewEnteredForeground{
     [self.chatRoom sync];
 }

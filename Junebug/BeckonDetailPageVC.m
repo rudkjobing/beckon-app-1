@@ -22,9 +22,9 @@
     
     [self.viewControllerArray addObjectsFromArray:@[chat, members, map]];
     
-//    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
-//    previousButton.tintColor = [UIColor blackColor];
-//    self.navigationItem.leftBarButtonItem = previousButton;
+    UIBarButtonItem *previousButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    previousButton.tintColor = [UIColor blackColor];
+    self.navigationItem.leftBarButtonItem = previousButton;
 }
 
 -(void)viewWillAppear:(BOOL)animated

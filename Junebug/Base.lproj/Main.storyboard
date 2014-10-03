@@ -57,7 +57,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rj-2i-Sq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="891" y="-1383"/>
+            <point key="canvasLocation" x="1301" y="-1383"/>
         </scene>
         <!--SettingsVC-->
         <scene sceneID="2me-XN-AfV">
@@ -146,7 +146,7 @@
                         <outlet property="beckonTableView" destination="aJa-AD-0rs" id="cGK-rb-kd9"/>
                         <segue destination="T1g-Wn-9a1" kind="modal" identifier="BeckonToCreate" id="UXy-j7-pFa"/>
                         <segue destination="iwm-92-zIM" kind="modal" identifier="LoginModal" animates="NO" id="IJZ-z0-s68"/>
-                        <segue destination="oQv-Vl-4Jo" kind="modal" identifier="BeckonsToBeckon" modalTransitionStyle="coverVertical" id="FDH-IZ-V5Y"/>
+                        <segue destination="IOH-Gt-D71" kind="modal" identifier="BeckonsToBeckon" modalTransitionStyle="flipHorizontal" id="FDH-IZ-V5Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ob-h5-6Eq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -356,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYu-Fj-Icy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2938" y="-1383"/>
+            <point key="canvasLocation" x="3470" y="-1383"/>
         </scene>
         <!--Members-->
         <scene sceneID="g7r-3c-Dgi">
@@ -392,7 +392,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h6a-jn-Psj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2520" y="-1383"/>
+            <point key="canvasLocation" x="3052" y="-1383"/>
         </scene>
         <!--Groups-->
         <scene sceneID="dKM-df-IKu">
@@ -438,7 +438,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </objects>
-            <point key="canvasLocation" x="2109" y="-1383"/>
+            <point key="canvasLocation" x="2641" y="-1383"/>
         </scene>
         <!--Please sign in-->
         <scene sceneID="eSC-hO-VvB">
@@ -726,6 +726,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYZ-rm-4xR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="891" y="-724"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hO1-43-GQH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IOH-Gt-D71" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p1N-9F-4di">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oQv-Vl-4Jo" kind="relationship" relationship="rootViewController" id="xPk-e1-RtK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xGa-XO-HQY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="891" y="-1383"/>
         </scene>
     </scenes>
     <resources>
