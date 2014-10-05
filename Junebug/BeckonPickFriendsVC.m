@@ -55,32 +55,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if(section == 0){
-        return self.groups.groups.count;
-    }
-    else{
-        return self.friends.friends.count;
-    }
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if(section == 0){
-        return @"Groups";
-    }
-    else{
-        return @"Friends";
-    }
-    
-}
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
@@ -159,6 +133,32 @@
         BeckonPickFriendsVC *targetVC   =   [segue destinationViewController];
         targetVC.beckon                 =   self.beckon;
     }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(section == 0){
+        return self.groups.groups.count;
+    }
+    else{
+        return self.friends.friends.count;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if(section == 0){
+        return @"Groups";
+    }
+    else{
+        return @"Friends";
+    }
+    
 }
 
 - (Beckon *) _beckon{

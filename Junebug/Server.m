@@ -46,9 +46,9 @@ NSInteger counter = 0;
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", hashedNonce);
-    NSLog(@"%@ %@", domain, command);
-    NSLog(@"%@", post);
+//    NSLog(@"%@", hashedNonce);
+//    NSLog(@"%@ %@", domain, command);
+//    NSLog(@"%@", post);
     
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
@@ -71,15 +71,14 @@ NSInteger counter = 0;
     [self startIndicator];
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     [self stopIndicator];
-
     NSString *jsondata = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
     NSDictionary *result = [NSJSONSerialization JSONObjectWithData: [jsondata dataUsingEncoding:NSUTF8StringEncoding]
                                                            options: NSJSONReadingMutableContainers
                                                              error: &error];
-    if([[result objectForKey:@"message"] isEqualToString:@"Invalid Cookie"]){
+    if([[result objectForKey:@"status"] isEqualToNumber:@(403)]){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserMustSignIn" object:self];
     }
-    NSLog(@"%@", result);
+//    NSLog(@"%@", result);
     return result;
 }
 

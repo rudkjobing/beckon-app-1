@@ -36,5 +36,6 @@
 - (void) acceptBeckon;
 - (void) rejectBeckon;
 - (void) deleteBeckon;
+- (void) addBeckonMembers: (NSMutableArray *)members withCallback: (void (^)(void))callbackBlock;
 
 @end

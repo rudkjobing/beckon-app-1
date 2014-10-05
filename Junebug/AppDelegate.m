@@ -15,11 +15,6 @@
 {
     application.applicationIconBadgeNumber = 0;
     _appState = [[AppState alloc] init];
-    // Override point for customization after application launch.
-    
-    //Change tab bar color to transluscent
-    //[[UITabBar appearance] setBarTintColor:[UIColor clearColor]];
-    
     
     return YES;
     
@@ -29,6 +24,7 @@
     NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     self.appState.token = token;
+    application.applicationIconBadgeNumber = 0;
     [self.appState updateNotificationToken];
 }
 
@@ -39,17 +35,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    application.applicationIconBadgeNumber = 0;
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-    {
-        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }
-    else
-    {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
-    }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {

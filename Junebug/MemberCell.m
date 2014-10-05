@@ -35,7 +35,7 @@
         self.name.font = [UIFont boldSystemFontOfSize:22];
         self.name.backgroundColor = [UIColor clearColor];
         self.name.textColor = [UIColor whiteColor];
-        self.name.textAlignment = UIControlContentHorizontalAlignmentLeft;
+        self.name.textAlignment = NSTextAlignmentLeft;
         
         self.creatorIconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.containerView.frame.size.width - 25, self.subContainerView.frame.origin.y + 8, 20, 20)];
         self.creatorIconImageView.image = [UIImage imageNamed:@"creatoricon.png"];

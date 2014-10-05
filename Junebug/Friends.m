@@ -31,12 +31,15 @@
 - (void) loadData: (NSArray*) data{
     [self.friends removeAllObjects];
     for(NSDictionary *child in data){
-        Friend *friend = [[Friend alloc] init];
-        friend.id = [child objectForKey:@"id"];
-        friend.firstName = [[child objectForKey:@"user"] objectForKey:@"firstName"];
-        friend.lastName = [[child objectForKey:@"user"] objectForKey:@"lastName"];
-        friend.email = [[child objectForKey:@"user"] objectForKey:@"emailAddress"];
-        friend.nickname = [child objectForKey:@"nickname"];
+        Friend *friend      = [[Friend alloc] init];
+        friend.id           = [child objectForKey:@"id"];
+        friend.firstName    = [[child objectForKey:@"user"] objectForKey:@"firstName"];
+        friend.lastName     = [[child objectForKey:@"user"] objectForKey:@"lastName"];
+        friend.email        = [[child objectForKey:@"user"] objectForKey:@"emailAddress"];
+        friend.nickname     = [child objectForKey:@"nickname"];
+        friend.user         = [[User alloc] init];
+//        friend.user.id      = [[NSNumber alloc] initWithInt:[[[child objectForKey:@"user"] objectForKey:@"id"] intValue]];
+        friend.user.id      = [[child objectForKey:@"user"] objectForKey:@"id"];
         [self.friends addObject:friend];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadFriendTableView" object:self];

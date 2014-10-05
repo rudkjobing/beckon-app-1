@@ -32,7 +32,7 @@
                 [self loadData:beckons];
             }
             else{
-                NSLog(@"ERROR");
+                
             }
         });
     });
@@ -47,14 +47,13 @@
             if([[member objectForKey:@"user"] intValue] == [appDelegate.appState.userId intValue]){
                 beckon.status = [member objectForKey:@"status"];
             }
-            BeckonMember *beckonMember = [[BeckonMember alloc] init];
-            beckonMember.status = [member objectForKey:@"status"];
-            beckonMember.user = [[User alloc] init];
-            beckonMember.user.firstName = [member objectForKey:@"firstName"];
-            beckonMember.user.lastName = [member objectForKey:@"lastName"];
-            
-            //This is to enable the crown icon in beckon details, indicating that that user is the creator of the beckon.
-            beckonMember.user.id = [member objectForKey:@"user"];
+            BeckonMember *beckonMember      = [[BeckonMember alloc] init];
+            beckonMember.status             = [member objectForKey:@"status"];
+            beckonMember.user               = [[User alloc] init];
+            beckonMember.user.firstName     = [member objectForKey:@"firstName"];
+            beckonMember.user.lastName      = [member objectForKey:@"lastName"];
+//            beckonMember.user.id            = [[NSNumber alloc] initWithInt:[[member objectForKey:@"user"] intValue]];
+            beckonMember.user.id            = [member objectForKey:@"user"];
             if([beckonMember.user.id intValue] == [[child objectForKey:@"owner"] intValue]){
                 beckonMember.isCreator = YES;
             }
@@ -63,24 +62,24 @@
             }
             [beckon.members addObject:beckonMember];
         }
-        beckon.id = [child objectForKey:@"id"];
-        beckon.title = [child objectForKey:@"title"];
-        //beckon.beckonDescription = [child objectForKey:@"description"];
-        beckon.chatRoomId = [child objectForKey:@"chatRoom"];
-        beckon.latitude = [child objectForKey:@"latitude"];
-        beckon.longitude = [child objectForKey:@"longitude"];
-        beckon.hasUnreadMessages = [child objectForKey:@"hasUnreadMessages"];
-        beckon.locationString = [child objectForKey:@"locationString"];
-        beckon.invited = [child objectForKey:@"invited"];
-        beckon.accepted = [child objectForKey:@"accepted"];
-        beckon.server = self.server;
+        beckon.id                   = [child objectForKey:@"id"];
+        beckon.title                = [child objectForKey:@"title"];
+        //beckon.beckonDescription  = [child objectForKey:@"description"];
+        beckon.chatRoomId           = [child objectForKey:@"chatRoom"];
+        beckon.latitude             = [child objectForKey:@"latitude"];
+        beckon.longitude            = [child objectForKey:@"longitude"];
+        beckon.hasUnreadMessages    = [child objectForKey:@"hasUnreadMessages"];
+        beckon.locationString       = [child objectForKey:@"locationString"];
+        beckon.invited              = [child objectForKey:@"invited"];
+        beckon.accepted             = [child objectForKey:@"accepted"];
+        beckon.server               = self.server;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-M-d HH:mm:ss"];
-        NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+        NSTimeZone *timeZone        = [NSTimeZone timeZoneWithName:@"UTC"];
         [dateFormat setTimeZone:timeZone];
-        beckon.begins = [dateFormat dateFromString:[child objectForKey:@"begins"]];
-        beckon.ends = [dateFormat dateFromString:[child objectForKey:@"ends"]];
-        beckon.chatRoom = [[ChatRoom alloc] initWithId: beckon.chatRoomId];
+        beckon.begins               = [dateFormat dateFromString:[child objectForKey:@"begins"]];
+        beckon.ends                 = [dateFormat dateFromString:[child objectForKey:@"ends"]];
+        beckon.chatRoom             = [[ChatRoom alloc] initWithId: beckon.chatRoomId];
         [appDelegate.appState.chatRooms setObject:beckon.chatRoom forKey:beckon.chatRoomId];
         [self.beckons addObject: beckon];
         if([self.newestBeckonPointer integerValue] < [beckon.id integerValue]){

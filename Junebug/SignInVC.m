@@ -69,9 +69,6 @@
     [noMailorPassword show];
 }
 
-- (IBAction)signUpPressed:(id)sender {
-    [self performSegueWithIdentifier:@"signInToSignUp" sender:self];
-}
 - (IBAction)textFieldReturn:(id)sender{
     [self resignFirstResponder];
 }

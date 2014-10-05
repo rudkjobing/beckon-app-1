@@ -11,6 +11,7 @@
 #import "MemberCell.h"
 #import "BeckonMember.h"
 #import "GradientLayers.h"
+#import "BeckonAddMembersViewController.h"
 
 @interface BeckonMemberViewController ()
 
@@ -33,7 +34,13 @@
 }
 
 -(void)addMember{
+    BeckonAddMembersViewController *modal       = [[BeckonAddMembersViewController alloc] initWithNibName:@"BeckonAddMembersViewController" bundle:nil];
+    BeckonDetailPageVC *parentVC                = (BeckonDetailPageVC *)self.parentViewController;
+    modal.beckon                                = parentVC.beckon;
+    UINavigationController *navController       = [[UINavigationController alloc] initWithRootViewController:modal];
+    navController.navigationBar.backgroundColor = [UIColor colorWithRed:213.0/255.0 green:214.0/255.0 blue:237.0/255.0 alpha:1];
     
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

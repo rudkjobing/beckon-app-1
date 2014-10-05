@@ -25,6 +25,8 @@
 
 @implementation BeckonVC
 
+dispatch_once_t onceToken;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,9 +51,19 @@
     self.beckonTableView.delegate = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewEnteredForeground) name:UIApplicationWillEnterForegroundNotification object:nil];//Handle being put in the foreground
     [self.beckons addObserver:self forKeyPath:@"newestBeckonPointer" options:0 context:nil];
-    
-//added clearcolor background
+
     self.beckonTableView.backgroundColor = [UIColor clearColor];
+    
+    /*Register for remote notifications*/
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
     
     [self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
     if ([CLLocationManager locationServicesEnabled]) {
@@ -77,13 +89,14 @@
 }
 
 -(void) goToSignIn:(NSNotification*) notification{
-    [self performSegueWithIdentifier:@"LoginModal" sender:self];
+    dispatch_once(&onceToken, ^{
+        [self performSegueWithIdentifier:@"LoginModal" sender:self];
+    });
 }
 
 -(void)viewEnteredForeground{
     [self.activityIndicator startAnimating];
     [self.locationManager startUpdatingLocation];
-    [self.activityIndicator startAnimating];
     [self.beckons getUpdates];
 }
 

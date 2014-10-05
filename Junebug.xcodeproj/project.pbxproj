@@ -42,14 +42,11 @@
 		F951963E19B4C795004CBC94 /* BeckonMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F951963C19B4C795004CBC94 /* BeckonMapViewController.m */; };
 		F951963F19B4C795004CBC94 /* BeckonMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F951963D19B4C795004CBC94 /* BeckonMapViewController.xib */; };
 		F9572A20192135F500D7D51E /* AppState.m in Sources */ = {isa = PBXBuildFile; fileRef = F9572A1F192135F500D7D51E /* AppState.m */; };
-		F95B92CA193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png in Resources */ = {isa = PBXBuildFile; fileRef = F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */; };
-		F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */ = {isa = PBXBuildFile; fileRef = F95B92CB193A8D3E00416BDA /* Lalaatest3ocu.png */; };
 		F986E64319BB5B0800637366 /* BeckonMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F986E64119BB5B0800637366 /* BeckonMemberViewController.m */; };
 		F986E64419BB5B0800637366 /* BeckonMemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F986E64219BB5B0800637366 /* BeckonMemberViewController.xib */; };
 		F986E64719C0B0D800637366 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F986E64619C0B0D800637366 /* User.m */; };
 		F986E64A19C0B19700637366 /* BeckonMember.m in Sources */ = {isa = PBXBuildFile; fileRef = F986E64919C0B19700637366 /* BeckonMember.m */; };
 		F986E64D19C34C5800637366 /* SettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F986E64C19C34C5800637366 /* SettingsCell.m */; };
-		F99B0B67198AE65C00849B94 /* squirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F99B0B66198AE65C00849B94 /* squirrel.jpg */; };
 		F99B0B6A198C4B1A00849B94 /* BeckonPickLocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B69198C4B1A00849B94 /* BeckonPickLocationVC.m */; };
 		F99B0B6D198C4CFF00849B94 /* BeckonPickDateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B6C198C4CFF00849B94 /* BeckonPickDateVC.m */; };
 		F99B0B70198C547800849B94 /* BeckonCreatNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F99B0B6F198C547800849B94 /* BeckonCreatNavigationVC.m */; };
@@ -92,6 +89,8 @@
 		F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFA619379EE10095E598 /* logo 640x1136.png */; };
 		F9BDCFAD19379FBF0095E598 /* Bertil3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */; };
 		F9CAF2F3198D8201003E3F4F /* BeckonTab@2x-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */; };
+		F9CB90C419DED6A100155863 /* BeckonAddMembersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9CB90C219DED6A100155863 /* BeckonAddMembersViewController.m */; };
+		F9CB90C519DED6A100155863 /* BeckonAddMembersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9CB90C319DED6A100155863 /* BeckonAddMembersViewController.xib */; };
 		F9DE061B195EE5A900D3356A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DE061A195EE5A900D3356A /* MapKit.framework */; };
 		F9E8611819B24CF900C26A69 /* BeckonDetailPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E8611719B24CF900C26A69 /* BeckonDetailPageVC.m */; };
 		F9E9555C198AB79A001519B8 /* Convertions.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E9555B198AB79A001519B8 /* Convertions.m */; };
@@ -154,8 +153,6 @@
 		F951963D19B4C795004CBC94 /* BeckonMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeckonMapViewController.xib; sourceTree = "<group>"; };
 		F9572A1E192135F500D7D51E /* AppState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppState.h; sourceTree = "<group>"; };
 		F9572A1F192135F500D7D51E /* AppState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppState.m; sourceTree = "<group>"; };
-		F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lllaallalalalajfæowehfpawpfuawbdpo.png"; sourceTree = "<group>"; };
-		F95B92CB193A8D3E00416BDA /* Lalaatest3ocu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lalaatest3ocu.png; sourceTree = "<group>"; };
 		F986E64019BB5B0800637366 /* BeckonMemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonMemberViewController.h; sourceTree = "<group>"; };
 		F986E64119BB5B0800637366 /* BeckonMemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonMemberViewController.m; sourceTree = "<group>"; };
 		F986E64219BB5B0800637366 /* BeckonMemberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeckonMemberViewController.xib; sourceTree = "<group>"; };
@@ -165,7 +162,6 @@
 		F986E64919C0B19700637366 /* BeckonMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonMember.m; sourceTree = "<group>"; };
 		F986E64B19C34C5800637366 /* SettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCell.h; sourceTree = "<group>"; };
 		F986E64C19C34C5800637366 /* SettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCell.m; sourceTree = "<group>"; };
-		F99B0B66198AE65C00849B94 /* squirrel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = squirrel.jpg; sourceTree = "<group>"; };
 		F99B0B68198C4B1A00849B94 /* BeckonPickLocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickLocationVC.h; sourceTree = "<group>"; };
 		F99B0B69198C4B1A00849B94 /* BeckonPickLocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonPickLocationVC.m; sourceTree = "<group>"; };
 		F99B0B6B198C4CFF00849B94 /* BeckonPickDateVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonPickDateVC.h; sourceTree = "<group>"; };
@@ -237,6 +233,9 @@
 		F9BDCFA619379EE10095E598 /* logo 640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo 640x1136.png"; sourceTree = "<group>"; };
 		F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bertil3.jpg; sourceTree = "<group>"; };
 		F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeckonTab@2x-iphone.png"; sourceTree = "<group>"; };
+		F9CB90C119DED6A100155863 /* BeckonAddMembersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonAddMembersViewController.h; sourceTree = "<group>"; };
+		F9CB90C219DED6A100155863 /* BeckonAddMembersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonAddMembersViewController.m; sourceTree = "<group>"; };
+		F9CB90C319DED6A100155863 /* BeckonAddMembersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeckonAddMembersViewController.xib; sourceTree = "<group>"; };
 		F9DE061A195EE5A900D3356A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F9E8611619B24CF900C26A69 /* BeckonDetailPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeckonDetailPageVC.h; sourceTree = "<group>"; };
 		F9E8611719B24CF900C26A69 /* BeckonDetailPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeckonDetailPageVC.m; sourceTree = "<group>"; };
@@ -382,6 +381,9 @@
 				F9AAEC2019D8679000DDC3EF /* BeckonChatViewController.h */,
 				F9AAEC2119D8679000DDC3EF /* BeckonChatViewController.m */,
 				F9AAEC2219D8679000DDC3EF /* BeckonChatViewController.xib */,
+				F9CB90C119DED6A100155863 /* BeckonAddMembersViewController.h */,
+				F9CB90C219DED6A100155863 /* BeckonAddMembersViewController.m */,
+				F9CB90C319DED6A100155863 /* BeckonAddMembersViewController.xib */,
 			);
 			name = BeckonDetail;
 			sourceTree = "<group>";
@@ -394,13 +396,10 @@
 				F951963319B4C161004CBC94 /* 111-user.png */,
 				F951962F19B3ACEB004CBC94 /* 19-gear.png */,
 				F9CAF2F2198D8201003E3F4F /* BeckonTab@2x-iphone.png */,
-				F99B0B66198AE65C00849B94 /* squirrel.jpg */,
 				F9BDCFAC19379FBF0095E598 /* Bertil3.jpg */,
-				F95B92C9193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png */,
 				F9BDCFA219379EE10095E598 /* Logo 58x58.png */,
 				F9BDCFA319379EE10095E598 /* logo 80x80.png */,
 				F9BDCFA419379EE10095E598 /* logo 120x120.png */,
-				F95B92CB193A8D3E00416BDA /* Lalaatest3ocu.png */,
 				F9BDCFA519379EE10095E598 /* logo 640x960.png */,
 				F9BDCFA619379EE10095E598 /* logo 640x1136.png */,
 			);
@@ -568,7 +567,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "General Bits";
+				ORGANIZATIONNAME = "Beckon IVS";
 				TargetAttributes = {
 					F9BBEF8E190AF05B00452C5C = {
 						DevelopmentTeam = 24ZKBP96S6;
@@ -607,14 +606,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9BDCFA719379EE10095E598 /* Logo 58x58.png in Resources */,
-				F95B92CA193A8C9300416BDA /* lllaallalalalajfæowehfpawpfuawbdpo.png in Resources */,
 				F9BBEFAB190AF05C00452C5C /* Images.xcassets in Resources */,
 				F9163D02193BAD07002EE1E2 /* play_button@2x.png in Resources */,
-				F99B0B67198AE65C00849B94 /* squirrel.jpg in Resources */,
 				F9163CFD193BAD07002EE1E2 /* bubbleReceive.png in Resources */,
 				F951963419B4C161004CBC94 /* 111-user.png in Resources */,
 				F9163CFC193BAD07002EE1E2 /* bubble@2x.png in Resources */,
 				F986E64419BB5B0800637366 /* BeckonMemberViewController.xib in Resources */,
+				F9CB90C519DED6A100155863 /* BeckonAddMembersViewController.xib in Resources */,
 				F9CAF2F3198D8201003E3F4F /* BeckonTab@2x-iphone.png in Resources */,
 				F9163CFA193BAD07002EE1E2 /* attachment@2x.png in Resources */,
 				F9163D00193BAD07002EE1E2 /* inputTextBG@2x.png in Resources */,
@@ -622,7 +620,6 @@
 				F9BDCFAB19379EE10095E598 /* logo 640x1136.png in Resources */,
 				F9AAEC2419D8679000DDC3EF /* BeckonChatViewController.xib in Resources */,
 				F951963019B3ACEB004CBC94 /* 19-gear.png in Resources */,
-				F95B92CC193A8D3E00416BDA /* Lalaatest3ocu.png in Resources */,
 				F9BDCFAA19379EE10095E598 /* logo 640x960.png in Resources */,
 				F91BAD2019CF30FF00F54C7E /* creatoricon.png in Resources */,
 				F9163CFB193BAD07002EE1E2 /* bubble.png in Resources */,
@@ -664,6 +661,7 @@
 				F9E9555C198AB79A001519B8 /* Convertions.m in Sources */,
 				F9BBEFF9190BF6B800452C5C /* Server.m in Sources */,
 				F9BBEFD6190BF27700452C5C /* SignUpVC.m in Sources */,
+				F9CB90C419DED6A100155863 /* BeckonAddMembersViewController.m in Sources */,
 				F91848391961BAB400BBA75B /* ChatRoom.m in Sources */,
 				F9BBEFEF190BF68A00452C5C /* Friends.m in Sources */,
 				F9BBEFF2190BF69500452C5C /* Groups.m in Sources */,
@@ -725,6 +723,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -755,9 +757,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -765,6 +768,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -789,16 +796,18 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
 		F9BBEFC2190AF05C00452C5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -817,6 +826,7 @@
 		F9BBEFC3190AF05C00452C5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

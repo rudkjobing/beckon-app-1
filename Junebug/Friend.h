@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "User.h"
 
 @interface Friend : NSObject
 
@@ -16,5 +17,6 @@
 @property (strong, nonatomic) NSString *nickname;
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSData *thumbnail;
+@property (strong, nonatomic) User *user;
 
 @end
