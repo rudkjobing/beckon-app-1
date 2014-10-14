@@ -24,6 +24,8 @@
 @property (strong, nonatomic) NSArray *searchResults;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (assign) float sizeOfAddressTextField;
+@property (assign) BOOL isSearching;
+@property (strong, nonatomic) NSString *latestSearchString;
 
 @end
 
@@ -54,22 +56,35 @@
     self.searchResultsTableView.delegate        =   self;
     self.searchResultsTableView.layer.hidden    =   YES;
     self.cancelButton.layer.hidden              =   YES;
+    self.isSearching                            =   NO;
     self.sizeOfAddressTextField = self.addressTextField.frame.size.width;
 }
 
 - (IBAction)locationSearchChanged:(UITextField *)sender {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState.server startIndicator];
-    MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = sender.text;
-    request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 0.5, 0.5);
-   
-    MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-        [appDelegate.appState.server stopIndicator];
-        self.searchResults = response.mapItems;
-        [self.searchResultsTableView reloadData];
-    }];
+    [self searchForLocations];
+}
+
+- (void)searchForLocations{
+    if(!self.isSearching){
+        self.isSearching = YES;
+        self.latestSearchString = self.addressTextField.text;
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [appDelegate.appState.server startIndicator];
+        MKLocalSearchRequest* request = [[MKLocalSearchRequest alloc] init];
+        request.naturalLanguageQuery = self.addressTextField.text;
+        request.region = MKCoordinateRegionMakeWithDistance(self.beckonMap.userLocation.location.coordinate, 0.5, 0.5);
+        
+        MKLocalSearch* search = [[MKLocalSearch alloc] initWithRequest:request];
+        [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+            [appDelegate.appState.server stopIndicator];
+            self.searchResults = response.mapItems;
+            [self.searchResultsTableView reloadData];
+            self.isSearching = NO;
+            if(![self.addressTextField.text isEqualToString:self.latestSearchString]){
+                [self searchForLocations];
+            }
+        }];
+    }
 }
 
 - (IBAction)cancelAction:(id)sender {
@@ -157,14 +172,31 @@
     static NSString *cellIdentifier =   @"MapSearchCell";
     UITableViewCell *cell           =   (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell                        =   [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell                        =   [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
     MKMapItem *item                 =   [self.searchResults objectAtIndex:indexPath.row];
-    
+
     cell.textLabel.text             =   item.name;
-    cell.detailTextLabel.text       =   [item.placemark.addressDictionary objectForKey:@"Street"];
     
+    NSString *addressString = @"";
+    if(item.placemark.thoroughfare){
+        addressString = [addressString stringByAppendingString:item.placemark.thoroughfare];
+        addressString = [addressString stringByAppendingString:@" "];
+    }
+    if(item.placemark.subThoroughfare){
+        addressString = [addressString stringByAppendingString:item.placemark.subThoroughfare];
+        addressString = [addressString stringByAppendingString:@", "];
+    }
+    if(item.placemark.locality){
+        addressString = [addressString stringByAppendingString:item.placemark.locality];
+        addressString = [addressString stringByAppendingString:@", "];
+    }
+    if(item.placemark.administrativeArea){
+        addressString = [addressString stringByAppendingString:item.placemark.administrativeArea];
+    }
+    
+    cell.detailTextLabel.text       =   [NSString stringWithFormat:@"%@", addressString];
     return cell;
 }
 
