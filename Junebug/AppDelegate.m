@@ -35,6 +35,13 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application{
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert) categories:nil];
+        [application registerUserNotificationSettings:settings];
+    } else {
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        [application registerForRemoteNotificationTypes:myTypes];
+    }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -84,9 +91,9 @@
 
 @end
 //REMOVE THIS ON PRODUCTION
-@implementation NSURLRequest(DataController)
-+ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host
-{
-    return YES;
-}
-@end
+//@implementation NSURLRequest(DataController)
+//+ (BOOL)allowsAnyHTTPSCertificateForHost:(NSString *)host
+//{
+//    return YES;
+//}
+//@end

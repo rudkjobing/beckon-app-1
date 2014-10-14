@@ -46,9 +46,9 @@ NSInteger counter = 0;
                                                        options:NSJSONWritingPrettyPrinted
                                                          error:&error];
     NSString *post = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", hashedNonce);
-//    NSLog(@"%@ %@", domain, command);
-//    NSLog(@"%@", post);
+    NSLog(@"%@", hashedNonce);
+    NSLog(@"%@ %@", domain, command);
+    NSLog(@"%@", post);
     
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
@@ -66,19 +66,30 @@ NSInteger counter = 0;
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
-    error = [[NSError alloc] init];
     NSHTTPURLResponse *response = nil;
     [self startIndicator];
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    if(error){
+        NSLog(@"ERROR in transmission, %@", error.debugDescription);
+    }
     [self stopIndicator];
+    if(urlData == nil){
+        NSLog(@"Result is NIL");
+    }
     NSString *jsondata = [[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
     NSDictionary *result = [NSJSONSerialization JSONObjectWithData: [jsondata dataUsingEncoding:NSUTF8StringEncoding]
                                                            options: NSJSONReadingMutableContainers
                                                              error: &error];
+    if(error){
+        NSLog(@"ERROR in translation, %@", error.debugDescription);
+        result = [[NSDictionary alloc] init];
+    }
+
+    
     if([[result objectForKey:@"status"] isEqualToNumber:@(403)]){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UserMustSignIn" object:self];
     }
-//    NSLog(@"%@", result);
+    NSLog(@"%@", result);
     return result;
 }
 

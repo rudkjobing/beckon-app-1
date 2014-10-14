@@ -56,11 +56,6 @@
 }
 
 - (void) goToMenu:(NSNotification*) notification{
-    UIApplication *application = [UIApplication sharedApplication];
-    UIRemoteNotificationType noteficationTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound;
-    [application registerForRemoteNotificationTypes:noteficationTypes];
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [appDelegate.appState getState];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -53,18 +53,7 @@ dispatch_once_t onceToken;
     [self.beckons addObserver:self forKeyPath:@"newestBeckonPointer" options:0 context:nil];
 
     self.beckonTableView.backgroundColor = [UIColor clearColor];
-    
-    /*Register for remote notifications*/
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-    {
-        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
-    }
-    else
-    {
-        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
-    }
-    
+        
     [self.beckonTableView registerClass:[BeckonCell class] forCellReuseIdentifier:@"BeckonCell"];
     if ([CLLocationManager locationServicesEnabled]) {
         self.locationManager = [[CLLocationManager alloc] init];
@@ -181,6 +170,8 @@ dispatch_once_t onceToken;
         cell.statusLabel.text = distanceString;
     }
     cell.placeOfEventLabel.text = beckon.locationString;
+    //cell.memberCountLabel.text = [[[beckon.accepted stringValue] stringByAppendingString:@"/"] stringByAppendingString:@"2"];
+    cell.memberCountLabel.text = [NSString stringWithFormat:@"%@/%@", beckon.accepted, beckon.invited];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     cell.timeOfEventLabel.text = [formatter stringFromDate:beckon.begins];

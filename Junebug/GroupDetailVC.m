@@ -31,7 +31,7 @@
     bgLayer.frame = self.view.bounds;
     [self.view.layer insertSublayer:bgLayer atIndex:0];*/
     self.memberTableView.backgroundColor = [UIColor clearColor];
-    UIBarButtonItem *manageButton = [[UIBarButtonItem alloc] initWithTitle:@"Manage" style:UIBarButtonItemStyleBordered target:self action:@selector(manageGroup)];
+    UIBarButtonItem *manageButton = [[UIBarButtonItem alloc] initWithTitle:@"Manage" style:UIBarButtonItemStylePlain target:self action:@selector(manageGroup)];
     self.navigationItem.rightBarButtonItem = manageButton;
     self.memberTableView.dataSource = self;
     self.memberTableView.delegate = self;

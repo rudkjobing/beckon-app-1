@@ -93,9 +93,13 @@
          self.timerLabel.layer.shadowRadius = 1.0;*/
         
         // set statuslabel
+        self.memberCountLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.subContainerView.frame.size.width - 40, 23, 30, 18)];
+        self.memberCountLabel.textColor = [UIColor whiteColor];
+        self.memberCountLabel.font = [UIFont italicSystemFontOfSize:12];
+        self.memberCountLabel.backgroundColor = [UIColor clearColor];
+        self.memberCountLabel.textAlignment = NSTextAlignmentRight;
         
-        
-        self.chatImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.subContainerView.frame.size.width - 28, 23, 18, 18)];
+        self.chatImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.subContainerView.frame.size.width - 58, 23, 18, 18)];
         self.chatImageView.image = [UIImage imageNamed:@"chatbubble.png"];
         
         CGFloat widthOfStatuslabel = 150;
@@ -129,6 +133,7 @@
         [self.subContainerView addSubview:self.placeOfEventLabel];
         [self.subContainerView addSubview:self.timeOfEventLabel];
         [self.subContainerView addSubview:self.statusLabel];
+        [self.subContainerView addSubview:self.memberCountLabel];
         
         
         [self startTimer];
