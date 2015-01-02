@@ -49,6 +49,7 @@ NSInteger counter = 0;
     NSLog(@"%@", hashedNonce);
     NSLog(@"%@ %@", domain, command);
     NSLog(@"%@", post);
+ 
     
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];

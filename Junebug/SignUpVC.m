@@ -38,34 +38,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //added backgroundLayer
-   
-    self.title = @"Sign up for Beckon";
-    
-    //customize signupFirstName textfield
-    self.signUpFirstname.textColor = [UIColor blackColor];
-    self.signUpFirstname.font = [UIFont systemFontOfSize:14];
-    
-    //Customize signUpsecondName textfield
-    self.signUpSecondname.textColor = [UIColor blackColor];
-    
-    //Customize signUpEmail textfield
-    self.signUpEmail.textColor = [UIColor blackColor];
-    
-    //customize signupPassword textField
-    self.signUpPassword.textColor = [UIColor blackColor];
-    
-    //Customize signUpConfirmedPassword textfield
-    self.signUpConfirmedPassword.textColor = [UIColor blackColor];
-    
-    
-    //Customize SignupButton
-    self.signUpButton.backgroundColor = [UIColor clearColor];
-    self.signUpButton.tintColor = [UIColor whiteColor];
-    self.signUpButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    self.signUpButton.titleLabel.textAlignment = UIControlContentHorizontalAlignmentLeft;
-    [self.signUpButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
